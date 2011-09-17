@@ -1,0 +1,981 @@
+/***************************************************************
+ * Copyright notice
+ *
+ * (c) 2010 Christian Technology Ministries International Inc.
+ * All rights reserved
+ *
+ * This file is part of the Web-Empowered Church (WEC)
+ * (http://WebEmpoweredChurch.org) ministry of Christian Technology Ministries 
+ * International (http://CTMIinc.org). The WEC is developing TYPO3-based
+ * (http://typo3.org) free software for churches around the world. Our desire
+ * is to use the Internet to help offer new life through Jesus Christ. Please
+ * see http://WebEmpoweredChurch.org/Jesus.
+ *
+ * You can redistribute this file and/or modify it under the terms of the
+ * GNU General Public License as published by the Free Software Foundation;
+ * either version 2 of the License, or (at your option) any later version.
+ *
+ * The GNU General Public License can be found at
+ * http://www.gnu.org/copyleft/gpl.html.
+ *
+ * This file is distributed in the hope that it will be useful for ministry,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * This copyright notice MUST APPEAR in all copies of the file!
+ ***************************************************************/
+
+/* @group Reset Styling */
+
+/* --------------------------------------------------------------
+
+   reset.css
+   * Resets default browser CSS.
+
+   Based on work by Eric Meyer:
+   * meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/
+
+-------------------------------------------------------------- */
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, code,
+del, dfn, em, img, q, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+
+}
+
+/* Tables still need 'cellspacing="0"' in the markup. */
+/*table { border-collapse: separate; border-spacing: 0; } -------by Ben*/
+caption, th, td { text-align: left; font-weight:400; }
+
+/* Remove possible quote marks (") from <q>, <blockquote>. */
+blockquote:before, blockquote:after, q:before, q:after { content: ""; }
+blockquote, q { quotes: "" ""; }
+
+a img { border: none; }
+
+a{
+color:#cf7a00;
+}
+
+a:active {
+	outline: none;
+	}
+
+a:focus {
+	-moz-outline-style: none;
+	}
+
+/* @end Reset Styling */
+
+/* @group Base Styling */
+
+html {
+	height: 100%;
+}
+
+body {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 1.7em;
+	color: #555;
+	font-weight: normal;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	background: #005a79;
+}
+
+/* NOTE: Much of the typography styling is handled in rte.css */
+
+
+/* @group Table Styling */
+
+/* NOTE: Table Styling is mostly handled in rte.css */
+/* table {
+	border-collapse:collapse;
+	width: 100%;
+	} -------by Ben*/
+
+/* @end Table Styling */
+
+/* @group Additional Tags */
+
+
+pre {
+	margin-bottom: 15px;
+}
+
+code {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+pre code {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+pre,
+code {
+	font-family: 'andale mono', 'monotype.com', 'lucida console', monospace;
+}
+
+
+/* @end Additional Tags */
+
+/* @group TYPO3 General Styling */
+
+div.csc-textpic-center div.csc-textpic-imagewrap,
+div.csc-textpic-left div.csc-textpic-imagewrap,
+div.csc-textpic-right div.csc-textpic-imagewrap {
+    margin-bottom: 10px;
+}
+    
+/* @end */
+
+/* @group Forms */
+
+
+form input,
+form textarea {
+	margin-right: 5px;
+	margin-bottom: 3px;
+}
+
+form input:focus,
+form input:hover {
+	color: black;
+}
+
+form select {
+	font-size: 11px;
+	padding: 2px;
+}
+
+form option {
+	margin: 0;
+	margin-left: 5px;
+	margin-right: 10px;
+}
+
+optgroup {
+	font-weight: bold;
+	font-style: italic;
+	margin: 0;
+	margin-top: 5px;
+}
+
+optgroup option {
+	padding-left: 5px;
+}
+
+legend {
+	font-weight: bold;
+	color: black;
+}
+
+
+/* @end Forms */
+
+/* @end Base Styling */
+
+/* @group Common Classes */
+
+.clear {
+	clear: both;
+}
+
+.clearOnly {
+	clear: both;
+	height: 0px;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	line-height: 0;
+}
+
+.outOfSight {
+	overflow: hidden;
+	width: 0;
+	height: 0;
+	float: left;
+}
+.centralHeadline{
+margin-top:0;
+font-size:28px;
+}
+
+.csc-firstHeader {
+	/*margin-top: 0px;*/
+}
+
+.graphicTextWrapper {
+	overflow: hidden;
+}
+
+.graphicText {
+	line-height: 300px;
+	display: block;
+}
+
+/* @end Common Classes */
+
+/* @group Layout */
+#pageWrap-outter-1{
+	background: url(images/body_bg.jpg) center top repeat-x;
+	text-align:center;
+	margin:0;
+	padding:0;
+}
+
+#pageWrap-outter-2{
+	background: url(images/footer_bg.jpg) bottom center no-repeat;
+	padding-bottom: 70px;
+	width: 1000px;
+	margin: 0 auto;
+}
+
+#pageWrap{
+	margin:0;
+	padding:0;
+	background: url(images/wrapper_bg.png) top center repeat-y;
+	text-align: left;
+}
+
+
+#feature {
+	margin: 0 60px;
+	padding: 35px 25px 35px 25px;
+	background: url(images/feature-bg.jpg) top center repeat-y;
+}
+
+#feature a {
+	color: #288c28;
+	text-decoration: underline;
+}
+
+#generatedContent-1 {
+	width: 135px;
+	float: left;
+	margin-left: 85px;
+	margin-top: 30px;
+}
+* html #generatedContent-1 {
+	margin-left: 42px;
+}
+#generatedContent-2 {
+	width: 180px;
+	float: right;
+	margin-right: 85px;
+	margin-top: 30px;
+}
+
+/*
+#f1a #contentBlock-1,
+#f1b #contentBlock-1,
+#f1c #contentBlock-1 {
+	float: left;
+}
+*/
+
+#contentBlock-1,
+#contentBlock-2, 
+#contentBlock-3{
+	margin-top:30px;
+	min-height:300px;
+}
+
+
+#f1a #contentBlock-1,
+#f1b #contentBlock-1,
+#f1c #contentBlock-1{
+	margin-left:85px;
+	margin-right:85px;
+}
+#f1d #contentBlock-1 {
+	float: right;
+	width: 660px;
+	margin-right:85px;
+	margin-left:35px;
+}
+
+#f1e #contentBlock-1 {
+	float: left;
+	width: 615px;
+	margin-left:85px;
+	margin-right:35px;
+}
+
+#f1f #contentBlock-1 {
+	float: left;
+	width: 440px;
+	margin-left:35px;
+	margin-right:35px;
+}
+
+#f2a #contentBlock-1 {
+	float: left;
+	width: 615px;
+	margin-left:85px;
+	margin-right:35px;
+}
+
+#f2a #contentBlock-2 {
+	width: 180px;
+	float: right;
+	margin-right: 85px;
+}
+
+#f2b #contentBlock-1 {
+	float: left;
+	width: 615px;
+	margin-left:85px;
+	margin-right:35px;
+}
+
+#f2b #contentBlock-2 {
+	width: 180px;
+	float: right;
+	margin-right: 85px;
+}
+
+#f2c #contentBlock-1 {
+	float: left;
+	width: 615px;
+	margin-left:85px;
+	margin-right:35px;
+}
+
+#f2c #contentBlock-2 {
+	width: 180px;
+	float: right;
+	margin-right: 85px;
+}
+
+
+#f2d #contentBlock-1 {
+	float: left;
+	width: 440px;
+	margin-left:35px;
+	margin-right:35px;
+}
+
+#f2d #contentBlock-2 {
+	width: 180px;
+	float: right;
+	margin-right: 85px;
+}
+
+#f2e #contentBlock-1 {
+	float: left;
+	width: 400px;
+	margin-left:85px;
+	margin-right:35px;
+}
+
+#f2e #contentBlock-2 {
+	width: 180px;
+	float: left;
+	margin-right:35px;
+}
+
+
+#f3a #contentBlock-1,
+#f3b #contentBlock-1 {
+	float: left;
+	width: 400px;
+	margin-left:85px;
+	margin-right:35px;
+}
+
+#f3a #contentBlock-2,
+#f3b #contentBlock-2 {
+	width: 180px;
+	float: left;
+	margin-right: 35px;
+}
+
+#f3a #contentBlock-3,
+#f3b #contentBlock-3,
+#f3c #contentBlock-3,
+#f3d #contentBlock-3 {
+	width: 180px;
+	float: right;
+	margin-right: 85px;
+}
+
+#f3c #contentBlock-1,
+#f3d #contentBlock-1 {
+	float: left;
+	width: 400px;
+	margin-left:35px;
+	margin-right:35px;
+}
+
+#f3c #contentBlock-2,
+#f3d #contentBlock-2 {
+	width: 180px;
+	float: left;
+	margin-left:85px;
+}
+
+/* @end Layout */
+
+
+/* @group Header */
+
+#header{
+	padding: 0 65px;
+	margin: 0;
+	background: url(images/header_bg.jpg) top center no-repeat;
+	height: 167px;
+	position:relative;
+}
+
+#masthead {
+	float: left;
+	margin-top: 10px;
+	margin-left:18px;
+	margin-right:18px;
+	padding: 0;
+}
+
+#masthead h1 {
+	font-family:Palatino, Palatino Linotype, Georgia, Times, Times New Roman, serif;
+	font-size: 36px;
+	padding: 0;
+	margin:0 0 0 0;
+	line-height:1.3em;
+}
+
+#masthead h1 a {
+	color: #00455e;
+	text-decoration: none;
+}
+
+#masthead h1 a:hover {
+	color: #f35a00;
+}
+
+
+#topNav{
+	right:0;
+	margin: 0;
+	padding: 5px 0 0;
+	position:absolute;
+	z-index:5;
+}
+
+#login {
+	margin: 1px 0 0 0;
+	padding-right: 15px;
+	float: left;
+}
+
+#login,
+#login a {
+	color: #999;
+}
+
+#login a {
+	font-weight: bold;
+}
+#login a:hover {
+color:#333;
+}
+
+#search {
+	float: left;
+	margin: 0 0 0 10px;
+	padding: 0;
+	width: 170px;
+}
+
+#search input{
+	padding: 0;
+	margin: 0;
+	vertical-align: middle;
+}
+
+#siteSearchInput {
+	width: 130px;
+}
+
+#menu-wrapper {
+	padding: 12px 25px 4px 21px;
+	margin: 0;
+	position:absolute;
+	top:94px;
+	left:65px;
+	width:820px;
+}
+
+/* @group Global Menu */
+
+#globalMenu li ul {
+	display: none;
+}
+
+#globalMenu {
+	margin: 0;
+	padding: 0;
+}
+
+#globalMenu li {
+	list-style:none;
+	float: left;
+	margin: 0;
+	border-left:1px solid #eee;
+}
+#globalMenu li.last {
+	border-right:1px solid #eee;
+}
+#globalMenu li a {
+	color: #eee;
+	font-size: 13px;
+	font-weight: bold;
+	font-family: tahoma;
+	display:block;
+	padding: 4px 16px 3px 16px;
+}
+
+/* -- active style -- */
+#globalMenu li.active,
+#globalMenu li.active:hover {
+background:#e4e4e4;
+}
+
+#globalMenu li.active a,
+#globalMenu li.active:hover a {
+color: #222;
+}
+
+
+
+/* -- second level -- */
+#globalMenu li.active ul {
+position:absolute;
+left:0;
+margin-top:5px;
+margin-left:8px;
+display: block;
+width:850px;
+}
+#globalMenu li.active li {
+background:none;
+border-left:none;
+float:left;
+margin:0;
+}
+
+#globalMenu li.active li a {
+background:none;
+font-size:12px;
+font-weight:normal;
+padding: 0 12px;
+line-height:1.1em;
+display:block;
+margin:0;
+}
+
+#globalMenu li.active li.current, #globalMenu li.active li.active {
+background:none;
+}
+#globalMenu li.active li.current a, #globalMenu li.active li.active a {
+text-decoration:underline;
+background:none;
+}
+
+/* -- second level hover style -- */
+
+#globalMenu li.active li:hover {
+background:none;
+margin:0;
+}
+
+#globalMenu li.active li:hover a{
+background:none;
+text-decoration:underline;
+padding: 0 12px;
+line-height:1.1em;
+display:block;
+margin:0;
+}
+
+
+#globalMenu li li.active:hover {
+background:none;
+margin:0;
+}
+#globalMenu li.active:hover li a {
+background:none;
+padding: 0 12px;
+line-height:1.1em;
+display:block;
+margin:0;
+}
+
+
+
+/* @end Global Menu */
+
+/* @end Header */
+
+/* @group Footer */
+
+
+#footer{
+	width: 1000px;
+	margin: 10px auto;
+	padding: 0;
+	color: #CCCCCC;
+}
+
+
+#footerCopyright {
+	float: left;
+	color: #CCCCCC;
+	margin-left: 66px;
+	text-align:left;
+	width:50%;
+}
+
+a#footerHomeLink {
+	display: block;
+	float: right;
+	margin-right: 66px;
+	color: #CCCCCC;
+	text-align:right;
+	width:30%;
+}
+
+a#footerHomeLink:hover {
+	color: #fff;
+}
+
+/* @end Footer*/
+
+/* @group Local Menu */
+
+#localMenu {
+margin-left:-51px;
+margin-bottom:30px;
+}
+
+#localMenu ul {
+	margin-top: 5px;
+	margin-left:1px;
+}
+#localMenu ul ul{
+	margin-left:10px;
+}
+
+#localMenu li {
+	list-style: none;
+	font-size: 12px;
+	padding-bottom:15px;
+	padding-left:50px;
+	padding-top:0;
+	line-height:1.2em;
+}
+#localMenu li li{
+	font-size: 11px;
+	padding:4px 0;
+	line-height:1.1em;
+}
+
+#localMenu li a {
+	color: #cf7a00;
+}
+
+#localMenu li a:hover {
+	color: #222;
+}
+
+#localMenu li.current a {
+	color: #cf7a00;
+}
+* html #localMenu li.current a {
+	color: #222;
+}
+#localMenu li.current li a {
+	color: #cf7a00;
+}
+#localMenu li.current a:hover, #localMenu li.current li a:hover {
+	color: #222;
+}
+#localMenu li.current {
+	background: url(images/local_menu_arrow.png) no-repeat left top;
+}
+
+
+#localMenu li li.current {
+	margin-left: -60px;
+	padding-left: 60px;
+	background: url(images/local_menu_arrow.png) no-repeat left top;
+}
+
+#localMenu li li li.current {
+	margin-left: -70px;
+	padding-left: 70px;
+	background: url(images/local_menu_arrow.png) no-repeat left top;
+}
+#localMenu li li li li.current {
+	margin-left: -80px;
+	padding-left: 80px;
+	background: url(images/local_menu_arrow.png) no-repeat left top;
+}
+/* @end Local Menu */
+
+
+/* @group Module Styling */
+
+.moduleHeader {
+	margin: 0;
+	padding: 0 15px 0 0;
+	color: #222;
+	background: url(images/right_module_cap.gif) no-repeat right top;
+	font-size: 17px;
+    line-height: 1.2em;
+}
+
+.moduleHeader .moduleHeaderInnerWrap {
+	display: block;
+	padding: 8px 0 8px 10px;
+	background: #f5c349 url(images/left_module_cap.gif) no-repeat left top;
+}
+
+.moduleFooter {
+	height: 15px;
+	margin: 0;
+	padding-right: 15px;
+	background: url(images/right_module_cap.gif) no-repeat right bottom;
+	font-size: 1px;
+	overflow: hidden;
+	line-height: 1em; !important /*it fixes the bug in IE7*/
+}
+
+.moduleFooter span {
+	display: block;
+	height: 15px;
+	background: #f5c349 url(images/left_module_cap.gif) no-repeat left bottom;
+}
+
+.moduleBody {
+	padding: 15px 10px 10px;
+}
+
+.moduleBodyWrap {
+	background:white;
+	border-left: 1px solid #f5c349;
+	border-right: 1px solid #f5c349;
+	/* Please note that the thickness values on the two border values above will be overridden in the final output. Make sure these values match the constant moduleBodyBorderWidth */
+}
+
+.unframed .moduleBody,
+.unframed .moduleBodyWrap {
+	padding: 0;
+	border: 0;
+}
+
+.unframed .moduleBodyWrap {
+	background:none; 
+} 
+
+.moduleBodyBleed {
+	padding: 0;
+}
+
+.columnGroup {
+	margin-bottom: 10px;
+}
+
+.columnGroupRule {
+	border-bottom: 1px solid #7f7f7f;
+}
+
+.moduleGroup {
+	margin-bottom: 10px;
+	margin-top:5px;
+}
+
+.moduleFeature {
+	margin-bottom: 15px;
+}
+
+/* @end Module Styling */
+
+
+
+/* @group Forms */
+
+.csc-mailform-field label,
+.csc-mailform-field label {
+	display: block;
+}
+
+/* @end */
+
+
+/************* Section Menus ********************/
+.sectionMenuWrapper {
+	width: 100%;
+}
+
+.sectionMenu {
+	margin: 0;
+	text-align: left;
+}
+
+.sectionMenu .menuItem {
+	display: inline-block;
+	width: 310px;
+	margin: 0 20px 20px 0;
+	vertical-align: top;
+	zoom: 1; 
+	*display:inline; 
+}
+
+.wrapper {
+	vertical-align: top;
+}
+
+.menuItem > a + .wrapper {
+	margin-left: 120px;
+}
+
+.menuItem > a {
+	float: left;
+	vertical-align: top;
+}
+
+.menuItem h3 {
+	margin: 0;
+}
+
+
+/***************** form style ********************/
+
+label {
+	font-weight: bold;
+	display: block;
+	margin-top: 10px;
+}
+
+.instructions {
+	font-size: 10px;
+	line-height: 1.1em;
+}
+
+input[type=text],
+input[type=password],
+textarea,
+select {
+	background-color: #fff;
+	border: 1px solid #bbb;
+	margin: 5px 0 0 0;
+}
+
+input[type=text]:focus,
+input[type=password]:focus
+textarea:focus,
+select:focus {
+	border-color: #666;
+}
+
+input[type=text],
+input[type=password],
+textarea,
+select {
+	margin: 3px 0;
+}
+
+input[type=text],
+input[type=password] {
+	/* width: 300px; */
+	padding:3px;
+}
+
+textarea {
+	width: 390px;
+	height: 250px;
+	padding: 3px;
+}
+
+input[type=checkbox],
+input[type=radio] {
+	position: relative;
+	top: .25em;
+}
+
+/* Account for Frontend User Registration using <label> for checkbox items with no other surround markup */
+#tx-srfeuserregister-pi1-fe_users_form input[type=checkbox] + label,
+#tx-srfeuserregister-pi1-fe_users_form input[type=radio] + label {
+	margin-top: 0;
+	display: inline;
+	font-weight: normal;
+}
+#tx-srfeuserregister-pi1-fe_users_form input[type=checkbox] + label:after,
+#tx-srfeuserregister-pi1-fe_users_form input[type=radio] + label:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+
+.inline {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.error, .notice, .success {
+	border:2px solid #DDDDDD;
+	margin-bottom:1em;
+	padding:0.8em;
+}
+
+.error {
+	background: #FBE3E4 none repeat scroll 0 0;
+	border-color: #FBC2C4;
+	color: #8A1F11;
+}
+
+.success {
+	background: #E6EFC2 none repeat scroll 0 0;
+	border-color: #C6D880;
+	color: #264409;
+}
+
+.notice {
+	background: #FFF6BF none repeat scroll 0 0;
+	border-color: #FFD324;
+	color: #514721;
+}
+
+form ol,
+form ul {
+	list-style-type: none;
+	margin-left: 0;
+}
+
+form hr {
+	height: 1px;
+	border: none;
+	border-top: 1px solid #bbb;
+	margin: 15px 0 15px 0;
+}

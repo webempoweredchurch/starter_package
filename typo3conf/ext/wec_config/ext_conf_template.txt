@@ -1,0 +1,9 @@
+# cat=basic//4; type=boolean; label=Enable TCA Modifcations: Allow extension to make changes to default backend behavior.  This will modify what tables and fields are availalable by default for non-admin backend users.
+tcaAdditions=1
+
+# cat=basic//5; type=input; label=TypoScript Constant Category: Category to use in the "Edit Site Constants" section. If no value is given, either "Site Constants" or "constants.wec" will be used.
+constantCategory =
+
+# cat=basic//6; type=input; label=TypoScript Constant Prefix: Prefix for each value in the "Edit Site Constants" section. This is typically the value of "TypoScript Constants Category" with an extra period on the end (ex. constants.wec.). This value is only needed if TypoScript Constants Category is used also.
+constantPrefix =
+

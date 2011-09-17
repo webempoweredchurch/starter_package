@@ -1,0 +1,375 @@
+2011-05-09  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug #13586: Missing icons on editing form.
+  * Updated ChangeLog in manual.
+  * *** Release of version 1.5.0 ***
+
+2011-05-02  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Updated formatting for manual and made a few small tweaks to the content.
+
+2011-04-27  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Patched ExtJS to set Ext.dd.DragDropMgr.useCache to false by default, avoiding positioning problems.
+	* Added TV-specific functionality to ensure that FlexForm pointers are updated when content is added or moved.
+	* Fixed issues with extra drop zones and incorrect locations.
+	
+2011-02-24  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug #12770: Disable the preview notification box for TYPO3 4.5+.
+	* Fixed bug #10787: Update ExtJS to current version.
+	* Follow-up to #10787: Compatibility fixes for ExtJS 3.3.
+	* Fixed issues with "Show Hidden Content Elements" in IE.
+	* Follow-up to #10787: Remove debug code.
+	* Follow-up to #10787: Dropzones are not deactivated.
+
+2011-02-15  Jeff Segars  <jeff@weempoweredchurch.org>
+
+	* Fixed bug #12864: Global variable in feEditTV.js causes naming collisions with IE.
+
+2011-02-04  Christopher  <chrissitopher@gmx.de>
+
+	* Followup to bug #10784: feeditadvanced creates invalid html (thanks to Soren Malling)
+
+2011-01-05  Christopher  <chrissitopher@gmx.de>
+
+	* Fixed bug #11925: Update the manual.
+
+2010-12-18  Christopher  <chrissitopher@gmx.de>
+
+	* Fixed bug #5897: Write a manual for feeditadvanced.
+
+2010-12-03  Christopher  <chrissitopher@gmx.de>
+
+	* Fixed bug #11266: Fix formatting of CSS files. No code changes done.
+	* Fixed bug #11103: Update Whatever:hover (thanks to Peter Nederlof).
+	* Followup to bug #10785: Unify usage of tooltips in the first row of the menubar.
+
+2010-11-27  Christopher  <chrissitopher@gmx.de>
+
+	* Fixed bug #10784: feeditadvanced creates invalid html.
+
+2010-11-26  Christopher  <chrissitopher@gmx.de>
+
+	* Fixed bug #5584: Texts on black layer have changing line breaks when size changes.
+
+2010-11-25  Christopher  <chrissitopher@gmx.de>
+
+	* Followup to bug #9335: Buttons "Editing on" and "Editing off" need to be improved.
+
+2010-11-24  Christopher  <chrissitopher@gmx.de>
+
+	* Fixed bug #9337: Help text for button "New" should be more flexible.
+	* Followup to bug #10880: RTE in lightbox needs margin-left.
+
+2010-11-23  Christopher  <chrissitopher@gmx.de>
+
+	* Fixed bug #11018: Logout Button redirect does not work when TYPO3 is installed in a subdirectory.
+
+2010-11-19  Christopher  <chrissitopher@gmx.de>
+
+	* Fixed bug #8423: Edit buttons are in front of lightbox images.
+	* Fixed bug #10814: Adjust CSS for IE9.
+	* Fixed bug #10880: RTE in lightbox needs margin-left.
+
+2010-11-18  Christopher  <chrissitopher@gmx.de>
+
+	* Fixed bug #9335: Buttons "Editing on" and "Editing off" need to be improved (thanks to Daniel Felix).
+
+2010-11-16  Christopher  <chrissitopher@gmx.de>
+
+	* Fixed bug #10785: Unify usage of tooltips in the first row of the menubar.
+
+2010-11-15  Christopher  <chrissitopher@gmx.de>
+
+	* Fixed bug #9304: Versioncheck for sprite manager is incorrect.
+	* Fixed bug #9332: feeditadvanced is incompatible with TYPO3 4.4 and trunk (Ext.EventManager._unload is not a function).
+	* Followup to bug #9334: Fix wording of tooltips.
+
+2010-11-14  Christopher  <chrissitopher@gmx.de>
+
+	* Fixed bug #10782: Wrong XClass inclusion code in controller/class.tx_feeditadvanced_frontendedit.php.
+
+2010-11-13  Christopher  <chrissitopher@gmx.de>
+
+	* Followup to bug #5295: Fix styling of "Show Hidden Content Elements".
+
+2010-08-18  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug #9527: Flexform sections cannot be deleted.
+	* Fixed bug #9334: Hardcoded label "Drag widgets onto the page" (thanks to Christopher).
+
+2010-08-13  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* !!! Release of version 1.4.0 !!!
+	* Followup to bug #8560: Use rel attribute instead of href for new content element widgets.
+	* Fixed bug #9282: TemplaVoila containers with outer mapping are not initialized properly.
+	* Fixed bug #5842: feeditadvanced does not work with tidy enabled.
+	* Fixed bug #4731: Add visual effects for dropzones.
+	* Fixed bug #9299: Use delete rather than unlink in TemplaVoila.
+
+2010-08-12  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug #5295: Remove hardcoded label for "Show Hidden Content Elements" (thanks to Christopher).
+	* Fixed bug #8560: IE content type for new records is always text.
+
+2010-08-11  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug #9258: Text on dark background is difficult to read with active hover menu.
+
+2010-08-10  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Followup to bug #9178: Force IE8 standards mode for quicker RTE loading.
+
+2010-08-09  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Followup to bug #9100: Fix overlap issues with Flexform sections.
+	* Fixed bug #9173: Use t3lib_compressor for CSS files.
+	* Fixed bug #9178: RTE is not loaded.
+
+2010-08-05  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug #8898: Incorrect back path leads to missing elements on editing form.
+	* Fixed bug #8890: Redirect after save and close does not work in IE.
+	* Fixed bug #9169: Editing form header is influenced by page styling.
+	* Followup to feature #6509: Improved CSS, labels, and added configuration option related to logout button.
+
+2010-07-30  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Followup to bug #8072: Only load Sprite Manager for TYPO3 4.4 and up.
+	* Fixed bug #9100: Fix editing form styling issues with TYPO3 4.4 CSS.
+
+2010-07-29  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug #8072: Sprite Manager is not initialized for editing forms.
+
+2010-07-26  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug #8095: tx_feeditadvanced_editpanel adds stylesheet non-existent in TYPO3 4.4.
+	* Added feature #9046: Make use of autoloader.
+
+2010-07-26  Oliver Hader  <oliver@typo3.org>
+
+	* Fixed bug #8982: Internet Explorer JavaScript issues (thanks to Johannes Feustel).
+
+2010-05-10  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Followup to feature #6509: Fixed Firefox styling of "Editing Off" button.
+
+2010-05-07  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Added feature #6509: Add a BE Logout button to menu bar.
+	* Fixed bug #6733: newRecordInPid support is missing.
+
+2010-05-06  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug #5317: Buttons are too small when translated labels are long (thanks to Lorenz Ulrich).
+
+2010-04-29  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug: When top menu is closed, edit button still has 100% width and covers HTML elements at the top of the page.
+	* Fixed bug #6988: Wrapper HTML for non-TV pages should only appear when a backend user is logged in.
+
+2010-03-14  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Release of version 1.3.0
+
+2010-03-04  Jeff Segars  <jeff@webempwoeredchurch.org>
+
+	* Fixed bug: When top menu is closed, z-index setting still covers HTML elements at the top of the page.
+	* Followup to bug #4787: Call parseInt() on edit window size settings to ensure we have a valid integer.
+	* Fixed bug: Edit window status message disappears before page reload is complete.
+
+2010-02-04  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Followup to bug #6337: Check for backend login before initializing top menu.
+
+2010-02-03  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug #6324: Content element toolbar is incorrect due to caching.
+	* Fixed bug #6337: Setting admPanel.override.preview by default causes login and content errors.
+	* Fixed bug #6023: Can't edit hidden pages.
+
+2010-02-02  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Followup to bug #4787: If edit window is larger than the browser window, reduce the size to fit.
+
+2010-02-01  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug #4787: Editing window is too small.
+ 
+2010-01-24  Benjamin Mack  <benni@typo3.org>
+
+	* Fixed bug #4875: Hiding an element displays it twice on the site.
+	* Added a missing comment header to a function.
+
+2010-01-12  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug #5844: Javascript calendar doesn’t work.
+	* Fixed bug #4916: German umlauts are not saved correctly.
+	* Release of version 1.2.0
+
+2010-01-07  Benjamin Mack  <benni@typo3.org>
+
+	* Removed the effect that a dropzone adjusts its height when hovering.
+	* Fixed bug #3570: Drag&Drop between columns does not work when dropping on empty columns or as the very first element in another column (non-TV).
+	* Followup to bug #5606: if an order for the editpanel icons was selected, then the drag handle was left out.
+	* Fixed bug #5606: FeEdit.showIcons has "nearly" no effect (Thanks to Jochen Rieger).
+
+2010-01-02  Benjamin Mack  <benni@typo3.org>
+
+	* Fixed bug #3331 - CSS: Minor fix when the page has a fixed with for its input fields (Thanks to Thomas Allmer).
+	* Updated description for the TER / ext_emconf.php.
+	* Added Feature #5607: Option to disable menubar completely through FeEdit.menuBar.disable = 1 (thanks to Jochen Rieger).
+
+2009-12-11  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug #5610: body.getStyle() generates Javascript error in IE8.
+	* Fixed bug: Beginning stages of workspace support.
+
+2009-12-02  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug #5508: Editing page has wrong header.
+
+2009-11-30  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug: TSFE->cObj is not always initialized.
+	* Fixed bug #5507: Problem with umlauts in Javascript locallang labels.
+
+2009-11-25  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug: Dropzone label references incorrect locallang label.
+	* Fixed bug: Minor Javascript validation errors in feEdit.js.
+	* Added feature: Implement hook for use in TemplaVoila 1.4.0 and greater.
+	* Added feature: Show status lightbox while waiting for close or save and close to complete.
+	* Release of version 1.1.0
+
+2009-11-23  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug: Javascript contains many hardcoded strings.
+	* Added experimental TSConfig option for complete page reload on content change.
+	* Fixed bug: Top menu contains hardcoded strings.
+
+2009-11-19  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug #5422: typoSetup is not defined.
+	* Fixed bug: Lightbox loading message is poorly styled and lightbox header does not show up at all.
+
+2009-11-18  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Removed lockType=system in EM_CONF to allow local installation.
+	* Released version 1.0.1
+
+2009-11-17  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Added extension icon.
+	* Updated EM_CONF information in preparation for TER release.
+	* Fixed bug: Added missing XCLASS definitions.
+	* Updated CSS paths to reference a local extension rather than a system extension.
+	* Released version 1.0.0
+
+2009-11-13  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug #4804: Javascript error when clicking on an image thumbnail.
+	* First pass at adding Javascript localization. More changes to come.
+
+2009-11-10  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Added todos for hardcoded labels in Javascript.
+
+2009-11-09  Benjamin Mack  <benni@typo3.org>
+
+	* Fixed #5284: Usage of XLLfile is deprecated (Thanks to Steffen Gebert).
+
+2009-11-08  Benjamin Mack  <benni@typo3.org>
+
+	* Added explicit variable declaration in JS file.
+	* Fixed various bugs when handling hidden elements. They are now rendered at any time, but easily made visible through a new checkbox on top of the menubar.
+ 	* Minor cleanups in a hook and for some CSS selectors.
+
+2009-11-08  Oliver Hader  <oliver@typo3.org>
+
+	* Tagged release for TYPO3 4.3-beta3
+
+2009-11-07  Benjamin Mack  <benni@typo3.org>
+
+	* Fixed bug #3328: Block with editing icons should be shown without text when under 350px wide.
+	* Fixed bug #5029: Layout problems with small columns and dark background.
+
+2009-11-07  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug: Empty table rows and cells in editing form.
+	* Fixed bug #4803: Required fields are not marked with the yellow exclamation mark.
+	* Fixed bug: Improved alignment and spacing of editing form.
+	* Added feature: Force preview module to be enabled so that hidden records are always shown.
+	* Added feature: Hide frontend preview box generated by TYPO3 core.
+
+2009-11-07  Benjamin Mack  <benni@typo3.org>
+
+	* Set the conflicts in the EM conf to feedit so the two extensions don't conflict when running.
+	* Modified the hook definitions from typo3/sysext/feeditadvanced to EXT:feeditadvanced.
+	* Fixed CSS and Layouting issues for the draggables and its area.
+
+2009-11-06  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug: IRRE and TCA Suggest missing proper initialization.
+
+2009-11-05  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug #4862: Unable to close editing form for new records due to required fields.
+	* Fixed bug #5178: Page content is rendered with every frontend editing action.
+
+2009-11-04  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug #4933: Edit Panel for pages is broken when placed directly on a page and not in top menu.
+
+2009-11-02  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug #3329: Page properties button has wrong position.
+	* Fixed bug: Reset browser defaults for form margin to avoid larger edit panels.
+	* Fixed bug: Edit panel without content disappears on mouseout.
+	* Fixed bug: Edit panel for pages throws Javascript errors because it is considered draggable. 
+
+2009-10-29  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug #4989: Flexform layout problems.
+
+2009-10-28  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug #4784: Top menu can overlap first content element.
+
+2009-10-26  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed bug #4814: Hide top menu when frontend editing is disabled via admin panel.
+
+2009-10-20  Oliver Hader  <oliver@typo3.org>
+
+	* Set version to 0.1.1
+	* Tagged release for TYPO3 4.3-beta2
+
+2009-10-16  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Added array checking on foreach loop to fix bug #4988. Thanks to Dan Osipov for the patch.
+
+2009-10-07  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Tweak CSS styling when click content to edit is disabled.
+	* Set height of closed menu bar to 0 so that it does not overlap content. Fixes bug #4923.
+
+2009-10-06  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Only load full Javascript and CSS when top menu is open. Fixes bug #4806.
+	* Add TSConfig option for clickContentToEdit, disabled by default. Fixes bug #4809.
+
+2009-10-01  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Fixed any issue where closing a new element without saving resulted in a PHP error. Fixes bug #4792.
+
+2009-09-30  Jeff Segars  <jeff@webempoweredchurch.org>
+
+	* Replaced calls to deprecated function t3lib_div::makeInstanceClassName(). Fixes #4808.
+
+2009-09-28  Benjamin Mack  <benni@typo3.org>
+
+	* Set version to 0.1.0
+	* Tagged release for TYPO3 4.3-beta1

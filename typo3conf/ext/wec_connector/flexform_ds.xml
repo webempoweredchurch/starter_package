@@ -1,0 +1,812 @@
+<T3DataStructure>
+  <meta>
+    <langDisable>1</langDisable>
+    <langChildren>0</langChildren>
+  </meta>
+  <sheets>
+    <sDEF>
+      <ROOT>
+        <TCEforms>
+        <sheetTitle>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.sheet_main</sheetTitle>
+        </TCEforms>
+        <type>array</type>
+        <el>
+          <name>
+            <TCEforms>
+              <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.name</label>
+              <config>
+                <type>input</type>
+                <size>25</size>
+              </config>
+            </TCEforms>
+          </name>
+          <entry_description>
+            <TCEforms>
+              <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.entry_description</label>
+              <config>
+                <type>input</type>
+                <size>25</size>
+              </config>
+            </TCEforms>
+          </entry_description>
+          <entries_description>
+            <TCEforms>
+              <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.entries_description</label>
+              <config>
+                <type>input</type>
+                <size>25</size>
+              </config>
+            </TCEforms>
+          </entries_description>
+          <entry_subject>
+            <TCEforms>
+              <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.entry_subject</label>
+              <config>
+                <type>input</type>
+                <size>25</size>
+              </config>
+            </TCEforms>
+          </entry_subject>
+          <entry_button>
+            <TCEforms>
+              <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.entry_button</label>
+              <config>
+                <type>input</type>
+                <size>25</size>
+              </config>
+            </TCEforms>
+          </entry_button>
+	      <template_file>
+		    <TCEforms>
+		      <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.template_file</label>
+		      <config>
+		        <type>group</type>
+		        <internal_type>file</internal_type>
+		        <allowed>tmpl,html</allowed>
+		        <max_size>100</max_size>
+		        <uploadfolder>uploads/tx_wecconnector/</uploadfolder>
+		        <maxitems>1</maxitems>
+		        <size>1</size>
+		        <selectedListStyle>Width:180px</selectedListStyle>
+		      </config>
+		    </TCEforms>
+	      </template_file>
+	  		<storagePID>
+			  	<TCEforms>
+				<exclude>1</exclude>
+				<label>LLL:EXT:lang/locallang_general.php:LGL.startingpoint</label>
+				<config>
+					<type>group</type>
+					<internal_type>db</internal_type>
+					<allowed>pages</allowed>
+					<size>2</size>
+					<maxitems>3</maxitems>
+					<minitems>0</minitems>
+				</config>
+			  	</TCEforms>
+			</storagePID>
+		  <category_selection>
+			<TCEforms>
+				<label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.category_selection</label>
+				<config>
+					<type>select</type>
+					<items type="array">
+						<numIndex index="100">
+								<numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.category_selection_notCategorized</numIndex>
+								<numIndex index="1">0</numIndex>
+						</numIndex>
+					</items>
+					<minitems>0</minitems>
+					<maxitems>16</maxitems>
+					<foreign_table>tx_wecconnector_cat</foreign_table>
+					<foreign_table_where>AND (tx_wecconnector_cat.pid=###CURRENT_PID### OR tx_wecconnector_cat.pid=###STORAGE_PID###)</foreign_table_where>
+					<size>5</size>
+					<selectedListStyle>width:150px</selectedListStyle>
+					<itemListStyle>width:150px</itemListStyle>
+					<allowNonIdValues>1</allowNonIdValues>
+				</config>
+				<wizards type="array">
+					<_PADDING>1</_PADDING>
+					<add type="array">
+						<type>script</type>
+						<title>Add Category</title>
+						<script>wizard_add.php</script>
+						<icon>add.gif</icon>
+						<params type="array">
+							<table>tx_wecconnector_cat</table>
+							<pid>###CURRENT_PID###</pid>
+							<setValue>set</setValue>
+						</params>
+					</add>
+				</wizards>
+			</TCEforms>
+		  </category_selection>
+      </el>
+    </ROOT>
+    </sDEF>
+
+    <s_display>
+    <ROOT>
+    <TCEforms>
+      <sheetTitle>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.sheet_display</sheetTitle>
+    </TCEforms>
+     <type>array</type>
+      <el>
+          <entry_look>
+            <TCEforms>
+              <label>LLL:EXT:wec_connector/locallang_db.xml:wec_connector.pi_flexform.entry_look</label>
+	          <config>
+	            <type>select</type>
+	            <items type="array">
+	            <numIndex index="1" type="array">
+	                <numIndex index="0">LLL:EXT:wec_connector/locallang_db.xml:wec_connector.pi_flexform.entry_look_1</numIndex>
+	                <numIndex index="1">0</numIndex>
+	              </numIndex>
+	              <numIndex index="2" type="array">
+	                <numIndex index="0">LLL:EXT:wec_connector/locallang_db.xml:wec_connector.pi_flexform.entry_look_2</numIndex>
+	                <numIndex index="1">postboard</numIndex>
+	              </numIndex>
+	              <numIndex index="3" type="array">
+	                <numIndex index="0">LLL:EXT:wec_connector/locallang_db.xml:wec_connector.pi_flexform.entry_look_3</numIndex>
+	                <numIndex index="1">businessdir</numIndex>
+	              </numIndex>
+	              <numIndex index="4" type="array">
+	                <numIndex index="0">LLL:EXT:wec_connector/locallang_db.xml:wec_connector.pi_flexform.entry_look_4</numIndex>
+	                <numIndex index="1">ecandle</numIndex>
+	              </numIndex>	
+	            </items>
+                <default>0</default>
+	            <maxitems>1</maxitems>
+	            <size>1</size>
+	          </config>
+            </TCEforms>
+          </entry_look>	
+          <message_length>
+            <TCEforms>
+              <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.message_length</label>
+              <config>
+                <type>input</type>
+                <size>4</size>
+                <default>400</default>
+              </config>
+            </TCEforms>
+          </message_length>
+          <field_length>
+            <TCEforms>
+              <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.field_length</label>
+              <config>
+                <type>input</type>
+                <size>4</size>
+                <default>64</default>
+              </config>
+            </TCEforms>
+          </field_length>
+          <days_to_keep>
+            <TCEforms>
+              <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.days_to_keep</label>
+              <config>
+                <type>input</type>
+                <size>3</size>
+                <default>45</default>
+              </config>
+            </TCEforms>
+          </days_to_keep>
+          <display_per_page>
+            <TCEforms>
+              <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.display_per_page</label>
+              <config>
+                <type>input</type>
+                <size>3</size>
+                <default>25</default>
+              </config>
+            </TCEforms>
+          </display_per_page>
+          <websiteURL_popup>
+            <TCEforms>
+              <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.websiteURL_popup</label>
+              <config>
+	             <type>check</type>
+	             <default>0</default>
+              </config>
+            </TCEforms>
+          </websiteURL_popup>
+      </el>
+    </ROOT>
+    </s_display>
+
+    <s_control>
+    <ROOT>
+    <TCEforms>
+      <sheetTitle>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.sheet_control</sheetTitle>
+    </TCEforms>
+     <type>array</type>
+      <el>
+          <do_moderate>
+            <TCEforms>
+              <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.do_moderate</label>
+              <config>
+	             <type>check</type>
+	             <default>0</default>
+              </config>
+            </TCEforms>
+          </do_moderate>
+          <do_moderate_response>
+            <TCEforms>
+              <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.do_moderate_response</label>
+              <config>
+	             <type>check</type>
+	             <default>0</default>
+              </config>
+            </TCEforms>
+          </do_moderate_response>
+          <require_login_for_posting>
+            <TCEforms>
+              <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.require_login_for_posting</label>
+              <config>
+	             <type>check</type>
+	             <default>0</default>
+              </config>
+            </TCEforms>
+          </require_login_for_posting>
+          <require_login_for_reply>
+            <TCEforms>
+              <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.require_login_for_reply</label>
+              <config>
+	             <type>check</type>
+	             <default>0</default>
+              </config>
+            </TCEforms>
+          </require_login_for_reply>
+          <usergroups_only_reply>
+            <TCEforms><label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.usergroups_only_reply</label>
+			 <config>
+				<type>select</type>
+				<foreign_table>fe_groups</foreign_table>
+				<foreign_table_where>ORDER BY title</foreign_table_where>
+				<size>5</size>
+				<maxitems>64</maxitems>
+				<itemListStyle>width:150px</itemListStyle>
+			 </config>
+            </TCEforms>
+          </usergroups_only_reply>
+          <who_can_edit>
+            <TCEforms>
+              <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.who_can_edit</label>
+	          <config>
+	            <type>select</type>
+	            <items type="array">
+	            <numIndex index="1" type="array">
+	                <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.editAdmin</numIndex>
+	                <numIndex index="1">1</numIndex>
+	              </numIndex>
+	              <numIndex index="2" type="array">
+	                <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.editPoster</numIndex>
+	                <numIndex index="1">2</numIndex>
+	              </numIndex>
+	              <numIndex index="3" type="array">
+	                <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.editAnyone</numIndex>
+	                <numIndex index="1">3</numIndex>
+	              </numIndex>
+	            </items>
+                <default>2</default>
+	            <maxitems>1</maxitems>
+	            <size>1</size>
+	          </config>
+            </TCEforms>
+          </who_can_edit>
+          <require_login_for_subscribing>
+            <TCEforms>
+              <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.require_login_for_subscribing</label>
+              <config>
+	             <type>check</type>
+	             <default>0</default>
+              </config>
+            </TCEforms>
+          </require_login_for_subscribing>
+          <can_subscribe>
+            <TCEforms>
+              <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.can_subscribe</label>
+              <config>
+	             <type>check</type>
+	             <default>1</default>
+              </config>
+            </TCEforms>
+          </can_subscribe>
+          <update_subscribe_btn>
+            <TCEforms>
+              <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.update_subscribe_btn</label>
+              <config>
+	             <type>check</type>
+	             <default>1</default>
+              </config>
+            </TCEforms>
+          </update_subscribe_btn>
+      </el>
+    </ROOT>
+    </s_control>
+
+    <s_antispam>
+    <ROOT>
+    <TCEforms>
+      <sheetTitle>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.sheet_antispam</sheetTitle>
+    </TCEforms>
+     <type>array</type>
+      <el>
+          <html_tags_allowed>
+            <TCEforms>
+              <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.html_tags_allowed</label>
+              <config>
+	             <type>input</type>
+	             <default></default>
+              </config>
+            </TCEforms>
+          </html_tags_allowed>
+          <use_captcha>
+            <TCEforms>
+              <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.use_captcha</label>
+              <config>
+	             <type>check</type>
+	             <default>0</default>
+              </config>
+            </TCEforms>
+          </use_captcha>
+          <use_text_captcha>
+            <TCEforms>
+              <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.use_text_captcha</label>
+              <config>
+	             <type>check</type>
+	             <default>0</default>
+              </config>
+            </TCEforms>
+          </use_text_captcha>
+          <numlinks_allowed>
+            <TCEforms>
+              <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.numlinks_allowed</label>
+              <config>
+	             <type>input</type>
+	             <length>4</length>
+	             <default>1</default>
+              </config>
+            </TCEforms>
+          </numlinks_allowed>
+      	 <filter_wordlist>
+            <TCEforms>
+              <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.filter_wordlist</label>
+              <config>
+                <type>input</type>
+                <size>30</size>
+                <default>*</default>
+              </config>
+            </TCEforms>
+          </filter_wordlist>
+          <filter_word_handling>
+            <TCEforms>
+              <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.filter_word_handling</label>
+	          <config>
+	            <type>select</type>
+	            <items type="array">
+	            <numIndex index="1" type="array">
+	                <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.filterWordFilter</numIndex>
+	                <numIndex index="1">filter</numIndex>
+	              </numIndex>
+	              <numIndex index="2" type="array">
+	                <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.filterWordModerate</numIndex>
+	                <numIndex index="1">moderate</numIndex>
+	              </numIndex>
+	              <numIndex index="3" type="array">
+	                <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.filterWordDiscard</numIndex>
+	                <numIndex index="1">discard</numIndex>
+	              </numIndex>
+	            </items>
+	            <maxitems>1</maxitems>
+	            <size>1</size>
+	            <default>filter</default>
+	          </config>
+            </TCEforms>
+          </filter_word_handling>
+          <spam_check_responses>
+            <TCEforms>
+              <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.spam_check_responses</label>
+	          <config>
+	            <type>select</type>
+	            <items type="array">
+	            <numIndex index="1" type="array">
+	                <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.spamResponsesNone</numIndex>
+	                <numIndex index="1">none</numIndex>
+	              </numIndex>
+	              <numIndex index="2" type="array">
+	                <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.spamResponsesDiscard</numIndex>
+	                <numIndex index="1">discard</numIndex>
+	              </numIndex>
+	              <numIndex index="3" type="array">
+	                <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.spamResponsesAdmin</numIndex>
+	                <numIndex index="1">admin</numIndex>
+	              </numIndex>
+	              <numIndex index="4" type="array">
+	                <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.spamResponsesModerate</numIndex>
+	                <numIndex index="1">moderate</numIndex>
+	              </numIndex>
+	            </items>
+	            <maxitems>1</maxitems>
+	            <size>1</size>
+	            <default>admin</default>
+	          </config>
+            </TCEforms>
+          </spam_check_responses>
+          <spam_administrator>
+            <TCEforms><label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.spam_administrator</label>
+              <config>
+                <type>input</type>
+              </config>
+            </TCEforms>
+          </spam_administrator>
+      </el>
+    </ROOT>
+    </s_antispam>
+
+    <s_fields>
+    <ROOT>
+    <TCEforms>
+      <sheetTitle>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.sheet_fields</sheetTitle>
+    </TCEforms>
+     <type>array</type>
+      <el>
+          <display_fields>
+            <TCEforms>
+            <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.display_fields</label>
+            <config>
+              <type>select</type>
+              <items type="array">
+                <numIndex index="1" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.name</numIndex>
+                  <numIndex index="1">name</numIndex>
+                </numIndex>
+                <numIndex index="2" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.subject</numIndex>
+                  <numIndex index="1">subject</numIndex>
+                </numIndex>
+                <numIndex index="3" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.email</numIndex>
+                  <numIndex index="1">email</numIndex>
+                </numIndex>
+                <numIndex index="4" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.message</numIndex>
+                  <numIndex index="1">message</numIndex>
+                </numIndex>
+                <numIndex index="5" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.phone</numIndex>
+                  <numIndex index="1">phone</numIndex>
+                </numIndex>
+                <numIndex index="6" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.location</numIndex>
+                  <numIndex index="1">location</numIndex>
+                </numIndex>
+                <numIndex index="7" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.address</numIndex>
+                  <numIndex index="1">address</numIndex>
+                </numIndex>
+                <numIndex index="8" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.city</numIndex>
+                  <numIndex index="1">city</numIndex>
+                </numIndex>
+                <numIndex index="9" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.state</numIndex>
+                  <numIndex index="1">state</numIndex>
+                </numIndex>
+                <numIndex index="10" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.zipcode</numIndex>
+                  <numIndex index="1">zipcode</numIndex>
+                </numIndex>
+                <numIndex index="11" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.country</numIndex>
+                  <numIndex index="1">country</numIndex>
+                </numIndex>
+                <numIndex index="12" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.website_url</numIndex>
+                  <numIndex index="1">website_url</numIndex>
+                </numIndex>
+               <numIndex index="13" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.image</numIndex>
+                  <numIndex index="1">image</numIndex>
+                </numIndex>
+               <numIndex index="14" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.contact_name</numIndex>
+                  <numIndex index="1">contact_name</numIndex>
+                </numIndex>
+               <numIndex index="15" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.business_name</numIndex>
+                  <numIndex index="1">business_name</numIndex>
+                </numIndex>
+              </items>
+              <maxitems>20</maxitems>
+              <size>10</size>
+              <multiple>1</multiple>
+              <selectedListStyle>width:200px</selectedListStyle>
+              <itemListStyle>width:200px</itemListStyle>
+            </config>
+            </TCEforms>
+          </display_fields>
+          <required_fields>
+            <TCEforms>
+            <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.required_fields</label>
+            <config>
+              <type>select</type>
+              <items type="array">
+                <numIndex index="1" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.name</numIndex>
+                  <numIndex index="1">name</numIndex>
+                </numIndex>
+                <numIndex index="2" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.subject</numIndex>
+                  <numIndex index="1">subject</numIndex>
+                </numIndex>
+                <numIndex index="3" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.email</numIndex>
+                  <numIndex index="1">email</numIndex>
+                </numIndex>
+                <numIndex index="4" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.message</numIndex>
+                  <numIndex index="1">message</numIndex>
+                </numIndex>
+                <numIndex index="5" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.phone</numIndex>
+                  <numIndex index="1">phone</numIndex>
+                </numIndex>
+                <numIndex index="6" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.location</numIndex>
+                  <numIndex index="1">location</numIndex>
+                </numIndex>
+                <numIndex index="7" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.address</numIndex>
+                  <numIndex index="1">address</numIndex>
+                </numIndex>
+                <numIndex index="8" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.city</numIndex>
+                  <numIndex index="1">city</numIndex>
+                </numIndex>
+                <numIndex index="9" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.state</numIndex>
+                  <numIndex index="1">state</numIndex>
+                </numIndex>
+                <numIndex index="10" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.zipcode</numIndex>
+                  <numIndex index="1">zipcode</numIndex>
+                </numIndex>
+                <numIndex index="11" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.country</numIndex>
+                  <numIndex index="1">country</numIndex>
+                </numIndex>
+                <numIndex index="12" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.website_url</numIndex>
+                  <numIndex index="1">website_url</numIndex>
+                </numIndex>
+               <numIndex index="13" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.image</numIndex>
+                  <numIndex index="1">image</numIndex>
+                </numIndex>
+              </items>
+              <maxitems>20</maxitems>
+              <size>10</size>
+              <multiple>1</multiple>
+              <selectedListStyle>width:205px</selectedListStyle>
+              <itemListStyle>width:200px</itemListStyle>
+            </config>
+            </TCEforms>
+          </required_fields>
+          <required_response_fields>
+            <TCEforms>
+            <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.required_response_fields</label>
+            <config>
+              <type>select</type>
+              <items type="array">
+                <numIndex index="1" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.responder_name</numIndex>
+                  <numIndex index="1">name</numIndex>
+                </numIndex>
+                <numIndex index="3" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.responder_email</numIndex>
+                  <numIndex index="1">email</numIndex>
+                </numIndex>
+                <numIndex index="4" type="array">
+                  <numIndex index="0">LLL:EXT:wec_connector/locallang_db.php:tx_wecconnector_entries.message</numIndex>
+                  <numIndex index="1">message</numIndex>
+                </numIndex>
+              </items>
+              <maxitems>3</maxitems>
+              <size>3</size>
+              <multiple>1</multiple>
+              <selectedListStyle>width:205px</selectedListStyle>
+              <itemListStyle>width:200px</itemListStyle>
+            </config>
+            </TCEforms>
+          </required_response_fields>
+      </el>
+    </ROOT>
+    </s_fields>
+
+    <s_preview>
+    <ROOT>
+    <TCEforms>
+      <sheetTitle>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.sheet_preview</sheetTitle>
+    </TCEforms>
+      <type>array</type>
+      <el> 
+	    <is_preview>
+	      <TCEforms>
+	        <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.is_preview</label>
+	        <config>
+	          <type>check</type>
+	          <default></default>
+	        </config>
+	      </TCEforms>
+ 	    </is_preview>	
+	  	<preview_backPID>
+		  	<TCEforms>
+			<exclude>1</exclude>
+			<label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.preview_backPID</label>
+			<config>
+				<type>group</type>
+				<internal_type>db</internal_type>
+				<allowed>pages</allowed>
+				<size>1</size>
+				<maxitems>1</maxitems>
+				<minitems>0</minitems>
+				<show_thumbs>1</show_thumbs>
+			</config>
+		  	</TCEforms>
+		</preview_backPID>
+	    <num_preview_items>
+	      <TCEforms>
+	        <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.num_preview_items</label>
+	        <config>
+	          <type>input</type>
+	          <size>5</size>
+	          <default>5</default>
+	        </config>
+	      </TCEforms>
+	    </num_preview_items>
+	    <preview_length>
+	      <TCEforms>
+	        <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.preview_length</label>
+	        <config>
+	          <type>input</type>
+	          <size>5</size>
+	          <default>255</default>
+	        </config>
+	      </TCEforms>
+	    </preview_length>
+	  </el>
+	</ROOT>
+	</s_preview>
+
+    <s_administrator>
+    <ROOT>
+    <TCEforms>
+      <sheetTitle>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.sheet_group</sheetTitle>
+    </TCEforms>
+      <type>array</type>
+      <el>
+          <administrator_group>
+            <TCEforms><label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.administrator_group</label>
+              <config>
+                <type>input</type>
+                <col>35</col>
+                <row>3</row>
+              </config>
+            </TCEforms>
+          </administrator_group>
+          <administrator_usergroup>
+            <TCEforms><label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.administrator_usergroup</label>
+			 <config>
+				<type>select</type>
+				<foreign_table>fe_groups</foreign_table>
+				<foreign_table_where>ORDER BY title</foreign_table_where>
+				<size>5</size>
+				<maxitems>64</maxitems>
+				<itemListStyle>width:150px</itemListStyle>
+			 </config>
+            </TCEforms>
+          </administrator_usergroup>
+          <contact_name>
+            <TCEforms>
+            <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.contact_name</label>
+              <config>
+                <type>input</type>
+                <size>40</size>
+              </config>
+            </TCEforms>
+          </contact_name>
+          <contact_email>
+            <TCEforms>
+            <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.contact_email</label>
+              <config>
+                <type>input</type>
+                <size>40</size>
+              </config>
+            </TCEforms>
+          </contact_email>
+          <email_admin_posts>
+            <TCEforms>
+            <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.email_admin_posts</label>
+              <config>
+                <type>check</type>
+              </config>
+            </TCEforms>
+          </email_admin_posts>
+          <notify_email>
+            <TCEforms>
+            <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.notify_email</label>
+              <config>
+                <type>input</type>
+                <size>40</size>
+              </config>
+            </TCEforms>
+          </notify_email>
+      </el>
+    </ROOT>
+    </s_administrator>
+
+    <s_text>
+    <ROOT>
+    <TCEforms>
+      <sheetTitle>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.sheet_text</sheetTitle>
+    </TCEforms>
+     <type>array</type>
+      <el>
+		<post_instructions_text>
+            <TCEforms>
+            <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.post_instructions_text</label>
+            <config>
+              <type>text</type>
+              <cols>35</cols>
+              <rows>4</rows>
+            </config>
+            </TCEforms>
+		</post_instructions_text>
+		<response_title>
+            <TCEforms>
+            <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.response_title</label>
+            <config>
+              <type>text</type>
+              <cols>35</cols>
+              <rows>3</rows>
+            </config>
+            </TCEforms>
+		</response_title>
+		<subscribe_header>
+            <TCEforms>
+            <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.subscribe_header</label>
+            <config>
+              <type>text</type>
+              <cols>35</cols>
+              <rows>3</rows>
+              <default>Please enter your email to subscribe or unsubscribe from this connector. By subscribing you will be notified of every new post.</default>
+            </config>
+            </TCEforms>
+		</subscribe_header>
+		<subscriber_emailHeader>
+            <TCEforms>
+            <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.subscriber_emailHeader</label>
+            <config>
+              <type>text</type>
+              <cols>35</cols>
+              <rows>4</rows>
+            </config>
+            </TCEforms>
+		</subscriber_emailHeader>
+		<subscriber_emailFooter>
+            <TCEforms>
+            <label>LLL:EXT:wec_connector/locallang_db.php:wec_connector.pi_flexform.subscriber_emailFooter</label>
+            <config>
+              <type>text</type>
+              <cols>35</cols>
+              <rows>4</rows>
+            </config>
+            </TCEforms>
+		</subscriber_emailFooter>
+      </el>
+    </ROOT>
+    </s_text>
+
+  </sheets>
+</T3DataStructure>

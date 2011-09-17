@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for module &quot;&quot;</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="title">Select Site Template</label>
+			<label index="current">Current Template for %s</label>
+			<label index="available">Available Templates</label>
+			<label index="compatible">Fully compatible with current template.</label>
+			<label index="notemplate">No template selected</label>
+
+		</languageKey>
+	</data>
+</T3locallang>

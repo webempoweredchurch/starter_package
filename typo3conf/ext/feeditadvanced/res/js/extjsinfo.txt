@@ -1,0 +1,22 @@
+For feeditadvanced, the following parts from Ext JS are needed:
+
+ * Ext Core
+ * Ext.util.MixedCollection (included in the ext-foundation.js)
+ * Ext.DD
+ * Ext.DD depends on ext-foundation.js, Ext.Layer (which in turn depends on Ext.Shadow)
+
+
+The Ext Core can be found in feeditadvanced/res/js/ext-base.js, the custom ext-dd.js file includes the following files from Ext JS 3.0 release:
+
+ * pkgs/ext-core-debug.js
+ * pkgs/ext-foundation-debug.js
+ * src/widgets/Shadow.js
+ * src/widgets/Layer.js
+ * pkgs/ext-dd-debug.js
+
+ * In the resulting file, Ext.dd.DragDropMgr.useCache is set to false by default to avoid positioning errors.
+
+The files are concatenated in that order (manually for now) and then minified (through http://refresh-sf.com/yui/).
+
+February 24, 2011
+Jeff Segars for TYPO3 4.5

@@ -1,0 +1,17 @@
+***************
+*** 15,21 ****
+  <h1>Template, to show the button "open editing" when editing is enabled but not activce</h1>
+  <!-- ###MENU_CLOSED### begin -->
+  <div id="###CSSPREFIX###-menuBar" class="###CSSPREFIX###-closedMenu closedMenu">
+- 	<a class="###CSSPREFIX###-smallButton" href="#" onclick="document.TSFE_ADMIN_PANEL_Form.elements['TSFE_ADMIN_PANEL[menuOpen]'].value = 1; document.TSFE_ADMIN_PANEL_Form.submit(); return false;" title="###OPEN_EDIT_MODE###">###OPEN_EDIT_MODE###</a>
+  </div>
+  <!-- ###MENU_CLOSED### end -->
+  
+--- 15,21 ----
+  <h1>Template, to show the button "open editing" when editing is enabled but not activce</h1>
+  <!-- ###MENU_CLOSED### begin -->
+  <div id="###CSSPREFIX###-menuBar" class="###CSSPREFIX###-closedMenu closedMenu">
++ 	<a class="###CSSPREFIX###-smallButton" href="#" onclick="document.TSFE_ADMIN_PANEL_Form.elements['TSFE_ADMIN_PANEL[menuOpen]'].value = 1; document.TSFE_ADMIN_PANEL_Form.submit(); return false;" title="###OPEN_EDIT_MODE###"><span class="feEditAdvanced-smallButtonText">###OPEN_EDIT_MODE###</span></a>
+  </div>
+  <!-- ###MENU_CLOSED### end -->
+  

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="files.description">You can either select existing files that you've uploaded by clicking on the Browse for Files icon, or you can select a file from your computer by clicking on the Choose File button. You can add multiple files to the field as desired. If you are uploading files, is best to give them a unique name for clear identification: 2011-01-03_file.pdf is preferable to file.pdf. If you upload a file that has the same filename as a previously uploaded file, TYPO3 will append a number following the file name. Your second file.pdf file would display as file_01.pdf</label>
+		</languageKey>
+	</data>
+</T3locallang>

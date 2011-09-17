@@ -1,0 +1,235 @@
+2011-04-27  jeff
+
+	* doc/manual.sxw: Updated Changelog in manual.
+	* extensions/sr_feuser_register/template.html: Removed stray div
+	  tags from registration template.
+	* extensions/indexed_search/template.html: Add missing ID attriutes
+	  needed by page browser JS.
+
+2010-09-15  jeff
+
+	* ext_emconf.php: Updated emconf after TER release.
+	* doc/manual.sxw: Updated Changelog in manual.
+
+2010-09-02  jeff
+
+	* extensions/felogin/template.html: Remove duplicated status
+	  message.
+
+2010-08-30  jeff
+
+	* extensions/felogin/template.html: Added midding subpart for
+	  password reset in felogin.
+
+2010-08-03  jeff
+
+	* doc/manual.sxw: Updated changelog in manual.
+	* extensions/sr_feuser_register/template.html: Fixed broken
+	  subparts in template for sr_feuser_register 2.6.0+
+
+2010-07-19  jeff
+
+	* ext_emconf.php: Updated emconf after TER release.
+	* doc/manual.sxw: Updated changelog in manual.
+
+2010-07-14  jeff
+
+	* extensions/cal/event.html: Added missing list view styles for all
+	  day events.
+
+2010-07-09  jeff
+
+	* ext_emconf.php: Updated emconf after TER release.
+	* doc/manual.sxw: Update Changelog in manual.
+	* extensions/mm_forum/tmpl/wec/forum/list_post.html,
+	  extensions/mm_forum/tmpl/wec/forum/new_post.html,
+	  extensions/mm_forum/tmpl/wec/forum/new_topic.html: Update
+	  mm_forum template to account for new JavaScript options.
+
+2010-07-06  jeff
+
+	* extensions/sr_feuser_register/template.html: Fixed password
+	  handling in a few other places.
+	* extensions/sr_feuser_register/template.html: Fixed password
+	  problem in regisration template. Fixes issue #1791.
+
+2010-06-22  jeff
+
+	* extensions/cal/styles.css: Added min-height on month view header
+	  to fix styling issues in IE7. Fixes ticket #1774.
+
+2010-03-15  jeff
+
+	* doc/manual.sxw: Updated manual.
+	* css/mainstyles.css: Remove unused file.
+	* extensions/tt_news/template.html: Remove extra closing div tag.
+	* css/images/next-icon.png, css/images/previous-icon.png: Add
+	  previous and next icon from Dave.
+	* doc/manual.sxw, ext_emconf.php: Minor tweaks to manual and
+	  emconf.php.
+	* extensions/tt_news/template.html: Removed category info from
+	  latest view to keep it simpler.
+	* extensions/sr_feuser_register/template.html: Update submit
+	  buttons when editing an account.
+	* extensions/timtab/comments.html, extensions/timtab/posts.html,
+	  extensions/timtab/styles.css: Extract blog post styling from
+	  inline styles into standalone CSS file.
+
+2010-03-14  jeff
+
+	* class.tx_wecstyles_lib.php: Add checks for previous includes of
+	  pluginstyles.css via includeCSS or headerData.
+	* extensions/rg_smoothgallery,
+	  extensions/rg_smoothgallery/styles.css: Add some simple
+	  SmoothGallery styling to ensure that caption text is readable.
+	* extensions/mm_forum/tmpl/wec/css/mm_forum.css: Updated mm_forum
+	  styling to use a more neutral color scheme.
+
+2010-03-14  dave
+
+	* css/pluginstyles.css: fixed icon file name
+
+2010-03-12  jeff
+
+	* class.tx_wecstyles_lib.php: Remove page renderer CSS includes
+	  since it doesn't work properly for USER cObject.
+	* class.tx_wecstyles_lib.php: Add page renderer for TYPO3 4.3+
+
+2010-03-11  jeff
+
+	* extensions/tt_news/styles.css, extensions/tt_news/template.html:
+	  Updated news styling.
+	* extensions/tt_news/images/date-icon.png: Update date icon.
+	* extensions/tt_news/images, extensions/tt_news/images/author.png,
+	  extensions/tt_news/images/category-icon.png,
+	  extensions/tt_news/images/date-icon.png,
+	  extensions/tt_news/images/previous-icon.png,
+	  extensions/tt_news/images/view-icon.png,
+	  extensions/tt_news/styles.css: Initial pass at tt_news styling.
+	* doc, doc/manual.sxw: Added initial documentation.
+
+2010-03-09  jeff
+
+	* ext_emconf.php: Changed extension category to fe.
+
+2010-03-08  jeff
+
+	* extensions, html: Rename html directory to extensions, more
+	  accurately reflecting its contents.
+	* html/sr_feuser_register/template.html: Bring sr_feuser_register
+	  in line with latest wec_styles updates.
+	* html/cal/list.html: Bring cal in line with latest wec_styles
+	  updates.
+	* html/timtab/comments.html, html/timtab/posts.html: Bring timtab
+	  in line with latest wec_styles updates.
+	* html/tt_news/template.html: Bring tt_news in line with latest
+	  wec_styles updates.
+
+2010-03-03  dave
+
+	* css/pluginstyles.css: added display:inline-block to make icons
+	  work with height
+	* css/pluginstyles.css: Added prevIcon and nextIcon; set height for
+	  icon with button so always see
+
+2010-03-02  dave
+
+	* css/images/add-icon.png, css/images/add.png,
+	  css/images/admin-icon.png, css/images/cancel-icon.png,
+	  css/images/delete-icon.png, css/images/delete.png,
+	  css/images/edit-icon.png, css/images/hide-icon.png,
+	  css/images/reply-icon.png, css/images/subscribe-icon.png,
+	  css/images/view-icon.png, css/pluginstyles.css: added icons for
+	  buttons; added hideIcon, replyIcon, viewIcon, editIcon,
+	  subscribeIcon, and adminIcon; changed margin on pluginHeader
+
+2010-03-02  jeff
+
+	* html/sr_feuser_register/template.html: Simplified markup for
+	  delete button.
+
+2010-02-27  jeff
+
+	* html/timtab/posts.html: First pass at blog list view markup.
+
+2010-02-26  jeff
+
+	* html/timtab/comments.html: Overhauled blog comment styling. Still
+	  need to extract inline styles to a separate CSS file.
+
+2010-02-24  dave
+
+	* css/pluginstyles.css: tighten up on a few margins
+
+2010-02-23  dave
+
+	* css/pluginstyles.css: pluginSection => pluginContent; added
+	  pluginSection for mainContent; update preview CSS
+
+2010-02-22  dave
+
+	* css/pluginstyles.css: added hspacer element (for horizontal
+	  spacing)
+
+2010-02-19  dave
+
+	* css/pluginstyles.css: Fixed some margins & padding; rearranged
+	  for consistency; standardized naming; button hover more prominent
+
+2010-02-19  jeff
+
+	* css/images/add.png, css/images/delete.png, css/pluginstyles.css:
+	  Added styling for delete button and updated icon for add.
+	* html/sr_feuser_register/template.html: Added delete button to
+	  registration template.
+
+2010-02-19  dave
+
+	* css/pluginstyles.css: fixed button issues with text-decoration
+	  and color; Cleaned up old buttons
+
+2010-02-19  jeff
+
+	* css/pluginstyles.css: Added hover and active states for buttons.
+
+2010-02-18  jeff
+
+	* css/images, css/images/add.png, css/pluginstyles.css: Added
+	  default button styling for plugin action buttons.
+
+2010-02-17  jeff
+
+	* html/tt_news/styles.css, html/tt_news/template.html: Updates for
+	  default tt_news styling.
+
+2010-02-16  jeff
+
+	* css/pluginstyles.css: Removed min-width on pluginSection and
+	  reset pluginForm margin back to 0.
+
+2010-02-15  jeff
+
+	* html/indexed_search/styles.css: Improved styling when no search
+	  results are found.
+	* html/felogin/styles.css, html/felogin/template.html: Further
+	  styling updates for felogin.
+
+2010-02-13  jeff
+
+	* html/felogin/styles.css, html/felogin/template.html: First pass
+	  at styling for frontend login.
+	* html/indexed_search/styles.css,
+	  html/indexed_search/template.html: Frist pass at styling for
+	  indexed search.
+	* html/cal/event.html, html/cal/list.html, html/cal/styles.css:
+	  First pass at styling for calendar base.
+	* css/pluginstyles.css: Added bottom margin on lists inside forms.
+
+2010-02-12  jeff
+
+	* class.tx_wecstyles_lib.php: Temporarily commented out page
+	  renderer code.
+	* css/pluginstyles.css: Added plugin styling from Dave.
+	* .: Moving extension styling to trunk.
+	* Adding wec_styles extension.
+

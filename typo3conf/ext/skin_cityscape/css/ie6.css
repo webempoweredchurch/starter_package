@@ -1,0 +1,70 @@
+/*
+STARTER IE6
+
+This sheet contains the code for fixing ie6 issues
+
+author:		Ron Hall, Busy Noggin, Inc.
+e-mail:		info@busynoggin.com
+website:	www.busynoggin.com
+
+*/
+
+#localMenuWrap {
+	display: inline;
+	}
+
+#f1a #contentBlock-1 {
+	display: inline;
+	}
+
+
+
+
+/*******************************************************/
+/********************default.css***************************/
+/*******************************************************/
+
+	
+	ul.dropdown li.active{
+		background:url(images/menu-active-left.gif) no-repeat scroll left top;
+	}
+	ul.dropdown li.active a{
+		background:url(images/menu-active-right.gif) no-repeat scroll right top;
+	}	
+	
+	ul.dropdown li.dir.active{
+		background:url(images/menu-ifsub-active-left.gif) no-repeat scroll left top;
+	}
+	ul.dropdown li.dir.active a{
+		background:url(images/menu-ifsub-active-right.gif) no-repeat scroll right top;
+	}
+	ul.dropdown li.dir.active:hover{
+		background:url(images/menu-ifsub-active-left.gif) no-repeat scroll left top;
+	}
+	ul.dropdown li.dir.active:hover a{
+		background:url(images/menu-ifsub-active-right.gif) no-repeat scroll right top;
+	}	
+	ul.dropdown li.dir:hover{
+		background:url(images/menu-ifsub-hover-left.gif) no-repeat scroll left top;
+	}
+
+	ul.dropdown li.dir:hover a{
+		background:url(images/menu-ifsub-hover-right.gif) no-repeat scroll right top;
+	}
+
+	ul.dropdown li.hover,
+	ul.dropdown li:hover {
+	background:url(images/menu-hover-left.gif) no-repeat scroll left top;
+	}
+	
+	ul.dropdown li.hover a,
+	ul.dropdown li:hover a{
+	background:url(images/menu-hover-right.gif) no-repeat scroll right top;
+	}
+
+
+	ul.dropdown *.dir {
+	 background-image: url(images/nav-arrow-down.gif);
+	}
+
+

@@ -1,0 +1,33 @@
+2010-03-11  Bernhard Kraft  <kraftb@think-open.at>
+
+	* Added support for RAR files
+	* Fixed create archive support for tar.gz and tar.bz2
+	* Fixed locallang issues
+	* Reindexed with extdeveval and added missing PHPdoc
+	* Uploaded extension to forge SVN
+
+2008-03-11  Bernhard Kraft  <kraftb@think-open.at>
+
+	* Corrected a bug: Extension only worked properly when DAM is installed. Now it works fine also without DAM (When configured correctly in the EM) - thx to Clemens Riccabona for reporting this bug.
+
+2008-02-28  Bernhard Kraft  <kraftb@think-open.at>
+
+	* Initial release as "kb_packman" (Copy of kb_unpack 0.1.0)
+	* Added support for compressing directories and files into a zip-file
+
+2006-04-14  Bernhard Kraft  <kraftb@think-open.at>
+
+	* Added support for filename with spaces inside. Thanks to Michiel Roos from netcreators for pointing this issue out.
+	* Set extension state to stable.
+
+2005-03-20  Bernhard Kraft  <kraftb@gmx.net>
+
+	* Reindexed it with extdeveval
+
+2005-??-??  Bernhard Kraft  <kraftb@gmx.net>
+
+	* Made it CGL360 compliant. Hope to get reviewed.
+
+2005-??-??  Bernhard Kraft  <kraftb@gmx.net>
+
+	* Initial release

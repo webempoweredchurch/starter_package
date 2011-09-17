@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="vimeoID.description">Navigate to the Vimeo video that you want to embed. The Vimeo ID will appear in your browser's address bar and includes everything to the right of # (hd#9325052 ... the id would be 9325052).</label>
+			<label index="height.description">The height of the video should be in proportion to the width - typically at 4:3 or 16:9. Both Height and Width are required.</label>
+			<label index="width.description">The width of the video should be in proportion to the height - typically at 4:3 or 16:9. Both Height and Width are required.</label>
+		</languageKey>
+	</data>
+</T3locallang>

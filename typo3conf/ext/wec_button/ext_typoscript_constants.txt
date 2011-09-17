@@ -1,0 +1,12 @@
+plugin.tx_wecbutton_pi1 {
+# cat=plugin.tx_wecbutton_pi1/file/1; type=file[html,htm,tmpl,txt]; label= Template File: HTML template file for display of a button.
+  templateFile 	= EXT:wec_button/pi1/template.tmpl
+# cat=plugin.tx_wecbutton_pi1/url/1a; type=string; label= URL: URL that buttons link to.
+  url					= http://www.webempoweredchurch.com
+# cat=plugin.tx_wecbutton_pi1/altText/1b; type=string; label= Alt Text: Text that will appear if images are disabled in the browser.
+  altText			= Church website tools from the Web-Empowered Church web site
+# cat=plugin.tx_wecbutton_pi1/titleText/1c; type=string; label= Title Text: Text that will appear when hovering over images.
+  titleText 		= Church website tools from the Web-Empowered Church web site
+#cat=plugin.tx_wecbutton_pi1/demo/1d; type=boolean; label= Demo Mode: Shows all buttons.
+  demoMode			= 0
+}

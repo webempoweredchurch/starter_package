@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<description></description>
+		<type>module</type>
+		<csh_table></csh_table>
+		<fileId>EXT:wec_flashpresentation/locallang.xml</fileId>
+		<labelContext type="array">
+			<label index="pi1_title"></label>
+			<label index="pi2_title"></label>
+			<label index="pi1_plus_wiz_description"></label>
+			<label index="pi2_plus_wiz_description"></label>
+		</labelContext>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="pi1_title">Flash Presentation - Video</label>
+			<label index="pi2_title">Flash Presentation - Audio</label>
+			<label index="pi1_plus_wiz_description">Flash-based slide presentation with synchronized video track</label>
+			<label index="pi2_plus_wiz_description">Flash-based slide presentation with synchronized audio track</label>
+		</languageKey>
+		<languageKey index="nl" type="array">
+			<label index="pi1_title">Flash presentatie - video</label>
+			<label index="pi2_title">Flash presentatie - audio</label>
+			<label index="pi1_plus_wiz_description">Flash-based dia presentatie met gesynchroniseerd videospoor</label>
+			<label index="pi2_plus_wiz_description">Flash-based dia presentatie met gesynchroniseerd audiospoor</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="nl" type="array">
+			<label index="pi1_title" type="integer">184020865</label>
+			<label index="pi2_title" type="integer">124748276</label>
+			<label index="pi1_plus_wiz_description" type="integer">193647402</label>
+			<label index="pi2_plus_wiz_description" type="integer">226071309</label>
+		</languageKey>
+	</orig_hash>
+	<orig_text type="array">
+		<languageKey index="nl" type="array">
+			<label index="pi1_title">Flash Presentation - Video</label>
+			<label index="pi2_title">Flash Presentation - Audio</label>
+			<label index="pi1_plus_wiz_description">Flash-based slide presentation with synchronized video track</label>
+			<label index="pi2_plus_wiz_description">Flash-based slide presentation with synchronized audio track</label>
+		</languageKey>
+	</orig_text>
+</T3locallang>

@@ -1,0 +1,58 @@
+a:2:{s:4:"meta";a:3:{s:5:"title";s:18:"PMK Force Download";s:5:"descr";s:0:"";s:7:"options";a:2:{s:10:"usageCount";N;s:19:"includeCodeAbstract";N;}}s:5:"files";a:4:{s:14:"MD5_0133afcec2";a:4:{s:8:"filename";s:19:"class.tx_pmkfdl.php";s:8:"filesize";i:4400;s:6:"header";N;s:3:"DAT";a:3:{i:1;a:8:{s:6:"header";s:17:"class tx_pmkfdl {";s:5:"class";i:1;s:11:"parentClass";s:9:"tx_pmkfdl";s:4:"cDat";a:3:{s:4:"text";s:257:"
+
+USE:
+The class is intended to be used without creating an instance of it.
+So: Don't instantiate - call functions with "tx_pmkfdl::" prefixed the function name.
+So use tx_pmkfdl::[method-name] to refer to the functions, eg. 'tx_pmkfdl::makeDownloadLink()'
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"[type]";i:1;s:3:"...";}}s:7:"content";s:0:"";s:12:"content_size";i:2;s:13:"content_lines";i:1;s:6:"atLine";i:44;}i:3;a:4:{s:6:"header";s:51:"public function makeDownloadLink($content, $conf) {";s:11:"parentClass";s:9:"tx_pmkfdl";s:4:"cDat";a:3:{s:4:"text";s:57:"
+
+Modifies typolink output so that link points to pmkfdl
+";s:5:"param";a:2:{i:0;a:2:{i:0;s:6:"string";i:1;s:22:"$content: Current link";}i:1;a:2:{i:0;s:5:"array";i:1;s:22:"$$conf: Config options";}}s:6:"return";a:2:{i:0;s:6:"string";i:1;s:23:"$content: Modified link";}}s:6:"atLine";i:53;}i:5;a:7:{s:6:"header";s:43:"private function encrypt($uncrypted,$key) {";s:11:"parentClass";s:9:"tx_pmkfdl";s:4:"cDat";a:3:{s:4:"text";s:28:"
+
+Encrypt file using mcrypt
+";s:5:"param";a:2:{i:0;a:2:{i:0;s:6:"string";i:1;s:28:"$uncrypted: unencrypted text";}i:1;a:2:{i:0;s:6:"string";i:1;s:20:"$key: decryption key";}}s:6:"return";a:2:{i:0;s:6:"string";i:1;s:26:"$encrypted; encrypted text";}}s:7:"content";s:0:"";s:12:"content_size";i:560;s:13:"content_lines";i:14;s:6:"atLine";i:100;}}}s:14:"MD5_e77af56c9e";a:4:{s:8:"filename";s:28:"class.tx_pmkfdl_download.php";s:8:"filesize";i:6952;s:6:"header";N;s:3:"DAT";a:6:{i:1;a:8:{s:6:"header";s:26:"class tx_pmkfdl_download {";s:5:"class";i:1;s:11:"parentClass";s:18:"tx_pmkfdl_download";s:4:"cDat";a:3:{s:4:"text";s:69:"
+
+Main class. eID based. Sends the file using the 'header' function.
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"[type]";i:1;s:3:"...";}}s:7:"content";s:0:"";s:12:"content_size";i:2;s:13:"content_lines";i:1;s:6:"atLine";i:44;}i:3;a:7:{s:6:"header";s:36:"public function makeDownloadLink() {";s:11:"parentClass";s:18:"tx_pmkfdl_download";s:4:"cDat";a:3:{s:4:"text";s:25:"
+
+Force download of file
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:4:"void";i:1;s:0:"";}}s:7:"content";s:0:"";s:12:"content_size";i:2621;s:13:"content_lines";i:62;s:6:"atLine";i:51;}i:5;a:7:{s:6:"header";s:32:"private function getMimeType() {";s:11:"parentClass";s:18:"tx_pmkfdl_download";s:4:"cDat";a:3:{s:4:"text";s:35:"
+
+Returns mimetype of current file
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"string";i:1;s:48:"$mimetype; Mimetype that match selected filetype";}}s:7:"content";s:0:"";s:12:"content_size";i:742;s:13:"content_lines";i:20;s:6:"atLine";i:119;}i:7;a:7:{s:6:"header";s:43:"private function decrypt($encrypted,$key) {";s:11:"parentClass";s:18:"tx_pmkfdl_download";s:4:"cDat";a:3:{s:4:"text";s:28:"
+
+Decrypt file using mcrypt
+";s:5:"param";a:2:{i:0;a:2:{i:0;s:6:"string";i:1;s:26:"$encrypted: encrypted text";}i:1;a:2:{i:0;s:6:"string";i:1;s:20:"$key: decryption key";}}s:6:"return";a:2:{i:0;s:6:"string";i:1;s:26:"$decrypted; decrypted text";}}s:7:"content";s:0:"";s:12:"content_size";i:364;s:13:"content_lines";i:8;s:6:"atLine";i:147;}i:9;a:4:{s:6:"header";s:57:"private function checkAccess($userGroups,$accessGroups) {";s:11:"parentClass";s:18:"tx_pmkfdl_download";s:4:"cDat";a:3:{s:4:"text";s:75:"
+
+Checks if user has access to download file, based on TYPO3 access groups
+";s:5:"param";a:2:{i:0;a:2:{i:0;s:5:"array";i:1;s:38:"$userGroups; fe_groups user belongs to";}i:1;a:2:{i:0;s:5:"array";i:1;s:44:"$accessGroups; fe_groups required for access";}}s:6:"return";a:2:{i:0;s:7:"boolean";i:1;s:56:"$access; True if user has the correct access credentials";}}s:6:"atLine";i:163;}i:11;a:7:{s:6:"header";s:26:"private function error() {";s:11:"parentClass";s:18:"tx_pmkfdl_download";s:4:"cDat";a:3:{s:4:"text";s:32:"
+
+Returns 404 header to browser
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:4:"void";i:1;s:0:"";}}s:7:"content";s:0:"";s:12:"content_size";i:427;s:13:"content_lines";i:13;s:6:"atLine";i:179;}}}s:14:"MD5_07d16e3590";a:4:{s:8:"filename";s:24:"class.tx_pmkfdl_hook.php";s:8:"filesize";i:4470;s:6:"header";N;s:3:"DAT";a:5:{i:1;a:8:{s:6:"header";s:59:"class tx_pmkfdl_hook implements tslib_content_stdWrapHook {";s:5:"class";i:1;s:11:"parentClass";s:14:"tx_pmkfdl_hook";s:4:"cDat";a:3:{s:4:"text";s:75:"
+
+Class which hook into tslib_content and do additional stdWrap processing
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"[type]";i:1;s:3:"...";}}s:7:"content";s:0:"";s:12:"content_size";i:2;s:13:"content_lines";i:1;s:6:"atLine";i:45;}i:3;a:7:{s:6:"header";s:94:"public function stdWrapPreProcess($content, array $configuration, tslib_cObj &$parentObject) {";s:11:"parentClass";s:14:"tx_pmkfdl_hook";s:4:"cDat";a:3:{s:4:"text";s:66:"
+
+Hook for modifying $content before core's stdWrap does anything
+";s:5:"param";a:3:{i:0;a:2:{i:0;s:6:"string";i:1;s:117:"input value undergoing processing in this function. Possibly substituted by other values fetched from another source.";}i:1;a:2:{i:0;s:5:"array";i:1;s:29:"TypoScript stdWrap properties";}i:2;a:2:{i:0;s:10:"tslib_cObj";i:1;s:21:"parent content object";}}s:6:"return";a:2:{i:0;s:6:"string";i:1;s:26:"further processed $content";}}s:7:"content";s:0:"";s:12:"content_size";i:24;s:13:"content_lines";i:3;s:6:"atLine";i:55;}i:5;a:7:{s:6:"header";s:92:"public function stdWrapOverride($content, array $configuration, tslib_cObj &$parentObject) {";s:11:"parentClass";s:14:"tx_pmkfdl_hook";s:4:"cDat";a:3:{s:4:"text";s:172:"
+
+Hook for modifying $content after core's stdWrap has processed setContentToCurrent, setCurrent, lang, data, field, current, cObject, numRows, filelist and/or preUserFunc
+";s:5:"param";a:3:{i:0;a:2:{i:0;s:6:"string";i:1;s:117:"input value undergoing processing in this function. Possibly substituted by other values fetched from another source.";}i:1;a:2:{i:0;s:5:"array";i:1;s:29:"TypoScript stdWrap properties";}i:2;a:2:{i:0;s:10:"tslib_cObj";i:1;s:21:"parent content object";}}s:6:"return";a:2:{i:0;s:6:"string";i:1;s:26:"further processed $content";}}s:7:"content";s:0:"";s:12:"content_size";i:24;s:13:"content_lines";i:3;s:6:"atLine";i:67;}i:7;a:4:{s:6:"header";s:91:"public function stdWrapProcess($content, array $configuration, tslib_cObj &$parentObject) {";s:11:"parentClass";s:14:"tx_pmkfdl_hook";s:4:"cDat";a:3:{s:4:"text";s:156:"
+
+Hook for modifying $content after core's stdWrap has processed override, preIfEmptyListNum, ifEmpty, ifBlank, listNum, trim and/or more (nested) stdWraps
+";s:5:"param";a:3:{i:0;a:2:{i:0;s:6:"string";i:1;s:117:"input value undergoing processing in this function. Possibly substituted by other values fetched from another source.";}i:1;a:2:{i:0;s:5:"array";i:1;s:32:"TypoScript "stdWrap properties".";}i:2;a:2:{i:0;s:10:"tslib_cObj";i:1;s:21:"parent content object";}}s:6:"return";a:2:{i:0;s:6:"string";i:1;s:26:"further processed $content";}}s:6:"atLine";i:79;}i:9;a:7:{s:6:"header";s:95:"public function stdWrapPostProcess($content, array $configuration, tslib_cObj &$parentObject) {";s:11:"parentClass";s:14:"tx_pmkfdl_hook";s:4:"cDat";a:3:{s:4:"text";s:84:"
+
+Hook for modifying $content after core's stdWrap has processed anything but debug
+";s:5:"param";a:3:{i:0;a:2:{i:0;s:6:"string";i:1;s:117:"input value undergoing processing in this function. Possibly substituted by other values fetched from another source.";}i:1;a:2:{i:0;s:5:"array";i:1;s:29:"TypoScript stdWrap properties";}i:2;a:2:{i:0;s:10:"tslib_cObj";i:1;s:21:"parent content object";}}s:6:"return";a:2:{i:0;s:6:"string";i:1;s:26:"further processed $content";}}s:7:"content";s:0:"";s:12:"content_size";i:235;s:13:"content_lines";i:6;s:6:"atLine";i:94;}}}s:14:"MD5_e98cec511f";a:4:{s:8:"filename";s:36:"res/class.tx_pmkfdl_process_hook.php";s:8:"filesize";i:3148;s:6:"header";N;s:3:"DAT";a:4:{i:1;a:8:{s:6:"header";s:30:"class tx_pmkfdl_process_hook {";s:5:"class";i:1;s:11:"parentClass";s:22:"tx_pmkfdl_process_hook";s:4:"cDat";a:3:{s:4:"text";s:60:"
+
+Class which hook into pmkfdl and do additional processing
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"[type]";i:1;s:3:"...";}}s:7:"content";s:0:"";s:12:"content_size";i:2;s:13:"content_lines";i:1;s:6:"atLine";i:42;}i:3;a:7:{s:6:"header";s:44:"function postProcessHook(&$params, &$pObj) {";s:11:"parentClass";s:22:"tx_pmkfdl_process_hook";s:4:"cDat";a:3:{s:4:"text";s:36:"
+
+Example postProcessHook function.
+";s:5:"param";a:2:{i:0;a:2:{i:0;s:5:"array";i:1;s:13:"$$params: ...";}i:1;a:2:{i:0;s:5:"array";i:1;s:10:"$pObj: ...";}}s:6:"return";a:2:{i:0;s:4:"void";i:1;s:0:"";}}s:7:"content";s:0:"";s:12:"content_size";i:473;s:13:"content_lines";i:16;s:6:"atLine";i:51;}i:5;a:4:{s:6:"header";s:43:"function preProcessHook(&$params, &$pObj) {";s:11:"parentClass";s:22:"tx_pmkfdl_process_hook";s:4:"cDat";a:3:{s:4:"text";s:35:"
+
+Example preProcessHook function.
+";s:5:"param";a:2:{i:0;a:2:{i:0;s:5:"array";i:1;s:13:"$$params: ...";}i:1;a:2:{i:0;s:5:"array";i:1;s:10:"$pObj: ...";}}s:6:"return";a:2:{i:0;s:4:"void";i:1;s:0:"";}}s:6:"atLine";i:75;}i:7;a:7:{s:6:"header";s:42:"function logDownload( $logFile,$logData) {";s:11:"parentClass";s:22:"tx_pmkfdl_process_hook";s:4:"cDat";a:3:{s:4:"text";s:26:"
+
+Writes entry in logfile
+";s:5:"param";a:2:{i:0;a:2:{i:0;s:6:"string";i:1;s:9:"$logFile:";}i:1;a:2:{i:0;s:5:"array";i:1;s:9:"$logData:";}}s:6:"return";a:2:{i:0;s:4:"void";i:1;s:0:"";}}s:7:"content";s:0:"";s:12:"content_size";i:632;s:13:"content_lines";i:15;s:6:"atLine";i:87;}}}}}

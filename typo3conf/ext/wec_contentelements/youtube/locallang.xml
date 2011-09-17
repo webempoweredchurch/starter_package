@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'wec_contentelements'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tt_content.youtube.title">YouTube Video</label>
+			<label index="tt_content.youtube.description">Embeds a video from Youtube.com</label>
+
+			<label index="flexform.youtube.youtubeID">YouTube ID</label>
+			<label index="flexform.youtube.height">Height</label>
+			<label index="flexform.youtube.width">Width</label>
+		</languageKey>
+	</data>
+</T3locallang>

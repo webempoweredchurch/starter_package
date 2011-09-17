@@ -1,0 +1,1507 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>SMS Templates</title>
+</head>
+
+<body>
+
+<h1>SMS TEMPLATES:</h1>
+
+<pre>
+
+<em>Markers:</em>
+
+--SERMONS
+SERMON_TITLE - Title of a sermon
+SERMON_SUBTITLE - Subtitle of a sermon
+SERMON_OCCURRENCE_DATE - Date the sermon was presented on
+SERMON_DESCRIPTION - Description, or HTML detail of a sermon
+SERMON_SCRIPTURE - Scriptures that the sermon refers to
+SERMON_GRAPHIC - A graphic shown with the sermon
+SERMON_ALTTITLE - Alt or title text used with the graphic
+
+
+--RESOURCES
+RESOURCE_TITLE	 - Title of resource
+RESOURCE_DESCRIPTION - Full resource description
+RESOURCE_GRAPHIC - Graphic of resource
+RESOURCE_ALTTITLE - Alt or title text used with the graphic
+RESOURCE_FILE - The filename of an uploaded file
+RESOURCE_WEBADDRESS1 - A web address or url associated with this resource
+RESOURCE_WEBADDRESS2 - A web address or url associated with this resource
+RESOURCE_WEBADDRESS3 - A web address or url associated with this resource
+RESOURCE_CONTENT - The resource content generated throgh TypoScript, allowing complex output of resources that can not be accomplished through marker tags alone.
+RESOURCE_ICON - The icon associated with this type of resource, taken from the resource_type record icon field.
+
+--SERIES
+SERIES_TITLE - Title of sermon series
+SERIES_SUBTITLE - Subitle of sermon series
+SERIES_DESCRIPTION - Description or HTML detail of series
+SERIES_SCRIPTURE - Scriptures that the series refers to
+SERIES_STARTDATE - First occurrence of the series
+SERIES_ENDDATE - Last occurrence of the series
+SERIES_GRAPHIC - A graphic shown with the series
+SERIES_ALTTITLE - Alt or title text used with the graphic
+
+
+--TOPIC
+TOPIC_TITLE - Title of the topic
+TOPIC_DESCRIPTION - Description or HTML detail of the topic
+
+--SEASONS
+SEASON_TITLE - Title of the season
+SEASON_DESCRIPTION - Description of the season
+
+--SPEAKERS
+SPEAKER_FIRSTNAME - First name of the speaker
+SPEAKER_LASTNAME - Last name of the speaker
+SPEAKER_URL - Speaker's home page, or URL to their bio
+SPEAKER_BLOGURL - Speaker's blog address/URL
+SPEAKER_PHOTO - Photograph of the speaker
+SPEAKER_ALTTITLE - Alt or title text used with the photo
+SPEAKER_EMAIL - Speakers e-mail address they can be contacted at
+
+--MISC
+ALTERNATING_CLASS - This is a CSS class attribute inserted for alternating colors of odd and even rows in list views
+BROWSE_LINKS - A results browser, allowing pagination of results in list view
+
+<em>Language Markers (see pi1/locallang.php):</em>
+BACK_TO_LIST - Header text used in the BACK_LINK, returning to the list-view. Used in single-view templates.
+
+
+<em>Subparts:</em>
+CONTENT - <strong>**REQUIRED**</strong> This is a subpart marker that wraps the primary content of a template.
+ITEM - <strong>**REQUIRED - ONLY IN LIST VIEWS**</strong> The repeating content area representing one record within a list.
+GROUP - This is required only when the "Group By" option of the plug-in is defined. Used to group the list by related records.
+SERMON_SPEAKERS - Listing of speakers related to a sermon
+SERMON_TOPICS - General topics that the sermon is associated with. Aka, category
+SERMON_SERIES - The sermon series a sermon is related to
+SERIES_SEASON - Season a series is related to
+SERIES_TOPICS - General topic that the series is associated with. Aka, category
+SERIES_SEASON - The season associated with this series
+SERIES_SERMONS - The sermons that are associated with this series
+TOPIC_SERMONS - The sermons that are associated with this topic
+TOPIC_SERIES - The series that are associated with this topic
+SPEAKER_SERMONS - The sermons that are associated with this speaker (not used in the default HTML-template)
+SEASON_SERIES - The series that are associated with this season
+DEFAULT_RESOURCES - The subpart name of the 'default' resource type
+
+<em>Wrapped Subparts:</em>
+SERMON_LINK - link to a sermon's single view
+SERIES_LINK - link to sermon series' single view
+RESOURCE_LINK - link to a resource's single view
+TOPIC_LINK - link to a topic's single view
+SEASON_LINK - link to a season's single view
+BACK_LINK - link back to the list view
+</pre>
+
+<br />
+<h2>Brief Layout Styles</h2>
+
+<h3>TEMPLATE_LIST_BRIEF</h3>
+<em>This is a template style for a list of sermons, and related information.</em>
+<br />
+
+<!-- ###TEMPLATE_LIST_BRIEF### begin -->
+		###BROWSE_LINKS###
+		<ul class="tx-wecsermons-pi1-list-brief" >
+		<!-- ###CONTENT### begin -->
+			<!-- ###ITEM### begin -->
+
+			<li class="###ALTERNATING_CLASS###">
+
+				<h2><!--###SERMON_LINK###-->###SERMON_TITLE###<!--###SERMON_LINK###--></h2>
+				<p>###SERMON_OCCURRENCE_DATE###</p>
+
+				<!--###SERMON_SERIES###-->
+						<!--###SERIES_LINK###-->###SERIES_TITLE###<!--###SERIES_LINK###-->
+				<!--###SERMON_SERIES###-->
+
+				###SERMON_GRAPHIC###
+				###SERMON_DESCRIPTION###
+				###SERMON_SCRIPTURE###
+
+				<ul class="tx-wecsermons-pi1-resources">
+
+					<!--###DEFAULT_RESOURCES###-->
+					<li>
+							<!--###RESOURCE_LINK###-->###RESOURCE_TITLE###<!--###RESOURCE_LINK###-->
+					</li>
+					<!--###DEFAULT_RESOURCES###-->
+				</ul>
+
+			</li>
+			<!-- ###ITEM### end -->
+		<!-- ###CONTENT### end -->
+		</ul>
+		###BROWSE_LINKS###
+<!-- ###TEMPLATE_LIST_BRIEF### end -->
+
+
+<h3>TEMPLATE_LATEST_BRIEF</h3>
+<em>This is a template style for a the latest sermons, and related information.</em>
+<br />
+
+<!-- ###TEMPLATE_LATEST_BRIEF### begin -->
+
+		###BROWSE_LINKS###
+		<ul class="tx-wecsermons-pi1-list-brief" >
+			<!-- ###CONTENT### begin -->
+			<!-- ###ITEM### begin -->
+
+			<li class="###ALTERNATING_CLASS###">
+
+				<h2><!--###SERMON_LINK###-->###SERMON_TITLE###<!--###SERMON_LINK###--></h2>
+				<p>###SERMON_OCCURRENCE_DATE###</p>
+
+				<!--###SERMON_SERIES###-->
+						<!--###SERIES_LINK###-->###SERIES_TITLE###<!--###SERIES_LINK###-->
+				<!--###SERMON_SERIES###-->
+
+				###SERMON_GRAPHIC###
+				###SERMON_DESCRIPTION###
+				###SERMON_SCRIPTURE###
+
+				<ul class="tx-wecsermons-pi1-resources">
+
+					<!--###DEFAULT_RESOURCES###-->
+					<li>
+							<!--###RESOURCE_LINK###-->###RESOURCE_TITLE###<!--###RESOURCE_LINK###-->
+					</li>
+					<!--###DEFAULT_RESOURCES###-->
+				</ul>
+
+			</li>
+			<!-- ###ITEM### end -->
+			<!-- ###CONTENT### end -->
+		</ul>
+		###BROWSE_LINKS###
+<!-- ###TEMPLATE_LATEST_BRIEF### end -->
+
+
+<br />
+<h3>TEMPLATE_SERMON_BRIEF</h3>
+<em>Template for single view of a sermon.</em>
+<br />
+
+<!-- ###TEMPLATE_SERMON_BRIEF### begin -->
+	<!--###CONTENT###-->
+		<div class="tx-wecsermons-pi1-sermon-brief" >
+
+			<h2>###SERMON_TITLE###</h2>
+			<p>###SERMON_OCCURRENCE_DATE###</p>
+
+			<!--###SERMON_SPEAKERS###-->
+				<td>
+						<!--###SPEAKER_LINK###-->###SPEAKER_FULLNAME### <!--###SPEAKER_LINK###-->
+				</td>
+			<!--###SERMON_SPEAKERS###-->
+
+			###SERMON_SCRIPTURE###
+			###SERMON_DESCRIPTION###
+		</div>
+
+
+		<div class="tx-wecsermons-pi-resources">
+			<h2>Sermon Multimedia:</h2>
+
+				<ul class="tx-wecsermons-pi1-sermon-brief-resources">
+					<!--###DEFAULT_RESOURCES###-->
+					<li>
+							<!--###RESOURCE_LINK###-->###RESOURCE_TITLE###<!--###RESOURCE_LINK###-->
+					</li>
+					<!--###DEFAULT_RESOURCES###-->
+
+					<!--###EMBEDDED_MP3###-->
+						<li>
+							###RESOURCE_CONTENT###
+						</li>
+					<!--###EMBEDDED_MP3###-->
+
+				</ul>
+		</div>
+
+	<!--###CONTENT###-->
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!-- ###TEMPLATE_SERMON_BRIEF### end -->
+
+<br />
+<h3>TEMPLATE_SERIES_BRIEF</h3>
+<em>Template for single view of a sermon.</em>
+<br />
+
+<!-- ###TEMPLATE_SERIES_BRIEF### begin -->
+	<!--###CONTENT###-->
+		<div class="tx-wecsermons-pi1-series-brief" >
+			###SERIES_GRAPHIC###
+			###SERIES_TITLE###
+			###SERIES_STARTDATE### -- ###SERIES_ENDDATE###
+			###SERIES_DESCRIPTION###
+			###SERIES_SCRIPTURE###
+
+			<!--###SERIES_SEASON###-->
+				<p>
+					<!--###SEASON_LINK###-->###SEASON_TITLE###<!--###SEASON_LINK###-->
+				</p>
+			<!--###SERIES_SEASON###-->
+
+			<!--###SERIES_TOPICS###-->
+				<p>
+					<!--###TOPIC_LINK###-->###TOPIC_TITLE###<!--###TOPIC_LINK###-->
+				</p>
+			<!--###SERIES_TOPICS###-->
+
+			<!--###SERIES_SERMONS### -->
+			<div class="tx-wecsermons-pi1-seriessermons">
+			<p>
+				<!--###SERMON_LINK### -->###SERMON_TITLE###<!--###SERMON_LINK### -->
+			</p>
+			</div>
+			<!--###SERMON_SERIES###-->
+
+		</div>
+	<!--###CONTENT###-->
+<!-- ###TEMPLATE_SERIES_BRIEF### end -->
+
+
+<br />
+<h3>TEMPLATE_SPEAKER_BRIEF</h3>
+<em>This is an example template for styling a single view of a speaker.</em>
+<br />
+
+<!-- ###TEMPLATE_SPEAKER_BRIEF### begin -->
+	<div class="tx-wecsermons-pi1-speaker-brief">
+	<!-- ###CONTENT### begin -->
+						###SPEAKER_FULLNAME###<br/>
+						###SPEAKER_PHOTO###<br/>
+						###SPEAKER_URL###
+						###SPEAKER_BLOGURL###
+						###SPEAKER_EMAIL###
+	<!-- ###CONTENT### end -->
+	</div>
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!-- ###TEMPLATE_SPEAKER_BRIEF### end -->
+
+
+<br />
+<h3>TEMPLATE_TOPIC_BRIEF</h3>
+<em>This is an example template for styling a single view of a speaker.</em>
+<br />
+
+<!-- ###TEMPLATE_TOPIC_BRIEF### begin -->
+	<div class="tx-wecsermons-topic-singleView">
+	<!-- ###CONTENT### begin -->
+						###TOPIC_TITLE###
+						###TOPIC_DESCRIPTION###
+	<!-- ###CONTENT### end -->
+	</div>
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!-- ###TEMPLATE_TOPIC_BRIEF### end -->
+
+
+<br />
+<h3>TEMPLATE_SEASON_BRIEF</h3>
+<em>This is an example template for styling a single view of a speaker.</em>
+<br />
+
+<!-- ###TEMPLATE_SEASON_BRIEF### begin -->
+	<div class="tx-wecsermons-season-singleView">
+	<!-- ###CONTENT### begin -->
+						###SEASON_TITLE###
+						###SEASON_DESCRIPTION###
+	<!-- ###CONTENT### end -->
+	</div>
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!-- ###TEMPLATE_SEASON_BRIEF### end -->
+
+<br />
+<h3>TEMPLATE_SEARCHBOX_BRIEF</h3>
+<em>Template for styling the search box in a brief layout.</em>
+<br />
+
+<!--###TEMPLATE_SEARCHBOX_BRIEF### begin-->
+<div class="tx-wecsermons-pi1-searchbox-brief">
+  <form action="###FORM_ACTION###" method="post">
+	 ###SEARCHBOX_OPTIONS###
+    <input type="text" name="tx_wecsermons_pi1[sword]" value="" class="tx-wecsermons-pi1-searchbox-sword" />
+    <input type="submit" value="###SEARCH_BUTTON_NAME###" class="tx-wecsermons-pi1-searchbox-button" />
+    <input type="submit" value="Clear" onclick="document.getElementById('tx-wecsermons-pi1-searchbox-form').reset();"/>
+    <input type="hidden" name="no_cache" value="1" />
+    <input type="hidden" name="tx_wecsermons_pi1[pointer]" value="" />
+  </form>
+</div>
+<!--###TEMPLATE_SEARCHBOX_BRIEF### end-->
+
+
+
+<br />
+<h2>Series Layout Styles</h2>
+
+<h3>TEMPLATE_LIST_SERIES</h3>
+<em>This is a template style for displaying a sermon listing, grouped by series.</em>
+<br />
+<br />
+<br />
+<br />
+
+<!-- ###TEMPLATE_LIST_SERIES### begin-->
+<TABLE width="489" cellpadding="3" cellspacing="1" id="tx-wecsermons-pi1-list2">
+  <TBODY>
+    <tr><td colspan="2">###BROWSE_LINKS###</td></tr>
+    <!-- ###CONTENT### begin
+    	This begins the main content wrapper
+    -->
+    <!-- ###GROUP###  begin -->
+    <TR vAlign="top">
+      <TH colSpan="2"><!-- ###SERIES_LINK### -->
+        ###SERIES_TITLE###
+        <!-- ###SERIES_LINK### --></TH>
+    </TR>
+    <!-- ###GROUP### end -->
+
+    <!-- ###ITEM### begin
+  		This begins the template for record detail
+  	-->
+    <TR class="###ALTERNATING_CLASS###" vAlign="top">
+      <TD><!--###SERMON_LINK###-->
+        ###SERMON_OCCURRENCE_DATE###
+        <!--###SERMON_LINK###-->
+      </TD>
+      <TD>###SERMON_TITLE###</TD>
+    </TR>
+    <!-- ###ITEM### end -->
+    <!-- ###CONTENT### end -->
+    <tr><td colspan="2">###BROWSE_LINKS###</td></tr>
+   </TBODY>
+</TABLE>
+<!-- ###TEMPLATE_LIST_SERIES### end -->
+
+<h3>TEMPLATE_LATEST_SERIES</h3>
+<em>This is a template style for displaying the latest sermons, grouped by series.</em>
+<br />
+<br />
+<br />
+<br />
+
+<!-- ###TEMPLATE_LATEST_SERIES### begin-->
+<TABLE width="489" cellpadding="3" cellspacing="1" id="tx-wecsermons-pi1-latest2">
+  <TBODY>
+    <tr><td colspan="2">###BROWSE_LINKS###</td></tr>
+    <!-- ###CONTENT### begin
+    	This begins the main content wrapper
+    -->
+    <!-- ###GROUP###  begin -->
+    <TR vAlign="top">
+      <TH colSpan="2"><!-- ###SERIES_LINK### -->
+        ###SERIES_TITLE###
+        <!-- ###SERIES_LINK### --></TH>
+    </TR>
+    <!-- ###GROUP### end -->
+
+    <!-- ###ITEM### begin
+  		This begins the template for record detail
+  	-->
+    <TR class="###ALTERNATING_CLASS###" vAlign="top">
+      <TD><!--###SERMON_LINK###-->
+        ###SERMON_OCCURRENCE_DATE###
+        <!--###SERMON_LINK###-->
+      </TD>
+      <TD>###SERMON_TITLE###</TD>
+    </TR>
+    <!-- ###ITEM### end -->
+    <!-- ###CONTENT### end -->
+    <tr><td colspan="2">			###BROWSE_LINKS###</td></tr>
+   </TBODY>
+</TABLE>
+<!-- ###TEMPLATE_LATEST_SERIES### end -->
+
+<h3>TEMPLATE_SERMON_SERIES</h3>
+<em>This is a template style for a sermon single view.</em>
+<br />
+
+<!-- ###TEMPLATE_SERMON_SERIES### begin -->
+	<!--###CONTENT###-->
+		<div class="tx-wecsermons-sermon">
+			<div class="tx-wecsermons-sermon-graphic" style="float: right; margin: 1em;">
+				###SERMON_GRAPHIC###
+			</div>
+			<p>###SERMON_TITLE###</p>
+
+			<!--###SERMON_SPEAKERS###-->
+				<!--###SPEAKER_LINK###-->Pastor ###SPEAKER_FIRSTNAME### ###SPEAKER_LASTNAME###<!--###SPEAKER_LINK###--><br/>
+			<!--###SERMON_SPEAKERS###-->
+
+			###SERMON_OCCURRENCE_DATE###<br/>
+
+			<!--###SERMON_TOPICS###-->
+				<div class="tx-wecsermons-sermons-topics"><!--###TOPIC_LINK###-->###TOPIC_TITLE###<!--###TOPIC_LINK###--></div>
+			<!--###SERMON_TOPICS###-->
+
+			<div class="tx-wecsermons-sermon-description">
+				###SERMON_DESCRIPTION###
+			</div>
+		</div>
+	<!--###CONTENT###-->
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!-- ###TEMPLATE_SERMON_SERIES### end -->
+
+<h3>TEMPLATE_TOPIC_SERIES</h3>
+<em>This is a template style for a speaker single view.</em>
+<br />
+
+<!-- ###TEMPLATE_TOPIC_SERIES### end -->
+	<!--###CONTENT###-->
+		###TOPIC_TITLE###<br/>
+		###TOPIC_DESCRIPTION###
+	<!--###CONTENT###-->
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!-- ###TEMPLATE_TOPIC_SERIES### end -->
+
+
+<h3>TEMPLATE_SPEAKER_SERIES</h3>
+<em>This is a template style for a speaker single view.</em>
+<br />
+
+<!-- ###TEMPLATE_SPEAKER_SERIES### begin -->
+	<!--###CONTENT###-->
+	<div class="tx-wecsermons-speaker-photo" style="float: left; margin: 0 1em;">###SPEAKER_PHOTO###</div>
+	###SPEAKER_FIRSTNAME### ###SPEAKER_LASTNAME###<br/>
+	###SPEAKER_EMAIL###
+	###SPEAKER_URL###<br/>
+	###SPEAKER_BLOGURL###<br/>
+	<!--###CONTENT###-->
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!-- ###TEMPLATE_SPEAKER_SERIES### end -->
+
+<h3>TEMPLATE_SERIES_SERIES</h3>
+<em>This is a template style for a series single view.</em>
+<br />
+
+<!-- ###TEMPLATE_SERIES_SERIES### begin -->
+	<!--###CONTENT###-->
+		<div class="tx-wecsermons-series-title">###SERIES_TITLE###</div>
+		<div class="tx-wecsermons-series-date">###SERIES_STARTDATE### through ###SERIES_ENDDATE###</div>
+		<p style="text-align: center;" ###SERIES_GRAPHIC###</p>
+		<p>###SERIES_DESCRIPTION###</p>
+	<!--###CONTENT###-->
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!-- ###TEMPLATE_SERIES_SERIES### end -->
+
+
+
+<br />
+<h3>TEMPLATE_SPEAKER_SERIES</h3>
+<em>This is an example template for styling a single view of a speaker.</em>
+<br />
+
+<!-- ###TEMPLATE_SPEAKER_SERIES### begin -->
+	<div class="tx-wecsermons-speaker-singleView">
+	<!-- ###CONTENT### begin -->
+						###SPEAKER_PHOTO###
+						###SPEAKER_EMAIL###
+						###SPEAKER_LASTNAME### ###SPEAKER_FIRSTNAME###
+						###SPEAKER_URL###
+						###SPEAKER_BLOGURL###
+	<!-- ###CONTENT### end -->
+	</div>
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!-- ###TEMPLATE_SPEAKER_SERIES### end -->
+
+
+<br />
+<h3>TEMPLATE_SEASON_SERIES</h3>
+<em>This is an example template for styling a single view of a speaker.</em>
+<br />
+
+<!-- ###TEMPLATE_SEASON_SERIES### begin -->
+	<div class="tx-wecsermons-season-singleView">
+	<!-- ###CONTENT### begin -->
+						###SEASON_TITLE###
+						###SEASON_DESCRIPTION###
+	<!-- ###CONTENT### end -->
+	</div>
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!-- ###TEMPLATE_SEASON_SERIES### end -->
+
+<!--###TEMPLATE_SEARCHBOX_SERIES### begin-->
+<div class="tx-wecsermons-pi1-searchbox">
+  <form id="tx-wecsermons-pi1-searchbox-form" action="###FORM_ACTION###" method="post">
+	 ###SEARCHBOX_OPTIONS###
+    <input type="text" name="tx_wecsermons_pi1[sword]" value="" class="tx-wecsermons-pi1-searchbox-sword" />
+    <input type="submit" value="###SEARCH_BUTTON_NAME###" class="tx-wecsermons-pi1-searchbox-button" />
+    <input type="submit" value="Clear"" onclick="document.getElementById('tx-wecsermons-pi1-searchbox-form').reset();"/>
+    <input type="hidden" name="no_cache" value="1" />
+    <input type="hidden" name="tx_wecsermons_pi1[pointer]" value="" />
+  </form>
+</div>
+<!--###TEMPLATE_SEARCHBOX_SERIES### end-->
+
+
+<br/>
+<h2>Verbose Layout Styles</h2>
+<h3>TEMPLATE_LIST_VERBOSE</h3>
+<p><em>This is a template style for displaying a sermon listing.</em></p>
+
+
+<!-- ###TEMPLATE_LIST_VERBOSE### begin -->
+			###BROWSE_LINKS###
+		<ul class="tx-wecsermons-pi1-list-verbose" >
+	<!-- ###CONTENT### begin -->
+			<!-- ###ITEM### begin -->
+
+			<li class="###ALTERNATING_CLASS###">
+
+				<!--###SERMON_SPEAKERS###-->
+					<p>
+						###SPEAKER_PHOTO###<br/>
+
+							<!--###SPEAKER_LINK###-->###SPEAKER_FULLNAME### <!--###SPEAKER_LINK###-->
+
+					</p>
+				<!--###SERMON_SPEAKERS###-->
+
+				<h2><!--###SERMON_LINK###-->###SERMON_TITLE###<!--###SERMON_LINK###--></h2>
+				<p>###SERMON_OCCURRENCE_DATE###</p>
+
+				<!--###SERMON_SERIES###-->
+						<!--###SERIES_LINK###-->###SERIES_TITLE###<!--###SERIES_LINK###-->
+				<!--###SERMON_SERIES###-->
+
+				###SERMON_GRAPHIC###
+				###SERMON_DESCRIPTION###
+				###SERMON_SCRIPTURE###
+
+
+				<!--###SERMON_TOPICS###-->
+				<dl>
+					<dt><!--###TOPIC_LINK###-->###TOPIC_TITLE###<!--###TOPIC_LINK###--></dt>
+					<dd>###TOPIC_DESCRIPTION###</dd>
+				</dl>
+				<!--###SERMON_TOPICS###-->
+
+				<ul class="tx-wecsermons-pi1-resources">
+
+                                <!--###DEFAULT_RESOURCES###-->
+                                        <li>
+                                                <!--###RESOURCE_LINK###-->###RESOURCE_TITLE###<!--###RESOURCE_LINK###-->
+                                        </li>
+                                <!--###DEFAULT_RESOURCES###-->
+
+                                <!--###PDF_RESOURCES###-->
+                                        <li>
+                                                ###RESOURCE_CONTENT###
+                                        </li>
+                                <!--###PDF_RESOURCES###-->
+
+                                <!--###EMBEDDED_AVI###-->
+                                        <li>
+                                                ###RESOURCE_CONTENT###
+                                        </li>
+                                <!--###EMBEDDED_AVI###-->
+
+                                <!--###EMBEDDED_MP3###-->
+                                        <li>
+                                                ###RESOURCE_CONTENT###
+                                        </li>
+                                <!--###EMBEDDED_MP3###-->
+
+                                <!--###EMBEDDED_MP4###-->
+                                        <li>
+                                                ###RESOURCE_CONTENT###
+                                        </li>
+                                <!--###EMBEDDED_MP4###-->
+
+                                <!--###EMBEDDED_SWF###-->
+                                        <li>
+                                                ###RESOURCE_CONTENT###
+                                        </li>
+                                <!--###EMBEDDED_SWF###-->
+
+                                <!--###EMBEDDED_MOV###-->
+                                        <li>
+                                                ###RESOURCE_CONTENT###
+                                        </li>
+                                <!--###EMBEDDED_MOV###-->
+
+                                <!--###EMBEDDED_WMA###-->
+                                        <li>
+                                                ###RESOURCE_CONTENT###
+                                        </li>
+                                <!--###EMBEDDED_WMA###-->
+
+                                <!--###EMBEDDED_WMV###-->
+                                        <li>
+                                                ###RESOURCE_CONTENT###
+                                        </li>
+                                <!--###EMBEDDED_WMV###-->
+
+                                <!--###EMBEDDED_REALMEDIA###-->
+                                        <li>
+                                                ###RESOURCE_CONTENT###
+                                        </li>
+                                <!--###EMBEDDED_REALMEDIA###-->
+
+                                <!--###DOWNLOAD_FILE###-->
+                                        <li>
+                                                ###RESOURCE_CONTENT###
+                                        </li>
+                                <!--###DOWNLOAD_FILE###-->
+
+                                <!--###POLL_RESOURCES###-->
+                                        <li>
+                                                <!--###RESOURCE_LINK###-->Take the Poll ...<!--###RESOURCE_LINK###-->
+                                        </li>
+                                <!--###POLL_RESOURCES###-->
+
+				<!--###YOUTUBE_VIDEO###-->
+					<li>###RESOURCE_CONTENT###</li>
+				<!--###YOUTUBE_VIDEO###-->
+
+
+				</ul>
+
+
+			</li>
+			<!-- ###ITEM### end -->
+	<!-- ###CONTENT### end -->
+		</ul>
+			###BROWSE_LINKS###
+<!-- ###TEMPLATE_LIST_VERBOSE### end -->
+
+<h3>TEMPLATE_LATEST_VERBOSE</h3>
+<em>This is a template style for displaying the latest sermon listing, grouped by series.</em>
+<br />
+
+<!-- ###TEMPLATE_LATEST_VERBOSE### begin -->
+			###BROWSE_LINKS###
+		<ul class="tx-wecsermons-pi1-list-verbose" >
+	<!-- ###CONTENT### begin -->
+			<!-- ###ITEM### begin -->
+
+			<li class="###ALTERNATING_CLASS###">
+
+				<!--###SERMON_SPEAKERS###-->
+					<p>
+						###SPEAKER_PHOTO###<br/>
+
+							<!--###SPEAKER_LINK###-->###SPEAKER_FULLNAME### <!--###SPEAKER_LINK###-->
+
+					</p>
+				<!--###SERMON_SPEAKERS###-->
+
+				<h2><!--###SERMON_LINK###-->###SERMON_TITLE###<!--###SERMON_LINK###--></h2>
+				<p>###SERMON_OCCURRENCE_DATE###</p>
+
+				<!--###SERMON_SERIES###-->
+						<!--###SERIES_LINK###-->###SERIES_TITLE###<!--###SERIES_LINK###-->
+				<!--###SERMON_SERIES###-->
+
+				###SERMON_GRAPHIC###
+				###SERMON_DESCRIPTION###
+				###SERMON_SCRIPTURE###
+
+
+				<!--###SERMON_TOPICS###-->
+				<dl>
+					<dt><!--###TOPIC_LINK###-->###TOPIC_TITLE###<!--###TOPIC_LINK###--></dt>
+					<dd>###TOPIC_DESCRIPTION###</dd>
+				</dl>
+				<!--###SERMON_TOPICS###-->
+
+				<ul class="tx-wecsermons-pi1-resources">
+
+				<!--###DEFAULT_RESOURCES###-->
+					<li>
+						<!--###RESOURCE_LINK###-->###RESOURCE_TITLE###<!--###RESOURCE_LINK###-->
+					</li>
+				<!--###DEFAULT_RESOURCES###-->
+
+				<!--###PDF_RESOURCES###-->
+					<li>
+					###RESOURCE_CONTENT###
+					</li>
+				<!--###PDF_RESOURCES###-->
+
+				<!--###EMBEDDED_MP3###-->
+					<li>
+					###RESOURCE_CONTENT###
+					</li>
+				<!--###EMBEDDED_MP3###-->
+
+
+				</ul>
+
+			</li>
+			<!-- ###ITEM### end -->
+	<!-- ###CONTENT### end -->
+		</ul>
+			###BROWSE_LINKS###
+<!-- ###TEMPLATE_LATEST_VERBOSE### end -->
+
+<br />
+<h3>TEMPLATE_SERIES_VERBOSE</h3>
+<em>Template for single view of a sermon.</em>
+<br />
+
+<!-- ###TEMPLATE_SERIES_VERBOSE### begin -->
+	<!--###CONTENT###-->
+		###SERIES_TITLE###
+		###SERIES_DESCRIPTION###
+		###SERIES_SCRIPTURE###
+		###SERIES_STARTDATE###
+		###SERIES_ENDDATE###
+		###SERIES_GRAPHIC###
+
+		<!--###SERIES_SEASON###-->
+		###SEASON_TITLE###
+		<!--###SERIES_SEASON###-->
+
+		<!--###SERIES_TOPICS###-->
+		###TOPIC_TITLE###
+		###TOPIC_DESCRIPTION###
+		<!--###SERIES_TOPICS###-->
+
+	<!--###CONTENT###-->
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!-- ###TEMPLATE_SERIES_VERBOSE### end -->
+
+
+<br />
+<h3>TEMPLATE_SERMON_VERBOSE</h3>
+<em>Template for single view of a sermon.</em>
+<br />
+
+
+<!-- ###TEMPLATE_SERMON_VERBOSE### begin -->
+	<!--###CONTENT###-->
+		<div class="tx-wecsermons-pi1-sermon-verbose" >
+			###SERMON_GRAPHIC###
+
+			<h2>###SERMON_TITLE###</h2>
+			<p>###SERMON_OCCURRENCE_DATE###</p>
+			###SERMON_SCRIPTURE###
+
+			<!--###SERMON_SERIES###-->
+					<!--###SERIES_LINK###-->###SERIES_TITLE###<!--###SERIES_LINK###-->
+			<!--###SERMON_SERIES###-->
+
+			<!--###SERMON_SPEAKERS###-->
+				<td>
+					###SPEAKER_PHOTO###<br/>
+
+						<!--###SPEAKER_LINK###-->###SPEAKER_FULLNAME### <!--###SPEAKER_LINK###-->
+
+				</td>
+			<!--###SERMON_SPEAKERS###-->
+
+			###SERMON_DESCRIPTION###
+
+
+			<!--###SERMON_TOPICS###-->
+				<p>
+					<!--###TOPIC_LINK###-->###TOPIC_TITLE###<!--###TOPIC_LINK###-->
+					###TOPIC_DESCRIPTION###
+				</p>
+			<!--###SERMON_TOPICS###-->
+
+				<ul class="tx-wecsermons-pi1-resources">
+					<h2>Sermon Multimedia:</h2>
+
+				<!--###DEFAULT_RESOURCES###-->
+					<li>
+						<!--###RESOURCE_LINK###-->###RESOURCE_TITLE###<!--###RESOURCE_LINK###-->
+					</li>
+				<!--###DEFAULT_RESOURCES###-->
+
+				<!--###PDF_RESOURCES###-->
+					<li>
+						###RESOURCE_CONTENT###
+					</li>
+				<!--###PDF_RESOURCES###-->
+
+				<!--###EMBEDDED_AVI###-->
+					<li>
+						###RESOURCE_CONTENT###
+					</li>
+				<!--###EMBEDDED_AVI###-->
+
+				<!--###EMBEDDED_MP3###-->
+					<li>
+						###RESOURCE_CONTENT###
+					</li>
+				<!--###EMBEDDED_MP3###-->
+
+				<!--###EMBEDDED_MP4###-->
+					<li>
+						###RESOURCE_CONTENT###
+					</li>
+				<!--###EMBEDDED_MP4###-->
+
+				<!--###EMBEDDED_SWF###-->
+					<li>
+						###RESOURCE_CONTENT###
+					</li>
+				<!--###EMBEDDED_SWF###-->
+
+				<!--###EMBEDDED_MOV###-->
+					<li>
+						###RESOURCE_CONTENT###
+					</li>
+				<!--###EMBEDDED_MOV###-->
+
+				<!--###EMBEDDED_WMA###-->
+					<li>
+						###RESOURCE_CONTENT###
+					</li>
+				<!--###EMBEDDED_WMA###-->
+
+				<!--###EMBEDDED_WMV###-->
+					<li>
+						###RESOURCE_CONTENT###
+					</li>
+				<!--###EMBEDDED_WMV###-->
+
+				<!--###EMBEDDED_REALMEDIA###-->
+					<li>
+						###RESOURCE_CONTENT###
+					</li>
+				<!--###EMBEDDED_REALMEDIA###-->
+
+				<!--###DOWNLOAD_FILE###-->
+					<li>
+						###RESOURCE_CONTENT###
+					</li>
+				<!--###DOWNLOAD_FILE###-->
+
+		 		<!--###POLL_RESOURCES###-->
+					<li>
+				 		<!--###RESOURCE_LINK###-->Take the Poll ...<!--###RESOURCE_LINK###-->
+					</li>
+		 		<!--###POLL_RESOURCES###-->
+
+				<!--###YOUTUBE_VIDEO###-->
+					<li>###RESOURCE_CONTENT###</li>
+				<!--###YOUTUBE_VIDEO###-->
+
+			</ul>
+
+	</div>
+
+	<!--###CONTENT###-->
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!-- ###TEMPLATE_SERMON_VERBOSE### end -->
+
+
+<br />
+<h3>TEMPLATE_SPEAKER_VERBOSE</h3>
+<em>This is an example template for styling a single view of a speaker.</em>
+<br />
+
+
+<!-- ###TEMPLATE_SPEAKER_VERBOSE### begin -->
+	<div class="tx-wecsermons-speaker-singleView">
+	<!-- ###CONTENT### begin -->
+						###SPEAKER_PHOTO###
+						###SPEAKER_EMAIL###
+						###SPEAKER_LASTNAME### ###SPEAKER_FIRSTNAME###
+						###SPEAKER_URL###
+						###SPEAKER_BLOGURL###
+	<!-- ###CONTENT### end -->
+	</div>
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!-- ###TEMPLATE_SPEAKER_VERBOSE### end -->
+
+
+<br />
+<h3>TEMPLATE_TOPIC_VERBOSE</h3>
+<em>This is an example template for styling a single view of a speaker.</em>
+<br />
+
+<!-- ###TEMPLATE_TOPIC_VERBOSE### begin -->
+	<div class="tx-wecsermons-topic-singleView">
+	<!-- ###CONTENT### begin -->
+						###TOPIC_TITLE###
+						###TOPIC_DESCRIPTION###
+
+						<!-- ###TOPIC_SERMONS### -->
+						<p>
+						<div class="tx-wecsermons-topic-sermons">
+							<!-- ###SERMON_LINK### -->
+								###SERMON_TITLE###
+							<!-- ###SERMON_LINK### end -->
+						</div>
+						</p>
+						<!-- ###TOPIC_SERMONS### end -->
+
+						<!-- ###TOPIC_SERIES### -->
+						<p>
+						<div class="tx-wecsermons-topic-series">
+							<!-- ###SERIES_LINK### -->
+								###SERIES_TITLE###
+							<!-- ###SERIES_LINK### end -->
+						</div>
+						</p>
+						<!-- ###TOPIC_SERIES### end -->
+	<!-- ###CONTENT### end -->
+	</div>
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!-- ###TEMPLATE_TOPIC_VERBOSE### end -->
+
+
+<br />
+<h3>TEMPLATE_SEASON_VERBOSE</h3>
+<em>This is an example template for styling a single view of a speaker.</em>
+<br />
+
+<!-- ###TEMPLATE_SEASON_VERBOSE### begin -->
+	<div class="tx-wecsermons-season-singleView">
+	<!-- ###CONTENT### begin -->
+						###SEASON_TITLE###
+						###SEASON_DESCRIPTION###
+
+						<!-- ###SEASON_SERIES### -->
+						<p>
+						<div class="tx-wecsermons-season-series">
+							<!-- ###SERIES_LINK### -->
+								###SERIES_TITLE###
+							<!-- ###SERIES_LINK### end -->
+						</div>
+						</p>
+						<!-- ###SEASON_SERIES### end -->
+	<!-- ###CONTENT### end -->
+	</div>
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!-- ###TEMPLATE_SEASON_VERBOSE### end -->
+
+<!--###TEMPLATE_SEARCHBOX_VERBOSE### begin-->
+<div class="tx-wecsermons-pi1-searchbox">
+  <form action="###FORM_ACTION###" method="post">
+	 ###SEARCHBOX_OPTIONS###
+    <input type="text" name="tx_wecsermons_pi1[sword]" value="" class="tx-wecsermons-pi1-searchbox-sword" />
+    <input type="submit" value="###SEARCH_BUTTON_NAME###" class="tx-wecsermons-pi1-searchbox-button" />
+    <input type="submit" value="Clear"" onclick="document.getElementById('tx-wecsermons-pi1-searchbox-form').reset();"/>
+    <input type="hidden" name="no_cache" value="1" />
+    <input type="hidden" name="tx_wecsermons_pi1[pointer]" value="" />
+  </form>
+</div>
+<!--###TEMPLATE_SEARCHBOX_VERBOSE### end-->
+
+
+<br />
+<h2>Customized Layout Styles</h2>
+<h3>TEMPLATE_LIST_CUSTOMIZED</h3>
+<em>Template for customized view of a sermon listing.</em>
+<br />
+
+<!-- ###TEMPLATE_LIST_CUSTOMIZED### begin -->
+
+	<h2>Summary:</h2>
+	<p>This is an example list view of sermon records. This template is named &#35;&#35;&#35;&#84;&#69;&#77;&#80;&#76;&#65;&#84;&#69;&#95;&#76;&#73;&#83;&#84;&#52;&#35;&#35;&#35;, and should be located in: typo3conf/ext/tx_wecsermons/pi1/wecsermons.tmpl, from your TYPO3 installation folder.</p>
+	<p>This template prototypes most of the markers that can be used in the SMS, and the built in resource types that come with the <a href="http://webempoweredchurch.com/gettingstarted/installing/">WEC Starter Package</a>, or as a TYPO3 import package.</p>
+	<p>For each resource type that exists or is created, there are specialized <strong>tags</strong> which tell the SMS where to place content in your template.<br/>
+	F.e. MP3 resources use the <strong>template subpart tag</strong> &#60;&#33;&#45;&#45;&#35;&#35;&#35;&#77;&#80;&#51;&#95;&#82;&#69;&#83;&#79;&#85;&#82;&#67;&#69;&#83;&#35;&#35;&#35;&#45;&#45;&#62;.
+	Within this <strong>template subpart tag</strong>, there are <strong>marker tags</strong> that can be used, and are identical for every resource:</p>
+	<ul>
+		<li>&#35;&#35;&#35;&#82;&#69;&#83;&#79;&#85;&#82;&#67;&#69;&#95;&#84;&#73;&#84;&#76;&#69;&#35;&#35;&#35;	-	Title of resource</li>
+		<li>&#35;&#35;&#35;&#82;&#69;&#83;&#79;&#85;&#82;&#67;&#69;&#95;&#68;&#69;&#83;&#67;&#82;&#73;&#80;&#84;&#73;&#79;&#78;&#35;&#35;&#35;	-	Description of the resource</li>
+		<li>&#35;&#35;&#35;&#82;&#69;&#83;&#79;&#85;&#82;&#67;&#69;&#95;&#71;&#82;&#65;&#80;&#72;&#73;&#67;&#35;&#35;&#35;	-	Graphic of resource</li>
+		<li>&#35;&#35;&#35;&#82;&#69;&#83;&#79;&#85;&#82;&#67;&#69;&#95;&#70;&#73;&#76;&#69;&#35;&#35;&#35; - The filename of an uploaded file</li>
+		<li>&#35;&#35;&#35;&#82;&#69;&#83;&#79;&#85;&#82;&#67;&#69;&#95;&#87;&#69;&#66;&#65;&#68;&#68;&#82;&#69;&#83;&#83;&#49;&#35;&#35;&#35; - A web address or url associated with this resource</li>
+		<li>&#35;&#35;&#35;&#82;&#69;&#83;&#79;&#85;&#82;&#67;&#69;&#95;&#87;&#69;&#66;&#65;&#68;&#68;&#82;&#69;&#83;&#83;&#50;&#35;&#35;&#35; - A web address or url associated with this resource</li>
+		<li>&#35;&#35;&#35;&#82;&#69;&#83;&#79;&#85;&#82;&#67;&#69;&#95;&#87;&#69;&#66;&#65;&#68;&#68;&#82;&#69;&#83;&#83;&#51;&#35;&#35;&#35; - A web address or url associated with this resource</li>
+		<li>&#35;&#35;&#35;&#82;&#69;&#83;&#79;&#85;&#82;&#67;&#69;&#95;&#67;&#79;&#78;&#84;&#69;&#78;&#84;&#35;&#35;&#35; - The resource content generated throgh TypoScript, allowing complex output of resources that can not be accomplished
+			through marker tags alone.</li>
+	</ul>
+	<p>Please refer to the top of this file, wecsermons.tmpl, for all markers, subparts, and wrapped subparts that are available.</p>
+	<p>Although there are many things you can do with the SMS extension upon first installing it, it is highly customizable to the needs of your organization.<br/><br/></p>
+	<hr/>
+
+	<!--###CONTENT###-->
+		<!--###ITEM###-->
+
+		<p>Sermon Title: (with link to single view using &lt;&#33;&#45;&#45;&#35;&#35;&#35;&#83;&#69;&#82;&#77;&#79;&#78;&#95;&#76;&#73;&#78;&#75;&#35;&#35;&#35;&#45;&#45;&gt; wrapping tags)<br/>
+		<!--###SERMON_LINK###-->###SERMON_TITLE###<!--###SERMON_LINK###--></p>
+
+		<!--###SERMON_SERIES### begin-->
+		<div id="tx-wecsermons-pi1-series-example" class="tx-wecsermons-pi1-example">
+		<p><strong>Sermon Series:</strong></p>
+
+			<p>Series Title:<br/>
+			<!--###SERIES_LINK###-->###SERIES_TITLE###<!--###SERIES_LINK###--></p>
+
+		</div>
+		<!--###SERMON_SERIES### end-->
+
+		<!--###SERMON_SPEAKERS### begin-->
+		<div id="tx-wecsermons-pi1-speakers-example" class="tx-wecsermons-pi1-example">
+			<p><strong>Speakers:</strong></p>
+
+			<p>Speaker Full Name:<br/>
+			<!--###SPEAKER_LINK###-->###SPEAKER_FULLNAME###<!--###SPEAKER_LINK###--></p>
+
+		</div>
+		<!--###SERMON_SPEAKERS### end-->
+
+		<!--###SERMON_TOPICS### begin-->
+		<div id="tx-wecsermons-pi1-topics-example" class="tx-wecsermons-pi1-example">
+			<p><strong>Topics:</strong></p>
+
+			<p>Title:<br/>
+			<!--###TOPIC_LINK###-->###TOPIC_TITLE###<!--###TOPIC_LINK###--></p>
+
+			<p>Description:<br/>
+			###TOPIC_DESCRIPTION###</p>
+		</div>
+		<!--###SERMON_TOPICS### end-->
+
+		<!--###EMBEDDED_MP3###-->
+		<div id="tx-wecsermons-pi1-mp3-example" class="tx-wecsermons-pi1-example">
+			<p><strong>MP3 Resources:</strong></p>
+			<p>Resource Title:<br/>
+			<!--###RESOURCE_LINK###-->###RESOURCE_TITLE###<!--###RESOURCE_LINK###--></p>
+
+		</div>
+		<!--###EMBEDDED_MP3###-->
+
+		<!--###EMBEDDED_FLV###-->
+		<div id="tx-wecsermons-pi1-flv-example" class="tx-wecsermons-pi1-example">
+			<p><strong>Flash Video Resources:</strong></p>
+			<!--###RESOURCE_LINK###-->###RESOURCE_TITLE###<!--###RESOURCE_LINK###--></p>
+
+		</div>
+		<!--###EMBEDDED_FLV###-->
+
+		<!--###PDF_RESOURCES###-->
+		<div id="tx-wecsermons-pi1-pdf-example" class="tx-wecsermons-pi1-example">
+			<p><strong>PDF Resources:</strong></p>
+			<!--###RESOURCE_LINK###-->###RESOURCE_TITLE###<!--###RESOURCE_LINK###-->
+		</div>
+		<!--###PDF_RESOURCES###-->
+
+		<!--###DEFAULT_RESOURCES###-->
+		<div id="tx-wecsermons-pi1-default-example" class="tx-wecsermons-pi1-example">
+			<p><strong>Default Resources:</strong></p>
+			<p>Title:<br/>
+				<!--###RESOURCE_LINK###-->###RESOURCE_TITLE###<!--###RESOURCE_LINK###--></p>
+		</div>
+		<!--###DEFAULT_RESOURCES###-->
+
+		<!--###POLL_RESOURCES###-->
+			<p><strong>Poll Resources:</strong></p>
+
+			<p>Title:<br/>
+			<!--###RESOURCE_LINK###-->###RESOURCE_TITLE###<!--###RESOURCE_LINK###--></p>
+		<!--###POLL_RESOURCES###-->
+
+		<!--###NEWS_RESOURCES###-->
+			<p><strong>News Resources:</strong></p>
+
+			<p>Title:<br/>
+			<!--###RESOURCE_LINK###-->###RESOURCE_TITLE###<!--###RESOURCE_LINK###--></p>
+		<!--###NEWS_RESOURCES###-->
+
+		<!--###DISCUSSION_RESOURCES###-->
+			<p><strong>Discussion Resources:</strong></p>
+
+			<p>Title:<br/>
+			<!--###RESOURCE_LINK###-->###RESOURCE_TITLE###<!--###RESOURCE_LINK###--></p>
+		<!--###DISCUSSION_RESOURCES###-->
+
+		<!--###DOWNLOAD_FILE###-->
+			<p><strong>Downloadable File:</strong></p>
+
+			<p>Title:<br/>
+		<!--###RESOURCE_LINK###-->###RESOURCE_TITLE###<!--###RESOURCE_LINK###--></p>
+			###RESOURCE_CONTENT###
+		<!--###DOWNLOAD_FILE###-->
+
+		<!--###DOWNLOAD_GRAPHIC###-->
+			<p><strong>Downloadable Graphic:</strong></p>
+
+			<p>Title:<br/>
+			<!--###RESOURCE_LINK###-->###RESOURCE_TITLE###<!--###RESOURCE_LINK###--></p>
+			###RESOURCE_CONTENT###
+		<!--###DOWNLOAD_GRAPHIC###-->
+
+		<hr/>
+		<!--###ITEM###-->
+	<!--###CONTENT###-->
+
+<!-- ###TEMPLATE_LIST_CUSTOMIZED### end -->
+
+<h3>TEMPLATE_LATEST_CUSTOMIZED</h3>
+<em>Template for customized view of the latest sermons listing.</em>
+<br />
+
+<!-- ###TEMPLATE_LATEST_CUSTOMIZED### begin -->
+
+	<h2>Summary:</h2>
+	<p>This is an example list view of sermon records. This template is named &#35;&#35;&#35;&#84;&#69;&#77;&#80;&#76;&#65;&#84;&#69;&#95;&#76;&#73;&#83;&#84;&#52;&#35;&#35;&#35;, and should be located in: typo3conf/ext/tx_wecsermons/pi1/wecsermons.tmpl, from your TYPO3 installation folder.</p>
+	<p>This template prototypes most of the markers that can be used in the SMS, and the built in resource types that come with the <a href="http://webempoweredchurch.com/gettingstarted/installing/">WEC Starter Package</a>, or as a TYPO3 import package.</p>
+	<p>For each resource type that exists or is created, there are specialized <strong>tags</strong> which tell the SMS where to place content in your template.<br/>
+	F.e. MP3 resources use the <strong>template subpart tag</strong> &#60;&#33;&#45;&#45;&#35;&#35;&#35;&#77;&#80;&#51;&#95;&#82;&#69;&#83;&#79;&#85;&#82;&#67;&#69;&#83;&#35;&#35;&#35;&#45;&#45;&#62;.
+	Within this <strong>template subpart tag</strong>, there are <strong>marker tags</strong> that can be used, and are identical for every resource:</p>
+	<ul>
+		<li>&#35;&#35;&#35;&#82;&#69;&#83;&#79;&#85;&#82;&#67;&#69;&#95;&#84;&#73;&#84;&#76;&#69;&#35;&#35;&#35;	-	Title of resource</li>
+		<li>&#35;&#35;&#35;&#82;&#69;&#83;&#79;&#85;&#82;&#67;&#69;&#95;&#68;&#69;&#83;&#67;&#82;&#73;&#80;&#84;&#73;&#79;&#78;&#35;&#35;&#35;	-	Description of the resource</li>
+		<li>&#35;&#35;&#35;&#82;&#69;&#83;&#79;&#85;&#82;&#67;&#69;&#95;&#71;&#82;&#65;&#80;&#72;&#73;&#67;&#35;&#35;&#35;	-	Graphic of resource</li>
+		<li>&#35;&#35;&#35;&#82;&#69;&#83;&#79;&#85;&#82;&#67;&#69;&#95;&#70;&#73;&#76;&#69;&#35;&#35;&#35; - The filename of an uploaded file</li>
+		<li>&#35;&#35;&#35;&#82;&#69;&#83;&#79;&#85;&#82;&#67;&#69;&#95;&#87;&#69;&#66;&#65;&#68;&#68;&#82;&#69;&#83;&#83;&#49;&#35;&#35;&#35; - A web address or url associated with this resource</li>
+		<li>&#35;&#35;&#35;&#82;&#69;&#83;&#79;&#85;&#82;&#67;&#69;&#95;&#87;&#69;&#66;&#65;&#68;&#68;&#82;&#69;&#83;&#83;&#50;&#35;&#35;&#35; - A web address or url associated with this resource</li>
+		<li>&#35;&#35;&#35;&#82;&#69;&#83;&#79;&#85;&#82;&#67;&#69;&#95;&#87;&#69;&#66;&#65;&#68;&#68;&#82;&#69;&#83;&#83;&#51;&#35;&#35;&#35; - A web address or url associated with this resource</li>
+		<li>&#35;&#35;&#35;&#82;&#69;&#83;&#79;&#85;&#82;&#67;&#69;&#95;&#67;&#79;&#78;&#84;&#69;&#78;&#84;&#35;&#35;&#35; - The resource content generated throgh TypoScript, allowing complex output of resources that can not be accomplished
+			through marker tags alone.</li>
+	</ul>
+	<p>Please refer to the top of this file, wecsermons.tmpl, for all markers, subparts, and wrapped subparts that are available.</p>
+	<p>Although there are many things you can do with the SMS extension upon first installing it, it is highly customizable to the needs of your organization.<br/><br/></p>
+	<hr/>
+
+	<!--###CONTENT###-->
+		<!--###ITEM###-->
+
+		<p>Sermon Title: (with link to single view using &lt;&#33;&#45;&#45;&#35;&#35;&#35;&#83;&#69;&#82;&#77;&#79;&#78;&#95;&#76;&#73;&#78;&#75;&#35;&#35;&#35;&#45;&#45;&gt; wrapping tags)<br/>
+		<!--###SERMON_LINK###-->###SERMON_TITLE###<!--###SERMON_LINK###--></p>
+
+
+		<!--###SERMON_SERIES### begin-->
+		<div id="tx-wecsermons-pi1-series-example" class="tx-wecsermons-pi1-example">
+		<p><strong>Sermon Series:</strong></p>
+
+			<p>Series Title:<br/>
+			<!--###SERIES_LINK###-->###SERIES_TITLE###<!--###SERIES_LINK###--></p>
+
+		</div>
+		<!--###SERMON_SERIES### end-->
+
+		<!--###SERMON_SPEAKERS### begin-->
+		<div id="tx-wecsermons-pi1-speakers-example" class="tx-wecsermons-pi1-example">
+			<p><strong>Speakers:</strong></p>
+
+			<p>Speaker Full Name:<br/>
+			<!--###SPEAKER_LINK###-->###SPEAKER_FULLNAME###<!--###SPEAKER_LINK###--></p>
+
+		</div>
+		<!--###SERMON_SPEAKERS### end-->
+
+		<!--###SERMON_TOPICS### begin-->
+		<div id="tx-wecsermons-pi1-topics-example" class="tx-wecsermons-pi1-example">
+			<p><strong>Topics:</strong></p>
+
+			<p>Title:<br/>
+			<!--###TOPIC_LINK###-->###TOPIC_TITLE###<!--###TOPIC_LINK###--></p>
+
+			<p>Description:<br/>
+			###TOPIC_DESCRIPTION###</p>
+		</div>
+		<!--###SERMON_TOPICS### end-->
+
+		<!--###EMBEDDED_MP3###-->
+		<div id="tx-wecsermons-pi1-mp3-example" class="tx-wecsermons-pi1-example">
+			<p><strong>MP3 Resources:</strong></p>
+			<p>Resource Title:<br/>
+			<!--###RESOURCE_LINK###-->###RESOURCE_TITLE###<!--###RESOURCE_LINK###--></p>
+
+		</div>
+		<!--###EMBEDDED_MP3###-->
+
+		<!--###PDF_RESOURCES###-->
+		<div id="tx-wecsermons-pi1-pdf-example" class="tx-wecsermons-pi1-example">
+			<p><strong>PDF Resources:</strong></p>
+			<!--###RESOURCE_LINK###-->###RESOURCE_TITLE###<!--###RESOURCE_LINK###-->
+		</div>
+		<!--###PDF_RESOURCES###-->
+
+		<!--###DEFAULT_RESOURCES###-->
+		<div id="tx-wecsermons-pi1-default-example" class="tx-wecsermons-pi1-example">
+			<p><strong>Default Resources:</strong></p>
+			<p>Title:<br/>
+				<!--###RESOURCE_LINK###-->###RESOURCE_TITLE###<!--###RESOURCE_LINK###--></p>
+		</div>
+		<!--###DEFAULT_RESOURCES###-->
+
+		<!--###POLL_RESOURCES###-->
+			<p><strong>Poll Resources:</strong></p>
+
+			<p>Title:<br/>
+			<!--###RESOURCE_LINK###-->###RESOURCE_TITLE###<!--###RESOURCE_LINK###--></p>
+		<!--###POLL_RESOURCES###-->
+
+		<!--###NEWS_RESOURCES###-->
+			<p><strong>News Resources:</strong></p>
+
+			<p>Title:<br/>
+			<!--###RESOURCE_LINK###-->###RESOURCE_TITLE###<!--###RESOURCE_LINK###--></p>
+		<!--###NEWS_RESOURCES###-->
+
+		<!--###DISCUSSION_RESOURCES###-->
+			<p><strong>Discussion Resources:</strong></p>
+
+			<p>Title:<br/>
+			<!--###RESOURCE_LINK###-->###RESOURCE_TITLE###<!--###RESOURCE_LINK###--></p>
+		<!--###DISCUSSION_RESOURCES###-->
+		<hr/>
+		<!--###ITEM###-->
+	<!--###CONTENT###-->
+
+<!-- ###TEMPLATE_LATEST_CUSTOMIZED### end -->
+
+<br />
+<h3>TEMPLATE_SERIES_CUSTOMIZED</h3>
+<em>Template for a view of the sermon series.</em>
+<br />
+<!--###TEMPLATE_SERIES_CUSTOMIZED### begin -->
+	<!--###CONTENT### begin-->
+			<p>Series Title:<br/>
+			###SERIES_TITLE###</p>
+
+			<p>Series Description:<br/>
+			###SERIES_DESCRIPTION###</p>
+
+			<p>Series Scripture:<br/>
+			###SERIES_SCRIPTURE###</p>
+
+			<p>Series Start Date:<br/>
+			###SERIES_STARTDATE###</p>
+
+			<p>Series End Date:<br/>
+			###SERIES_ENDDATE###</p>
+
+			<p>Series Graphic:<br/>
+			###SERIES_GRAPHIC###</p>
+
+			<!--###SERIES_SEASON### begin-->
+			<p>Season Title:<br/>
+			<!--###SEASON_LINK###-->###SEASON_TITLE###<!--###SEASON_LINK###--></p>
+			<!--###SERIES_SEASON### end-->
+
+			<!--###SERIES_TOPICS### begin-->
+			<p>Topic Title:<br/>
+			<!--###TOPIC_LINK###-->###TOPIC_TITLE###<!--###TOPIC_LINK###--></p>
+			<!--###SERIES_TOPICS### end-->
+
+	<!--###CONTENT### end-->
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!-- ###TEMPLATE_SERIES_CUSTOMIZED### end -->
+
+
+<br />
+<h3>TEMPLATE_SERMON_CUSTOMIZED</h3>
+<em>Template for a view of a single sermon.</em>
+<br />
+<!-- ###TEMPLATE_SERMON_CUSTOMIZED### begin -->
+	<!--###CONTENT### begin-->
+		<p>Sermon Title:<br/>
+		###SERMON_TITLE###</p>
+
+		<p>Sermon Occurrence Date:<br/>
+		###SERMON_OCCURRENCE_DATE###</p>
+
+		Sermon Description:<br/>
+		###SERMON_DESCRIPTION###
+
+		<p>Sermon Scripture:<br/>
+		###SERMON_SCRIPTURE###</p>
+
+		<p>Sermon Graphic:<br/>
+		###SERMON_GRAPHIC###</p>
+	<!--###CONTENT### end-->
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!-- ###TEMPLATE_SERMON_CUSTOMIZED### end -->
+
+<br />
+<h3>TEMPLATE_SPEAKER_CUSTOMIZED</h3>
+<em>Template for a speaker single view.</em>
+<br />
+<!-- ###TEMPLATE_SPEAKER_CUSTOMIZED### begin -->
+	<!--###CONTENT### begin-->
+			<p>Speaker Full Name:<br/>
+			###SPEAKER_FULLNAME###</p>
+
+			<p>Speaker First Name:<br/>
+			###SPEAKER_FIRSTNAME###</p>
+
+			<p>Speaker Last Name:<br/>
+			###SPEAKER_LASTNAME###</p>
+
+			<p>Speaker URL:<br/>
+			###SPEAKER_URL###</p>
+
+			<p>Speaker Blog URL:<br/>
+			###SPEAKER_BLOGURL###</p>
+
+			<p>Speaker Photo:<br/>
+			###SPEAKER_PHOTO###</p>
+
+			<p>Speaker E-mail:<br/>
+			###SPEAKER_EMAIL###</p>
+	<!--###CONTENT### end-->
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!-- ###TEMPLATE_SPEAKER_CUSTOMIZED### end -->
+
+<br />
+<h3>TEMPLATE_TOPIC_CUSTOMIZED</h3>
+<em>Template for a speaker single view.</em>
+<br />
+<!-- ###TEMPLATE_TOPIC_CUSTOMIZED### begin -->
+	<!--###CONTENT### begin-->
+			<p>Title:<br/>
+			###TOPIC_TITLE###</p>
+
+			<p>Description:<br/>
+			###TOPIC_DESCRIPTION###</p>
+	<!--###CONTENT### end-->
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!-- ###TEMPLATE_TOPIC_CUSTOMIZED### end -->
+
+<br />
+<h3>TEMPLATE_SEASON_CUSTOMIZED</h3>
+<em>Template for a speaker single view.</em>
+<br />
+<!-- ###TEMPLATE_SEASON_CUSTOMIZED### begin -->
+	<!--###CONTENT### begin-->
+			<p>Title:<br/>
+			###SEASON_TITLE###</p>
+
+			<p>Description:<br/>
+			###SEASON_DESCRIPTION###</p>
+	<!--###CONTENT### end-->
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!-- ###TEMPLATE_SEASON_CUSTOMIZED### end -->
+
+<!--###TEMPLATE_SEARCHBOX_CUSTOMIZED### begin-->
+<div class="tx-wecsermons-pi1-searchbox">
+  <form action="###FORM_ACTION###" method="post">
+	 ###SEARCHBOX_OPTIONS###
+    <input type="text" name="tx_wecsermons_pi1[sword]" value="" class="tx-wecsermons-pi1-searchbox-sword" />
+    <input type="submit" value="###SEARCH_BUTTON_NAME###" class="tx-wecsermons-pi1-searchbox-button" />
+    <input type="submit" value="Clear"" onclick="document.getElementById('tx-wecsermons-pi1-searchbox-form').reset();"/>
+    <input type="hidden" name="no_cache" value="1" />
+    <input type="hidden" name="tx_wecsermons_pi1[pointer]" value="" />
+  </form>
+</div>
+<!--###TEMPLATE_SEARCHBOX_CUSTOMIZED### end-->
+
+
+<br />
+<h1>Resources Templates</h3>
+<em>Following are templates that define how resources are shown in their single view.</em>
+
+<br />
+<h3>TEMPLATE_NEWS_RESOURCES</h3>
+<em>This is an example template for styling a News resource item.</em>
+<br />
+
+<!-- ###TEMPLATE_NEWS_RESOURCES### begin -->
+	<!--###CONTENT###-->
+		<div id="tx-wecsermons-pi1-news">
+			###RESOURCE_CONTENT###
+		</div>
+	<!--###CONTENT###-->
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!-- ###TEMPLATE_NEWS_RESOURCES### end -->
+
+<br />
+<h3>TEMPLATE_PDF_RESOURCES</h3>
+<em>This is an example template for styling a PDF resource item.</em>
+<br />
+
+<!--###TEMPLATE_PDF_RESOURCES### begin-->
+			<!--###CONTENT###-->
+				###RESOURCE_CONTENT###
+			<!--###CONTENT###-->
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!--###TEMPLATE_PDF_RESOURCES### end-->
+
+
+<br />
+<h3>TEMPLATE_EMBEDDED_MP3</h3>
+<em>This is an example template for styling a MP3 resource item.</em>
+<br />
+
+<!--###TEMPLATE_EMBEDDED_MP3### begin-->
+	<!--###CONTENT###-->
+			###RESOURCE_CONTENT###
+	<!--###CONTENT###-->
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!--###TEMPLATE_EMBEDDED_MP3### end-->
+
+
+<br />
+<h3>TEMPLATE_EMBEDDED_FLV</h3>
+<em>This is an example template for styling a FLV resource item.</em>
+<br />
+
+<!--###TEMPLATE_EMBEDDED_FLV### begin-->
+	<!--###CONTENT###-->
+			###RESOURCE_CONTENT###
+	<!--###CONTENT###-->
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!--###TEMPLATE_EMBEDDED_FLV### end-->
+
+
+<br />
+<h3>TEMPLATE_POLL_RESOURCES</h3>
+<em>This is an example template for styling a Poll resource item.</em>
+<br />
+
+<!--###TEMPLATE_POLL_RESOURCES### begin-->
+	<!--###CONTENT###-->
+			###RESOURCE_CONTENT###
+	<!--###CONTENT###-->
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!--###TEMPLATE_POLL_RESOURCES### end-->
+
+<br />
+<h3>TEMPLATE_DISCUSSION_RESOURCES</h3>
+<em>This is an example template for styling a Discussion resource item.</em>
+<br />
+
+<!--###TEMPLATE_DISCUSSION_RESOURCES### begin-->
+	<!--###CONTENT###-->
+			###RESOURCE_CONTENT###
+	<!--###CONTENT###-->
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!--###TEMPLATE_DISCUSSION_RESOURCES### end-->
+
+<br />
+<h3>TEMPLATE_DOWNLOAD_GRAPHIC</h3>
+<em>This is an example template for styling a Downloadable resource item.</em>
+<br />
+
+<!--###TEMPLATE_DOWNLOAD_GRAPHIC### begin-->
+	<!--###CONTENT###-->
+			###RESOURCE_CONTENT###
+	<!--###CONTENT###-->
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!--###TEMPLATE_DOWNLOAD_GRAPHIC### end-->
+
+<br />
+<h3>TEMPLATE_EMBEDDED_MEDIA</h3>
+<em>This is an example template for styling a MP3 resource item.</em>
+<br />
+
+<!--###TEMPLATE_EMBEDDED_MEDIA### begin-->
+	<!--###CONTENT###-->
+			###RESOURCE_CONTENT###
+	<!--###CONTENT###-->
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!--###TEMPLATE_EMBEDDED_MEDIA### end-->
+
+<br />
+<h3>TEMPLATE_DEFAULT_RESOURCES</h3>
+<em>This is an example template for styling a MP3 resource item.</em>
+<br />
+
+<!--###TEMPLATE_DEFAULT_RESOURCES### begin-->
+	<!--###CONTENT###-->
+			<div id="tx-wecsermons-pi1-default-resources">
+				###RESOURCE_TITLE###
+				<!--###RESOURCE_LINK###--> ###RESOURCE_FILE###<!--###RESOURCE_LINK###-->
+			</div>
+	<!--###CONTENT###-->
+	<p class="tx-wecsermons-pi1-backlink"><!--###BACK_LINK###-->###BACK_TO_LIST###<!--###BACK_LINK###--></p>
+<!--###TEMPLATE_DEFAULT_RESOURCES### end-->
+
+
+	<body>
+</html>

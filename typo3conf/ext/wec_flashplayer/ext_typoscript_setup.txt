@@ -1,0 +1,125 @@
+# Configuration for Flash Video Player
+plugin.tx_wecflashplayer_pi1 {
+	
+	# @description	Path to Flash movie to be loaded.
+	# @see			constants
+	flashPath = TEXT
+	flashPath.value = {$plugin.tx_wecflashplayer_pi1.flashPath}
+	
+	# @description	Width of the Flash movie.
+	# @see			constants
+	width = TEXT
+	width.value = {$plugin.tx_wecflashplayer_pi1.width}
+	
+	# @description	Height of the Flash movie.
+	# @see			constants
+	height = TEXT
+	height.value = {$plugin.tx_wecflashplayer_pi1.height}
+	
+	# @description	Text color.
+	# @see			constants
+	textcolor = TEXT
+	textcolor.value = {$plugin.tx_wecflashplayer_pi1.textcolor}
+	
+	# @description	Background color for Flash movie.
+	# @see			constants
+	bgcolor = TEXT
+	bgcolor.value = {$plugin.tx_wecflashplayer_pi1.bgcolor}
+	
+	# @description	Title of the video.
+	# @see			flexform
+	classtitle = TEXT
+	classtitle.value =
+	
+	# @description	Welcome or instructional text.
+	# @see			flexform
+	intromessage = TEXT
+	intromessage.value =
+	
+	# @description	Label for low bandwidth version.
+	# @see			constants
+	radioLabelLow = TEXT
+	radioLabelLow.value = {$plugin.tx_wecflashplayer_pi1.radioLabelLow}
+	
+	# @description	Label for high bandwidth version.
+	# @see			constants
+	radioLabelHigh = TEXT
+	radioLabelHigh.value = {$plugin.tx_wecflashplayer_pi1.radioLabelHigh}
+	
+	# @description	Path to load video files from.
+	videobase = TEXT
+	videobase.value = uploads/tx_wecflashplayer/
+	
+	# @description	Path to load bandwidth detection from.
+	bwbase = TEXT
+	bwbase.value = typo3conf/ext/wec_flashplayer/res/
+	
+	# @description	Path to load background image from.
+	bgbase = TEXT
+	bgbase.value = uploads/tx_wecflashplayer/
+	
+	# @description	Image to use for bandwidth checking
+	bwimage = TEXT
+	bwimage.value = 100k.jpg
+	
+	# @description	Background image for Flash movie.
+	# @see			FlexForm
+	bgimage = TEXT
+	bgimage.value =
+
+	# @description	Filename of low bandwidth video.
+	# @see			FlexForm
+	videolow = TEXT
+	videolow.value = 
+
+	# @description	Filename for high bandwidth video.
+	# @see			FlexForm
+	videohigh = TEXT
+	videohigh.value =
+	
+	# @description	wmode parameter for flash.  Can be opaque, transparent, or window.
+	wmode = TEXT
+	wmode.value = opaque
+}
+
+
+# Configuration for Flash-based MP3 Player
+plugin.tx_wecflashplayer_pi2 {
+	# @description	Path to Flash movie to be loaded.
+	# @see			constants
+	flashPath = TEXT
+	flashPath.value = {$plugin.tx_wecflashplayer_pi2.flashPath}
+	
+	# @description	Width of the Flash movie.
+	# @see			constants
+	width = TEXT
+	width.value = {$plugin.tx_wecflashplayer_pi2.width}
+	
+	# @description	Height of the Flash movie.
+	# @see			constants
+	height = TEXT
+	height.value = {$plugin.tx_wecflashplayer_pi2.height}
+	
+	# @description	Background color for Flash movie.
+	# @see			constants
+	bgcolor = TEXT
+	bgcolor.value = {$plugin.tx_wecflashplayer_pi2.bgcolor}
+	
+	# @description	Path to audio files.
+	audiobase = TEXT
+	audiobase.value = uploads/tx_wecflashplayer/
+	
+	# @description	Filename of MP3 file.
+	# @see			FlexForm
+	audiofile = TEXT
+	audiofile.value =
+	
+	# @description	Enable automatic playback.
+	# @see			FlexForm
+	autoplay = TEXT
+	autoplay.value =
+	
+	# @description	wmode parameter for flash.  Can be opaque, transparent, or window.
+	wmode = TEXT
+	wmode.value = opaque
+}

@@ -1,0 +1,51 @@
+#
+#	$Id: ext_typoscript_constants.txt,v 1.10 2005/08/29 18:59:56 ingorenner Exp $
+#
+
+plugin.tx_timtab {
+
+	# cat=plugin.tx_timtab/basic/10; type=string; label= Title: your blog name
+  title = timtab
+  
+	# cat=plugin.tx_timtab/basic/20; type=string; label= Tagline: A short description for your Blog
+  tagline = Blogging with TYPO3
+  
+	# cat=plugin.tx_timtab/basic/30; type=string; label= Blog homepage: the URL to your blog homepage
+  homepage = http://www.example.com
+
+	# cat=plugin.tx_timtab/basic/40; type=int+; label= Blog pid: The pid where the single view of your tt_news plugin resides and shows the blog posts
+  blogPid = 0
+  
+	# cat=plugin.tx_timtab/basic/50; type=int+; label= Home pid: The pid of your Homepage
+  homePid = 0
+}
+
+plugin.tx_timtab_pi2 {
+  
+	# cat=plugin.tx_timtab/webservices/10; type=int+; label= pid to store the posts in: The page or sysfolder where your posts from external tools will be saved
+  pidStorePosts = 0
+  
+	# cat=plugin.tx_timtab/webservices/15; type=int+; label= pid to store the comments in: The page or sysfolder where your comments and trackbacks will be saved
+  pidStoreComments = 0
+  
+	# cat=plugin.tx_timtab/webservices/20; type=int+; label= XML-RPC timeout: This sets the timeout for XML-RPC Server connections in seconds
+  connectionTimeout = 30
+  
+	# cat=plugin.tx_timtab/webservice/30; type=string; label= Blogger Title: The subject/title for posts created via blogger API
+  bloggerTitle = Blog post
+  
+	# cat=plugin.tx_timtab/enable/30; type=boolean; label= Blogger API: Enable Weblogging with external tools which are capable of using the Blogger API
+  enableBlogger = 0
+  
+	# cat=plugin.tx_timtab/enable/40; type=boolean; label= MetaWeblog API: Enable Weblogging with external tools which are capable of using the MetaWeblog API
+  enableMetaWeblog = 0
+  
+	# cat=plugin.tx_timtab/enable/50; type=boolean; label= Movable Type API: Enable Weblogging with external tools which are capable of using the Movable Type API
+  #enableMovableType = 0
+  
+	# cat=plugin.tx_timtab/enable/60; type=boolean; label= Uploads: Enable file uploads from external tools
+  #enableUploads = 0
+  
+	# cat=plugin.tx_timtab/enable/60; type=boolean; label= Strict API: Force the XML-RPC Server to be API compliant instead of behaving the more common way
+  strictAPI = 0
+}

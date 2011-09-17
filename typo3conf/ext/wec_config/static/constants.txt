@@ -1,0 +1,8 @@
+# cat=Site Constants/general/; type=string; label=Admin Email: Default email address that website information will flow through.	Mail is sent from this address to confirm user registrations and sent to this address to provide important information.
+adminEmail = 
+
+# cat=Site Constants/general/; type=string; label=Description: One sentence description of the site.  This will be read by search engines visiting the site.
+siteDescription = 
+
+# cat=Site Constants/general/; type=string; label=Contact: Physical address used for maps and other contact information.
+contact = 6759 South County Road 25A, Tipp City, OH 45371

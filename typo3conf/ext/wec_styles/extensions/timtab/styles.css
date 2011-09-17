@@ -1,0 +1,36 @@
+/*
+.entry .entryInfo {
+	border-top: 1px solid #e6e6e6;
+	margin-left: 0 !important;
+	padding-left: 0 !important;
+}
+*/
+.entry .entryInfo span.meta {
+	padding-right: 10px;
+}
+
+.entry .entryInfo span.commentCount {
+	padding-left: 10px;
+	border-left: 1px solid #e6e6e6;
+}
+
+.tx-veguestbook-pi1 .entry .entryInfo {
+	border-top: none;
+	float: left;
+	padding: 0;
+	margin: 0;
+	width: 175px;
+	border-right: 1px solid #ddd;
+	padding-right: 15px;
+	text-align: right;
+}
+
+.tx-veguestbook-pi1 .entry .message {
+	float: left;
+	padding-left: 15px;
+}
+
+.tx-veguestbook-pi1 .captchaWrapper {
+	display: inline-block;
+	border: 1px solid #ddd;
+}

@@ -1,0 +1,23 @@
+- incorporate the following idiom in the ext_update script (to prevent duplicate records sans transaction support):
+
+from an email with Peter Schott:
+
+Quick note on the potential duplicates and you may have considered this already.  You can LEFT JOIN out to the table you are going to INSERT and only insert if the result set in the target table IS NULL.
+
+e.g.
+
+select t1.*
+from t1
+LEFT JOIN Target
+  ON t1.fields = Target.fields
+WHERE Target.PrimaryKey IS NULL
+
+
+Something along those lines could help with re-inserting data or re-running the conversion later without needing to delete and re-insert data.  Not yet sure on the mechanics...
+
+- templates and tca items entries to allow grouping on Topic (this addresses Sandy's request in the forums)
+- clean up (javadoc documentation)
+- new style csh
+- finish Search branch
+- implement the new CSH functionality (and provide CSH entries for new fields, like Speaker Blog URL)
+- reorder the records (first come, first served) in ext_tables.php/tca.php so that Sermon Records come first

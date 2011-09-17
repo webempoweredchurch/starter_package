@@ -1,0 +1,97 @@
+<!-- ###NEWTOPIC### begin-->
+<!-- ###ROOTLINE_CONTAINER### begin -->
+<div class="tx-mmforum-rootline">###FORUMPATH###</div>
+<!-- ###ROOTLINE_CONTAINER### end -->
+###STARTJAVASCRIPT###
+<form action="###ACTION###" method="post" id="post" name="post" enctype="multipart/form-data">
+	<table class="tx-mmforum-table" width="100%">
+		<tr>
+			<th colspan="2" class="tx-mmforum-th">
+				###LABEL_CREATETOPIC###
+			</th>
+		</tr>
+		<tr>
+			<td class="tx-mmforum-pi1-newpost-right">
+				###LABEL_TITLE###:
+			</td>
+			<td class="tx-mmforum-pi1-newpost-left">
+				<input type="text" name="tx_mmforum_pi1[topicname]" size="37" value="###TOPICNAME###" />
+			</td>
+		</tr>
+		<tr align="left" valign="top">
+			<td class="tx-mmforum-pi1-newpost-left" id="smilies">
+				###SMILIES###
+			</td>
+			<td class="tx-mmforum-pi1-newpost-middle">
+				<table border="0" cellspacing="0" cellpadding="2">
+					<tr> 
+						<td>
+							<textarea id="tx_mmforum_editor" name="tx_mmforum_pi1[message]" rows="15" cols="35" tabindex="3" onselect="storeCaret(this);" onclick="storeCaret(this);" onkeyup="storeCaret(this);">###POSTTEXT###</textarea>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<!-- ###ATTACHMENT_SECTION### begin -->
+		<tr>
+			<td class="tx-mmforum-pi1-newpost-right">###LABEL_ATTACHMENT###</td>
+			<td class="tx-mmforum-pi1-newpost-left" style="text-align: left !important;">
+				<input type="hidden" name="MAX_FILE_SIZE" value="###MAXFILESIZE" />
+				<input type="file" class="tx-mmforum-pi1-attachment" name="tx_mmforum_pi1_attachment" accept="###ACCEPT###" size="27" style="width: 100%;" />
+				###MAXFILESIZE_TEXT###
+			</td>
+		</tr>
+		<!-- ###ATTACHMENT_SECTION### end -->
+		<!-- ###POLL_SECTION### begin -->
+		<tr>
+			<td class="tx-mmforum-pi1-newpost-right">###LABEL_POLL###</td>
+			<td class="tx-mmforum-pi1-newpost-middle" style="text-align: left !important;">
+				<script type="text/javascript">
+				<!--
+					function changePoll(caller) {
+						if(caller.checked) {
+							document.getElementById('poll').style.display='block';
+						} else {
+							document.getElementById('poll').style.display='none';
+						}
+					}
+				//-->
+				</script>
+				<input type="checkbox" name="tx_mmforum_pi1[enable_poll]" value="1" onchange="changePoll(this);" ###ENABLE_POLL### style="vertical-align:middle;" /> ###LABEL_POLL###
+				<div id="poll" ###POLLDIV_STYLE###>
+					###POLL###
+				</div>
+			</td>
+		</tr>
+		<!-- ###POLL_SECTION### end -->
+		<tr>
+			<td>&nbsp;</td>
+			<td class="tx-mmforum-pi1-newpost-left"><input type="checkbox" name="tx_mmforum_pi1[havealook]" value="havealook" ###HAVEALOOK### />###LABEL_SETHAVEALOOK###</td>
+		</tr>
+		<tr align="left" valign="top">
+			<td>
+			</td>
+			<td class="tx-mmforum-pi1-newpost-left">
+				<input type="submit" class="tx-mmforum-button" name="tx_mmforum_pi1[button]" value="###LABEL_SEND###" accesskey="s" />
+				<input type="submit" class="tx-mmforum-button" name="tx_mmforum_pi1[button]" value="###LABEL_PREVIEW###" />
+				<input type="reset"	 class="tx-mmforum-button" value="###LABEL_RESET###" />
+			</td>
+		</tr>
+	</table>
+</form>
+
+###OLDPOSTTEXT###
+<!-- ###NEWTOPIC### end-->
+
+<!-- ###PREVIEW### begin -->
+<div style="width:100%;">
+	<h2>###TOPIC_TITLE###</h2>
+	<table width="100%" class="tx-mmforum-table" >
+		<tr>
+			<th class="tx-mmforum-th" colspan="2"><strong>###LABEL_PREVIEW###</strong></th>
+		</tr>
+		###PREVIEW_POST###
+	</table>
+</div>
+<br />
+<!-- ###PREVIEW### end -->

@@ -1,0 +1,46 @@
+.pluginSection {
+	max-width: 800px;
+	min-width: 250px;
+}
+
+.pluginSection li.entry {
+	float: left;
+	width: 195px;
+	overflow: hidden;
+	background:#448 url('images/candle.gif') no-repeat 93% 5%;
+	color: #eee;
+	padding-right:25px;
+	font-size: 10px;
+	border: 3px inset #448;
+	border-radius: 8px;	
+	-moz-border-radius: 8px;	
+	-webkit-border-radius: 8px;	
+	margin-right: 25px;
+}
+
+.pluginSection li.entry h3 {
+	font-size: 13px;
+	font-weight: bold;
+	color: #FB4;
+	margin: 4px 12px 8px 4px;
+	overflow:hidden;
+}
+
+.pluginSection li.entry .message {
+	font-size: 10px;
+	line-height: 1.6em;
+	padding: 4px 8px 4px 4px;
+	overflow: hidden;
+}
+.pluginSection li.entry .entryInfo {
+	color: #c8b;
+	border: 0;
+	margin: 6px 0px;
+	width: 100%;
+	padding: 4px;
+	font-size: 9px;
+}
+.entry .buttonRow a.button {
+	font-size: 11px !important;
+	padding: 0px 5px !important;
+}

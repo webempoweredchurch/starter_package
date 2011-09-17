@@ -1,0 +1,19 @@
+<html>
+	<head>
+		<title>Template for eBible Translation Selection</title>
+	</head>
+	<body>
+		
+		<!-- ###SELECT_TRANSLATION### begin -->
+		<form id="translation-form" action='###POST_URL###' method="POST">
+			<label for="wec-ebible-translation">###LABEL###</label>
+			<select id="wec-ebible-translation" name="tx_wecebible_api[translation]" onchange="document.forms['translation-form'].submit();">
+				<!-- ###TRANSLATION_OPTIONS### begin-->
+				<option value="###TRANSLATION_VALUE###" ###TRANSLATION_SELECTED###>###TRANSLATION_LABEL###</option>
+				<!-- ###TRANSLATION_OPTIONS### end-->
+			</select>
+		</form>
+		<!-- ###SELECT_TRANSLATION### end -->
+		
+	</body>
+</html>

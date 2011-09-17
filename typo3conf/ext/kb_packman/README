@@ -1,0 +1,40 @@
+tx_damindex_rule_recursive		enabled	1
+
+tx_damindex_rule_folderAsCat		enabled	0
+					fuzzy	0
+
+tx_damindex_rule_doReindexing		enabled	0
+					mode	0
+
+tx_damindex_rule_dryRun			enabled	0
+
+tx_damdemo_indexRule			enabled	0
+					option1	0
+
+tx_damindex_rule_devel			enabled	0
+
+
+# mod.tx_kbpackman.dam.pack_file.ruleConf {
+# mod.tx_kbpackman.dam.pack_dir.ruleConf {
+# mod.tx_kbpackman.dam.unpack.ruleConf {
+# mod.tx_kbpackman.dam.unpack_overwrite.ruleConf {
+
+mod.tx_kbpackman.dam.unpack.ruleConf {
+	tx_damindex_rule_recursive.enabled = 1
+	tx_damindex_rule_dryRun.enabled = 0
+}
+
+
+// Do not overrule if already set
+mod.tx_kbpackman.dam.unpack.dataPreset {
+	
+}
+
+// Overrule when already set
+mod.tx_kbpackman.dam.unpack.dataPostset {
+	title = hugo 123
+}
+
+mod.tx_kbpackman.dam.unpack_overwrite < mod.tx_kbpackman.dam.unpack
+mod.tx_kbpackman.dam.pack_dir < mod.tx_kbpackman.dam.unpack
+

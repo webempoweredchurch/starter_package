@@ -1,0 +1,92 @@
+#
+#	$Id: ext_typoscript_setup.txt,v 1.15 2005/10/30 04:45:01 ingorenner Exp $
+#
+
+
+#
+#	general config for use in parts which hook into other EXTs
+#
+
+plugin.tx_timtab {
+  #here update means new comments or when a post was edited with an external tool
+  clearPageCacheOnUpdate = 0
+  
+  gravatar {
+    # values for rating are: [ G | PG | R | X | 0 = none]
+    # G is suitable for display on all sites
+    # PG may contain disputably offensive imagery
+    # R things as harsh profanity, intense violence, explicit sexual content, and drug use 
+    # X may contain hardcore sexual imagery or extremely disturbing violence
+    # see http://www.gravatar.com/rating.php
+    rating = 0    
+    
+    #default image if no gravatar for the email was found
+    defaultImg = http://www.example.com/clear.gif
+    
+    #border drwas a 1px border around the gravatar, define as HEX color: FF0000
+    border = 0
+    
+    class = gravatar
+    size = 60
+  }
+  
+  displayCatMenu {
+    #everything else is set in timtab/class.tx_timtab_catmenu.php
+    targetPid = 0
+  }
+  
+  title = {$plugin.tx_timtab.title}
+  tagline = {$plugin.tx_timtab.tagline}
+  homepage = {$plugin.tx_timtab.homepage}
+  blogPid = {$plugin.tx_timtab.blogPid}
+  homePid = {$plugin.tx_timtab.homePid}
+}
+
+
+#
+#	Blogroll config
+#
+
+plugin.tx_timtab_pi1 {
+  header_stdWrap.wrap = 
+  dontWrapInDiv = 0  
+  pid_list = 0
+  listClass = 
+}
+
+
+#
+#	XML-RPC interface and trackback configuration
+#
+
+plugin.tx_timtab_pi2 {  
+  pidStorePosts = {$plugin.tx_timtab_pi2.pidStorePosts}
+  pidStoreComments = {$plugin.tx_timtab_pi2.pidStoreComments}
+  connectionTimeout = {$plugin.tx_timtab_pi2.connectionTimeout}
+  bloggerTitle = {$plugin.tx_timtab_pi2.bloggerTitle}
+  
+  enableBlogger = {$plugin.tx_timtab_pi2.enableBlogger}
+  enableMetaWeblog = {$plugin.tx_timtab_pi2.enableMetaWeblog}
+  #enableMovableType = {$plugin.tx_timtab_pi2.enableMovableType}
+  #enableUploads = {$plugin.tx_timtab_pi2.enableUploads}
+  strictAPI = {$plugin.tx_timtab_pi2.strictAPI}
+  
+  trackback.validate = 1
+  trackback.spam.mark = 1
+}
+
+
+#
+#	Calendar config
+#
+
+plugin.tx_timtab_pi3 {
+  header_stdWrap.wrap = 
+  dontWrapInDiv = 0  
+  pid_list = 0
+  targetPid = 0
+  #0 = sunday, 1 = monday
+  week_begins = 1
+  gmt_offset = 0
+  weekdayNameLength = 1
+}

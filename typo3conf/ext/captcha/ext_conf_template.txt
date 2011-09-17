@@ -1,0 +1,66 @@
+
+	# cat=basic; type=boolean; label=Use TTF: When set the captcha will get generated using TTF font rendering functions which will result in much more readable captchas
+useTTF = 0
+
+	# cat=basic; type=integer; label=Image width: The width of the captcha image
+imgWidth = 95
+
+	# cat=basic; type=integer; label=Image height: The height of the captcha image
+imgHeight = 25
+
+	# cat=basic; type=integer; label=Captcha chars: The number of characters of which the captcha consists
+captchaChars = 5
+
+	# cat=basic; type=boolean; label=No numbers: No digits (0-9) will get used for the capcha string
+noNumbers = 0
+	
+	# cat=basic; type=boolean; label=Bold text: When set the text of the captcha will be somewhat bold
+bold = 0
+
+	# cat=basic; type=boolean; label=No lowercase characters: No lowercase characters (a-z) will get used for the capcha string
+noLower = 0
+	
+	# cat=basic; type=boolean; label=No uppercase characters: No uppercase characters (a-z) will get used for the capcha string
+noUpper = 0
+
+	# cat=basic; type=integer; label=Letter spacing: The number of pixels between the start of each character (or their distance when in TTF mode, should be 4-6 in TTF mode)
+letterSpacing = 16
+
+	# cat=basic; type=integer; label=Angle: The angle in degree which each letter is rotate maximally clock-, or counterclock-wise
+angle = 20
+	
+	# cat=basic; type=integer; label=X Difference: The number of pixels which each letter is maximally shifted to the left or right
+diffx = 0
+	
+	# cat=basic; type=integer; label=Y Difference: The number of pixels which each letter is maximally shifted up or down
+diffy = 2
+
+	# cat=basic; type=integer; label=X Offset: The numer of pixels which the first character is away from the top left corner in horizontal direction
+xpos = 3
+	
+	# cat=basic; type=integer; label=Y Offset: The numer of pixels which the first character is away from the top left corner in vertical direction
+ypos = 4
+	
+	# cat=basic; type=integer; label=Noises: How many 'obfuscating' ellipses are drawn onto the background of the image
+noises = 6
+	
+	# cat=basic; type=string; label=Background color: The background color for the captcha
+backcolor = #f4f4f4
+	
+	# cat=basic; type=string; label=Text color: The text color for the captcha
+textcolor = #000000
+	
+	# cat=basic; type=string; label=Obfuscation color: The color of the obfuscating ellipses
+obfusccolor = #c0c0c0
+
+	# cat=basic; type=integer; label=Font size: The font size in pixels (Just for TTF mode)
+fontSize = 16
+
+	# cat=basic; type=string; label=Font file: The font file to use in TTF mode (relative to the root of the TYPO3 installation)
+fontFile = 
+	
+	# cat=basic; type=string; label=Exclude chars: All characters listed here will not get used for the captcha
+excludeChars = gijloGIJLO0169
+
+
+

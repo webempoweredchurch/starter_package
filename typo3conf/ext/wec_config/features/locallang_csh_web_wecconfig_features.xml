@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<description>CSH for Web&gt;WEC Config&gt;Features submodule</description>
+		<type>CSH</type>
+		<csh_table>_MOD_web_wecconfig_features</csh_table>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index=".alttitle">Web&gt;WEC Config&gt;Features submodule</label>
+			<label index=".description">The Web&gt;WEC Config&gt;Features submodule allows TYPO3 capabilities to be added and removed in single click. Preset configurations for news systems, calendars, and other features are available.</label>
+		</languageKey>
+	</data>
+</T3locallang>

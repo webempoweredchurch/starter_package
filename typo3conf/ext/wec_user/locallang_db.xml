@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<description></description>
+		<type>database</type>
+		<csh_table></csh_table>
+		<fileId>EXT:wec_user/locallang_db.xml</fileId>
+		<labelContext type="array">
+			<label index="fe_users.tx_wecuser_member"></label>
+			<label index="fe_users.tx_wecuser_attends"></label>
+		</labelContext>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="fe_users.tx_wecuser_member">Is a member of this church?</label>
+			<label index="fe_users.tx_wecuser_attends">Attends this church?</label>
+		</languageKey>
+		<languageKey index="nl" type="array">
+			<label index="fe_users.tx_wecuser_member">Is lid van deze kerk?</label>
+			<label index="fe_users.tx_wecuser_attends">Bezoekt deze kerk geregeld?</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="default" type="array">
+			<label index="fe_users.tx_wecuser_member" type="integer">4121601</label>
+			<label index="fe_users.tx_wecuser_attends" type="integer">142153489</label>
+		</languageKey>
+	</orig_hash>
+	<orig_text type="array">
+		<languageKey index="default" type="array">
+		</languageKey>
+	</orig_text>
+</T3locallang>

@@ -1,0 +1,104 @@
+lib.downloadLink = COA
+lib.downloadLink {
+
+    wrap = <div class="pmkfdl-link">|</div>
+
+    # First we store the link in a register value, since
+    # we want to display an icon BEFORE the link.
+    10 = LOAD_REGISTER
+    10.filelink.cObject = TEXT
+    10.filelink.cObject {
+        value = 
+        typolink.parameter = 
+		typolink.parameter.postUserFunc = tx_pmkfdl->makeDownloadLink
+        typolink.parameter.postUserFunc.makeDownloadLink = {$lib.downloadLink.makeDownloadLink}
+    }
+
+    # Display the fileicon and filelink
+    20 = CASE
+    20 {
+        # Wrapping of image, incl. the filelink from previously created register value
+        stdWrap.dataWrap = |&nbsp;{register:filelink}
+
+        # Case key is the filetype (from register value)
+        key.data = register:filetype
+
+        default = IMAGE
+		default.file = {$lib.downloadLink.fileIconPath}file.png
+
+        csv < .default
+        csv.file = {$lib.downloadLink.fileIconPath}csv.png
+		
+        txt < .default
+        txt.file = {$lib.downloadLink.fileIconPath}txt.png
+
+        rtf < .default
+        rtf.file = {$lib.downloadLink.fileIconPath}rtf.png
+				
+        pdf < .default
+        pdf.file = {$lib.downloadLink.fileIconPath}pdf.png
+		
+        doc < .default
+        doc.file = {$lib.downloadLink.fileIconPath}doc.png
+
+        xls < .default
+        xls.file = {$lib.downloadLink.fileIconPath}xls.png
+		
+        ppt < .default
+        ppt.file = {$lib.downloadLink.fileIconPath}ppt.png
+		
+        odf < .default
+        odf.file = {$lib.downloadLink.fileIconPath}odf.png
+
+        sxw < .default
+        sxw.file = {$lib.downloadLink.fileIconPath}sxw.png
+		
+        mp3 < .default
+        mp3.file = {$lib.downloadLink.fileIconPath}mp3.png
+				
+        wav < .default
+        wav.file = {$lib.downloadLink.fileIconPath}wav.png
+				
+        gif < .default
+        gif.file = {$lib.downloadLink.fileIconPath}gif.png
+
+        jpg < .default
+        jpg.file = {$lib.downloadLink.fileIconPath}jpg.png
+
+        png < .default
+        png.file = {$lib.downloadLink.fileIconPath}png.png
+
+        swf < .default
+        swf.file = {$lib.downloadLink.fileIconPath}swf.png
+		
+        rar < .default
+        rar.file = {$lib.downloadLink.fileIconPath}rar.png
+		
+        zip < .default
+        zip.file = {$lib.downloadLink.fileIconPath}zip.png
+
+        tar < .default
+        tar.file = {$lib.downloadLink.fileIconPath}tar.png
+				
+        # You can add more types here
+    }
+
+    # Display the filesize ( from register value)
+    30 = TEXT
+    30.data = register:filesize
+    30.bytes = 1
+    30.wrap = &nbsp;(|)
+}
+
+# Example of use:
+#10 < lib.downloadLink
+#10.10.filelink.cObject.value = Download manual
+#10.10.filelink.cObject.typolink.parameter = fileadmin/user_upload/manual.pdf
+
+
+plugin.tt_news.newsFiles_pmkfdl < lib.downloadLink
+plugin.tt_news.newsFiles_pmkfdl.wrap = <dd>|</dd>
+plugin.tt_news.newsFiles_pmkfdl.10.filelink.cObject.value >
+plugin.tt_news.newsFiles_pmkfdl.10.filelink.cObject.field = pmkfdl_filename
+plugin.tt_news.newsFiles_pmkfdl.10.filelink.cObject.typolink.parameter.field = pmkfdl_filepath
+

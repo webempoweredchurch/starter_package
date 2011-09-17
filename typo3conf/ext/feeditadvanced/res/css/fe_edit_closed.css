@@ -1,0 +1,49 @@
+/**
+ * CSS for Advanced Frontend Editing (feeditadvanced)
+ *
+ * These styles are used, when the menuBar is closed.
+ */
+div#feEditAdvanced-container img {
+	border: none;
+}
+
+div#feEditAdvanced-menuBar {
+	position: fixed;
+	top: 3px;
+	right: 0;
+	color: #fff;
+	padding: 0;
+	margin: 0;
+	z-index: 8000;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 90%;
+}
+
+div#feEditAdvanced-menuBar a.feEditAdvanced-smallButton {
+	display: block;
+	color: #eee;
+	background: url(../icons/menubar/button_small_right.png) no-repeat top right;
+	padding: 0 2px 0 0;
+	margin: 4px 8px 0 0;
+	height: 20px;
+	font-size: 10px;
+	float: right;
+	text-decoration: none;
+}
+
+div#feEditAdvanced-menuBar .feEditAdvanced-smallButton span.feEditAdvanced-smallButtonText {
+	padding: 3px 5px 4px 7px;
+	color: #c6c6c6;
+	height: 16px;
+	display: block;
+	background: url(../icons/menubar/button_small_left.png) no-repeat;
+}
+
+div#feEditAdvanced-menuBar .feEditAdvanced-smallButton span.feEditAdvanced-smallButtonText img {
+	vertical-align: top;
+	margin: 1.5px 3px 0px 0px;
+}
+
+div#feEditAdvanced-menuBar a.feEditAdvanced-smallButton:hover {
+	color: #fff;
+}

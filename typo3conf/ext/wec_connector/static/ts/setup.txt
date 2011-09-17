@@ -1,0 +1,349 @@
+plugin.tx_wecconnector_pi1 = USER_INT
+plugin.tx_wecconnector_pi1 {
+
+	general_dateWrap {
+		date = n/d/Y
+		eu_date = Y-m-d
+	}
+	general_timeWrap {
+		date = h:iA
+		eu_date = H:i
+	}
+
+	templateFile 	= {$plugin.tx_wecconnector_pi1.templateFile}
+	baseCSSFile 	=
+	cssFile 		= {$plugin.tx_wecconnector_pi1.cssFile}	
+	
+	imageWidth		= {$plugin.tx_wecconnector_pi1.imageWidth}
+	imageHeight		= {$plugin.tx_wecconnector_pi1.imageHeight}
+
+	contentWidth	= {$plugin.tx_wecconnector_pi1.contentWidth}
+	contentMaxWidth	= {$plugin.tx_wecconnector_pi1.contentMaxWidth}
+	listingWidth	= {$plugin.tx_wecconnector_pi1.listingWidth}
+	previewWidth	= {$plugin.tx_wecconnector_pi1.previewWidth}
+	entryFormWidth	= {$plugin.tx_wecconnector_pi1.entryFormWidth}
+	entryFormLabelWidth	= {$plugin.tx_wecconnector_pi1.entryFormLabelWidth}
+	entryFormInputWidth	= {$plugin.tx_wecconnector_pi1.entryFormInputWidth}
+
+	entryBackColor		= {$plugin.tx_wecconnector_pi1.entryBackColor}
+	entryColor			= {$plugin.tx_wecconnector_pi1.entryColor}
+	alternatingEntry	= {$plugin.tx_wecconnector_pi1.alternatingEntry}
+	formBackColor		= {$plugin.tx_wecconnector_pi1.formBackColor}
+	msgInfoColor		= {$plugin.tx_wecconnector_pi1.msgInfoColor}
+	subjectBackColor	= {$plugin.tx_wecconnector_pi1.subjectBackColor}
+	subjectTextColor	= {$plugin.tx_wecconnector_pi1.subjectTextColor}
+
+	btnBackColor		= {$plugin.tx_wecconnector_pi1.btnBackColor}
+	btnColor			= {$plugin.tx_wecconnector_pi1.btnColor}
+	btnHoverBackColor 	= {$plugin.tx_wecconnector_pi1.btnHoverBackColor}
+	btnHoverColor		= {$plugin.tx_wecconnector_pi1.btnHoverColor}
+
+	chooseCatBackColor 	= {$plugin.tx_wecconnector_pi1.chooseCatBackColor}
+	chooseCatSelBackColor =	{$plugin.tx_wecconnector_pi1.chooseCatSelBackColor}
+	chooseCatHoverBackColor = {$plugin.tx_wecconnector_pi1.chooseCatHoverBackColor}
+	chooseCatColor 		= {$plugin.tx_wecconnector_pi1.chooseCatColor}
+
+	showCatColor		= {$plugin.tx_wecconnector_pi1.showCatColor}
+	showCatBackColor 	= {$plugin.tx_wecconnector_pi1.showCatBackColor}
+
+	sortOrder	 		= {$plugin.tx_wecconnector_pi1.sortOrder}
+
+	spamWords 			= {$plugin.tx_wecconnector_pi1.spamWords}
+	addSpamWords 		= {$plugin.tx_wecconnector_pi1.addSpamWords}
+	
+	duplicateCheckDelaySeconds = {$plugin.tx_wecconnector_pi1.duplicateCheckDelaySeconds}
+	
+	pid_list			= {$plugin.tx_wecconnector_pi1.pid_list}
+		
+	isLoaded			= yes
+	isOldTemplate		= 1
+}
+
+plugin.tx_wecconnector_pi1._CSS_DEFAULT_STYLE (
+/*-------------------------- MAIN CONNECTOR STYLES ---------------------------*/
+
+.tx-wecconnector-content {
+	font-family: 	arial, tahoma, sans-serif;
+	width:			{$plugin.tx_wecconnector_pi1.contentWidth};
+	margin:			0px auto;
+	max-width:		{$plugin.tx_wecconnector_pi1.contentMaxWidth};
+	min-width:		350px;
+}
+.tx-wecconnector-spacer {
+	clear:			both;
+	height:			0.1em;
+}
+.fullWidth {
+	float:			left; 
+	width:			100%;
+	margin:			2px;
+}
+.tx-wecconnector-title {
+	display:		block;
+	float:			left;
+	width:			100%;
+	font-size: 		16px; 
+	font-weight:	bold;
+	margin: 		0px auto; 
+	text-align:		center;	
+}
+.tx-wecconnector-header {
+	display:		block;
+	float:			left;
+	width:			100%;
+	font-family: 	arial, tahoma, sans-serif;
+	font-size:		14px;
+	font-weight:	bold;
+	text-align:		center;
+	margin:			0px auto;
+	padding-bottom:	6px;
+	margin-bottom:  2px;
+}
+.tx-wecconnector-instructions {
+	float:			left;
+	display:		block;
+	font-size: 		12px; 
+}
+.tx-wecconnector-navbar {
+	float:			right;
+	text-align:		right;
+	margin:			0px;
+	padding:		6px;
+}
+.pageLink {
+	display:		inline;
+	padding-left:	6px;
+	padding-right:	6px;
+}
+.pageLinkPad {
+	padding-right:  1px;
+	padding-left:   2px;
+}
+.marginBox {
+	margin:			20px;
+}
+.tx-wecconnector-centered {
+	text-align:		center;
+	margin:			0px auto;
+	width:			100%;
+}
+.tx-wecconnector-chooseCategory {
+	float:			left;
+    font-family: 	arial, tahoma, sans-serif;
+	width:			{$plugin.tx_wecconnector_pi1.listingWidth};
+	padding-top:	3px;
+	padding-bottom: 3px;
+	margin:			8px 1px 12px 1px;
+}
+.tx-wecconnector-chooseCategory .item, .tx-wecconnector-chooseCategory .header {
+	display:		inline;
+	padding: 		0px;
+	line-height:	2em;
+}
+.tx-wecconnector-chooseCategory a, .tx-wecconnector-chooseCategory a:visited, .tx-wecconnector-chooseCategory a:link, .tx-wecconnector-chooseCategory a:hover,  .tx-wecconnector-chooseCategory .item a {
+	margin:			2px;
+	padding:		3px;
+	white-space:	nowrap;
+	text-decoration: none !important;
+	border: 		1px #aaa solid;
+	background-color: {$plugin.tx_wecconnector_pi1.chooseCatBackColor};
+	color: 			{$plugin.tx_wecconnector_pi1.chooseCatColor};
+}
+.tx-wecconnector-chooseCategory .item a:hover {
+	background-color:{$plugin.tx_wecconnector_pi1.chooseCatHoverBackColor};
+}
+.tx-wecconnector-chooseCategory .selected a {
+	background-color: {$plugin.tx_wecconnector_pi1.chooseCatSelBackColor};
+}
+
+/*--- buttons ---*/
+.button {
+	margin:			0px 4px 0px 4px;
+	padding:		2px;
+}
+a.button, 
+a.button:link, 
+a.button:visited {
+    font-family: 	arial, tahoma, sans-serif;
+	font-size:		11px;
+	padding: 		2px 4px;
+    margin:         0px;
+	border: 		1px #aaa solid;
+	background-color:{$plugin.tx_wecconnector_pi1.btnBackColor};
+	color: 			{$plugin.tx_wecconnector_pi1.btnColor};
+	text-decoration: none !important;
+}
+a.button:hover {
+	border: 		1px #ccc solid;
+	background-color: {$plugin.tx_wecconnector_pi1.btnHoverBackColor} !important;
+	color: 			{$plugin.tx_wecconnector_pi1.btnHoverColor} !important;
+}
+
+.tx-wecconnector-chooseCategory a.button {
+	background-color: {$plugin.tx_wecconnector_pi1.chooseCatBackColor};
+	color: 			{$plugin.tx_wecconnector_pi1.chooseCatColor};	
+}
+
+.tx-wecconnector-chooseCategory a.isSelected {
+	background-color: {$plugin.tx_wecconnector_pi1.chooseCatSelBackColor};
+}
+
+.buttonfill {
+	clear:			left;
+	text-align:		center;
+	padding-top:	8px;
+}
+/*-------------------------- CONNECTOR ENTRY STYLES ---------------------------*/
+.tx-wecconnector-entry {
+	float:			left;
+	width:			{$plugin.tx_wecconnector_pi1.listingWidth};
+	background-color:{$plugin.tx_wecconnector_pi1.entryBackColor};
+	color:			{$plugin.tx_wecconnector_pi1.entryColor};
+	margin:			4px;
+	padding:		0px;
+	margin-top:		0px;
+}
+.tx-wecconnector-entry.isHidden {
+	background-color: #888;
+}
+.tx-wecconnector-showCategory {
+	float:			left;
+	width:			{$plugin.tx_wecconnector_pi1.listingWidth};
+    font-family: 	arial, tahoma, sans-serif;
+	font-size:		16px;
+	font-weight:	bold;
+	margin:			2px;
+	padding:		3px;
+	color:			{$plugin.tx_wecconnector_pi1.showCatColor};
+	background-color:{$plugin.tx_wecconnector_pi1.showCatBackColor};
+}
+.tx-wecconnector-showCategoryImage {
+	float:			right;
+	text-align:		right;
+	margin:			2px;
+	margin-top:		0px;
+	padding:		0px;
+}
+.tx-wecconnector-instructions, .tx-wecconnector-responseMsg,
+.tx-wecconnector-date,.tx-wecconnector-name,.tx-wecconnector-subject,
+.tx-wecconnector-message, .tx-wecconnector-messageinfo
+{
+	font-family: Arial, Tahoma, Verdana, "Times New Roman";
+	font-size: 	14px;
+}
+.tx-wecconnector-responseMsg { font-size:13px; color: #F04040; margin: 4px; }
+.tx-wecconnector-instructions 	 { font-size: 12px; margin: 5px; }
+.tx-wecconnector-subject {
+	font-family: 	"Trebuchet MS";
+	white-space: 	nowrap;
+	font-weight: 	bold;
+	font-size:		15px;
+	padding-left:	20px;
+	padding-top:	3px;
+	padding-bottom: 3px;
+	border-bottom:  1px solid #ccc;
+	background-color: {$plugin.tx_wecconnector_pi1.subjectBackColor};
+	color: 			  {$plugin.tx_wecconnector_pi1.subjectTextColor};
+}
+.tx-wecconnector-message {
+	margin-left: 	20px;
+    margin-right:   20px;
+    padding-top:	4px;
+    overflow:		auto;
+}
+.tx-wecconnector-options {
+	text-align: 	right;
+	margin-top: 	6px;
+	margin-bottom: 	4px;
+	font-size: 		11px;
+	clear:			left;
+}
+.tx-wecconnector-messageinfo {
+	font-size: 		12px;
+	color:			{$plugin.tx_wecconnector_pi1.msgInfoColor};
+	padding-left:   10px;
+	margin-left:	20px;
+	margin-top:		6px;
+	border-top:		dashed 1px #555;
+    margin-bottom:  4px;
+}
+
+.tx-wecconnector-forumPreview, .tx-wecconnector-forumPreviewEntry, .tx-wecconnector-forumPreviewInfo {
+	margin:			2px;
+	margin-left:	6px;
+	font-family: 	Arial, Tahoma, "Trebuchet MS", georgia, sans-serif;
+	font-size: 		10px;
+	line-height: 	150%;
+}
+.tx-wecconnector-forumPreview {
+	width:			{$plugin.tx_wecconnector_pi1.previewWidth};
+	font-size: 		12px;
+	border:			1px solid #888;
+    background-color: {$plugin.tx_wecconnector_pi1.entryBackColor};
+	text-align:		left;
+}
+.tx-wecconnector-forumPreviewInfo {
+	font-size: 		9px;
+	color:			#555;
+	border-top:		dotted 1px #888;
+    margin-bottom: 	6px;
+}
+
+/*-------------------------- CONNECTOR INPUT FORM STYLES ---------------------------*/
+
+.tx-wecconnector-form {
+	font-size: 		12px;
+	font-family: 	Arial, Tahoma, "Trebuchet MS", Georgia, sans-serif;
+	width: 		{$plugin.tx_wecconnector_pi1.entryFormWidth};
+	background-color: {$plugin.tx_wecconnector_pi1.formBackColor};
+	border: 	1px solid #333;
+	margin:		0px auto;
+    margin-top:	4px;
+    margin-bottom:4px;
+	padding:	0px;
+    padding-bottom: 2px;
+    min-width:	350px;
+    max-width:	750px;
+}
+
+.tx-wecconnector-form div.inputFormRow {
+	clear: both;  display: block; margin:0px; padding:0px; padding-top: 5px;
+}
+.tx-wecconnector-form div.inputFormRow span.label {
+	display: block; float: left;  width: {$plugin.tx_wecconnector_pi1.entryFormLabelWidth}; text-align: right;
+}
+.tx-wecconnector-form div.inputFormRow span.inputBox {
+	display: block; float: right; width: {$plugin.tx_wecconnector_pi1.entryFormInputWidth}; text-align:left;
+}
+.tx-wecconnector-form div.inputFormRow .textacross {
+	display: block; float: left;  width: 100%;  text-align: center; margin: 0px auto;
+}
+.tx-wecconnector-form div.inputFormRow .isLeft {
+	text-align:left; margin:0px;
+}
+.tx-wecconnector-form div.inputFormRow span.inputBox .input-half {
+	width: 50%;
+}
+.tx-wecconnector-form div.inputFormRow span.inputBox input {
+	width: 95%;
+}
+.tx-wecconnector-form div.inputFormRow span.inputBox textarea {
+	 width:	95%;
+}
+.tx-wecconnector-form div.inputFormRow span.inputBox input.checkbox {
+	width: 15px;
+}
+.required {
+	color: #CC0000;
+}
+.error	  {
+	color: #CC0000; font-size:13px;
+}
+.tx-wecconnector-form .fieldInstructions {
+	 left: {$plugin.tx_wecconnector_pi1.entryFormLabelWidth}; font-size: 10px; margin: 0px; padding:0px;
+}
+.hspacer {
+	display: inline;  width: 6px;  line-height: 1px;  margin: 0px;  padding: 0px; margin-left:2px;
+}
+
+)

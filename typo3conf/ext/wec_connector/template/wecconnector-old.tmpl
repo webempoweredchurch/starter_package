@@ -1,0 +1,360 @@
+<!--
+=====================================================================================================
+###TEMPLATE_MAIN### begin
+=====================================================================================================
+-->
+	<div class="tx-wecconnector-content">
+		<div class="tx-wecconnector-title">###TITLE###</div>
+		<div class="tx-wecconnector-responseMsg">###RESPONSE_MSG###</div>
+		<div class="tx-wecconnector-instructions">###INSTRUCTIONS###</div>
+		<div class="tx-wecconnector-navbar">###SUBSCRIBE_BTN### ###MODERATE_BTN### ###ADMIN_BTN###</div>		
+		<div class="tx-wecconnector-spacer"> </div>
+
+		###ENTRY_FORM_TOGGLEOFF###
+		###ENTRY_FORM###
+		
+		###DISPLAY_ENTRIES###
+	</div>
+
+	<!-- ###PAGELINK### begin -->
+		<div align="center" class="fullWidth">
+			###LINK_PREV###  ###PAGE_NUM### ###LINK_NEXT###
+		</div>
+	<!-- ###PAGELINK### end -->
+
+<div class="tx-wecconnector-spacer"> </div>
+<!-- ###TEMPLATE_MAIN### end -->
+
+<!--
+=====================================================================================================
+###TEMPLATE_DISPLAYENTRIES### begin
+=====================================================================================================
+-->
+
+	<div class="tx-wecconnector-chooseCategory">###CHOOSE_CATEGORY###</div>
+	<div class="tx-wecconnector-header">###DISPLAY_HEADER### (###DISPLAY_TOTAL###)</div>
+	###ENTRIES###
+	
+	<!-- ###DISPLAY_CATEGORY### begin
+	    What to show if break up into category. Leave blank if you don't want to see categories
+	-->
+		###CATEGORY_NAME###
+		###CATEGORY_IMAGE###
+	<!-- ###DISPLAY_CATEGORY### end -->
+
+	<!-- ###ENTRY### begin
+		Template for a single item. This is repeated for each item
+	-->
+		<div class="tx-wecconnector-entry ###IS_HIDDEN###" style="###ALTERNATING_COLOR###">
+		    <div class="tx-wecconnector-subject">###SUBJECT###</div>
+		    <div class="tx-wecconnector-message">###MESSAGE###</div>
+		    <div>###IMAGE###</div>
+		    <div class="tx-wecconnector-options">
+		    	<!-- ###VIEW_SINGLE###-->
+		    	###RESPOND_BUTTON###
+		    	###MODIFY_BUTTON### ###DELETE_BUTTON### ###HIDE_BUTTON###</span>
+		    </div>
+	    	<div class="tx-wecconnector-messageinfo">
+	    		###POSTEDBY_TEXT### ###NAME### <!-- ###SHOW_LOCATION### begin -->| ###LOCATION### ###ADDRESS### ###CITY### ###STATE### ###ZIPCODE### ###COUNTRY### <!-- ###SHOW_LOCATION### end --> | ###DATE### ###TIME###
+	    		<!-- ###SHOW_WEBSITE_URL### begin-->###WEBSITE_URL###<!-- ###SHOW_WEBSITE_URL### end-->
+	    	</div>
+		</div>
+	<!-- ###ENTRY### end-->
+
+<!-- ###TEMPLATE_DISPLAYENTRIES### end -->
+
+<!--
+=====================================================================================================
+###TEMPLATE_DISPLAYSINGLE### begin
+=====================================================================================================
+  Display one item. You can customize this separately, otherwise it uses the ###ENTRY### fields above
+-->
+	###SINGLE_ENTRY###
+
+	<div class="buttonfill">###BACK_BUTTON###</div>
+
+<!-- ###TEMPLATE_DISPLAYSINGLE### end -->
+
+<!--
+=====================================================================================================
+###TEMPLATE_ENTRYFORM### begin
+=====================================================================================================
+   Form for a new entry
+-->
+  <a name="entry"></a>
+  <div class="tx-wecconnector-content">
+    <!-- ###SHOW_ERROR### begin--> 
+	<span class="error">###FORM_ERROR### ###FORM_ERROR_FIELDS###</span>
+	<!-- ###SHOW_ERROR### end--> 
+	<div class="tx-wecconnector-form">
+	  <form name="submitrequest" method="post" action="###ACTION_URL###" enctype="multipart/form-data">
+		<div class="inputFormRow">
+			<span class="textacross">###SHOW_REQUIRED_TEXT###</span>
+		</div>
+		<!-- ###SHOW_NAME### begin-->
+		<div class="inputFormRow">
+			<span class="label">###FORM_NAME### <span class="required">###FORM_NAME_REQUIRED###</span></span>
+			<span class="inputBox"><input type="text" name="tx_wecconnector[name]" value="###VALUE_NAME###" class="input-half" />
+				<br/><span class="fieldInstructions">###FORM_NAME_INSTRUCTIONS###</span>
+			</span>
+		</div>
+		<!-- ###SHOW_NAME### end-->
+
+		<!-- ###SHOW_LOCATION### begin-->
+		<div class="inputFormRow">
+			<span class="label">###FORM_LOCATION### <span class="required">###FORM_LOCATION_REQUIRED###</span></span>
+			<span class="inputBox"><input type="text" name="tx_wecconnector[location]" value="###VALUE_LOCATION###" />
+				 <br/><span class="fieldInstructions">###FORM_LOCATION_INSTRUCTIONS###</span>
+			</span>
+		</div>
+		<!-- ###SHOW_LOCATION### end-->
+
+		<!-- ###SHOW_EMAIL### begin-->
+		<div class="inputFormRow">
+			<span class="label">###FORM_EMAIL### <span class="required">###FORM_EMAIL_REQUIRED###</span></span>
+			<span class="inputBox"><input type="text" name="tx_wecconnector[email]" value="###VALUE_EMAIL###" />
+				<br/><span class="fieldInstructions">###FORM_EMAIL_INSTRUCTIONS###</span>
+			</span>
+		</div>
+		<!-- ###SHOW_EMAIL### end-->
+
+		<!-- ###SHOW_SUBJECT### begin-->
+		<div class="inputFormRow">
+			<span class="label">###FORM_SUBJECT### <span class="required">###FORM_SUBJECT_REQUIRED###</span></span>
+			<span class="inputBox"><input type="text" name="tx_wecconnector[subject]" value="###VALUE_SUBJECT###" /></span>
+		</div>
+		<!-- ###SHOW_SUBJECT### end-->
+
+		<!-- ###SHOW_MESSAGE### begin-->
+		<div class="inputFormRow">
+			<span class="label">###FORM_MESSAGE### <span class="required">###FORM_MESSAGE_REQUIRED###</span></span>
+			<span class="inputBox"><textarea name="tx_wecconnector[message]" rows="4" cols="40">###VALUE_MESSAGE###</textarea></span>
+		</div>
+		<!-- ###SHOW_MESSAGE### end-->
+
+		<!-- ###SHOW_CATEGORY### begin-->
+		<div class="inputFormRow">
+			<span class="label">###FORM_CATEGORY###  <span class="required">###FORM_CATEGORY_REQUIRED###</span></span>
+			<span class="inputBox">###VALUE_CATEGORY###</span>
+		</div>
+		<!-- ###SHOW_CATEGORY### end-->
+
+		<!-- ###SHOW_PHONE### begin-->
+		<div class="inputFormRow">
+			<span class="label">###FORM_PHONE###  <span class="required">###FORM_PHONE_REQUIRED###</span></span>
+			<span class="inputBox"><input type="text" name="tx_wecconnector[phone]" value="###VALUE_PHONE###" /></span>
+		</div>
+		<!-- ###SHOW_PHONE### end-->
+
+		<!-- ###SHOW_CITY### begin-->
+		<div class="inputFormRow">
+			<span class="label">###FORM_CITY###  <span class="required">###FORM_CITY_REQUIRED###</span></span>
+			<span class="inputBox"><input type="text" name="tx_wecconnector[city]" value="###VALUE_CITY###" /></span>
+		</div>
+		<!-- ###SHOW_CITY### end-->
+
+		<!-- ###SHOW_STATE### begin-->
+		<div class="inputFormRow">
+			<span class="label">###FORM_STATE### <span class="required">###FORM_STATE_REQUIRED###</span></span>
+			<span class="inputBox"><input type="text" name="tx_wecconnector[state]" value="###VALUE_STATE###" /></span>
+		</div>
+		<!-- ###SHOW_STATE### end-->
+
+		<!-- ###SHOW_ZIPCODE### begin-->
+		<div class="inputFormRow">
+			<span class="label">###FORM_ZIPCODE### <span class="required">###FORM_ZIPCODE_REQUIRED###</span></span>
+			<span class="inputBox"><input type="text" name="tx_wecconnector[zipcode]" value="###VALUE_ZIPCODE###" /></span>
+		</div>
+		<!-- ###SHOW_ZIPCODE### end-->
+
+		<!-- ###SHOW_COUNTRY### begin-->
+		<div class="inputFormRow">
+			<span class="label">###FORM_COUNTRY### <span class="required">###FORM_COUNTRY_REQUIRED###</span></span>
+			<span class="inputBox"><input type="text" name="tx_wecconnector[country]" value="###VALUE_COUNTRY###" /></span>
+		</div>
+		<!-- ###SHOW_COUNTRY### end-->
+
+		<!-- ###SHOW_WEBSITE_URL### begin-->
+		<div class="inputFormRow">
+			<span class="label">###FORM_WEBSITE_URL### <span class="required">###FORM_WEBSITE_URL_REQUIRED###</span></span>
+			<span class="inputBox"><input type="text" name="tx_wecconnector[website_url]" value="###VALUE_WEBSITE_URL###" ></span>
+		</div>
+		<!-- ###SHOW_WEBSITE_URL### end-->
+
+		<!-- ###SHOW_IMAGE### begin-->
+		<div class="inputFormRow">
+			<span class="label">###FORM_IMAGE### <span class="required">###FORM_IMAGE_REQUIRED###</span></span>
+			<span class="inputBox"><input type="file" name="tx_wecconnector[image]" value="###VALUE_IMAGE###" /></span>
+		</div>
+		<!-- ###SHOW_IMAGE### end-->
+
+		<!--###CAPTCHA_INSERT### this subpart is removed if CAPTCHA is not enabled! -->
+	    <div class="inputFormRow">
+		    <span class="textacross">###SR_FREECAP_NOTICE###</span>
+	    	<span class="label"><br />###SR_FREECAP_CANT_READ###<span class="required">*</span></span>
+	    	<span class="inputBox"><input type="text" size="35" id="tx_wecconnector_pi1_captcha_response" name="tx_wecconnector[captcha_response]" title="###SR_FREECAP_NOTICE###" value="" />###SR_FREECAP_IMAGE###</span>
+	    </div>
+		<!--###CAPTCHA_INSERT###-->
+
+		<!-- ###SHOW_TEXT_CAPTCHA### begin-->
+	    <div class="inputFormRow">
+	    	<span class="label">###TEXT_CAPTCHA_LABEL###<span class="required">*</span></span>
+	    	<span class="inputBox">###TEXT_CAPTCHA_FIELD###</span>
+	    </div>
+		<!-- ###SHOW_TEXT_CAPTCHA### end-->
+
+		<div class="inputFormRow">
+			<span class="textacross">
+				<input type="hidden" name="id" value="###PID###" />
+				<input type="hidden" name="category" value="###CATEGORY###" />
+				<input type="hidden" name="tx_wecconnector[msgid]" value="###MSGID###" />
+				<input type="hidden" name="tx_wecconnector[submitted]" value="1" />
+				<input type="submit" value="###FORM_SUBMIT###" />
+				###HIDDEN_VARS###
+				###CANCEL_BUTTON###
+			</span>
+		</div>
+
+		<div class="tx-wecconnector-spacer"> </div>
+		</form>
+	</div>
+  </div>	
+<!-- ###TEMPLATE_ENTRYFORM### end -->
+
+<!--
+=====================================================================================================
+###TEMPLATE_RESPONSEFORM### begin
+=====================================================================================================
+   Form for a response to an entry
+
+-->
+  <a name="response"></a>
+  <div class="tx-wecconnector-content">
+    <!-- ###SHOW_ERROR### begin--> 
+	<span class="error">###FORM_ERROR### ###FORM_ERROR_FIELDS###</span>
+    <!-- ###SHOW_ERROR### end--> 
+	<div class="tx-wecconnector-form">
+	<form name="submitresponse" method="post" action="###ACTION_URL###">
+		<div class="inputFormRow">
+			<div class="textacross">
+				<div class="tx-wecconnector-title">###RESPONSE_TITLE###</div>
+			</div>
+		</div>
+		<div class="inputFormRow">
+			<div class="textacross isLeft">
+				<div class="tx-wecconnector-header">Respond To Original Message:</div>
+				<div class="tx-wecconnector-entry"  style="width:98%">
+					<div class="tx-wecconnector-subject">###ORIG_SUBJECT###</div>
+					<div class="tx-wecconnector-message">###ORIG_MESSAGE###</div>
+			    	<div class="tx-wecconnector-messageinfo">
+			    		###POSTEDBY_TEXT### ###ORIG_NAME### | ###ORIG_DATE### ###ORIG_TIME###
+			    	</div>
+				</div>
+			</div>
+		</div>
+		<div class="inputFormRow">
+			<span class="textacross">###SHOW_REQUIRED_TEXT###</span>
+		</div>
+		<div class="inputFormRow">
+			<span class="label">###FORM_NAME### <span class="required">###FORM_NAME_REQUIRED###</span></span>
+			<span class="inputBox">
+				<input type="text" name="tx_wecconnector[name]" value="###VALUE_NAME###" />
+			</span>
+		</div>
+		<div class="inputFormRow">
+			<span class="label">###FORM_EMAIL### <span class="required">###FORM_EMAIL_REQUIRED###</span></span>
+			<span class="inputBox">
+				<input type="text" name="tx_wecconnector[email]" value="###VALUE_EMAIL###" />
+			</span>
+		</div>
+		<div class="inputFormRow">
+			<span class="label">###FORM_MESSAGE### <span class="required">###FORM_MESSAGE_REQUIRED###</span></span>
+			<span class="inputBox">
+				<textarea name="tx_wecconnector[message]" class="tx-wecconnector-form-textarea" rows="4" cols="40">###VALUE_MESSAGE###</textarea>
+			</span>
+		</div>
+		<div class="inputFormRow">
+			<span class="textacross">
+				<input type="hidden" name="id" value="###PID###" />
+				<input type="hidden" name="tx_wecconnector[msgid]" value="###MSGNUM###" />
+				<input type="hidden" name="tx_wecconnector[subject]" value="###ORIG_SUBJECT###" />
+				<input type="hidden" name="tx_wecconnector[submitresponse]" value="1" />
+				<input type="submit" value="###FORM_SUBMIT###" />
+				<input type="button" onclick="###CANCEL_URL###" value="###FORM_CANCEL###" />
+			</span>
+		</div>
+		<div class="tx-wecconnector-spacer">&nbsp;</div>
+	</form>
+	</div>
+  </div>	
+<!-- ###TEMPLATE_RESPONSEFORM### end -->
+
+<!--
+=====================================================================================================
+###TEMPLATE_SUBSCRIBEFORM### begin
+=====================================================================================================
+   Form to subscribe/unsubscribe to a connector
+
+-->
+  <div class="tx-wecconnector-content">
+    <!-- ###SHOW_ERROR### begin--> 
+	<span class="error">###FORM_ERROR### ###FORM_ERROR_FIELDS###</span>
+    <!-- ###SHOW_ERROR### end--> 
+	<div class="tx-wecconnector-form">
+	  <div class="tx-wecconnector-header">###SUBSCRIBE_HEADER###</div>
+	  <form name="subscriberform" method="post" action="###ACTION_URL###">
+		<div class="inputFormRow">
+			<span class="label" style="white-space:nowrap;">###FORM_EMAIL###</span>
+			<span class="inputBox">
+				<input type="text" name="tx_wecconnector[email]" value="###VALUE_EMAIL###" />
+			</span>
+		</div>
+		<div class="inputFormRow">
+			<span class="textacross">
+				<input type="hidden" name="id" value="###PID###" />
+				<input type="submit" name="tx_wecconnector[submitsubscribe]" value="###FORM_SUBMIT_SUB###" />
+				<input type="submit" name="tx_wecconnector[submitunsubscribe]" value="###FORM_SUBMIT_UNSUB###" />
+				<input type="button" onclick="###CANCEL_URL###" value="###FORM_CANCEL###" />
+			</span>
+		</div>
+		<div class="tx-wecconnector-spacer">&nbsp;</div>
+	  </form>
+	</div>
+  </div>	
+<!-- ###TEMPLATE_SUBSCRIBEFORM### end -->
+
+<!--
+=====================================================================================================
+###TEMPLATE_PREVIEW### begin
+
+ Template for the preview display.
+=====================================================================================================
+-->
+	<!-- ###PREVIEW_DISPLAY### begin-->
+	<div class="tx-wecconnector-forumPreview">
+		<div class="tx-wecconnector-centered">###PREVIEW_TITLE###</div>
+		###PREVIEW_ENTRIES###
+		<div class="tx-wecconnector-centered">###PREVIEW_GOTO_LINK###</div>
+	</div>
+	<!-- ###PREVIEW_DISPLAY### end-->
+
+	<!-- ###PREVIEW_ENTRY### begin-->
+    <div class="tx-wecconnector-forumPreviewEntry">
+     	<div>
+    		###PREVIEW_LINK_BEGIN### ###SUBJECT### ###PREVIEW_LINK_END###
+    	</div>
+
+    	###MESSAGE###
+	    <div class="tx-wecconnector-forumPreviewInfo">
+    		###POSTEDBY_TEXT### ###NAME### ###ON_TEXT### ###DATE### ###TIME###
+	    </div>
+	</div>
+	<!-- ###PREVIEW_ENTRY### end-->
+
+	<!-- ###PREVIEW_NOENTRY### begin-->
+    <div class="tx-wecconnector-forumPreviewEntry">
+		###NO_ENTRY_MESSAGE###
+	</div>
+	<!-- ###PREVIEW_NOENTRY### end-->
+
+<!-- ###TEMPLATE_PREVIEW### end -->

@@ -1,0 +1,210 @@
+2010-09-09  ben
+
+	* css/rte.css: add some missing rtc css
+
+2010-06-24  jeff
+
+	* ext_emconf.php: Updated emconf after TER release.
+
+2010-06-22  ben
+
+	* css/mainstyles.css: removed z-index: 100 at header DIV and added
+	  z-index: 5 to topNav DIV. Since smoothgallary is z-index:15,
+	  changing z-index to 5 fixes the bug when using smoothgallary.
+
+2010-06-21  ben
+
+	* css/images/arrow.gif, css/images/drawer_arrow.gif,
+	  css/images/feature-bg.jpg, css/images/feature-bottom-bg.jpg,
+	  css/images/logo.jpg, css/images/masthead_title.gif,
+	  css/images/nav_bg.jpg, css/images/search-button-hover.png,
+	  css/mainstyles.css, typoscript/skin_typoscript.ts: skins bug
+	  fixing and template optimization.
+
+2010-06-02  jeff
+
+	* ext_emconf.php: Updated emconf after TER release.
+
+2010-05-18  ben
+
+	* typoscript/skin_typoscript.ts: fix the header content not showing
+	  issue in IE7, we have this problem after we fixed the TYPO3
+	  frontend editing button issue. (to change clearOnly to clear will
+	  fix the problem.)
+
+2010-05-10  jeff
+
+	* ext_emconf.php: Updated emconf after TER release.
+
+2010-05-06  ben
+
+	* css/mainstyles.css: fix the issue when the site title gets very
+	  long.
+	* css/mainstyles.css: move z-index setting from header div to
+	  topNav div so that TYPO3 frontend edit button shows properly in
+	  1024x768 monitor
+
+2010-05-03  ben
+
+	* css/mainstyles.css: fix the footer alignment issue and fix the
+	  site title issue when it gets very long.
+
+2010-03-30  jeff
+
+	* ext_emconf.php: Updated emconf after release to TYPO3.org
+
+2010-03-30  ben
+
+	* typoscript/skin_constants.ts: remove unnecessary border for
+	  module. (changing moduleBodyWrapBorderWidth at skin constant)
+
+2010-03-24  jeff
+
+	* typoscript/skin_typoscript.ts: Switch login status to COA_INT
+	  once a user is actually logged in. Prevents incorrect username
+	  from showing due to caching.
+
+2010-03-24  ben
+
+	* css/mainstyles.css: give a width and force it to wrap for the
+	  copyright section of the footer.
+	* css/mainstyles.css: remove an unnecessary padding for the login
+	  box in order to fix the signin section display issue.
+
+2010-03-23  jeff
+
+	* typoscript/skin_typoscript.ts: Add TypoScript to hide empty
+	  topNav. Fixes bug #1656.
+
+2010-03-15  jeff
+
+	* ext_emconf.php: Updated emconf after TER release.
+
+2010-03-15  ben
+
+	* css/mainstyles.css: remove the background color for .unframed
+	  .moduleBodyWrap
+
+2010-03-15  jeff
+
+	* typoscript/skin_typoscript.ts: Add contact info in with the
+	  footer.
+	* typoscript/skin_typoscript.ts: Update WEC link and copyright
+	  info.
+	* typoscript/skin_constants.ts, typoscript/skin_typoscript.ts:
+	  Replace logo with siteLogo in constants.
+
+2010-03-14  ben
+
+	* css/mainstyles.css: fix the footer gap issue.
+
+2010-03-13  jeff
+
+	* css/mainstyles.css: Reduce z-index to avoid conflicts with
+	  rgsmoothgallery.
+
+2010-03-12  jeff
+
+	* typoscript/skin_constants.ts, typoscript/skin_typoscript.ts: Make
+	  sure that references to skin constants always expect a trailing
+	  slash.
+	* ext_emconf.php: Add TV framework dependency.
+
+2010-03-12  ben
+
+	* css/mainstyles.css: added TYPO3 general styling.
+
+2010-03-12  jeff
+
+	* info.php: Remove info.php files since info.txt replaces it.
+	* info.txt: Add info.txt file to eventually replace info.php
+	* ext_emconf.php: Update skin extension titles to reference TV
+	  framework.
+
+2010-03-11  jeff
+
+	* typoscript/skin_typoscript.ts: Remove dummy abstract text and use
+	  real field instead.
+
+2010-03-11  ben
+
+	* typoscript/skin_typoscript.ts: change the maximum width and
+	  height for logo image.
+	* screenshot.png: removed the png skin screenshot.
+	* screenshot.gif: change skin screenshot from png to git.
+
+2010-03-11  jeff
+
+	* typoscript/skin_constants.ts, typoscript/skin_typoscript.ts:
+	  Update core and skin constants to new naming convention.
+
+2010-03-10  ben
+
+	* css/mainstyles.css: remove unused CSS codes.
+
+2010-03-10  jeff
+
+	* info.php: Added empty description to serve as example for other
+	  skin developers.
+
+2010-03-10  ben
+
+	* screenshot.jpg, screenshot.png: change skin screenshot from jpg
+	  to png
+	* screenshot.jpg: Updated screenshots and added active state for
+	  menus.
+
+2010-03-09  jeff
+
+	* ext_icon.gif: Added extension icons.
+
+2010-03-08  jeff
+
+	* typoscript/skin_typoscript.ts: Fixed nesting problem with section
+	  menu.
+
+2010-03-04  jeff
+
+	* typoscript/skin_constants.ts, typoscript/skin_typoscript.ts: Make
+	  skin constants consistent and add a new constant to disable the
+	  WEC link in the footer.
+
+2010-03-03  jeff
+
+	* js/skin.js, typoscript/skin_constants.ts: Make skin constants
+	  consistent and check for search HTMl existence before using it in
+	  Javascript.
+	* css/images/logo.png, css/mainstyles.css: Adding CSS and image
+	  updates from Ben
+	* typoscript/skin_typoscript.ts: Added section menu Typoscript,
+	  added todos for localization, and cleaned up some formatting.
+	* js/skin.js: Cleaned up Javascript formatting and removed extra
+	  whitespace.
+
+2010-03-02  jeff
+
+	* typoscript/skin_typoscript.ts: Updated sign in link to include
+	  redirect parameter.
+
+2010-02-15  jeff
+
+	* typoscript/skin_typoscript.ts: Fixed problem logging out on pages
+	  with a querystring in the URL.
+
+2010-02-11  jeff
+
+	* css/images/feature-bg.png, css/images/feature_shadow.png,
+	  css/images/footer_bg.jpg, css/images/header_bg.jpg,
+	  css/images/local-menu-top-bg.jpg,
+	  css/images/local_menu_arrow.gif, css/images/search.png,
+	  css/images/wrapper_bg.jpg, css/mainstyles.css, css/rte.css,
+	  typoscript/skin_constants.ts, typoscript/skin_typoscript.ts:
+	  Adding skin styling updates.
+	* ext_emconf.php, ext_localconf.php, info.php, screenshot.jpg:
+	  Added extension and metadata for skin selection.
+	* .: Renaming skin_001 to skin_stacks.
+
+2010-01-12  jeff
+
+	* Added current skins.
+

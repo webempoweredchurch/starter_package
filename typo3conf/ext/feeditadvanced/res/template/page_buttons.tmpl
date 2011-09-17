@@ -1,0 +1,57 @@
+<h1>Overwriting Editpanel Action for table pages</h1>
+<h2>NOTE: This template is only used for page editing buttons in the top menu.  To make changes to all EDITPANELs, the subparts must be placed in the main template file.</h2>
+<h2>This works with any other DB table: Just put EDITPANEL_tablenameInUppercase or EDITPANEL_ACTION_tablenameInUppercase subparts to the template file.</h2>
+<!-- ###EDITPANEL_PAGES### begin -->
+<div class="feEditAdvanced-allWrapper###ALLWRAPPER_CLASS###" id="###EDITPANEL_ID###">
+	<!-- ###HOVERFORM### start -->
+	<form name="###FORM_NAME###" id="###FORM_NAME###" action="###FORM_URL###" method="post" enctype="###FORM_ENCTYPE###">
+		###FORM_HIDDENFIELDS###
+		###FORM_CONTENT###	
+		<div class="feEditAdvanced-editPanelDiv">
+		<!-- ###EDITPANEL_ACTION_EDIT### start -->	
+		  <a class="feEditAdvanced-button feEditAdvanced-editButton editAction" title="###EDITPANEL_EDIT_TOOLTIP###">
+			<span class="feEditAdvanced-buttonText">###EDITPANEL_EDIT_BUTTONTEXT###</span>
+		  </a>
+		<!-- ###EDITPANEL_ACTION_EDIT### end -->	
+		<!-- ###EDITPANEL_ACTION_NEW### start -->	
+		  <a class="feEditAdvanced-button feEditAdvanced-editButton newRecordAction" title="###EDITPANEL_NEW_TOOLTIP###">
+			<span class="feEditAdvanced-buttonText">###EDITPANEL_NEW_BUTTONTEXT###</span>
+		  </a>
+		<!-- ###EDITPANEL_ACTION_NEW### end -->	
+		<!-- ###EDITPANEL_ACTION_DELETE### start -->	
+		  <a class="feEditAdvanced-button feEditAdvanced-editButton deleteAction" title="###EDITPANEL_DELETE_TOOLTIP###">
+			<span class="feEditAdvanced-buttonText">###EDITPANEL_DELETE_BUTTONTEXT###</span>
+		  </a>		
+		<!-- ###EDITPANEL_ACTION_DELETE### end -->			
+		<!-- ###EDITPANEL_ACTION_HIDE### start -->			
+		  <a class="feEditAdvanced-button feEditAdvanced-editButton hideAction" title="###EDITPANEL_HIDE_TOOLTIP###">
+			<span class="feEditAdvanced-buttonText">###EDITPANEL_HIDE_BUTTONTEXT###</span>
+		  </a>		
+		<!-- ###EDITPANEL_ACTION_HIDE### end -->
+			<div id="feEditAdvanced-showHiddenContent" class="feEditAdvanced-button" title="###EDITPANEL_SHOW_HIDDEN_TOOLTIP###">
+				<input id="feEditAdvanced-showHiddenContent-input" type="checkbox" value="1" />
+				<label for="feEditAdvanced-showHiddenContent-input">###EDITPANEL_SHOW_HIDDEN_TEXT###</label>
+			</div>
+		</div>
+	</form>	
+	<!-- ###HOVERFORM### end -->
+	<div class="feEditAdvanced-contentWrapper###CWRAPPER_CLASS###" ###CWRAPPER_EXTRA###>
+				
+		<!-- ###EDITFORM### start -->
+		<form name="###EDITFORM_NAME###" id="###EDITFORM_NAME###" action="###EDITFORM_URL###" method="post" enctype="###FORM_ENCTYPE###" onsubmit="###FORM_ONSUBMIT###">
+			###EDITFORM_HIDDENFIELDS###
+			###EDITFORM_CONTENT###
+		</form>
+		<!-- ###EDITFORM### end -->		
+	</div>
+</div>
+<!-- ###EDITPANEL_PAGES### end-->
+
+
+<h1>Overwriting Editpanel Action for table pages</h1>
+<h2>This works with any other DB table: Just put EDITPANEL_tablenameInUppercase or EDITPANEL_ACTION_tablenameInUppercase subparts to the template file.</h2>
+<!-- ###EDITPANEL_ACTION_PAGES### start -->
+	<a class="feEditAdvanced-button feEditAdvanced-editButton editAction">
+		<span class="feEditAdvanced-buttonText">Edit Page</span>
+	</a>
+<!-- ###EDITPANEL_ACTION_PAGES### end -->

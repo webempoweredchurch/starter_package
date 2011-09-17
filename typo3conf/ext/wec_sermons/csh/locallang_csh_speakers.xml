@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+  <meta type="array">
+    <description>CSH for table tx_wecsermons_speakers</description>
+    <type>CSH</type>
+    <csh_table>tx_wecsermons_speakers</csh_table>
+    <fileId>EXT:wec_sermons/csh/locallang_csh_speakers.xml</fileId>
+    <labelContext type="array" />
+  </meta>
+  <data type="array">
+    <languageKey index="default" type="array">
+      <label index=".description">The speaker, or representative of the sermon, if applicable.</label>
+      <label index=".details">A speaker</label>
+      <label index="hidden.description">Hides this record from front end display.</label>
+      <label index="hidden.details">This checkbox will hide or unhide a speaker from the users of your site. You can use this to temporarily hide this record from the Front End while editing it in the Back End.</label>
+      <label index="_hidden.seeAlso">tx_wecsermons_speakers:islinked</label>
+      <label index="islinked.description">Enables or disables linking to the single view of this record on the Front End.</label>
+      <label index="islinked.details">This checkbox allows you to have a speaker entered into the SMS and displayed on the Front End, but disallow users to view the speakers detail page by disabling the link to its single view.</label>
+      <label index="islinked.seeAlso">tx_wecsermons_speakers:hidden</label>
+      <label index="fullname.description">The full name, or display name, of the speaker</label>
+      <label index="fullname.details"></label>
+      <label index="lastname.description">Last name of the speaker</label>
+      <label index="lastname.details"></label>
+      <label index="firstname.description">First name of the speaker</label>
+      <label index="firstname.details"></label>
+      <label index="email.description">E-mail address of the speaker</label>
+      <label index="email.details"></label>
+      <label index="url.description">Speaker's personal web address (URL)</label>
+      <label index="url.details">The URL is a web address that can be the speakers home page, blog profile page, etc.</label>
+      <label index="photo.description">Photograph of the speaker.</label>
+      <label index="photo.details">The photograph can be a head shot or any other picture the speaker would like displayed.</label>
+			<label index="alttitle.description">Text used int the Alt and Title attributes of a speaker's photo</label>
+			<label index="alttitle.details">Alt attributes are displayed in place of the photo if the browser can not display the image, while the title attribute is used as a "tooltip" pop-up.</label>
+    </languageKey>
+  </data>
+</T3locallang>

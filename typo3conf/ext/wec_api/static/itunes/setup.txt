@@ -1,0 +1,232 @@
+# Include our xml class
+includeLibs.tx_wecapi_list= EXT:wec_api/class.tx_wecapi_list.php
+
+plugin.tx_wecapi_list >
+plugin.tx_wecapi_list = USER
+plugin.tx_wecapi_list {
+
+	userFunc = tx_wecapi_list->main
+
+	# This is the template file we will load. Specify this in your template record.
+	# Some templates are provided in this extension. See the EXT:wec_api/res/ directory.
+	templateFile = {$plugin.tx_wecapi_list.templateFile}
+
+	# This property defines the name of the template subpart we will parse. F.e. ###TEMPLATE_<template_name>###
+	templateName = {$plugin.tx_wecapi_list.templateName}
+
+	#	We specify two  arrays here in TypoScript. These one dimentional arrays are iterated, each key having an identically named counterpart in 'tag_rendering' below.
+
+	# Array pageArray is used to map marker tags outside of the ITEM subpart.
+	pageArray {
+		generator =
+		gen_date =
+		xmlns =
+		channel_title =
+		channel_link =
+		channel_description =
+		language =
+		namespace_entries =
+		copyright =
+		last_build_date =
+		docs =
+		channel_generator =
+		channel_category =
+		managing_editor =
+		webmaster =
+		ttl =
+		channel_image =
+		itunes_author =
+		itunes_category =
+		itunes_keywords =
+		itunes_explicit =
+		itunes_image =
+		itunes_owner =
+		itunes_summary =
+	}
+
+	# Array itemArray is used to map marker tags within the ITEM subpart of the template.
+	itemArray {
+		item_title =
+		item_link =
+		item_description =
+		item_itunes_summary =
+		item_author =
+		item_category =
+		item_comments =
+		item_enclosure =
+		item_pubdate =
+		item_guid =
+		item_source =
+		item_itunes_subtitle = 
+		item_itunes_duration =
+	}
+
+	# Following is an example of using tx_wecapi_list to generate an RSS 2.0 feed
+
+	# For every marker tag we want to replace in our template, we will specify a partner cObject that will determine how to render the tag.
+	# Using stdWrap's 'field' property, specify which field from the cObject data array maps to the cObject within the CASE
+
+	# a CASE cObject that will allow us to choose our rendering for each marker
+	tag_rendering = CASE
+	tag_rendering {
+
+		# Key is assigned value of the marker name programmatically
+		key =
+
+		generator = TEXT
+		generator.value = {$plugin.tx_wecapi_list.xml.rss.generator}
+
+		gen_date = TEXT
+		gen_date.data = date: D, d M Y h.i.s T
+
+		xmlns = TEXT
+		xmlns {
+			value = {$plugin.tx_wecapi_list.xml.rss.xmlns}
+			wrap = |
+			if.isTrue = {$plugin.tx_wecapi_list.xml.rss.xmlns}
+		}
+
+		channel_title  = TEXT
+		channel_title.value = {$plugin.tx_wecapi_list.xml.rss.channel_title}
+		channel_title.wrap = <title>|</title>
+
+		#	You must use the hook tx_wecapi_list.php:preProcessPageArray to set the field channel_link
+		channel_link = TEXT
+		channel_link.field = channel_link
+		channel_link.wrap = <link>|</link>
+
+		channel_description = TEXT
+		channel_description.value = {$plugin.tx_wecapi_list.xml.rss.channel_descr}
+		channel_description.wrap = <description><![CDATA[|]]></description>
+
+		channel_generator = TEXT
+		channel_generator.value = {$plugin.tx_wecapi_list.xml.rss.generator}
+		channel_generator.wrap = <generator>|</generator>
+
+		copyright = TEXT
+		copyright.value = {$plugin.tx_wecapi_list.xml.rss.copyright}
+		copyright.wrap = <copyright>|</copyright>
+
+		# This should be a valid language code. See http://www.w3.org/TR/REC-html40/struct/dirlang.html#langcodes
+		language = TEXT
+		language.value = {$plugin.tx_wecapi_list.xml.rss.language}
+		language.wrap = <language>|</language>
+
+		#	E-mail address of the webmaster
+		webmaster = TEXT
+		webmaster.value = {$plugin.tx_wecapi_list.xml.rss.owner_email}
+		webmaster.wrap = <webMaster>|</webMaster>
+
+		ttl = TEXT
+		ttl {
+			value = {$plugin.tx_wecapi_list.xml.rss.ttl}
+			wrap = <ttl>|</ttl>
+			if.isTrue = {$plugin.tx_wecapi_list.xml.rss.ttl}
+		}
+
+		last_build_date =
+
+		docs = TEXT
+		docs.value = {$plugin.tx_wecapi_list.xml.rss.docs}
+		docs.wrap = <docs>|</docs>
+
+		item_title = TEXT
+		item_title.wrap = <title>|</title>
+
+		item_itunes_subtitle = TEXT
+		item_itunes_subtitle.wrap = <itunes:subtitle><![CDATA[|]]></itunes:subtitle>
+
+		#	You must use the hook tx_wecapi_list.php:preProcessContentRow to set the field item_link
+		item_link = TEXT
+		item_link.field = item_link
+		item_link.wrap = <link>|</link>
+
+		item_description = TEXT
+		item_description.wrap = <description><![CDATA[|]]></description>
+		item_description.crop = 200|...|2
+
+		item_author = TEXT
+		item_author.field = author
+		item_author.if.isTrue.field = author
+		item_author.wrap = <itunes:author><![CDATA[|]]></itunes:author>
+
+		# Assumed here that all articles will be categorized the same as the channel
+		item_category < .channel_category
+
+		item_comments =  TEXT
+		item_comments.value =
+
+		# Enclosure url. For this tag, constants.wec.siteURL should be set to the root path to this site. The field enclosure_url is appended to this constant to form the absolute url.
+		item_enclosure = TEXT
+		item_enclosure.value = <enclosure url="{$constants.wec.siteURL}{field:enclosure_url}" length="{field:size}" type="{field:mime_type}" />
+		item_enclosure.insertData = 1
+		item_enclosure.if.isTrue.field = enclosure_url 
+
+		item_pubdate = TEXT
+		item_pubdate.strftime = %a, %d %b %Y %H:%M:%S %z
+		item_pubdate.wrap = <pubDate>|</pubDate>
+
+		item_guid = TEXT
+		item_guid.wrap = <guid isPermaLink="false">|</guid>
+
+		#	You must use the hook tx_wecapi_list.php:preProcessContentRow to set the field item_link
+		item_source = TEXT
+		item_source = {$constants.wec.xml.rss.channel_title}
+		item_source.dataWrap = <source url="{field:item_link}">|</source>
+		
+		item_itunes_summary = TEXT
+		item_itunes_summary.wrap = <itunes:summary><![CDATA[|]]></itunes:summary>
+
+		item_itunes_duration = TEXT
+		item_itunes_duration.wrap = <itunes:duration>|</itunes:duration>
+		
+		itunes_category = COA
+		itunes_category {
+
+			10  = TEXT
+			10.dataWrap = <itunes:category text="{$plugin.tx_wecapi_list.xml.rss.channel_subcategory}" />
+
+			stdWrap.dataWrap =  <itunes:category text="{$plugin.tx_wecapi_list.xml.rss.channel_category}">|</itunes:category>
+		}
+
+		itunes_image = TEXT
+		itunes_image.dataWrap=<itunes:image href="{$plugin.tx_wecapi_list.xml.rss.image}"/>
+
+		itunes_explicit = TEXT
+		itunes_explicit.value = no
+		itunes_explicit.wrap = <itunes:explicit>|</itunes:explicit>
+
+		itunes_keywords = TEXT
+		itunes_keywords.value = {$plugin.tx_wecapi_list.xml.rss.keywords}
+		itunes_keywords.wrap = <itunes:keywords>|</itunes:keywords>
+
+		itunes_owner = COA
+		itunes_owner {
+
+			10 = TEXT
+			10.value = {$plugin.tx_wecapi_list.xml.rss.owner_name}
+			10.wrap = <itunes:name>|</itunes:name>
+
+			20 = TEXT
+			20.value = {$plugin.tx_wecapi_list.xml.rss.owner_email}
+			20.wrap = <itunes:email>|</itunes:email>
+
+			wrap = <itunes:owner>|</itunes:owner>
+		}
+
+		itunes_summary = TEXT
+		itunes_summary.wrap = <itunes:summary><![CDATA[{$plugin.tx_wecapi_list.xml.rss.itunes_summary}]]></itunes:summary>
+
+	}
+
+	# Making a copy of this at global scope will allow you to output the XML template only
+	rss2 = PAGE
+	rss2.config {
+		disableAllHeaderCode = 1
+		additionalHeaders = Content-type:application/xml
+		xhtml_cleaning = 0
+		admPanel = 0
+	}
+
+}
+

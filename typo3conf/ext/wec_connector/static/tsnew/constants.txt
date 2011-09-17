@@ -1,0 +1,31 @@
+plugin.tx_wecconnector_pi1 {
+# cat=plugin.tx_wecconnector_pi1/file/1; type=file[html,htm,tmpl,txt]; label= Template File: HTML template file for display of the Connector.
+  templateFile 	= EXT:wec_connector/template/wecconnector.tmpl
+
+# cat=plugin.tx_wecconnector_pi1/file/2; type=file[css]; label= base plugin CSS File
+  baseCSSFile 	= EXT:wec_connector/template/pluginstyles.css
+
+# cat=plugin.tx_wecconnector_pi1/file/2; type=file[css]; label= connector CSS File
+  cssFile 		= EXT:wec_connector/template/wecconnector.css
+
+#cat=plugin.tx_wecconnector_pi1/dims/9a; type=string; label= Image Width
+  imageWidth	= 150
+#cat=plugin.tx_wecconnector_pi1/dims/9b; type=string; label= Image Height
+  imageHeight	=
+
+#cat=plugin.tx_wecconnector_pi1/misc/1; type=options[date_added,name,subject]; label= Sorting Method For Entries
+  sortOrder		=	date_added
+
+#cat=plugin.tx_wecconnector_pi1/misc/1; type=string; label= Spam Words To Filter (reverse order)
+  spamWords	= argai,lodamar,lacirex,xepida,nirtub,lifaladat,lirtnob,teciroif,navita,nidociv,aidirem,artivel,muilav,ardehpe,lodamart,xanax,xertlav,enimretnehpma,lixap,ttub,citore,rekcil,naibsel,brutsam,dlokcuc,nrop,yssup,edun,tihs,kcuf,tnuc,kcufrehtom,erohw,kcoc,nmad,hctib,stit,selamehs,boj-wolb,boj wolb,bojwolb,tsecni,tnemegralne,sinep,enihcam tols,tolseerf,medloh,rekop,sparc,etteluor,kcajkcalb,gnilbmag enilno,gnilbmag,onisac,enotgnir,eerf ytud,gnidart yad,xelor,nemes,names,kcil ssa,yag toh,neet toh
+
+#cat=plugin.tx_wecconnector_pi1/misc/2; type=string; label= Additional Spam Words To Filter (non-reverse)
+  addSpamWords	=
+
+#cat=plugin.tx_wecconnector_pi1/misc/3; type=string; label= Delay Time in seconds to check for a duplicate post
+  duplicateCheckDelaySeconds = 15
+
+#cat=plugin.tx_wecconnector_pi1/links/1; type=text; label= Starting Point (pid_list): The PID of the page (or comma separated list of PIDs) where your entries are located.
+  pid_list =
+
+}

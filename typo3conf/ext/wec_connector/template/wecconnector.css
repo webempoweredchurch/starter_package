@@ -1,0 +1,124 @@
+/*--------- GENERAL STYLES -----------*/
+.tx_wecconnector_pi1 {
+	max-width: 850px;
+}
+
+/*--------- BUTTON STYLES -----------*/
+li.item a.button {
+	padding: 0px 6px;
+	-moz-border-radius:2px;
+	-webkit-border-radius:2px;
+	border-radius:2px;
+}
+
+/*------- HORIZONTAL CATEGORY BUTTONS ------*/
+.pluginContent .pluginNav a.isSelected {
+	background-image: -moz-linear-gradient(top, #FDA, #A94);
+	background-image: -webkit-gradient(linear, left top, left bottom,color-stop(0.00, #FDA),color-stop(1.00, #A94));
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#FFDDAA, EndColorStr=#AA9944)
+	       progid:DXImageTransform.Microsoft.dropshadow(OffX=1, OffY=1, Color=#E6E6E6, Positive='true');	
+}
+
+/*--------- ENTRY STYLE -----------*/
+.entry h3 {
+	font-size: 16px;
+	margin: 20px 0px 10px 0px;
+}
+
+.entry .entryInfo {
+	font-size:11px;
+}
+
+.entry .buttonRow {
+	width:	100%;
+	text-align: right;
+	clear:	both;
+	margin: 4px 0px;
+}
+
+.pluginContent .entry, 
+.pluginContent .entries {
+	margin: 0px;
+	padding: 2px 0px;
+	list-style:none;
+}
+
+/*--------- FORMS STYLE -----------*/
+
+.pluginForm .instructions{
+	font-size: 10px;
+	line-height: 1.1em;
+}
+
+/*-------- CATEGORY -------*/
+.categoryHeader {
+	clear:	both;
+	float:	left;
+	width:	100%;
+	font-size: 16px;
+	font-weight: bold;	
+	margin: 12px 0px;
+}
+.showCategory {
+	float:		left;
+	display: 	block;
+	clear:		both;
+	width:  	100%;
+	margin:		10px 0px;
+	padding:	6px 0px;
+	font-size:	18px;
+	color: 		#444;
+	background-color:#eee;
+	background-image: -moz-linear-gradient(top, #EEE, #BBB);
+	background-image: -webkit-gradient(linear, left top, left bottom,color-stop(0.00, #EEE),color-stop(1.00, #BBB));
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#FFFFFF, EndColorStr=#BBBBBB)
+	       progid:DXImageTransform.Microsoft.dropshadow(OffX=1, OffY=1, Color=#E6E6E6, Positive='true');	
+}
+.showCategoryImage {
+	float:			right;
+	margin-top:		0px;
+	padding:		0px;
+	text-align:		right;
+}
+.categoryName {
+	font-weight:bold;
+	text-align: center;
+	margin: 0px auto;
+}
+.categoryImage {
+	margin-left: 10px;
+}
+
+#entryFormToggle, #entryFormToggleHide {
+	font-weight: bold;
+	margin: 10px 0;
+}
+
+li.isHidden {
+	background-color: #CCC;
+}
+
+.highlightBox {
+	background-color: #dcdcdc;
+	border: 2px solid #999;
+	margin-bottom:10px;
+	margin-top:10px;
+	padding:4px 8px;
+}
+.pageLink {
+	display:		inline;
+	padding-left:	6px;
+	padding-right:	6px;
+}
+.pageLinkPad {
+	padding-right:  1px;
+	padding-left:   2px;
+}
+.marginBox {
+	margin:			20px;
+}
+
+/*-------- PREVIEW -------*/
+.preview h4 {
+	margin-top:10px;
+}

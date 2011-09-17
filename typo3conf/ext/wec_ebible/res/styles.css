@@ -1,0 +1,68 @@
+/* Example CSS styles for wec_ebible extension*/
+
+.bookHeading, .chapterHeading, .paragraphHeading {  
+  display: none;
+}
+.verseNum {
+  font-size: 0.6em;
+  vertical-align: super;
+  color: #B40101;
+  line-height: 0;
+}
+.verse {
+  line-height: 1.3em;
+}
+.jesusTalk {
+  color: #B40101;
+}
+.ebibleSnippetContainer {
+  font-family: Arial, sans-serif;
+  font-size:14px; 
+  border:1px solid #f6bf31;
+  background-color: #fce6b8; 
+  padding:10px;
+  text-align: left;
+}
+.ebibleSnippetContainer a ,.ebibleSnippetContainer a:visited {
+  color:#0000ee;
+}
+.ebSnippet-title {
+  color:#0000ee;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 1ex;
+}
+.ebSnippet-body {
+}
+.ebSnippet-more {
+}
+.ebSnippet-topics{
+  margin-top: 1ex;
+  font-size: 0.8em;
+}
+.ebSnippet-topics a, .ebSnippet-topics a:visited{
+  color:#9999FF;
+  text-decoration:underline;
+}
+.ebSnippet-topics a:hover{
+  color:#0000ff;
+}
+.ebSnippet-credit {
+  float: right;
+  padding-top: 5px;
+  font-size: 0.9em;
+}
+.dismissible_link {
+  margin: 0.5em 0 0 0 !important;
+  padding:0 !important;
+  font-weight: normal;
+  font-size: 0.9em;
+  clear: both;
+  display: block;
+  text-align: right;
+  text-decoration: underline !important;
+  border: none !important;
+}
+.dismissible_link:hover {
+  color: #BCA902;
+}

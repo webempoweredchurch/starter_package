@@ -1,0 +1,48 @@
+***************
+*** 11,32 ****
+  }
+  
+  div#feEditAdvanced-menuBar a.feEditAdvanced-smallButton {
+  	color: #eee;
+- 	background: url(../icons/menubar/button_small.png) no-repeat 0 0;
+  	margin: 4px 8px 0 0;
+- 	padding: 0;
+- 	width: 70px;
+- 	line-height: 20px;
+  	height: 20px;
+  	font-size: 10px;
+  
+  	display: block;
+- 	text-decoration: none;
+- 	cursor: pointer;
+- 	text-align: center;
+- 	float: right;
+- 
+- 	z-index: 8000;
+  }
+  
+  div#feEditAdvanced-menuBar a.feEditAdvanced-smallButton:hover { color: #fff; }--- 11,34 ----
+  }
+  
+  div#feEditAdvanced-menuBar a.feEditAdvanced-smallButton {
++ 	display: block;
+  	color: #eee;
++ 	background: url(../icons/menubar/button_small_right.png) no-repeat top right;
++ 	padding: 0 2px 0 0;
+  	margin: 4px 8px 0 0;
+  	height: 20px;
+  	font-size: 10px;
++ 	float: right;
++ }
+  
++ div#feEditAdvanced-menuBar  .feEditAdvanced-smallButton span.feEditAdvanced-smallButtonText {
++ 	padding: 4px 5px 0px 7px;
++ 	color: #c6c6c6;
++ 	height: 16px;
+  	display: block;
++ 	background: url(../icons/menubar/button_small_left.png) no-repeat;
+  }
+  
++ 
++ 
+  div#feEditAdvanced-menuBar a.feEditAdvanced-smallButton:hover { color: #fff; }

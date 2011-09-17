@@ -1,0 +1,48 @@
+2010-09-15  ben
+
+	* css/rte.css: edit for rte css
+
+2010-08-27  ben
+
+	* typoscript/skin_typoscript.ts: fix the letter is cut off for site
+	  title.
+
+2010-08-23  jeff
+
+	* ext_emconf.php: Updated emconf after TER release.
+	* css/ie6.css, css/rte.css: Cleaned up CSS comments.
+
+2010-08-23  ben
+
+	* css/ie6.css, css/images/header-bg.jpg,
+	  css/images/local-menu-bg.gif,
+	  css/images/local-menu-bottom-bg.gif,
+	  css/images/local-menu-top-bg.gif, css/images/main-menu-bg.jpg,
+	  css/mainstyles.css, ext_emconf.php, js/skin.js: misc edits.
+
+2010-08-17  jeff
+
+	* typoscript/skin_typoscript.ts: Fixed bad reference to HTC
+	  behavior file.
+
+2010-08-12  jeff
+
+	* css/images/border.png, css/images/header-bg.png,
+	  css/mainstyles.css, typoscript/skin_typoscript.ts: Adjust font
+	  size and add IE border-image support using CSS3 PIE.
+	* css/htc, css/htc/PIE.htc: Add CSS3 PIE for IE compatibility.
+	* fonts/GLSNECB.TTF, fonts/LICENSE.txt, fonts/LeagueGothic.otf:
+	  Changed fonts.
+
+2010-08-09  jeff
+
+	* info.txt: Updating title within skin.
+	* ., css/images/border.png, css/images/header-bg.png,
+	  css/mainstyles.css, js/skin.js, typoscript/skin_constants.ts,
+	  typoscript/skin_typoscript.ts: Renaming skin_012 to
+	  skin_lilypads.
+
+2010-08-04  jeff
+
+	* Adding development version of skin_012.
+

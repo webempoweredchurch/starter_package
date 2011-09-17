@@ -1,0 +1,27 @@
+
+#	$Id: setup.txt,v 1.5 2005/07/22 21:31:41 ingorenner Exp $
+
+blogWebservice = PAGE
+blogWebservice {
+  typeNum = 200
+
+  10 < plugin.tx_timtab_pi2
+  
+  10.pidStorePosts = {$plugin.tx_timtab_pi2.pidStorePosts}
+  10.pidStoreComments = {$plugin.tx_timtab_pi2.pidStoreComments}
+  10.connectionTimeout = {$plugin.tx_timtab_pi2.connectionTimeout}
+  
+  10.enableBlogger = {$plugin.tx_timtab_pi2.enableBlogger}
+  10.enableMetaWeblog = {$plugin.tx_timtab_pi2.enableMetaWeblog}
+  10.enableMovableType = {$plugin.tx_timtab_pi2.enableMovableType}
+  10.enableUploads = {$plugin.tx_timtab_pi2.enableUploads}
+  10.strictAPI = {$plugin.tx_timtab_pi2.strictAPI}
+  
+  config {
+    disableAllHeaderCode = 1
+    additionalHeaders = Content-type: application/xml
+    xhtml_cleaning = 0
+    admPanel = 0
+  }
+
+}

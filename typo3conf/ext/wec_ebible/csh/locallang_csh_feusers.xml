@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<description>CSH for WEC eBible Additions to the Frontend Users Table</description>
+		<type>CSH</type>
+		<csh_table>fe_users</csh_table>
+		<fileId>EXT:wec_ebible/locallang_csh_feusers.xml</fileId>
+		<labelContext type="array">
+		</labelContext>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_wecebible_translation.description">If user settings for Bible translation are allowed by the various WEC eBible frontend plugins, this translation will be used for the frontend user.</label>
+		</languageKey>
+	</data>
+</T3locallang>

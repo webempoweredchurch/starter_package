@@ -1,0 +1,59 @@
+Version 1.0.0	(13-09-2004)
+
+	a) Initial upload
+
+Version 1.0.1	(19-09-2004)
+
+	a) Added manual.
+	b) Added some LL-vars.
+
+Version 1.0.2	(30-11-2004)
+
+	a) Removed a few bugs. 
+	b) Added option "Convert windows linebreaks to unix" when editing ascii files.
+
+
+Version 1.2	(30-11-2004)
+
+	a) Added option for display of thumbnails. 
+	b) Added PHP code highlighting in edit mode.
+	
+
+Version 1.3	(10-03-2005)
+
+	a) Added syntax highlighting for close to all languages used in TYPO3 context. Now highlights PHP, TypoScript, XML, SQL, HTML, JavaScript, Perl, CSS and Smarty. 
+	b) Added a "Goto line" function in edit-mode.  	
+
+Version 1.4	(04-07-2005)
+
+	a)  "Go to function"-selectorbox (only displayed when editing php-files). 
+	b) Doubleclick on a line in the hightlighted code in order to jump to that line in the textarea. 
+	c) Use TAB-key to insert TAB's in textarea (Does not work in Opera).
+
+
+Version 1.5	(04-08-2005)
+
+	a)	It's no longer nescessary to set the 'home_dir'. The extension works out of the box!
+	b)	Editable file extensions can now be configured via the extension manager.
+	c)	Files in zip-, tar.gz- and tar.bz2-archives can now be extracted.
+	d)	Files and folders can be renamed.
+	e)	Checks on invalid filenames.
+
+
+Version 1.6	(21-09-2005)
+
+	a)	You can now jump directly to a folder by submitting the path.
+	b)	Corrected a serious bug that caused an error if a folder contained items that was non-readable
+	
+Version 1.7 	(23-1-2007)
+	a) When Quixplorer is loaded it returns to the last visited folder
+	b) Updated Geshi highlighting engine to version 1.0.7.5
+	c) Adjusted the font-size of the highlighted code making it more readable
+	d) Changed file/folder creation to use TYPO3's core file functions
+	f) Added extra configuration options (automatic syntax highlighting and disabling text-preview)
+	g) Added extra options for uploading files.
+	h) Corrected bug in t3quixplorer::copy_dir
+	i) If you paste a file/folder into a folder that already contains a file/folder by that name Quixplorer will rename it instead of reporting an error 
+	j) Corrected a bug in t3quixplorer::make_link that made it impossible to acces folders or edit files with special chars like ' ' or '+' in the name.
+	k) added parse checking for php-scripts
+	l) Changed tabbing in textarea to use TYPO3's own tab.js script

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'wec_contentelements'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tt_content.filedownload.title">File Download</label>
+			<label index="tt_content.filedownload.description">Simple listing of files for download, along with a title and description for the entire group of files.</label>
+
+			<label index="flexform.filedownload.title">Title</label>
+			<label index="flexform.filedownload.description">Description</label>
+			<label index="flexform.filedownload.files">Files</label>
+		</languageKey>
+	</data>
+</T3locallang>

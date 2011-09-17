@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+  <meta type="array">
+      <description>CSH for table tx_wecsermons_sermons</description>
+      <type>CSH</type>
+      <csh_table>tx_wecsermons_sermons</csh_table>
+      <fileId>EXT:wec_sermons/csh/locallang_csh_sermons.xml</fileId>
+      <labelContext type="array"/>
+  </meta>
+  <data type="array">
+    <languageKey index="default" type="array">
+      <label index=".description">Sermons are the primary records the SMS will manage.</label>
+      <label index=".details">Sermon records represent sermons in the SMS. They should be your starting point to creating on-line sermon information</label>
+      <label index="sys_language_uid.description">The language of this sermon.</label>
+      <label index="sys_language_uid.details">This should be the default language unless this sermon represents a translation of another language.</label>
+      <label index="_sys_language_uid.seeAlso">tt_content:sys_language_uid,pages:sys_language_uid,pages_language_overlay:sys_language_uid</label>
+      <label index="hidden.description">Hides this record from Front End display.</label>
+      <label index="hidden.details">This checkbox will hide or unhide a sermon from the users of your site. You can use this to temporarily hide this record from the Front End while editing it in the Back End.</label>
+      <label index="_hidden.seeAlso">tx_wecsermons_sermons:starttime,tx_wecsermons_sermons:endtime,tx_wecsermons_sermons:fe_group,tx_wecsermons_sermons:islinked</label>
+      <label index="starttime.description">The date this record will be shown on the Front End.</label>
+      <label index="starttime.details">Start is the date that the sermon will first be available to your users. This will be 12:00 am, midnight, on the date specified.</label>
+      <label index="_starttime.seeAlso">tx_wecsermons_sermons:hidden,tx_wecsermons_sermons:endtime,tx_wecsermons_sermons:fe_group,tx_wecsermons_sermons:islinked</label>
+      <label index="endtime.description">The date this record will no longer be shown on the Front End.</label>
+      <label index="endtime.details">Stop is the date that the sermon will no longer be shown on the website. This will be at 12:00 am, midnight, on the date specified.</label>
+      <label index="_endtime.seeAlso">tx_wecsermons_sermons:hidden,tx_wecsermons_sermons:starttime,tx_wecsermons_sermons:fe_group,tx_wecsermons_sermons:islinked</label>
+      <label index="fe_group.description">Only members of the user group specified here will see this sermon.</label>
+      <label index="fe_group.details">Access specifies what user groups are allowed to see this sermon. If a user group is selected, this sermon will only be visible by those users who log into the Front End and are members of the specified user group.</label>
+      <label index="_fe_group.seeAlso">tx_wecsermons_sermons:hidden,tx_wecsermons_sermons:starttime,tx_wecsermons_sermons:endtime,tx_wecsermons_sermons:islinked</label>
+      <label index="islinked.description">Enables or disables linking to the single view of this record on the Front End.</label>
+      <label index="islinked.details">This checkbox allows you to have a sermon entered into the SMS and displayed on the Front End, but disallow users to view the sermons detail page by disabling the link to its single view.</label>
+      <label index="_islinked.seeAlso">tx_wecsermons_sermons:hidden,tx_wecsermons_sermons:starttime,tx_wecsermons_sermons:endtime,tx_wecsermons_sermons:fe_group,tx_wecsermons_sermons:islinked</label>
+      <label index="title.description">The title of the sermon.</label>
+      <label index="title.details">The sermon title will typically be the title of the sermon performed on your day of worship.</label>
+      <label index="subtitle.description">The subtitle of the sermon.</label>
+      <label index="subtitle.details">The subtitle can be used to provide a very brief summary of the sermon.</label>
+      <label index="occurrence_date.description">The date this sermon was presented.</label>
+      <label index="occurrence_date.details">Occurrence Date is date when this sermon was presented, or the materials associated with it were made available.</label>
+      <label index="description.description">The general description given for this sermon.</label>
+      <label index="description.details">The description can be used to briefly describe the sermon in detail, or to provide sermon notes or study guides. This is a flexible field that can be used however you imagine.</label>
+      <label index="scripture.description">Scripture referenced in this sermon.</label>
+      <label index="scripture.details">Include here, any scripture you wish to associate with this sermon. These will be included when performing a search. Separate scriptures by a comma, ','.</label>
+      <label index="scripture.syntax">John 3:14,Num 21:9</label>
+      <label index="series_uid.description">The sermon series this sermon is associated with.</label>
+      <label index="series_uid.details">Choose which series this particular sermon was presented in.</label>
+      <label index="_series_uid.seeAlso">tx_wecsermons_series</label>
+      <label index="topics_uid.description">A topic this sermon is associated with</label>
+      <label index="topics_uid.details">Choose a topic this sermon is associated with, if applicable. This will be used to search for sermons associated with a particular topic.</label>
+      <label index="_topics_uid.seeAlso">tx_wecsermons_topics</label>
+			<label index="current.description">Flags this record as the &quot;currently&quot; promoted sermon.</label>
+			<label index="current.details">The current flag can be used by organizations to manually control what sermon or series is being actively promoted. This is used in conjunction wtih the CURRENT and PREVIOUS plug-in display options.</label>
+      <label index="resources_uid.description">Resources represent digital assets you wish to attach to a sermon and make them available to users of the website.</label>
+      <label index="resources_uid.details">Resources are flexible records that can store many types of digital assets. Many are provided out of the box, but site administrators can configure these through Resource Type records, TypoScript, and marker based templates.</label>
+      <label index="_resources_uid.seeAlso">tx_wecsermons_resources,tx_wecsermons_resource_types</label>
+      <label index="speakers_uid.description">Speakers are those individuals who presented the sermon, or materials.</label>
+      <label index="speakers_uid.details">Choose which speakers were associated with this sermon. More than one speaker can be specified.</label>
+      <label index="_speakers_uid.seeAlso">tx_wecsermons_speakers</label>
+      <label index="graphic.description">A digitial image associated with a sermon</label>
+      <label index="graphic.details">A graphic can represent an image or idea that this sermon is related to.</label>
+			<label index="alttitle.description">Text used int the Alt and Title attributes of a sermon graphic</label>
+			<label index="alttitle.details">Alt attributes are displayed in place of the sermon graphic if the browser can not display the image, while the title attribute is used as a "tooltip" pop-up.</label>
+      <label index="keywords.description">Any keywords associated with a sermon that you may wish to include.</label>
+      <label index="keywords.details">Keywords are typically words that you wish to associate with a sermon, and will be included when searching for sermon records. These may be words that were not included in the description of the sermon, but are directly relevant, or used by people when searching.</label>
+  </languageKey>
+  </data>
+</T3locallang>

@@ -1,0 +1,19 @@
+
+# cat=basic/other/a1; type=string; label=Blocked file extensions:For security, files with these extensions will be blocked from downloading.
+blockedExt = php,php4,php5,inc,sql
+
+# cat=basic/other/a2; type=string; label=noAccess_handling:How TYPO3 should handle requests for accessible pages. false (default): The 'nearest' page is shown. TRUE or '1': An TYPO3 error box is displayed. Strings: page to show (reads content and outputs with correct headers), eg. 'notfound.html' or 'http://www.domain.org/errors/notfound.html'. If prefixed "REDIRECT:" it will redirect to the URL/script after the prefix (original behaviour). If prefixed with "READFILE:" then it will expect the remaining string to be a HTML file which will be read and outputted directly after having the marker "###CURRENT_URL###" substituted with REQUEST_URI and ###REASON### with reason text, for example: "READFILE:fileadmin/notfound.html". Another option is the prefix "USER_FUNCTION:" which will call a user function, eg. "USER_FUNCTION:typo3conf/pageNotFoundHandling.php:user_pageNotFound->pageNotFound" where the file must contain a class "user_pageNotFound" with a method "pageNotFound" inside with two parameters, $param and $ref
+noAccess_handling =
+
+# cat=basic/other/a3; type=string; label=noAccess_handling_statheader:If 'noAccess_handling' is enabled, this string will always be sent as header before the actual handling.
+noAccess_handling_statheader = HTTP/1.0 404 Not Found
+
+# cat=basic/enable/b1; type=boolean; label=Enable tt_news file hook script?:If enabled the filelinks in tt_news will be processed using this extension instead of using the TYPO3 filelink function. NOTE: Remember to include the pmkfdl static template AFTER the tt_news static template.
+ttnewsFileHook = 1
+
+# cat=basic/enable/c1; type=boolean; label=Enable example hook script?:If enabled the downloads is post processed using a hook in the download script. The example script will create a logfile in fileadmin, named "pmkfdl_log.txt". The log is updated with various info whenever a file is downloaded.
+enableExampleHook = 1
+
+# cat=basic/other/c2; type=string; label=Path to logfile: If the example hook is enabled, you can specify the path/name of the logfile (Relative to the fileadmin/ folder)
+logfile = pmkfdl_log.txt
+

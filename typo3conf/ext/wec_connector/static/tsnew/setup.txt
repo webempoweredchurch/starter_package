@@ -1,0 +1,35 @@
+plugin.tx_wecconnector_pi1 = USER_INT
+plugin.tx_wecconnector_pi1 {
+	general_dateWrap {
+		date = n/d/Y
+		eu_date = Y-m-d
+	}
+	general_timeWrap {
+		date = h:iA
+		eu_date = H:i
+	}
+
+	templateFile 	= {$plugin.tx_wecconnector_pi1.templateFile}
+	baseCSSFile 	= {$plugin.tx_wecconnector_pi1.baseCSSFile}
+	cssFile 		= {$plugin.tx_wecconnector_pi1.cssFile}
+
+	imageWidth		= {$plugin.tx_wecconnector_pi1.imageWidth}
+	imageHeight		= {$plugin.tx_wecconnector_pi1.imageHeight}
+
+	sortOrder	 		= {$plugin.tx_wecconnector_pi1.sortOrder}
+
+	spamWords 			= {$plugin.tx_wecconnector_pi1.spamWords}
+	addSpamWords 		= {$plugin.tx_wecconnector_pi1.addSpamWords}
+	
+	duplicateCheckDelaySeconds = {$plugin.tx_wecconnector_pi1.duplicateCheckDelaySeconds}
+
+	pid_list			= {$plugin.tx_wecconnector_pi1.pid_list}
+	loginPID			= {$loginPID}
+		
+	isLoaded			= yes
+	isOldTemplate		= 0
+}
+
+plugin.tx_wecconnector_pi1._CSS_DEFAULT_STYLE (
+
+)

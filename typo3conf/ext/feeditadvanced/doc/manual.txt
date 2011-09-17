@@ -1,0 +1,223 @@
+Advanced Frontend Editing Manual
+Extension Key: feeditadvanced
+Language: en
+Version: 1.4.1
+Keywords: forEditors, forAdmins, forBeginners, forIntermediates
+Copyright 2010-2011, Documentation Team, <documentation@typo3.org>
+
+This document is published under the Open Content License
+available from http://www.opencontent.org/opl.shtml
+
+The content of this document is related to TYPO3 
+- a GNU/GPL CMS/Framework available from www.typo3.org
+
+
+
+
+
+Official documentation
+This document is included as part of the official TYPO3 documentation. It has been approved by the TYPO3 Documentation Team following a peer-review process. The reader should expect the information in this document to be accurate - please report discrepancies to the Documentation Team (documentation@typo3.org). Official documents are kept up-to-date to the best of the Documentation Team's abilities.
+
+Core Manual
+This document is a Core Manual. Core Manuals address the built in functionality of TYPO3 and are designed to provide the reader with in-depth information. Each Core Manual addresses a particular process or function and how it is implemented within the TYPO3 source code. These may include information on available APIs, specific configuration options, etc.
+Core Manuals are written as reference manuals. The reader should rely on the Table of Contents to identify what particular section will best address the task at hand.
+Table of Contents
+Advanced Frontend Editing Manual	1
+Introduction	3
+About this document	3
+What's new	3
+Credits	3
+Feedback	3
+Installation	4
+Configuration options	5
+Top Level Objects 	5
+->FeEdit	5
+Template issues	7
+Use feeditadvanced with any kind of record	8
+Next steps	9
+
+
+Introduction
+About this document
+This is the manual of feeditadvanced, the new frontend editing extension of TYPO3 4.3 and newer. 
+It contains hints on installation and usage of the extension as well as notes on help with the most frequent problems. 
+What's new
+Since this is the first version of the manual, basically everything in here is new. This manual was written to apply to feeditadvanced 1.4.1. 
+Credits
+The Frontend Editing Team is mainly driven by some TYPO3 Core Developers and the Web Empowered Church. They produced most of the code. This manual was written by Christopher. 
+Feedback
+For general questions about the documentation get in touch by writing to documentation@typo3.org.
+If you find a bug in this manual, please file an issue in the bug tracker of feeditadvanced: http://forge.typo3.org/projects/typo3v4-feedit/issues
+Maintaining quality documentation is hard work and the Documentation Team is always looking for volunteers. If you feel like helping please join the documentation mailing list (typo3.projects.documentation on lists.typo3.org).
+
+Installation
+To get this extension working you need at least TYPO3 4.3. 
+
+Install the extension in the extension manager. There are no further options to set in the extension manager; most of the extension should work out of the box. 
+
+Go to the frontend of your website and load a page while you are logged in with a backend user. 
+Now you should already see the elements, which are added by feeditadvanced: The top menu and the dashed outline around your content elements. 
+You should now be able to edit all types of content elements which come with TYPO3 by default. For custom content element types (like for example tt_news records), an additional configuration is needed. You find an example in the section "Use feeditadvanced with any kind of record" later in this manual. 
+
+If you test the extension with a backend user, who is no admin, it might happen that the editing menu does not appear on the frontend pages. 
+If that is the case, it might help to include the following configuration in the TSconfig field of that backend user: 
+admPanel {
+  enable.edit = 1
+  hide = 0
+}
+The line hide = 0 hides the admin panel. If you want to use it, you can also set this to hide = 1. This should not influence the frontend editing menu. 
+Thanks for that hint to Mark Johnston and Walter Karlen! 
+
+When you want to use feeditadvanced with workspaces a problem might be that stage changes and the like cannot be done without logging in to the backend. The reason is that the extension "version" is not being loaded in the frontend. As a temporary solution, you can open typo3conf/localconf.php and modify $TYPO3_CONF_VARS['EXT']['extList_FE'] to include the version extension. 
+
+
+Configuration options
+Following there is a list of the options available for feeditadvanced. 
+
+Top Level Objects 
+This are the Page TSconfig Top Level Objects (TLOs): 
+
+Property:
+Data type:
+Description:
+Default:
+FeEdit
+->FeEdit
+Options for feeditadvanced. 
+
+[page]
+
+->FeEdit
+The following options can be used in Page TSconfig and can be overwritten in User TSconfig: 
+Property
+Data type
+Description
+Default
+disable 
+boolean
+Disables feeditadvanced completely. 
+0
+useAjax 
+boolean
+If set, Ajax is used when otherwise the page would have to reload (e.g. after inserting a new content element). 
+1
+clickContentToEdit   
+boolean
+If set to 1, clicking on content elements allows you to edit them. If you want to be able to follow links in content elements instead, let it set to 0. 
+0
+reloadPageOnContentUpdate 
+boolean
+TSconfig option for complete page reload on content change. 
+
+Notice: This option still is experimental. 
+0
+showIcons 
+list of values
+Comma separated list of icons to show when hovering over content elements with the mouse. 
+
+Possible values: 
+edit: Show icon to edit elements. 
+new: Show icon to insert new element after the current one. 
+copy: Show icon to copy elements. 
+cut: Show icon to cut elements. 
+hide: Show icon to hide and unhide elements. 
+delete: Show icon to delete the elements. 
+draggable: Show button to drag elements. 
+edit, new, copy, cut, hide, delete, draggable
+showPageIcons 
+list of values
+Options to show on a page for editing pages. 
+
+
+Possible values: 
+new: Show button to create a new page. 
+edit: Show button to edit page properties. 
+delete: Show button to delete the page. 
+hide: Show icon to hide and unhide the page. 
+edit, new
+skin.cssFile 
+string
+Path to the CSS file with the styles generally used by feeditadvanced. 
+typo3conf/ext/feeditadvanced/res/css/fe_edit_advanced.css
+skin.cssFormFile 
+string
+Path to the CSS file with the needed styles for editing forms on the page. 
+typo3conf/ext/feeditadvanced/res/css/fe_formsOnPage.css
+skin.templateFile 
+string
+The template file to be used. Holding the HTML Code for the menu and the edit panels 
+typo3conf/ext/feeditadvanced/res/template/feedit.tmpl
+skin.imagePath 
+string
+Path to images for skinning. Influences icons in edit panels and editing icons. 
+
+If editing takes place with forms on the page, there must be a subfolder called forms/ inside skin.imagePath. It must hold the needed images. 
+typo3conf/ext/feeditadvanced/res/icons/
+menuBar.disable 
+boolean
+Do not show the menu at the top. 
+0
+menuBar.config 
+list of values
+Defines, which sections of the menu to show. 
+
+Possible values: 
+action: Options to edit page, file, user and some more. Currently not supported. 
+clipboard: Display the clipboard. 
+context: Display a context menu on the right site of the top menu. Available buttons in that menu can be configured with menuBar.contextMenu, see below. 
+action, clipboard, context
+menuBar.contextMenu 
+list of values
+Configures available buttons in the right part of the top menu. 
+
+Possible values: 
+preview: Display a preview button. 
+close: Display the close button. This button closes the frontend editing. 
+logout: Display the logout button. With this button you can log out from the TYPO3 Backend. 
+close, logout
+editWindow.height 
+int
+Adjusts the height of the editing window. This is especially useful, if using larger screens. If the editing window is larger than the browser window, the size is reduced to fit. 
+600
+editWindow.width 
+int
+Adjusts the width of the editing window. This is especially useful, if using larger screens. If the editing window is larger than the browser window, the size is reduced to fit. 
+800
+[page:FeEdit; beuser:page.FeEdit]
+
+
+Template issues
+We tried to make the CSS of feeditadvanced bullet proof so that it works with as many page templates as possible. There is however a chance that it does not work with your page out of the box, but that you need to do some adjustments to get it working properly. 
+When a backend user is logged in, feeditadvanced for example uses styles.content.get.stdWrap.prepend to put div containers into the columns of the frontend page. That way, the content elements can be highlighted and moved with the mouse. 
+Note that these containers are only added to the most commonly used columns. If you want to work with feeditadvanced in other columns, you must add the needed definitions there, too. You find those definitions in the file ext_localconf.php of this extension. 
+If you use the same properties in your custom template, they will override the ones of feeditadvanced, causing feeditadvanced to not work correctly. 
+You can detect and fix that kind of problem in the TypoScript template tools. Just make sure that you do not use styles.content.get.stdWrap.prepend and its child properties. 
+
+
+
+Use feeditadvanced with any kind of record
+By default feeditadvanced is configured to be used with normal content elements coming from the database table tt_content. You can however use it with any database table, enabling you to also edit the records found in those tables with feeditadvanced. 
+The following text was originally written by Dan Osipov. 
+Here is some simple TypoScript code which you can put into the setup section of your TypoScript template. It allows you to edit tt_news records from the frontend: 
+plugin.tt_news.displayList.title_stdWrap.editPanel = 1
+plugin.tt_news.displayList.title_stdWrap.editPanel {
+  editPanel = 1
+  allow = edit,hide,delete
+  line = 5
+  label = %s
+  onlyCurrentPid = 0
+  previewBorder = 4
+  edit.displayRecord = 1
+}
+
+Here is what you will see in the frontend, next to each tt_news title marker: 
+
+And if you click edit, you will get the editing form from feeditadvanced allowing you to modify the record: 
+
+Generally, any record which has stdWrap properties can be wrapped in this code to enable FE editing. 
+
+Next steps
+If you have further questions on how to work with this extension, you can ask in the English mailing list which you find as typo3-english on lists.typo3.org. 
+
+
+

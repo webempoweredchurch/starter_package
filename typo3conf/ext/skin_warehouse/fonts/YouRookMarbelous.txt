@@ -1,0 +1,65 @@
+"You Rook Marbelous" is a copyrighted font from Rich Gast & GreyWolf WebWorks
+
+"You Rook Marbelous" is the 43rd free font from Rich Gast. 
+
+It was originally created on 09/26/99.
+
+Version 2.0 was completed on 07/20/10. This version updates the font so that it can
+be embedded in products like Adobe Illustrator files and PDF documents.
+
+GreyWolf WebWorks fonts are free for personal use. They do, however, remain the
+copyrighted property of Rich Gast and GreyWolf WebWorks. They are not in the public
+domain.
+
+Commercial use in any manner, including, but not limited to, use in any product,
+service or corporate logo design, inclusion in any software, archive, collection or
+library for distribution to the public which either directly or indirectly generates
+income for the distributor requires written permission from the author and copyright
+holder, who is specifically identified as:
+
+Richard Gast
+5818 Prophet's Rock Road
+West Lafayette, IN 47906
+e-mail: greywolfwebworks@comcast.net
+Web Site: www.greywolfwebworks.com
+
+Commercial ventures who include any GreyWolf WebWorks font in any manner described
+above without receiving written permission from the author and copyright holder will
+be subject to any and all legal remedies available to the copyright holder.
+
+GreyWolf WebWorks fonts may only be redistributed at no charge via web sites, e-mail,
+newsgroups and bulletin boards, as long as the original zip file is kept intact and
+unaltered, including the accompanying text file(s) and with the prior, written
+approval of the copyright holder.
+
+WARRANTY
+No warranty is either expressed or implied for this software product by GreyWolf
+WebWorks. This software product and related documentation are provided "as is",
+without warranty of any kind including, but not limited to, implied warranties of
+merchantability, fitness for a given purpose, or noninfringement. The entire risk
+arising from use of the software product remains with you, the user.
+
+LIABILITY FOR DAMAGES. In no event shall GreyWolf WebWorks be liable for any damages
+whatsoever (including, but not limited to, damages for loss of business profits,
+business interruption, loss of business information, or any other pecuniary loss)
+arising from the use of or inability to use this product, even if GreyWolf WebWorks
+has been advised of the possibility of such damages.
+
+The character set includes:
+
+Upper and lower case letters, numbers and the vast majority of international
+characters and punctuation. 
+
+SPECIAL CHARACTERS:
+[alt0164] is the Euro symbol (also coded 20AC for european keyboards).
+[alt0166] is "Th"
+[alt0175] is a narrow space you can use to add additional spacing between characters,
+should you desire.
+
+Fans of Billy Crystal will recognize the name as stemming from Billy's Saturday
+Night Live impersonation of Ricardo Montalban. Since the font features marble grained
+characters, it looks simply "marbelous"! And marble was a lot easier to create than
+rich, Corinthian leather.
+
+..... Rich Gast
+GreyWolf WebWorks

@@ -1,0 +1,154 @@
+<!-- 
+	This is the template for ve_guestbook in the kubrick template
+
+	$Id: kubrick_ve_guestbook.tmpl,v 1.6 2005/08/23 22:26:48 ingorenner Exp $ 
+
+-->
+
+<!-- ###TEMPLATE_FORM### begin
+
+The guestbook form for a new frontend entry
+
+Following markers will be substituted:
+
+###FORM_FIRSTNAME### 	Firstname
+###FORM_SURNAME###		Surname
+###FORM_EMAIL### 		E-Mail
+###FORM_HOMEPAGE### 	Website
+###FORM_PLACE### 		Place
+###FORM_ENTRY### 		Message
+
+-->
+<div class="pluginContent">
+	<div class="pluginSection">
+		<h3 id="respond">###BLOG_LEAVE_REPLY###</h3>
+
+		<p class="tx-guestbook-form-error">###FORM_ERROR###</p>
+		###FORM_ERROR_FIELDS###
+
+		<form class="pluginForm" action="###ACTION_URL###" method="post" id="commentform">
+			<ol>
+				<li>
+					<label for="author">###BLOG_NAME### ###FORM_FIRSTNAME_OBLIGATION###</label>
+					<input type="text" name="tx_veguestbook_pi1[firstname]" id="author" value="###VALUE_FIRSTNAME###" size="22" />
+				</li>
+
+				<li>
+					<label for="email">###BLOG_MAIL### ###FORM_EMAIL_OBLIGATION###</label>
+					<div class="instructions">###BLOG_NOT_PUBLISHED###</div>
+					<input type="text" name="tx_veguestbook_pi1[email]" id="email" value="###VALUE_EMAIL###" size="22" />
+				</li>
+
+				<li>
+					<label for="url">###BLOG_HOMEPAGE### ###FORM_HOMEPAGE_OBLIGATION###</label>
+					<input type="text" name="tx_veguestbook_pi1[homepage]" id="url" value="###VALUE_HOMEPAGE###" size="22" />
+				</li>
+
+				<li>
+					<label for="message">###FORM_ENTRY### <span class="tx-guestbook-form-obligationfield">###FORM_ENTRY_OBLIGATION###</span></label>
+					<textarea name="tx_veguestbook_pi1[entry]" id="comment" class="tx-guestbook-form-textarea" rows="10" cols="60">###VALUE_ENTRY###</textarea>
+				</li>
+
+				<!-- ###CAPTCHA_INSERT### this subpart is removed if CAPTCHA is not enabled! -->
+	 			<li>
+	                                <label for="capture">###FORM_CAPTCHA_RESPONSE### <span class="tx-guestbook-form-obligationfield">*</span></label>
+					<div class="instructions">This helps keep our comments clean and free of spammers</div>
+					<input type="text" class="tx-guestbook-form-inputfield-med" name="tx_veguestbook_pi1[captcha_response]" value="" id="capture" /> 
+					<div class="captchaWrapper">###CAPTCHA_IMAGE###</div>
+				</li>
+				<!-- ###CAPTCHA_INSERT### -->
+	
+				<!-- ###SR_FREECAP_INSERT### this subpart is removed if CAPTCHA is not enabled! -->
+				<li>
+					<label for="freecap">###SR_FREECAP_NOTICE### 
+						<span class="tx-guestbook-form-obligationfield">*</span><br />
+						<span class="freecap-span">###SR_FREECAP_CANT_READ###</span>
+					</label>
+	                                <div class="instructions">This helps keep our comments clean and free of spammers</div>
+					<input type="text" class="tx-guestbook-form-inputfield-med" name="tx_veguestbook_pi1[captcha_response]" title="###SR_FREECAP_NOTICE###" value="" id="freecap" />
+					<div class="captchaWrapper">###SR_FREECAP_IMAGE###</div>
+				</li>
+				<!-- ###SR_FREECAP_INSERT### -->
+
+				<li>
+					<input name="submit" type="submit" id="submit" value="###FORM_SUBMIT###" />
+					<input type="hidden" name="id" value="###PID###" />
+					<input type="hidden" name="tx_veguestbook_pi1[submitted]" value="1" />
+				</li>
+			</ol>
+		</form>
+	</div>
+</div>
+<!-- ###TEMPLATE_FORM### end -->
+
+<!-- ###TEMPLATE_LIST### begin
+Teasing the gustbook
+
+Following markers will be substituted:
+
+###GUESTBOOK_FIRSTNAME### 	Firstname (Entry)
+###GUESTBOOK_SURNAME###		Surname (Entry)
+###GUESTBOOK_EMAIL_URL### 	E-Mail URL (Entry)
+###GUESTBOOK_EMAIL### 		E-Mail including spam protection if activated (Entry)
+###GUESTBOOK_HOMEPAGE### 	Website (Entry)
+###GUESTBOOK_PLACE### 		Place (Entry)
+###GUESTBOOK_ENTRY### 		Message (Entry)
+
+And the field names...
+
+###FORM_FIRSTNAME### 		Firstname
+###FORM_SURNAME###			Surname
+###FORM_EMAIL### 			E-Mail
+###FORM_HOMEPAGE### 		Website
+###FORM_PLACE### 			Place
+###FORM_ENTRY### 			Message
+-->
+<div class="pluginContent">
+	<div class="pluginSection">
+		<h3 id="comments">###BLOG_COMMENTS_COUNT### ###BLOG_RESPONSES### to &#8220;###BLOG_POST_TITLE###&#8221;</h3> 
+
+		<ol class="entries">
+		<!-- ###CONTENT### begin
+			This is the part of the template substituted with the list of entries: 
+		-->
+
+			<!-- ###ENTRY### begin 
+				Template for a single item 
+			-->
+			<li class="entry" id="comment-###BLOG_COMMENT_NUM###">
+				<div class="entryInfo">
+					<div class="entryBy">###BLOG_COMMENTER_NAME###</div>
+					<div class="entryDate">###GUESTBOOK_DATE###</div>
+				</div>
+				<div class="message">
+					###GUESTBOOK_ENTRY###
+				</div>
+				<div class="vspacer"></div>
+			</li>
+			<!-- ###ENTRY### end-->
+		<!-- ###CONTENT###  end -->
+		</ol>
+	</div>
+</div>
+<!-- ###TEMPLATE_LIST### end -->
+
+
+
+<!-- ###TEMPLATE_NO_ENTRIES### begin
+No entries found :-(
+
+Following markers will be substituted:
+
+###GUESTBOOK_FIRSTNAME### 	Firstname
+###GUESTBOOK_SURNAME###		Surname
+###GUESTBOOK_EMAIL_URL### 	E-Mail (URL)
+###GUESTBOOK_EMAIL### 		E-Mail including spam protection if activated
+###GUESTBOOK_HOMEPAGE### 	Website
+###GUESTBOOK_PLACE### 		Place
+###GUESTBOOK_ENTRY### 		Message
+
+-->
+
+<!-- ###TEMPLATE_NO_ENTRIES### end -->
+
+

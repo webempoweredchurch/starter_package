@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="youtubeID.description">Navigate to the YouTube video that you want to embed. The YouTube video will appear in your browser's address bar and includes everything to the right of = (watch?v=Nh5tewhGg_E  ... the id would be Nh5tewhGg_E).</label>
+			<label index="height.description">The height of the video should be in proportion to the width - typically at 4:3 or 16:9. Both Height and Width are required.</label>
+			<label index="width.description">The width of the video should be in proportion to the height - typically at 4:3 or 16:9. Both Height and Width are required.</label>
+		</languageKey>
+	</data>
+</T3locallang>

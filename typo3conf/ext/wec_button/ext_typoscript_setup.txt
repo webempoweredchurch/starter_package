@@ -1,0 +1,7 @@
+plugin.tx_wecbutton_pi1 {
+	templateFile 	= {$plugin.tx_wecbutton_pi1.templateFile}
+	url				= {$plugin.tx_wecbutton_pi1.url}
+	altText			= {$plugin.tx_wecbutton_pi1.altText}
+	titleText		= {$plugin.tx_wecbutton_pi1.titleText}
+	demoMode 		= {$plugin.tx_wecbutton_pi1.demoMode}
+}

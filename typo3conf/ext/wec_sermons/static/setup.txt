@@ -1,0 +1,1459 @@
+
+
+# Include our fe plugin class
+includeLibs.tx_wecsermons= EXT:wec_sermons/pi1/class.tx_wecsermons_pi1.php
+
+plugin.tx_wecsermons_pi1 = USER
+plugin.tx_wecsermons_pi1 {
+
+	userFunc = tx_wecsermons_pi1->main
+
+	CMD =
+	detailTable =
+	groupTable =
+
+	pidList = {$plugin.tx_wecsermons_pi1.pidList}
+	recursive =
+
+	useStoragePid  = {$plugin.tx_wecsermons_pi1.useStoragePid}
+	pidSingleView = {$plugin.tx_wecsermons_pi1.pidSingleView}
+	pidListView = {$plugin.tx_wecsermons_pi1.pidListView}
+	pidSearchView = {$plugin.tx_wecsermons_pi1.pidSearchView}
+	
+	enableSmartDisplay = {$plugin.tx_wecsermons_pi1.enableSmartDisplay}
+
+	# Whether the extension will utilize the record's title in the page
+	# title (defaults to true)
+	substitutePageTitle = 1
+
+	# Whether the extension will provide BibleGateway links for scripture
+	# (defaults to false; i.e., BibleGateway is enabled by default)
+	disableBibleGateway = {$plugin.tx_wecsermons_pi1.disableBibleGateway}
+
+	# Whether the extension caches content or not
+	allowCaching = {$plugin.tx_wecsermons_pi1.allowCaching}
+
+	# Rendering of text items. re-use the RTE parseFunc configuration for RTE content
+	general_stdWrap {
+		parseFunc = < lib.parseFunc_RTE
+	}
+
+	# General wrap for dates in the wec_sermons extension
+	general_dateWrap {
+		strftime = %A, %b %d %Y
+	}
+
+	stdHeader = COA
+	stdHeader {
+		10 = TEXT
+		10.value = 1
+		10.addParams.title = 1
+		10.addParams.title.field = description
+		10.addParams.title.stripHtml = 1
+		10.stdWrap = 1
+		10.stdWrap.field = title
+		10.stdWrap.dataWrap = <div class="csc-header csc-header-n{cObj:parentRecordNumber}">|</div>
+		10.stdWrap.fieldRequired = title
+		10.prefixComment = 2 | Header:
+
+	}
+
+	# Marker based template file, which defines each view
+	templateFile = {$plugin.tx_wecsermons_pi1.file.templateFile}
+
+	# List of tables that any view can be generated from
+	allowedTables = tx_wecsermons_sermons,tx_wecsermons_series,tx_wecsermons_resources,tx_wecsermons_topics,tx_wecsermons_seasons,tx_wecsermons_speakers,tx_wecsermons_resources
+
+	#	The subpart marker used to define resources of type 'default'
+	defaultMarker = ###DEFAULT_RESOURCES###
+	defaultTemplate = ###TEMPLATE_DEFAULT_RESOURCES###
+
+	# Bitrate is used to calculate the duration of an audio file
+	bitrate = {$plugin.tx_wecsermons_pi1.bitrate}
+
+	# ***************************
+	# Resource Types CASE cObject
+	# ***************************
+
+	# Resource types are identified by thier typoscript_object_name field, and render content for the ###RESOURCE_CONTENT### template marker
+	resource_types = CASE
+	resource_types {
+
+		# Use the field 'typoscript_object_name' on a tx_wecsermons_resources record
+		key.field = typoscript_object_name
+
+		#YouTube Video
+		youtube = HTML
+		youtube.value = <object width="320" height="240"><param name="movie" value="{field:webaddress1}"></param><param name="wmode" value="transparent"></param><embed src="{field:webaddress1}" type="application/x-shockwave-flash" wmode="transparent" width="320" height="240"></embed></object>	
+		youtube.value.insertData = 1
+
+		# pdf (Portable Document)
+		pdf = COA
+		pdf {
+			10 = IMAGE
+			10 {
+
+				prefixComment = 2 | pdf Preview:
+				altText.field = alttitle
+				file.import = uploads/tx_wecsermons/
+				file.import {
+					field = file
+					listNum = 0
+				}
+				file.width = 150m
+				file.height  = 150m
+				wrap = <div class="tx-wecsermons-pi1-pdf-preview">|</div>
+				stdWrap.typolink {
+					parameter = {register:wec_sermons_resourceUploadPath}/{current:1}
+					parameter {
+						setCurrent.field = file
+						setCurrent.listNum = 0
+						insertData = 1
+						if.isTrue.field = islinked
+					}
+				}
+			}
+
+			20 = TEXT
+			20.prefixComment = 2 | pdf File Link:
+			20.field = title
+			20.typolink {
+				parameter = {register:wec_sermons_resourceUploadPath}/{current:1}
+				parameter {
+					setCurrent.field = file
+					setCurrent.listNum = 0
+					insertData = 1
+					if.isTrue.field = islinked
+				}
+			}
+			20.wrap = <p class="bodytext">|</p>
+
+			30 = TEXT
+			30.field = description
+			30.parseFunc < plugin.tx_wecsermons_pi1.general_stdWrap.parseFunc
+
+			wrap = <div class="tx-wecsermons-pi1-pdf">|</div>
+		}
+
+		# WEC Discussion plugin
+		discussion < plugin.tx_wecdiscussion_pi1
+
+
+		news = < plugin.tt_news
+		news {
+			code >
+			code = SINGLE
+			substitutePagetitle = 0
+			templateFile = EXT:wec_sermons/res/tt_news_v2_template.html
+		}
+
+		poll = < plugin.tx_jkpoll_pi1
+		poll {
+			type = 1
+		}
+
+		downloadfile = TEXT
+		downloadfile {
+			field = title
+			typolink {
+				parameter = {register:wec_sermons_resourceUploadPath}/{current:1}
+				parameter {
+					setCurrent.field = file
+					setCurrent.listNum = 0
+					insertData = 1
+					if.isTrue.field = islinked
+				}
+			}
+		}
+
+		downloadgraphic = COA
+		downloadgraphic {
+
+			stdWrap.prefixComment = 2 | SMS Downloadable Graphic:
+
+			10 = IMAGE
+			10 {
+				stdWrap.prefixComment = 2 | Graphic Preview:
+				altText.field = alttitle
+				file.import = uploads/tx_wecsermons/
+				file.import {
+					field = file
+					listNum = 0
+				}
+				file.width = 150m
+				file.height  = 150m
+				wrap = <div class="tx-wecsermons-pi1-graphic-preview">|</div>
+				stdWrap.typolink {
+					parameter = {register:wec_sermons_resourceUploadPath}/{current:1}
+					parameter {
+						setCurrent.field = file
+						setCurrent.listNum = 0
+						insertData = 1
+						if.isTrue.field = islinked
+					}
+				}
+			}
+
+			20 = TEXT
+			20.field = title
+			20.prefixComment = 2 | Graphic Title:
+
+		}
+
+		# embedded_mp3 Embedded Audio
+		embedded_mp3 = COA
+		embedded_mp3 {
+			10 = < plugin.tx_wecsermons_pi1.stdHeader
+
+			20 = < plugin.tx_wecflashplayer_pi2
+			20 {
+				audiobase.value = {register:wec_sermons_resourceUploadPath}/
+				audiobase.insertData = 1
+				audiofile.setCurrent.field = file
+				audiofile.setCurrent.listNum = 0
+				audiofile.current = 1
+			}
+
+			stdWrap.innerWrap = <div class="tx-wecsermons-pi1-mp3">|</div>
+			stdWrap.innerWrap {
+				addParams.title = 1
+				addParams.title.field = type_description
+				addParams.title.stripHtml = 1
+			}
+
+		}
+
+		# Flash video
+		embedded_flv = COA
+		embedded_flv {
+
+			10 = < plugin.tx_wecsermons_pi1.stdHeader
+
+			20 = < plugin.tx_wecflashplayer_pi1
+			20 {
+				videobase.value = {register:wec_sermons_resourceUploadPath}/
+				videobase.insertData = 1
+				videohigh.setCurrent.field = file
+				videohigh.setCurrent.listNum = 0
+				videohigh.current = 1
+				videolow.setCurrent.field = file
+				videolow.setCurrent.listNum = 1
+				videolow.current = 1
+			}
+
+			30 = TEXT
+			30.field = description
+			30.parseFunc < plugin.tx_wecsermons_pi1.general_stdWrap.parseFunc
+
+			wrap = <div class="tx-wecsermons-pi1-flv">|</div>
+		}
+
+		# Embedded media represents a gereral configuration for all embedded media types
+		embedded_media = COA
+		embedded_media {
+
+			stdWrap.prefixComment = 2 | SMS Embedded Media:
+
+			//	Default header uses standard header
+			10 = < plugin.tx_wecsermons_pi1.stdHeader
+			10.10.addParams.title = 1
+			10.10.addParams.title.field = type_description
+			10.10.addParams.title.stripHtml = 1
+
+			//	Media embed uses the MULTIMEDIA cObject to render, using the first file in the list of attached resources.
+			20 = MULTIMEDIA
+			20.stdWrap.prefixComment = 2 | Embeded media:
+			20.file = {register:wec_sermons_resourceUploadPath}/{current:1}
+			20.file {
+				setCurrent.field = file
+				setCurrent.listNum = 0
+				insertData = 1
+			}
+			20.params (
+				type={field:mime_type}
+			)
+			20.params.insertData = 1
+
+		}
+
+		embedded_realmedia < .embedded_media
+		embedded_wma < .embedded_media
+		embedded_swf < .embedded_media
+		embedded_wmv < .embedded_media
+		embedded_wmv {
+			20.file >
+			20.file.field = webaddress1
+		}
+		embedded_mov < .embedded_wmv
+		embedded_mp4 < .embedded_wmv
+		embedded_avi < .embedded_wmv
+
+		# This is the 'Default' resource type. This rendering will be used if the proper key has not been defined for the resource you are rendering.
+		# To define a new resource key, create a new property within the plugin.tx_wecsermons_pi1.resource_types CASE cObject. You can use the 'default' property as a starting point.
+		default = COA
+		default {
+
+			10 = < plugin.tx_wecsermons_pi1.stdHeader
+
+			20 = TEXT
+			20.field = file
+			20.listNum = 0
+			20.typolink = 1
+			20.typolink {
+				parameter = {register:wec_sermons_resourceUploadPath}/{current:1}
+				parameter {
+					setCurrent.field = file
+					setCurrent.listNum = 0
+					insertData = 1
+					if.isTrue.field = islinked
+				}
+				extTarget = _blank
+
+			}
+
+		}
+
+	}
+
+	# *************************
+	# Single view configuration
+	# *************************
+	singleView {
+
+		back = TEXT
+		back {
+			value = Return
+			wrap =
+		}
+
+		# Specify which layout will be used, also can be set in the front-end plugin
+		layoutCode =
+
+		# General formatting of a date in list view.
+		# You may override the global date formatting by specifying a format at this level
+		general_dateWrap.strftime =
+
+		# Enable the process that will append the records description to the page's meta descrption tag
+		enableMetaDescription = {$plugin.tx_wecsermons_pi1.enableMetaDescription}
+
+		tx_wecsermons_sermons {
+		
+			uid = TEXT
+			uid {
+				wrap = |
+				field = uid
+			}
+
+			# Wrap for the title column
+			title = TEXT
+			title {
+				wrap = |
+				field = title
+			}
+
+			# Wrap for the subtitle column
+			subtitle = TEXT
+			subtitle {
+				wrap = |
+				field = subtitle
+			}
+
+			# Specific date wrap for the occurrence_date column in tx_wecsermons_sermons table
+			occurrence_date = TEXT
+			occurrence_date {
+				wrap = |
+				field = occurrence_date
+			}
+
+			description = TEXT
+			description {
+				parseFunc < plugin.tx_wecsermons_pi1.general_stdWrap.parseFunc
+				field = description
+			}
+
+			scripture = TEXT
+			scripture {
+				typolink {
+					parameter = http://www.biblegateway.com/passage/?search={current:1}&version=31;&interface=print
+					parameter {
+						setCurrent.field = scripture
+						setCurrent.rawUrlEncode = 1
+						insertData = 1
+					}
+					extTarget = _blank
+				}
+				field = scripture
+				wrap = <p class="tx-wecsermons-pi1-single-scripture"><h2>Scripture:</h2>|</p>
+			}
+
+			scripture_nolink = TEXT
+			scripture_nolink {
+				field = scripture
+				wrap = <p class="tx-wecsermons-pi1-single-scripture"><h2>Scripture:</h2>|</p>
+			}
+
+			graphic = IMAGE
+			graphic {
+			wrap = <div class="tx-wecsermons-pi1-sermon-graphic">|</div>
+				altText.field = alttitle
+				file {
+					import = uploads/tx_wecsermons/
+					import.field = graphic
+					width = 256m
+					height = 256m
+				}
+				imageLinkWrap = 1
+				imageLinkWrap {
+					enable = 1
+					JSwindow = 1
+					JSwindow.expand = 20,20
+				}
+			}
+
+			topics = TEXT
+			topics {
+				innerWrap = {$plugin.tx_wecsermons_pi1.topicsHeader}
+				innerWrap.wrap = <h2>|</h2>
+				innerWrap.required = 1
+
+				wrap (
+					<dl class="tx-wecsermons-pi1-single-topics">
+						|
+					</dl>
+				)
+			}
+
+			series = TEXT
+			series {
+				innerWrap = {$plugin.tx_wecsermons_pi1.seriesHeader}
+				innerWrap.wrap = <h2>|</h2>
+				innerWrap.required = 1
+
+				wrap = <div class="tx-wecsermons-pi1-single-series">|</div>
+			}
+
+			speakers = TEXT
+			speakers {
+				innerWrap = {$plugin.tx_wecsermons_pi1.speakersHeader}
+				innerWrap.wrap = <tr><td><h2>|</h2></tr></td>
+				innerWrap.required = 1
+
+				wrap (
+					<table class="tx-wecsermons-pi1-single-speakers">
+						<tr>
+							|
+						</tr>
+					</table>
+				)
+			}
+
+		}
+
+		tx_wecsermons_resources {
+
+			# If typolink = 0, then links to the single view of a resource.
+			typolink = 1
+			typolink {
+				parameter = {register:wec_sermons_resourceUploadPath}/{current:1}
+				parameter {
+					setCurrent.field = file
+					setCurrent.listNum = 0
+					insertData = 1
+					if.isTrue.field = islinked
+				}
+				extTarget = _blank
+			}
+
+			# resource_types properties define whether to render the ###RESOURCE_LINK### tag as a link to the resources' single view, or by a typolink configuration.
+			# See the TSRef for details on the typolink data type: http://typo3.org/documentation/document-library/references/doc_core_tsref/current/view/5/8/
+			resource_types {
+
+				pdf.typolink < plugin.tx_wecsermons_pi1.singleView.tx_wecsermons_resources.typolink
+
+				embedded_mp3.typolink < plugin.tx_wecsermons_pi1.singleView.tx_wecsermons_resources.typolink
+
+				embedded_mp4.typolink = 1
+				embedded_mp4.typolink {
+					parameter.field = webaddress1
+					parameter.if.isTrue.field = islinked
+					extTarget = _blank
+				}
+
+				embedded_avi.typolink < .embedded_mp4
+				embedded_swf.typolink < plugin.tx_wecsermons_pi1.singleView.tx_wecsermons_resources.typolink
+				embedded_mov.typolink < .embedded_mp4
+				embedded_wma.typolink < plugin.tx_wecsermons_pi1.singleView.tx_wecsermons_resources.typolink
+				embedded_wmv.typolink < .embedded_mp4
+				embedded_realmedia.typolink < plugin.tx_wecsermons_pi1.singleView.tx_wecsermons_resources.typolink
+				embedded_flv.typolink < plugin.tx_wecsermons_pi1.singleView.tx_wecsermons_resources.typolink
+				downloadfile.typolink < plugin.tx_wecsermons_pi1.singleView.tx_wecsermons_resources.typolink
+				downloadgraphic.typolink < plugin.tx_wecsermons_pi1.singleView.tx_wecsermons_resources.typolink
+
+				poll.typolink = 0
+				news.typolink = 0
+				discussion.typolink = 0
+
+				# Default resource type, links to the first file in the list
+				default.typolink < plugin.tx_wecsermons_pi1.singleView.tx_wecsermons_resources.typolink
+
+			}
+
+			title = TEXT
+			title.field = title
+			title.wrap = <dl><dt>|<dt>
+
+			file = TEXT
+			file.field = file
+			file.listNum = 0
+			file.wrap = <dd>|</dd></dl>
+
+			graphic = IMAGE
+			graphic {
+				wrap = <div class="tx-wecsermons-pi1-pi1-resource-graphic">|<div>
+				file {
+					import = uploads/tx_wecsermons/
+					import.field = graphic
+					width = 32m
+					height = 32m
+				}
+				imageLinkWrap = 1
+				imageLinkWrap {
+					enable = 1
+					JSwindow = 1
+					JSwindow.expand = 20,20
+				}
+			}
+
+			description = TEXT
+			description {
+				parseFunc < tt_content.text.20.parseFunc
+				field = description
+			}
+
+			webaddress1 = TEXT
+			webaddress1.typolink.parameter.field = webaddress1
+
+			webaddress2 = TEXT
+			webaddress2.typolink.parameter.field = webaddress3
+
+			webaddress3 = TEXT
+			webaddress3.typolink.parameter.field = webaddress3
+
+			icon = IMAGE
+			icon {
+				altText.field = alttitle
+				file {
+					import = uploads/tx_wecsermons/
+					import.field = icon
+					width = 16m
+					height = 16m
+				}
+			}
+
+		}
+
+		tx_wecsermons_series {
+
+			title = TEXT
+			title {
+				wrap = <h2>|</h2>
+				field = title
+			}
+
+			subtitle = TEXT
+			subtitle {
+				wrap = |
+				field = subtitle
+			}
+
+			graphic = IMAGE
+			graphic {
+			wrap = <div class="tx-wecsermons-pi1-series-graphic">|</div>
+				altText.field = alttitle
+				file {
+					import = uploads/tx_wecsermons/
+					import.field = graphic
+					width = 256m
+					height = 256m
+				}
+				imageLinkWrap = 1
+				imageLinkWrap {
+					enable = 1
+					JSwindow = 1
+					JSwindow.expand = 20,20
+				}
+			}
+
+			description = TEXT
+			description {
+				parseFunc < tt_content.text.20.parseFunc
+				field = description
+			}
+
+			scripture = TEXT
+			scripture {
+				typolink {
+					parameter = http://www.biblegateway.com/passage/?search={current:1}&version=31;&interface=print
+					parameter.setCurrent.field = scripture
+					parameter.setCurrent.rawUrlEncode = 1
+					parameter.insertData = 1
+					extTarget = _blank
+				}
+				field = scripture
+				wrap = <p class="tx-wecsermons-pi1-single-scripture"><h2>Scripture:</h2>|</p>
+			}
+
+			scripture_nolink = TEXT
+			scripture_nolink {
+				field = scripture
+				wrap = <p class="tx-wecsermons-pi1-single-scripture"><h2>Scripture:</h2>|</p>
+			}
+
+			topics = TEXT
+			topics {
+				innerWrap = {$plugin.tx_wecsermons_pi1.topicsHeader}
+				innerWrap.wrap = <h2>|</h2>
+				innerWrap.required = 1
+
+				wrap = <div class="tx-wecsermons-pi1-series-topics">|</div>
+			}
+
+			startdate = TEXT
+			startdate {
+				innerWrap = {$plugin.tx_wecsermons_pi1.seriesStartDateHeader}
+				innerWrap.wrap = |&nbsp;
+				innerWrap.required = 1
+
+				wrap = |
+				field = startdate
+			}
+
+			enddate = TEXT
+			enddate {
+				innerWrap = {$plugin.tx_wecsermons_pi1.seriesEndDateHeader}
+				innerWrap.wrap = |&nbsp;
+				innerWrap.required = 1
+
+				wrap = |
+				field = enddate
+			}
+
+			season = TEXT
+			season {
+				innerWrap = {$plugin.tx_wecsermons_pi1.seasonHeader}
+				innerWrap.wrap = <h2>|</h2>
+				innerWrap.required = 1
+
+				wrap = <div class="tx-wecsermons-pi1-series-seasons">|</div>
+			}
+
+		}
+
+		tx_wecsermons_speakers {
+
+			# If typolink is set, then we use this configuration to generate the link for the ###SPEAKER_LINK### TYPO tag.
+			# If typolink = 0, then we generate a link to the speaker's single view
+			typolink = 0
+			typolink {
+				parameter.field = url
+				parameter.if.isTrue.field = islinked
+				extTarget = _blank
+			}
+
+			photo = IMAGE
+			photo {
+				wrap = |
+				altText.field = alttitle
+				file {
+					import = uploads/tx_wecsermons/
+					import.field = photo
+					width = 128m
+					height = 128m
+				}
+				imageLinkWrap = 1
+				imageLinkWrap {
+					enable = 1
+					JSwindow = 1
+					JSwindow.expand = 20,20
+				}
+			}
+
+			fullname = TEXT
+			fullname {
+				wrap = |
+				field = fullname
+			}
+
+			firstname = TEXT
+			firstname {
+				wrap = |
+				field = firstname
+			}
+
+			lastname = TEXT
+			lastname {
+				wrap = |
+				field = lastname
+			}
+
+			url = TEXT
+			url {
+				wrap = |
+				typolink = 1
+				typolink {
+					parameter.field = url
+					extTarget = _blank
+				}
+				field = url
+			}
+
+			email = TEXT
+			email {
+				typolink = 1
+				typolink.parameter.field = email
+				wrap = |
+				field = email
+
+			}
+		}
+
+		tx_wecsermons_topics {
+
+			title = TEXT
+			title {
+				wrap = |
+				stdWrap = 1
+				stdWrap.wrap = <span>|</span>
+				stdWrap.field = title
+				addParams.title = 1
+				addParams.title.field = description
+				addParams.title.trim = 1
+				addParams.title.stripHtml = 1
+				addParams.title.crop = 75|...|1
+
+
+			}
+
+			description = TEXT
+			description {
+				parseFunc < tt_content.text.20.parseFunc
+				field = description
+			}
+		}
+
+		tx_wecsermons_seasons {
+
+			title = TEXT
+			title {
+				wrap = |
+				stdWrap = 1
+				stdWrap.wrap = <span>|</span>
+				stdWrap.field = title
+				addParams.title = 1
+				addParams.title.field = description
+				addParams.title.trim = 1
+				addParams.title.stripHtml = 1
+				addParams.title.crop = 75|...|1
+			}
+
+			description = TEXT
+			description {
+				parseFunc < tt_content.text.20.parseFunc
+				field = description
+			}
+
+		}
+
+	}
+
+	# *****************
+	# List View Configuration
+	# *****************
+	listView {
+
+		# Start date filter, which is applied to the list omiting all dates previous to the date set
+		startDate =
+
+		# End date filter, applied to the list omiting all dates later than the date set
+		endDate =
+
+		# Specify which layout will be used, also can be set in the front-end plugin
+		layoutCode =
+
+		# *****************
+		# Browse Box Settings
+		#
+		# See http://typo3.org/fileadmin/typo3api-4.0.0/df/d32/classtslib__pibase.html#ba8eebaed52748cdf9acb31562295378
+		# *****************
+
+		# Whether the active page is a clickable link or text only
+		dontLinkActivePage =
+
+		# A boolean switch if the two links named "<< First" and "LAST >>" will be shown and point to the first or last page.
+		showFirstLast =
+
+		# Defines where the current page is shown in the list of pages in the Pagebrowser. If this var is an integer it will be interpreted as position in the list of pages. If its value is the keyword "center" the current page will be shown in the middle of the pagelist.
+		pagefloat =
+
+		# A boolean swith that displays the pagelinks in ranges f.e.: 1-5 6-10 11-15... instead of 1 2 3...
+		showRange =
+
+	 	# An integer switch that determines how the results browser will be rendered
+		#
+		# 1: (default) the text "Displaying results..." and the result-browser will be rendered.
+		# 2: only the text "Displaying results..." will be shown
+		showResultCount = 1
+
+		# *******************
+		# Browse Box Link Wraps
+		# *******************
+		browseBox_linkWraps {
+
+			disabledLinkWrap = <td nowrap="nowrap"><p>|</p></td>
+			inactiveLinkWrap = <td nowrap="nowrap"><p>|</p></td>
+			activeLinkWrap = <td class="tx-wecsermons-pi1-browsebox-SCell" nowrap="nowrap"><p>|</p></td>
+			browseLinksWrap = <table><tr>|</tr></table>
+			showResultsWrap = <p>|</p>
+			browseBoxWrap (
+				<!--
+				List browsing box:
+				-->
+				<div class="tx-wecsermons-pi1-browsebox">|</div>
+			)
+		}
+
+		# How many results to show on each page
+		maxdetailResults = {$plugin.tx_wecsermons_pi1.listView.maxdetailResults}
+		maxGroupResults = {$plugin.tx_wecsermons_pi1.listView.maxGroupResults}
+		emptyGroups = {$plugin.tx_wecsermons_pi1.listView.emptyGroups}
+
+		# Maximum number of pages that are shown in the page browser
+		maxPages = {$plugin.tx_wecsermons_pi1.listView.maxPages}
+
+		# A string value appended to the CSS class name of odd rows of a list, [tx-wecsermons-pi1-{alternatingClass}]
+		alternatingClass = {$plugin.tx_wecsermons_pi1.listView.alternatingClass}
+
+		# General formatting of a date in list view.
+		# You may override the global date formatting by specifying a format at this level
+		general_dateWrap.strftime =
+
+		tx_wecsermons_sermons {
+
+			# Allowed data columns to search in
+			searchFieldList = title,description,scripture,keywords
+
+			# Define ordering configuration for this table
+			# orderBy should only include one field!
+			orderByList = occurrence_date,title,description,crdate
+			orderBy = occurrence_date
+			descFlag = 1
+			
+			uid = TEXT
+			uid {
+				wrap = |
+				field = uid
+			}
+			
+			# Wrap for the title column
+			title = TEXT
+			title {
+				wrap = |
+				field = title
+			}
+
+			# Wrap for the title column
+			subtitle = TEXT
+			subtitle {
+				wrap = |
+				field = subtitle
+			}
+
+			# Specific date wrap for the occurrence_date column in tx_wecsermons_sermons table
+			occurrence_date = TEXT
+			occurrence_date {
+				wrap = |
+				field = occurrence_date
+			}
+
+			description = TEXT
+			description {
+				crop = 150| &nbsp;...|1
+				stripHtml = 1
+				trim = 1
+				wrap = <p class='bodytext'>|</p>
+				field = description
+			}
+
+			scripture = TEXT
+			scripture {
+
+				typolink {
+					parameter = http://www.biblegateway.com/passage/?search={current:1}&version=31;&interface=print
+					parameter.setCurrent.field = scripture
+					parameter.setCurrent.rawUrlEncode = 1
+					parameter.insertData = 1
+					extTarget = _blank
+				}
+				field = scripture
+				wrap = <p class="tx-wecsermons-pi1-list-scripture"><h2>Scripture:</h2>|</p>
+			}
+
+			scripture_nolink = TEXT
+			scripture_nolink {
+				field = scripture
+				wrap = <p class="tx-wecsermons-pi1-list-scripture"><h2>Scripture:</h2>|</p>
+			}
+
+			graphic = IMAGE
+			graphic {
+				wrap = <div class="tx-wecsermons-pi1-sermon-graphic">|</div>
+				altText.field = alttitle
+				file {
+					import = uploads/tx_wecsermons/
+					import.field = graphic
+					width = 128m
+					height = 128m
+				}
+				imageLinkWrap = 1
+				imageLinkWrap {
+					enable = 1
+					JSwindow = 1
+					JSwindow.expand = 20,20
+				}
+			}
+
+			topics = TEXT
+			topics {
+				innerWrap = {$plugin.tx_wecsermons_pi1.topicsHeader}
+				innerWrap.wrap = <h2>|</h2>
+				innerWrap.required = 1
+
+				wrap (
+					<div class="tx-wecsermons-pi1-list-topics">
+						|
+					</div>
+				)
+			}
+
+			series = TEXT
+			series {
+				innerWrap = {$plugin.tx_wecsermons_pi1.seriesHeader}
+				innerWrap.wrap = <h2>|</h2>
+				innerWrap.required = 1
+
+				wrap = <div class="tx-wecsermons-pi1-list-series">|</div>
+			}
+
+			speakers = TEXT
+			speakers {
+				innerWrap = {$plugin.tx_wecsermons_pi1.speakersHeader}
+				innerWrap.wrap = <h2>|</h2>
+				innerWrap.required = 1
+
+				wrap (
+					<div class="tx-wecsermons-pi1-list-speakers">
+						|
+					</div>
+				)
+			}
+
+		}
+
+		tx_wecsermons_resources {
+
+			# If typolink = 0, then links to the single view of a resource.
+			typolink = 0
+			typolink {
+				parameter = {register:wec_sermons_resourceUploadPath}/{current:1}
+				parameter {
+					setCurrent.field = file
+					setCurrent.listNum = 0
+					insertData = 1
+					if.isTrue.field = islinked
+				}
+				extTarget = _blank
+			}
+
+			# resource_types properties define whether to render the ###RESOURCE_LINK### tag as a link to the resources' single view, or by a typolink configuration.
+			# See the TSRef for details on the typolink data type: http://typo3.org/documentation/document-library/references/doc_core_tsref/current/view/5/8/
+			resource_types {
+
+				pdf.typolink < plugin.tx_wecsermons_pi1.listView.tx_wecsermons_resources.typolink
+
+				embedded_mp3.typolink < plugin.tx_wecsermons_pi1.listView.tx_wecsermons_resources.typolink
+				embedded_mp4.typolink < plugin.tx_wecsermons_pi1.listView.tx_wecsermons_resources.typolink
+				embedded_avi.typolink < plugin.tx_wecsermons_pi1.listView.tx_wecsermons_resources.typolink
+				embedded_swf.typolink < plugin.tx_wecsermons_pi1.listView.tx_wecsermons_resources.typolink
+				embedded_mov.typolink < plugin.tx_wecsermons_pi1.listView.tx_wecsermons_resources.typolink
+				embedded_wma.typolink < plugin.tx_wecsermons_pi1.listView.tx_wecsermons_resources.typolink
+				embedded_wmv.typolink < plugin.tx_wecsermons_pi1.listView.tx_wecsermons_resources.typolink
+				embedded_realmedia.typolink < plugin.tx_wecsermons_pi1.listView.tx_wecsermons_resources.typolink
+				embedded_flv.typolink < plugin.tx_wecsermons_pi1.listView.tx_wecsermons_resources.typolink
+
+				downloadfile.typolink < plugin.tx_wecsermons_pi1.listView.tx_wecsermons_resources.typolink
+				downloadgraphic.typolink < plugin.tx_wecsermons_pi1.listView.tx_wecsermons_resources.typolink
+
+				poll.typolink < plugin.tx_wecsermons_pi1.listView.tx_wecsermons_resources.typolink
+				news.typolink < plugin.tx_wecsermons_pi1.listView.tx_wecsermons_resources.typolink
+				discussion.typolink < plugin.tx_wecsermons_pi1.listView.tx_wecsermons_resources.typolink
+
+				# Default resource type.
+				default.typolink < plugin.tx_wecsermons_pi1.listView.tx_wecsermons_resources.typolink
+
+			}
+
+			# Allowed data columns to search in
+			searchFieldList = title,description,file,webaddress1,webaddress2,webaddress3
+
+			# Define ordering configuration for this table
+			# orderBy should only include one field!
+			orderByList = title,description,crdate
+			orderBy = title
+
+			# Boolean, if set = 1 then order descending
+			descFlag = 1
+
+			title = TEXT
+			title.field = title
+
+			graphic = IMAGE
+			graphic {
+				altText.field = alttitle
+				file {
+					import = uploads/tx_wecsermons/
+					import.field = graphic
+					width = 64m
+					height = 64m
+				}
+				imageLinkWrap = 1
+				imageLinkWrap {
+					enable = 1
+					JSwindow = 1
+					JSwindow.expand = 20,20
+				}
+
+			}
+
+			description = TEXT
+			description {
+				field = description
+				crop = 150| &nbsp;...|1
+				stripHtml = 1
+				trim = 1
+				wrap = <p class="bodytext">|</p>
+			}
+
+
+			webaddress1 = TEXT
+			webaddress1.typolink.parameter.field = webaddress1
+
+			webaddress2 = TEXT
+			webaddress2.typolink.parameter.field = webaddress3
+
+			webaddress3 = TEXT
+			webaddress3.typolink.parameter.field = webaddress3
+
+			file = TEXT
+			file.field = file
+			file.listNum = 0
+
+			icon = IMAGE
+			icon {
+				altText.field = alttitle
+				file {
+					import = uploads/tx_wecsermons/
+					import.field = icon
+					width = 16m
+					height = 16m
+				}
+			}
+
+		}
+
+		tx_wecsermons_series {
+
+			# Allowed data columns to search in
+			searchFieldList = title,description,scripture,keywords
+
+			# Specify the ordering of records in list views
+			# orderBy should only include one field!
+			orderByList = title,startdate,enddate,season,crdate
+			orderBy = startdate
+
+			# Boolean, if set = 1 then order descending
+			descFlag = 1
+
+			title = TEXT
+			title {
+				wrap = |
+				field = title
+			}
+
+			subtitle = TEXT
+			subtitle {
+				wrap = |
+				field = subtitle
+			}
+
+			graphic = IMAGE
+			graphic {
+			wrap = |
+				altText.field = alttitle
+				file {
+					import = uploads/tx_wecsermons/
+					import.field = graphic
+					width = 64m
+					height = 64m
+				}
+				imageLinkWrap = 1
+				imageLinkWrap {
+					enable = 1
+					JSwindow = 1
+					JSwindow.expand = 20,20
+				}
+			}
+
+			description = TEXT
+			description {
+				crop = 150| &nbsp;...|1
+				field = description
+				stripHtml = 1
+				trim = 1
+				wrap = <p class="bodytext">|</p>
+			}
+
+			scripture = TEXT
+			scripture {
+				typolink {
+					parameter = http://www.biblegateway.com/passage/?search={current:1}&version=31;&interface=print
+					parameter.setCurrent.field = scripture
+					parameter.setCurrent.rawUrlEncode = 1
+					parameter.insertData = 1
+					extTarget = _blank
+				}
+				field = scripture
+			}
+
+			scripture_nolink = TEXT
+			scripture_nolink {
+				field = scripture
+			}
+
+			topics = TEXT
+			topics {
+				innerWrap = {$plugin.tx_wecsermons_pi1.topicsHeader}
+				innerWrap.wrap = |<br/>
+				innerWrap.required = 1
+
+				wrap = |
+			}
+
+			startdate = TEXT
+			startdate {
+				innerWrap = {$plugin.tx_wecsermons_pi1.seriesStartDateHeader}
+				innerWrap.wrap = |&nbsp;
+				innerWrap.required = 1
+
+				wrap = |
+				field = startdate
+			}
+
+			enddate = TEXT
+			enddate {
+				innerWrap = {$plugin.tx_wecsermons_pi1.seriesEndDateHeader}
+				innerWrap.wrap = |&nbsp;
+				innerWrap.required = 1
+
+				wrap = |
+				field = enddate
+			}
+
+			season = TEXT
+			season {
+				innerWrap = {$plugin.tx_wecsermons_pi1.seasonHeader}
+				innerWrap.wrap = |<br/>
+				innerWrap.required = 1
+
+				wrap = <div id="tx-wecsermons-pi1-season">|</div>
+
+			}
+
+		}
+
+		tx_wecsermons_speakers {
+
+			# If typolink is set, then we use this configuration to generate the link for the ###SPEAKER_LINK### TYPO tag.
+			# If typolink = 0, then we generate a link to the speaker's single view
+			typolink = 0
+			typolink {
+				parameter.field = url
+				parameter.if.isTrue.field = islinked
+				extTarget = _blank
+			}
+
+			# Allowed data columns to search in
+			searchFieldList = fullname,firstname,lastname,email
+
+			# Specify the ordering of records in list views
+			# orderBy should only include one field!
+			orderByList = fullname,firstname,lastname,email,crdate
+			orderBy = lastname
+
+			# Boolean, if set = 1 then order descending
+			descFlag = 0
+
+			photo = IMAGE
+			photo {
+				wrap = |
+				altText.field = alttitle
+				file {
+					import = uploads/tx_wecsermons/
+					import.field = photo
+					width = 64m
+					height = 64m
+				}
+				imageLinkWrap = 1
+				imageLinkWrap {
+					enable = 1
+					JSwindow = 1
+					JSwindow.expand = 20,20
+				}
+			}
+
+			fullname = TEXT
+			fullname {
+				wrap = |
+				field = fullname
+			}
+
+			firstname = TEXT
+			firstname {
+				wrap = |
+				field = firstname
+			}
+
+			lastname = TEXT
+			lastname {
+				wrap = |
+				field = lastname
+			}
+
+			url = TEXT
+			url {
+				typolink.parameter.field = url
+				wrap = |
+				value = |
+				field = url
+			}
+
+			email = TEXT
+			email {
+				typolink = 1
+				typolink.parameter.field = email
+				wrap = |
+				field = email
+			}
+
+		}
+
+		tx_wecsermons_topics {
+
+			# Allowed data columns to search in
+			searchFieldList = title,description
+
+			# Specify the ordering of records in list views
+			# orderBy should only include one field!
+			orderByList = title,description,crdate
+			orderBy = title
+
+			# Boolean, if set = 1 then order descending
+			descFlag = 0
+
+			title = TEXT
+			title {
+				wrap = |
+				field = title
+			}
+
+			description = TEXT
+			description {
+				crop = 75| &nbsp;...|1
+				field = description
+				stripHtml = 1
+				trim = 1
+				wrap = |
+			}
+
+		}
+
+		tx_wecsermons_seasons {
+
+			# Allowed data columns to search in
+			searchFieldList = title,description
+
+			# Specify the ordering of records in list views
+			# orderBy should only include one field!
+			orderByList = title,description,crdate
+			orderBy = title
+
+			# Boolean, if set = 1 then order descending
+			descFlag = 0
+
+			title = TEXT
+			title {
+				wrap = |
+				field = title
+			}
+
+			description {
+				crop = 150| &nbsp;...|1
+				field = description
+				stripHtml = 1
+				trim = 1
+				wrap = <p class="bodytext">|</p>
+			}
+
+		}
+
+	}
+
+	# *****************
+	# Latest view configuration
+	# *****************
+	latestView < .listView
+	latestView {
+
+		maxdetailResults = {$plugin.tx_wecsermons_pi1.latestView.maxdetailResults}
+		maxGroupResults = {$plugin.tx_wecsermons_pi1.latestView.maxGroupResults}
+		emptyGroups = {$plugin.tx_wecsermons_pi1.latestView.emptyGroups}
+		useCreationDate = {$plugin.tx_wecsermons_pi1.latestView.useCreationDate}
+
+		tx_wecsermons_sermons {
+			orderByList = occurrence_date,title,crdate
+			orderBy = occurrence_date
+			descFlag = 1
+		}
+
+		tx_wecsermons_series {
+			orderByList = startdate,title,crdate
+			orderBy = startdate
+			descFlag = 1
+		}
+
+	}
+
+	# *****************
+	# Search view configuration
+	# *****************
+	searchView {
+
+		# Allowed data columns to search in
+		searchFieldList = title,description,scripture,keywords
+
+		#	List of table names we can search into from the search box (Future use)
+		#searchTables = tx_wecsermons_sermons,tx_wecsermons_series,tx_wecsermons_speakers,tx_wecsermons_seasons,tx_wecsermons_resources,tx_wecsermons_topics
+
+		searchFieldArray {
+
+			tx_wecsermons_sermons.searchFieldList = title,description,scripture,keywords
+
+		}
+	}
+
+	# *****************
+	# XML view configuration
+	# *****************
+	xmlView < .listView
+	xmlView {
+
+		maxdetailResults = {$plugin.tx_wecsermons_pi1.xmlView.maxdetailResults}
+		descFlag = 1
+		orderByList = occurrence_date,title,crdate
+		orderBy = occurrence_date
+
+		# By setting this to 1, the XML feed will link to the single view of a resource rather than a single view of a sermon
+		itemLinkToResource = {$plugin.tx_wecsermons_pi1.xmlView.itemLinkToResource}
+
+		# TODO: allow multiple resource types here
+		# TOTO: change to name of resource type specified in v.0.5.2 of extension
+		#	EnclosureType specifies which custom resource type will be included as an <enclosure/> for podcasting.
+		enclosureType =  embedded_mp3
+
+		tx_wecsermons_resources.resource_types < plugin.tx_wecsermons_pi1.singleView.tx_wecsermons_resources.resource_types
+
+
+	}
+}
+
+[global]
+podcast = PAGE
+podcast {
+	config {
+		disableAllHeaderCode = 1
+		additionalHeaders = Content-type:application/xml
+		xhtml_cleaning = 0
+		admPanel = 0
+	}
+
+	typeNum = 222
+	10 = HTML
+	10.value (
+<?xml version="1.0"?>
+	<rss version="2.0">
+		<warning>If you are seeing this, you need to configure the podcast page by inserting TypoScript into the setup field of your template record.</warning>
+		<recommendation>Please see the documentation provided with this Extension.</recommendation>
+	</rss>
+	)
+}
+
+vodcast < podcast
+vodcast.typeNum = 223
+
+plugin.tx_wecapi_list {
+
+	tag_rendering {
+
+		channel_link >
+		channel_link = TEXT
+		channel_link.data = field:channel_link
+		channel_link.wrap = <link>|</link>
+
+		item_title.field = title
+		item_title.trim = 1
+		item_description {
+			field = description
+			if.isTrue.field = description
+			trim = 1
+		}
+
+		item_author.trim = 1
+		item_link.value = {$constants.wec.siteURL}{field:item_link}
+		item_link.insertData = 1
+		item_link.data >
+		item_link.field >
+		item_comments.field = comments_link
+		item_pubdate.field = occurrence_date
+		item_guid {
+			value = {$constants.wec.siteURL}{field:item_link}
+			insertData = 1
+		}
+
+		item_source >
+		item_enclosure.if.isTrue.field = enclosure_url
+		item_itunes_summary.field = summary
+		item_itunes_subtitle.field = subtitle
+		item_itunes_duration.field = duration
+		item_itunes_duration.if.isTrue.field = enclosure_url
+
+	}
+
+}
+
+
+# Example of how to overrule LOCAL_LANG values for the plugin:
+plugin.tx_wecsermons_pi1._LOCAL_LANG.default  {
+
+	pi_list_searchBox_search = Search!
+}
+# Example of how to set default values from TS in the incoming array, $this->piVars of the plugin:
+#plugin.tx_wecsermons_pi1._DEFAULT_PI_VARS.test = test

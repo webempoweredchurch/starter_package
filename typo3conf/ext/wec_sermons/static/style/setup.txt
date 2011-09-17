@@ -1,0 +1,2 @@
+# Default CSS styles (this will go into the document header as a <link> tag):
+page.includeCSS.tx_wecsermons_pi1 = {$plugin.tx_wecsermons_pi1.file.cssFile}

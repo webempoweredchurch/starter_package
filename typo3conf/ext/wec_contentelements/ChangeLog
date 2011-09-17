@@ -1,0 +1,203 @@
+2011-06-10  jeff
+
+	* class.tx_weccontentelements_lib.php: Added experimental support
+	  for Fluid templates.
+
+2011-02-24  jeff
+
+	* slideshow/flexform.xml: Added thumbnail display to slideshow
+	  flexform.
+
+2011-02-10  jeff
+
+	* doc/manual.sxw, ext_emconf.php: Raised maximum TYPO3 version to
+	  4.5.99
+	* ext_emconf.php: Release of version 1.1.1.
+	
+
+2011-02-02  jeff
+
+	* ext_emconf.php: Raise version number to 1.1-dev.
+	* ext_emconf.php: Release of version 1.1.0.
+	* ext_conf_template.txt: Fix typo.
+
+2011-01-21  jeff
+
+	* doc/manual.sxw: Updated ChangeLog in manual.
+	* ext_autoload.php, ext_localconf.php, ext_tables.php: Add autoload
+	  capability.
+	* ext_emconf.php: Raise state to stable and remove priority.
+	* class.tx_weccontentelements_lib.php: For TYPO3 4.5+, use new TCA
+	  layout.
+	* ext_conf_template.txt: Fix checkbox type when disabling default
+	  content elements.
+	* filedownload/content.ts: Added missing closing div. Fixes ticket
+	  #1952.
+	* ext_conf_template.txt, ext_localconf.php, ext_tables.php: Added
+	  feature to disable content elements and use the extension as an
+	  API only.
+
+2010-08-17  jeff
+
+	* slideshow/content.ts: Added unique ID for rotator element. Fixes
+	  bug #1841.
+	* slideshow/content.ts: Set overflow:hidden on rotator element.
+	  Fixes bug #1838.
+
+2010-07-14  jeff
+
+	* doc/manual.sxw: Updated Changelog in manual.
+
+2010-06-21  jeff
+
+	* class.tx_weccontentelements_cobj.php: Add counter for FFSECTIONs.
+	  Fixes #1659.
+	* slideshow/locallang.xml: Corrected typo in slideshow label. Fixes
+	  ticket #1752.
+
+2010-06-02  jeff
+
+	* slideshow/content.ts: Closed div tag properly. Fixes ticket
+	  #1763.
+
+2010-05-05  jeff
+
+	* doc/manual.sxw: Updated ChangeLog in manual.
+	* class.tx_weccontentelements_cobj.php, slideshow/content.ts: Add
+	  INCLUDEJSLIB cObject.
+
+2010-04-09  jeff
+
+	* ext_emconf.php: Raise version number to 1.1.0-dev.
+	* filedownload/flexform.xml: Fix issue with allowed file types.
+	* filedownload/content.ts: Hide downloads header if no downloads
+	  are available.
+
+2010-03-30  jeff
+
+	* slideshow/content.ts: Specify a height for the slideshow rotator
+	  to ensure that modules are not too tall.
+
+2010-03-22  jeff
+
+	* filedownload/locallang_csh.xml: Add CSH for filedownload content
+	  element.
+	* filedownload/content.ts: Styling tweaks for file downloads
+	  content element.
+	* class.tx_weccontentelements_lib.php: Remove stray reference to
+	  which caused problems with frontend editing.
+	* filedownload/flexform.xml: Fixed label paths and removed file
+	  type filtering.
+	* ext_emconf.php, ext_localconf.php, ext_tables.php, filedownload,
+	  filedownload/content.ts, filedownload/flexform.xml,
+	  filedownload/icon.gif, filedownload/locallang.xml,
+	  filedownload/wizard-icon.gif: Added filedownload content element
+	  and raised version number to 1.0.0-dev.
+
+2010-03-15  jeff
+
+	* ext_emconf.php: Updated emconf after TER release.
+	* doc/manual.sxw: Updated manual with full content.
+	* slideshow/flexform.xml: Reduce default image time to 3 seconds.
+	* slideshow/content.ts: Add fallback for max image width when used
+	  outside the templavoila_framework extension.
+	* doc/manual.sxw: Added simple manual.
+	* ext_emconf.php: Minor updates to emconf.
+	* slideshow/content.ts: Include jQuery library with slideshow
+	  content element until we have a smarter way to check for previous
+	  loads.
+
+2010-03-14  jeff
+
+	* ext_emconf.php, slideshow/content.ts, slideshow/flexform.xml:
+	  Tweak image field to support uplods rather than just links.
+
+2010-03-13  jeff
+
+	* slideshow/content.ts, slideshow/flexform.xml: Adjust TS to access
+	  seconds rather than milliseconds.
+	* slideshow/flexform.xml, slideshow/locallang.xml: Localize
+	  slideshow FCE.
+
+2010-03-12  jeff
+
+	* slideshow/content.ts: Fix TS reference to thumbnails.
+	* slideshow/content.ts: Correct tiny TS typo.
+	* slideshow/content.ts: Add fallback to container width if no width
+	  is provided.
+	* slideshow/content.ts, slideshow/flexform.xml: Added thumbnail
+	  size option.
+	* slideshow/res/galleryview.css, slideshow/res/galleryview.css.ben,
+	  slideshow/res/jquery.easing.1.3.js,
+	  slideshow/res/jquery.galleryview-2.0-pack.js,
+	  slideshow/res/jquery.timers-1.1.2.js, slideshow/res/themes:
+	  Remove unused Javascript and CSS resources.
+	* slideshow/content.ts, slideshow/flexform.xml: Add thumbnail and
+	  timer options to image rotation.
+	* slideshow/content.ts, slideshow/flexform.xml: Added autosizing to
+	  standard proportions.
+
+2010-03-11  jeff
+
+	* slideshow/content.ts, slideshow/flexform.xml,
+	  slideshow/res/jquery.cycle.all.min.js: Starting transition of
+	  slideshow to jQuery cycle.
+	* vimeo/flexform.xml, vimeo/locallang_csh.xml,
+	  youtube/flexform.xml, youtube/locallang_csh.xml: Adding CSH for
+	  vimeo and youtube content elements.
+	* youtube/content.ts: Added mising height and width for YouTube.
+
+2010-03-09  jeff
+
+	* ext_emconf.php, localmenu/locallang.xml, slideshow/flexform.xml,
+	  slideshow/locallang.xml, vimeo/flexform.xml, vimeo/locallang.xml,
+	  youtube/flexform.xml, youtube/locallang.xml: Added localization
+	  to FlexForms.
+	* class.tx_weccontentelements_lib.php: Add content elements to New
+	  CE Wizard from TV also.
+	* ext_icon.gif, localmenu/icon.gif, localmenu/wizard-icon.gif,
+	  slideshow/icon.gif, slideshow/photos.gif,
+	  slideshow/wizard-icon.gif, vimeo/icon.gif, vimeo/wizard-icon.gif,
+	  youtube/icon.gif, youtube/wizard-icon.gif: Updated with new icons
+	  from Ben.
+
+2010-03-08  jeff
+
+	* class.tx_weccontentelements_getxmldata.php: Fix sorting issues
+	  with FlexForm sections.
+	* class.tx_weccontentelements_getxmldata.php: Make sure that empty
+	  FlexForm fields don't return arrays.
+	* class.tx_weccontentelements_cobj.php: Add stdWrap if support.
+	* class.tx_contentelements_cobj.php,
+	  class.tx_contentelements_getxmldata.php,
+	  class.tx_contentelements_lib.php,
+	  class.tx_weccontentelements_cobj.php,
+	  class.tx_weccontentelements_getxmldata.php,
+	  class.tx_weccontentelements_lib.php: Rename files to match WEC
+	  extension key.
+	* ., class.tx_contentelements_cobj.php,
+	  class.tx_contentelements_getxmldata.php,
+	  class.tx_contentelements_lib.php, doc, ext_emconf.php,
+	  ext_icon.gif, ext_localconf.php, ext_tables.php, localmenu,
+	  localmenu/content.ts, localmenu/locallang.xml, slideshow,
+	  slideshow/content.ts, slideshow/flexform.xml, slideshow/icon.gif,
+	  slideshow/locallang.xml, slideshow/photos.gif, slideshow/res,
+	  slideshow/res/galleryview.css, slideshow/res/galleryview.css.ben,
+	  slideshow/res/jquery.easing.1.3.js,
+	  slideshow/res/jquery.galleryview-2.0-pack.js,
+	  slideshow/res/jquery.js, slideshow/res/jquery.timers-1.1.2.js,
+	  slideshow/res/themes, slideshow/res/themes/dark,
+	  slideshow/res/themes/dark/next.gif,
+	  slideshow/res/themes/dark/panel-nav-next.gif,
+	  slideshow/res/themes/dark/panel-nav-prev.gif,
+	  slideshow/res/themes/dark/prev.gif, slideshow/res/themes/light,
+	  slideshow/res/themes/light/next.gif,
+	  slideshow/res/themes/light/panel-nav-next.gif,
+	  slideshow/res/themes/light/panel-nav-prev.gif,
+	  slideshow/res/themes/light/prev.gif, slideshow/wizard-icon.gif,
+	  vimeo, vimeo/content.ts, vimeo/flexform.xml, vimeo/icon.gif,
+	  vimeo/locallang.xml, vimeo/wizard-icon.gif, youtube,
+	  youtube/content.ts, youtube/flexform.xml, youtube/icon.gif,
+	  youtube/locallang.xml, youtube/wizard-icon.gif: Adding
+	  wec_contentelements extension.
+

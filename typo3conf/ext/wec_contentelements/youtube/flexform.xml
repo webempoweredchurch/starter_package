@@ -1,0 +1,36 @@
+<T3DataStructure>
+	<ROOT>
+		<TCEforms>
+			<cshFile>LLL:EXT:wec_contentelements/youtube/locallang_csh.xml</cshFile>
+		</TCEforms>
+		<type>array</type>
+		<el>
+			<youtubeID>
+				<TCEforms>
+					<label>LLL:EXT:wec_contentelements/youtube/locallang.xml:flexform.youtube.youtubeID</label>
+					<config>
+						<type>input</type>
+					</config>
+				</TCEforms>
+			</youtubeID>
+			<height>
+				<TCEforms>
+					<label>LLL:EXT:wec_contentelements/youtube/locallang.xml:flexform.youtube.height</label>
+					<config>
+						<type>input</type>
+						<default>525</default>
+					</config>
+				</TCEforms>
+			</height>
+			<width>
+				<TCEforms>
+					<label>LLL:EXT:wec_contentelements/youtube/locallang.xml:flexform.youtube.width</label>
+					<config>
+						<type>input</type>
+						<default>873</default>
+					</config>
+				</TCEforms>
+			</width>
+		</el>
+	</ROOT>
+</T3DataStructure>

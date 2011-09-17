@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<description>CSH for table tx_wecsermons_resource_types</description>
+		<type>CSH</type>
+		<csh_table>tx_wecsermons_resource_types</csh_table>
+		<fileId>EXT:wec_sermons/csh/locallang_csh_resource_types.xml</fileId>
+		<labelContext type="array" />
+	</meta>
+  <data type="array">
+    <languageKey index="default" type="array">
+      <label index=".description">Types that are made available in resource records.</label>
+      <label index=".details">The Resource Type record is made available for selection in the Resource record. The Resource Type title will be listed in the drop-down selection box of a Resource record, and the Visible Resource Fields affect what properties of a Resource are shown.</label>
+      <label index="sys_language_uid.description">The language of this resource type.</label>
+      <label index="sys_language_uid.details">This should be the default language unless this resource type represents a translation of another language.</label>
+      <label index="title.description">Uniquely identifies this Resource Type</label>
+      <label index="title.details">The Title field will be shown in the drop-down list of a Resource record.</label>
+      <label index="_title.seeAlso">tx_wecsermons_resources:type</label>
+      <label index="type.description">Specifies whether this SMS Resource Type is a default resource type, or a plug-in resource type.</label>
+      <label index="type.details">The plug-in type provides additional fields shown in See Also below.</label>
+      <label index="_type.seeAlso">tx_wecsermons_resource_types:querystring_param,tx_wecsermons_resource_types:rendering_page</label>
+      <label index="marker_name.description">The subpart marker defined in the template file.</label>
+      <label index="marker_name.details">Marker name is the TYPO3 tag that is used for the subpart in a template file. The subpart describes how resources of this type are rendered. See the documentation of this extension for details.</label>
+      <label index="template_name.description">The subpart marker defined in the template file, that explains how resources of this type are rendered, displayed, in single view.</label>
+      <label index="template_name.details">Template name defines the template subpart that will render resources of this type in single view. Single view is defined by the plugin, and renders a single record. Resource single views have their own template, which is defined by this field. See the documentation of this extension for details.</label>
+      <label index="mime_type.description">The mime type is used in XML feeds, such as podcasts, to specify the MIME type of the file that will be included in the feed.</label>
+      <label index="mime_type.details"><![CDATA[ Files that will be included in XML feeds need to have a MIME type associated with them in order for the feed to be valid. If you wish you use resources of this type in podcasts, then you should provide a MIME type here so that the podcast will be "valid".
+      
+        You can validate a feed here:
+        http://validator.w3.org/feed/
+      	
+      	You can read more about MIME types at:
+      	http://en.wikipedia.org/wiki/Mime_type
+      	
+      	
+      ]]></label>
+			<label index="description.description">The general description given for this resource type.</label>
+			<label index="description.details">The description can be used to briefly describe the resource type.</label>
+			<label index="icon.description">An icon that represents this resource type.</label>
+			<label index="icon.details">The icon is a small image representing the type. </label>
+			<label index="alttitle.description">Text used int the Alt and Title attributes of a resource type icon</label>
+			<label index="alttitle.details">Alt attributes are displayed in place of the icon if the browser can not display the image, while the title attribute is used as a "tooltip" pop-up.</label>
+			<label index="avail_fields.description">Select which fields you would like to make available on resources of this type.</label>
+			<label index="avail_fields.details">Visible Resource fields are those fields you wish resources of this type to possess. The available fields are description, icon, file, and any of three web addresses or urls. When assigning this type to a new SMS Resource record, these fields will be available.</label>
+			<label index="querystring_param.description">The plug-in's parameter that is appended to the query string.</label>
+			<label index="querystring_param.details">
+				<![CDATA[ The query string parameter is important for being able to view the records of another extension. This defines part of the query string that another extension will use to display or render one of its records. 
+				
+							I.e. the tt_news extension uses the query string parameter: <strong>tx_ttnews[tt_news]=3</strong>, to render the tt_news record with UID = 3. Knowing this requires researching the extension you wish you use with the SMS plug-in, and entering the appropriate string.]]>
+			</label>
+			<label index="querystring_param.syntax"><![CDATA[ Most often, this will be in the format of:
+				 tx_&lt;plugin_name&gt;[&lt;variable&gt;]
+				 
+				 I.e.: <strong>tx_jkpoll_pi1[uid]</strong> ]]>
+			</label>
+			<label index="rendering_page.description">The page which will render or display the single view of the plug-ins record.</label>
+			<label index="rendering_page.details">The page that is configured with an instance of the plug-in being associated with resource. That page should have the plug-in installed and configured for use. Please see the extensions own documentation on how to configure it for use.</label>
+			<label index="typoscript_object_name.description">The name of the TypoScript object, which can be defined for advanced output on the Front End.</label>
+			<label index="typoscript_object_name.details"><![CDATA[ Assigning the TypoScript object name, you are able to reference this name in the setup field of a template record at <em>plugin.tx_wecsermons_pi1.resource_types { ... }</em> and ]]></label>
+			<label index="typoscript_object_name.syntax">
+				<![CDATA[ 'PDF' being the <strong>TypoScript Object Name</strong> assigned to this resource type:
+				
+					plugin.tx_wecsermons_pi1.resource_types { 
+					PDF = COA
+					
+					PDF {
+						10 = IMAGE
+						10 { ... }
+						
+						20 = TEXT
+						20 { ... }
+					} 
+				} ]]>
+			</label>
+    </languageKey>
+  </data>
+</T3locallang>

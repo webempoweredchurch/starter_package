@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="statusEditingOn">Editing On</label>
+			<label index="statusEditingOff">Editing Off</label>
+			<label index="statusDeactivateEditing">Deactivate Editing</label>
+			<label index="statusActivateEditing">Activate Editing</label>
+			<label index="closeEditMode">close edit</label>
+			<label index="openEditMode">Edit Page</label>
+			<label index="toggle_advanced">Advanced</label>
+			<label index="toggle_simple">Simple</label>			
+			<label index="alertChange">This change will affect which fields are available in the form. Please save this record in order to get a new field set.</label>
+			<label index="fe_users.tx_wecfeedit_beuser">Backend User To Link To</label>
+			<label index="usersOnPage">WARNING: Following users are editing this page:</label>
+			<label index="copyIcon">Copy</label>
+			<label index="copyTitle">Copy element</label>
+			<label index="cutIcon">Cut</label>
+			<label index="cutTitle">Cut this element</label>
+			<label index="deleteIcon">Delete</label>
+			<label index="deleteTitle">Delete this element</label>
+			<label index="downIcon">Down</label>
+			<label index="downTitle">Move this down</label>
+			<label index="editIcon">Edit</label>
+			<label index="editTitle">Edit this element by clicking on it</label>
+			<label index="hideIcon">Hide</label>
+			<label index="hideTitle">Hide this element</label>
+			<label index="newPageIcon">New Page</label>
+			<label index="newRecordIcon">New</label>
+			<label index="newRecordInTopOfColumnTitle">New content in top of this column</label>
+			<label index="newRecordTitle">New content after this element</label>
+			<label index="pasteIcon">Paste</label>
+			<label index="pasteTitle">Paste element after existing element</label>
+			<label index="refTitle">Create reference</label>
+			<label index="unhideIcon">Show</label>
+			<label index="unhideTitle">Show this hidden element</label>
+			<label index="dragIcon">Drag</label>
+			<label index="dragTitle">Click to drag this element</label>
+			<label index="upIcon">Up</label>
+			<label index="upTitle">Move this up</label>
+
+			<label index="saveButton">Save</label>
+			<label index="saveCloseButton">Save &amp; Close</label>
+			<label index="closeButton">Close</label>
+
+			<label index="pageEditButton">Page Properties</label>
+			<label index="pageEditTooltip">Edit page properties of the current page.</label>
+			<label index="pageNewButton">New Page</label>
+			<label index="pageNewTooltip">Create a new page as subpage to the current page.</label>
+			<label index="pageDeleteButton">Delete Page</label>
+			<label index="pageDeleteTooltip">Delete this page.</label>
+			<label index="pageHideButton">Hide Page</label>
+			<label index="pageHideTooltip">Set the visibility of this page to hidden.</label>
+			<label index="pageShowHidden">Show Hidden Content Elements</label>
+			<label index="pageShowHiddenTooltip">Toggle the display of hidden content elements on or off.</label>
+
+			<label index="previewTitle">Preview</label>
+			<label index="previewTooltip">Preview this page</label>
+			<label index="closeTitle">Close</label>
+			<label index="closeTooltip">Close Frontend Editing.</label>
+			<label index="logoutTooltip">Logout from TYPO3 Backend.</label>
+			<label index="openTooltip">Open Frontend Editing.</label>
+			<label index="clipboardTitle">Clipboard</label>
+			<label index="clipboardTooltip">Use the clipboard to copy and paste content.</label>
+			<label index="dragWidgets">Drag widgets onto the page.</label>
+
+			<label index="js.dropMessage">Drop content here</label>
+			<label index="js.loadingMessage">Loading editing form</label>
+			<label index="js.ajaxError">AJAX Error</label>
+			<label index="js.generalError">It looks like we encountered some problems. Please reload the page and try again or contact your administrator.</label>
+			<label index="js.alreadyProcessingAction">Already processing an action, please wait.</label>
+			<label index="js.newContentElement">New Content Element</label>
+			<label index="js.newPage">New Page</label>
+			<label index="js.editContentElement">Edit Content Element</label>
+			<label index="js.editPageProperties">Edit Page Properties</label>
+			<label index="js.confirmDelete">Are you sure you want to delete this content?</label>
+			<label index="js.hideNotification">Hiding content</label>
+			<label index="js.unhideNotification">Unhiding content</label>
+			<label index="js.moveNotification">Moving content</label>
+			<label index="js.saveNotification">Saving content</label>
+			<label index="js.closeNotification">Closing editing form</label>
+			<label index="js.copyNotification">Copying content</label>
+			<label index="js.cutNotification">Cutting content</label>
+			<label index="js.pasteNotification">Pasting content</label>
+			<label index="js.updatingContent">Updating content</label>
+		</languageKey>
+	</data>
+</T3locallang>

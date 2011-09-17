@@ -1,0 +1,106 @@
+<table width="700" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td colspan="2" scope="col"><div align="center"><strong><font size="+1">WEC DEVO ADMIN</font><font size="+2"><br>
+    </font></strong>
+        <hr size="2" noshade>
+        <strong><font size="+2">        </font></strong></div></td>
+  </tr>
+  <tr>
+    <td width="150"><strong>View Statistics</strong></td>
+    <td><form action="index.php?id=###NUM###&admin_viewstats=1" method="post" name="stats_form" id="stats_form">
+      <p>
+    <input type="submit" name="Submit" value="Quick Stats">
+    <font size="2">(total users, active users, etc)</font></p>
+      </form></td>
+  </tr>
+  <tr>
+    <td colspan="2"><hr size="2" noshade></td>
+  </tr>
+  <tr>
+    <td width="150" valign="middle"><strong>Add Devo User </strong></td>
+    <td><form action="index.php?id=###NUM###&admin_adduser=1" method="post" name="adduser_form" id="adduser_form">
+      <table width="550" border="0" cellpadding="4" cellspacing="0">
+        <tr>
+          <td colspan="2" scope="col"><font size="-1" face="Arial, Helvetica, sans-serif">Add a new Devo User here (typically used for subscribers). Note that if the username is not found in the Typo3 User list, then a new Typo3 User is created also. If you do not give a username and enter the first and last name, then the username will be set as initial of first name + last name (ie. John Smith = jsmith).</font></td>
+          </tr>
+        <tr>
+          <td width="150" scope="col"><div align="right">username:<br><font size="-2">(if blank, will generate from name) </font></div></td>
+          <td scope="col"><input name="adduser[username]" type="text" id="adduser[username]" size="20" maxlength="30"></td>
+        </tr>
+        <tr>
+          <td width="150"><div align="right">subscriber end date:<br>
+                  <font size="-2">(mo/dy/yr)</font></div></td>
+          <td><input name="adduser[paidto_date]" type="text" id="adduser[paidto_date]" size="12" maxlength="20"></td>
+        </tr>
+        <tr>
+          <td width="150"><div align="right">how paid: </div></td>
+          <td><input name="adduser[how_paid]" type="text" id="adduser[how_paid]" size="20" maxlength="20"></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center"><font size="-1" face="Arial, Helvetica, sans-serif">only if a new Typo3 User do you need the following: </font></td>
+        </tr>
+        <tr>
+          <td width="150"><div align="right"> name: <br>
+              <font size="-2">(first-name last-name) </font></div></td>
+          <td><input name="adduser[name]" type="text" id="adduser[firstname]" size="20" maxlength="30"></td>
+        </tr>
+        <tr>
+          <td width="150"><div align="right">email: </div></td>
+          <td><input name="adduser[email]" type="text" id="adduser[email]" size="20" maxlength="40"></td>
+        </tr>
+        <tr>
+          <td width="150"><div align="right">password:<br><font size="-2">(if blank, will auto-generate)</font></div></td>
+          <td><input name="adduser[password]" type="text" id="adduser[password]" size="20" maxlength="20">
+              </td>
+        </tr>
+        <tr>
+          <td width="300"><div align="right">group#s to add to:<br><font size="-2">(fe_user_group #s - sep by comma)</font></div></td>
+          <td><input name="adduser[groups]" type="text" size="6" value="1"></td>
+        </tr>
+        <tr>
+          <td colspan="2"><div align="center">
+            <input type="submit" name="Submit" value="Add User">
+          </div></td>
+          </tr>
+      </table>
+     </form></td>
+  </tr>
+  <tr>
+    <td colspan="2"><hr size="2" noshade></td>
+  </tr>
+  <tr>
+    <td><p><strong>Add Devo User List</strong></p>
+    <p>&nbsp; </p></td>
+    <td>
+      <form action="index.php?id=###NUM###" enctype="multipart/form-data" method="post">
+      <input type="hidden" name="admin_adduserlist" value="1">
+      <table width="550" border="0" cellspacing="0" cellpadding="4">
+        <tr>
+          <td colspan="2" scope="col"><font size="-1" face="Arial, Helvetica, sans-serif">You can add many users quickly by placing their info in a text file. Format is (one per line, empty fields leave blank):</font><font size="-1">&nbsp;</font><font size="2"><br>
+              <font size="-1" face="Courier New, Courier, mono">&lt;username&gt;|&lt;name&gt;|&lt;email&gt;|&lt;subscribe_enddate&gt;|&lt;how paid&gt;|&lt;password&gt;</font>
+              <br>
+              If these are new Typo3 users too, you can set their group info.
+              </td>
+        </tr>
+        <tr>
+          <td width="300"><div align="right">field separator:<br><font size="-1">(tab=/t; default='|')</font></div></td>
+          <td><input name="adduserlist_fileseparator" type="text" size="1" value="|"></td>
+        </tr>
+        <tr>
+          <td width="300"><div align="right">group#s to add to:<br><font size="-1">(fe_user_group #s - sep by comma)</font></div></td>
+          <td><input name="adduserlist_groups" type="text" size="6" value="1"></td>
+        </tr>
+        <tr>
+          <td width="150"><div align="right">file name: </div></td>
+          <td><input name="adduserlist_filename" type="file" size="40"></td>
+        </tr>
+        <tr>
+          <td colspan="2"><div align="center">
+            <input type="submit" name="Submit" value="Add User List">
+          </div></td>
+          </tr>
+      </table>
+      </form>
+    </td>
+  </tr>
+</table>

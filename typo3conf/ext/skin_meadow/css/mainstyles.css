@@ -1,0 +1,1025 @@
+/***************************************************************
+ * Copyright notice
+ *
+ * (c) 2010 Christian Technology Ministries International Inc.
+ * All rights reserved
+ *
+ * This file is part of the Web-Empowered Church (WEC)
+ * (http://WebEmpoweredChurch.org) ministry of Christian Technology Ministries
+ * International (http://CTMIinc.org). The WEC is developing TYPO3-based
+ * (http://typo3.org) free software for churches around the world. Our desire
+ * is to use the Internet to help offer new life through Jesus Christ. Please
+ * see http://WebEmpoweredChurch.org/Jesus.
+ *
+ * You can redistribute this file and/or modify it under the terms of the
+ * GNU General Public License as published by the Free Software Foundation;
+ * either version 2 of the License, or (at your option) any later version.
+ *
+ * The GNU General Public License can be found at
+ * http://www.gnu.org/copyleft/gpl.html.
+ *
+ * This file is distributed in the hope that it will be useful for ministry,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * This copyright notice MUST APPEAR in all copies of the file!
+ ***************************************************************/
+
+/* @group Reset Styling */
+
+/* --------------------------------------------------------------
+
+   reset.css
+   * Resets default browser CSS.
+
+   Based on work by Eric Meyer:
+   * meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/
+
+-------------------------------------------------------------- */
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, code,
+del, dfn, em, img, q, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+/* Tables still need 'cellspacing="0"' in the markup. */
+table { border-collapse: separate; border-spacing: 0; }
+caption, th, td { text-align: left; font-weight:400; }
+
+/* Remove possible quote marks (") from <q>, <blockquote>. */
+blockquote:before, blockquote:after, q:before, q:after { content: ""; }
+blockquote, q { quotes: "" ""; }
+
+a img { border: none; }
+
+a:active {
+	outline: none;
+}
+
+a:focus {
+	-moz-outline-style: none;
+}
+
+/* @end Reset Styling */
+
+/* @group Base Styling */
+
+html {
+	height: 100%;
+}
+
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	line-height: 17px;
+	color: #555;
+	font-weight: normal;
+	height: 100%;
+	background: #95b370;
+}
+
+/* NOTE: Much of the typography styling is handled in rte.css */
+
+
+/* @group Table Styling */
+
+/* NOTE: Table Styling is mostly handled in rte.css */
+table {
+	border-collapse: collapse;
+	/*width: 100%;*/
+}
+
+/* @end Table Styling */
+
+/* @group Additional Tags */
+
+
+pre {
+	margin-bottom: 15px;
+}
+
+code {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+pre code {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+pre,
+code {
+	font-family: 'andale mono', 'monotype.com', 'lucida console', monospace;
+}
+
+
+/* @end Additional Tags */
+
+/* @group TYPO3 General Styling */
+
+div.csc-textpic-center div.csc-textpic-imagewrap,
+div.csc-textpic-left div.csc-textpic-imagewrap,
+div.csc-textpic-right div.csc-textpic-imagewrap {
+    margin-bottom: 10px;
+}
+    
+/* @end */
+
+/* @group Forms */
+
+
+
+form input,
+form textarea {
+	margin-right: 5px;
+	margin-bottom: 3px;
+}
+
+form input:focus,
+form input:hover {
+	color: black;
+}
+
+form select {
+	font-size: 11px;
+}
+
+form option {
+	margin: 0px;
+	margin-left: 5px;
+	margin-right: 10px;
+}
+
+optgroup {
+	font-weight: bold;
+	font-style: italic;
+	margin: 0;
+	margin-top: 5px;
+}
+
+optgroup option {
+	padding-left: 5px;
+}
+
+legend {
+	font-weight: bold;
+	color: black;
+}
+
+
+/* @end Forms */
+
+/* @end Base Styling */
+
+/* @group Common Classes */
+
+.clear {
+	clear: both;
+}
+
+.clearOnly {
+	clear: both;
+	height: 0;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	line-height: 0;
+}
+
+.outOfSight {
+	overflow: hidden;
+	width: 0;
+	height: 0;
+	float: left;
+}
+.centralHeadline{
+margin-top:0;
+font-size:28px;
+}
+
+.csc-firstHeader {
+	margin-top: 0;
+}
+
+.graphicTextWrap {
+	overflow: hidden;
+}
+
+.graphicText {
+	line-height: 300px;
+	display: block;
+}
+
+/* @end Common Classes */
+
+/* @group Layout */
+#pageWrap-outer-1{
+	background: url(images/body-bg.jpg) top repeat-x;
+	margin-top: 0;
+	padding: 0;
+}
+
+#pageWrap-outer-2{
+	background: url(images/curve-bg.jpg) bottom no-repeat;
+	margin-top: 0;
+	padding: 0;
+	height: 450px;
+}
+
+#pageWrap {
+	width: 900px;
+	padding: 0;
+	margin-left: auto;
+	margin-right: auto;
+	margin: 0 auto;
+}
+
+
+
+#feature {
+	margin:0px auto 20px auto;
+
+	background:url(images/feature-bg.png);
+	-moz-background-clip:border;
+	-moz-background-inline-policy:continuous;
+	-moz-background-origin:padding;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border:1px solid #e3ecf4;
+	padding:15px;
+}
+
+#contentBlock-1,
+#contentBlock-2,
+#contentBlock-3,
+#generatedContent-1,
+#generatedContent-2 {
+	-moz-background-clip: border;
+	-moz-background-inline-policy: continuous;
+	-moz-background-origin: padding;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	background: white;
+	border: 1px solid #aaa;
+}
+
+
+#contentBlock-1,
+#contentBlock-2,
+#contentBlock-3 {
+	padding:  20px 15px;
+}
+
+#generatedContent-1 {
+	width: 170px;
+	padding: 10px 10px 30px 10px;
+	float: left;
+	margin-right: 20px;
+	background: #e9eef2;
+}
+
+#generatedContent-2 {
+	width: 170px;
+	padding: 20px 15px;
+	margin-left: 20px;
+	float: right;
+}
+
+#f1d #contentBlock-1 {
+	float: right;
+	width: 656px;
+}
+
+#f1e #contentBlock-1 {
+	float: left;
+	width: 646px;
+	min-height: 500px;
+}
+
+#f1f #contentBlock-1 {
+	float: left;
+	width: 434px;
+}
+
+#f2a #contentBlock-1 {
+	float: left;
+	width: 590px;
+}
+
+#f2a #contentBlock-2 {
+	width: 230px;
+	float: right;
+}
+
+#f2b #contentBlock-1 {
+	float: left;
+	width: 590px;
+}
+
+#f2b #contentBlock-2 {
+	width: 230px;
+	float: right;
+}
+
+#f2c #contentBlock-1 {
+	float: left;
+	width: 590px;
+}
+
+#f2c #contentBlock-2 {
+	width: 230px;
+	float: right;
+}
+
+
+#f2d #contentBlock-1 {
+	float: left;
+	width: 440px;
+}
+
+#f2d #contentBlock-2 {
+	width: 160px;
+	float: right;
+}
+
+#f2e #contentBlock-1 {
+	float: left;
+	width: 420px;
+	margin-right: 23px;
+}
+
+#f2e #contentBlock-2 {
+	width: 170px;
+	float: left;
+}
+
+#f3a #contentBlock-1,
+#f3b #contentBlock-1 {
+	float: left;
+	width: 425px;
+	margin-right: 20px;
+}
+
+#f3a #contentBlock-2,
+#f3b #contentBlock-2 {
+	width: 170px;
+	float: left;
+}
+
+#f3a #contentBlock-3,
+#f3b #contentBlock-3,
+#f3c #contentBlock-3,
+#f3d #contentBlock-3 {
+	width: 170px;
+	float: right;
+}
+
+#f3c #contentBlock-1,
+#f3d #contentBlock-1 {
+	float: left;
+	width: 425px;
+}
+
+#f3c #contentBlock-2,
+#f3d #contentBlock-2 {
+	width: 170px;
+	float: left;
+	margin-right: 20px;
+}
+
+/* @end Layout */
+
+/* @group Header */
+
+#header {
+	margin:0 auto;
+	width: 900px;
+	padding: 0;
+	position:relative;
+}
+
+#masthead {
+	float: left;
+	margin: 35px 0 0 0px;
+	padding: 0;
+}
+
+#masthead h1 {
+	padding:0;
+	margin:0;
+	line-height:1.3em;
+}
+
+*+html #masthead h1 {
+	line-height:1.5em;
+}
+
+#masthead a {
+	display: block;
+	color: white;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px #000033;
+	margin:0;
+	padding:0;
+}
+#masthead a:hover {
+	color: #eee;
+}
+
+#topNav {
+	margin: 0;
+	padding: 5px 0 0;
+	-moz-border-radius-bottomleft: 4px;
+	-moz-border-radius-bottomright: 4px;
+	-moz-border-radius-topleft: 0;
+	-moz-border-radius-topright :0;
+	-webkit-border-bottom-left-radius: 4px;
+	-webkit-border-bottom-right-radius: 4px;
+	background: transparent url(images/feature-bg.png) repeat scroll 0 0;
+	border-top: none;
+	border-left: 1px solid #E3ECF4;
+	border-right: 1px solid #E3ECF4;
+	border-bottom: 1px solid #E3ECF4;
+	padding: 5px 10px;
+	color: black;
+	position:absolute;
+	right:0;
+	z-index:5;
+}
+
+#login {
+	margin: 0;
+	padding-right: 15px;
+	float: left;
+	color:#555;
+}
+
+#login a {
+	color: #555;
+	font-weight:bold;
+	text-decoration:none;
+	font-size:11px;
+}
+#login a:hover {
+	color: #333;
+}
+#search {
+	float: left;
+	margin: -2px 0 -15px 0;
+	margin: 0 0 0 10px;
+	padding: 0;
+	width: 170px;
+}
+#search form {
+	margin: 0;
+}
+#search input {
+	padding: 0;
+	margin: 0;
+	vertical-align: middle;
+}
+
+#search #siteSearchInput {
+	padding: 2px;
+	width: 130px;
+}
+
+
+/* @group Global Menu */
+
+#globalMenu {
+	padding: 15px 0 10px 0;
+	margin: 0;
+	clear:both;
+}
+
+
+/* - - - ADxMenu: BASIC styles [ MANDATORY ] - - - */
+
+/* remove all list stylings */
+.menu, .menu ul {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	list-style-type: none;
+	display: block;
+}
+
+.menu li {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	display: block;
+	float: left;	/* move all main list items into one row, by floating them */
+	position: relative;	/* position each LI, thus creating potential IE.win overlap problem */
+	z-index: 5;		/* thus we need to apply explicit z-index here... */
+}
+
+.menu li:hover {
+	z-index: 10000;	/* ...and here. this makes sure active item is always above anything else in the menu */
+	white-space: normal;/* required to resolve IE7 :hover bug (z-index above is ignored if this is not present)
+							see http://www.tanfa.co.uk/css/articles/pure-css-popups-bug.asp for other stuff that work */
+}
+
+.menu li li {
+	float: none;/* items of the nested menus are kept on separate lines */
+}
+
+.menu ul {
+	visibility: hidden;	/* initially hide all submenus. */
+	position: absolute;
+	z-index: 10;
+	left: 0;	/* while hidden, always keep them at the top left corner, */
+	top: 0;		/* 		to avoid scrollbars as much as possible */
+}
+
+.menu li:hover > ul {
+	visibility: visible;	/* display submenu them on hover */
+	top: 100%;	/* 1st level go below their parent item */
+}
+
+.menu li li:hover > ul {	/* 2nd+ levels go on the right side of the parent item */
+	top: 0;
+	left: 100%;
+}
+
+/* -- float.clear --
+	force containment of floated LIs inside of UL */
+.menu:after,
+.menu ul:after {
+	content: ".";
+	height: 0;
+	display: block;
+	visibility: hidden;
+	overflow: hidden;
+	clear: both;
+}
+
+.menu,
+.menu ul {	/* IE7 float clear: */
+	min-height: 0;
+}
+
+/* -- float.clear.END --  */
+
+/* -- sticky.submenu --
+	it should not disappear when your mouse moves a bit outside the submenu
+	YOU SHOULD NOT STYLE the background of the ".menu UL" or this feature may not work properly!
+	if you do it, make sure you 110% know what you do */
+.menu ul {
+	background-image: url(empty.gif);	/* required for sticky to work in IE6 and IE7 - due to their (different) hover bugs */
+	padding: 7px 30px 30px 30px;
+	margin: -6px 0 0 -60px;
+	/*background: #f00;*/	/* uncomment this if you want to see the "safe" area.
+								you can also use to adjust the safe area to your requirement */
+}
+.menu ul ul {
+	padding: 30px 30px 30px 15px;
+	margin: -30px 0 0 -10px;
+}
+/* -- sticky.submenu.END -- */
+
+
+
+
+/* - - - ADxMenu: DESIGN styles [ OPTIONAL, design your heart out :) ] - - - */
+
+.menu li {
+	text-align: center;
+	margin: 0 ;
+	padding: 0px 30px 4px 0;
+	display: block;
+	list-style-type: none;
+	float: left;
+	font-size: 14px;
+}
+
+.menu > li:first-child {
+	border-left: none;
+}
+
+.menu li.active a {
+	color:#222;
+}
+.menu li.active li a {
+	color:#eee;
+}
+.menu li.active li a:hover {
+	color:#222;
+}
+.menu li ul {
+	width: 220px;
+	background: url(images/dropdownmenu-bottom-bg.png) bottom no-repeat;
+	padding-bottom: 7px;
+}
+
+.menu li li {
+	padding: 0;
+	margin: 0;
+	text-align: left;
+}
+
+.menu li a {
+	text-decoration: none;
+	padding: 0;
+	display: block;
+	position: relative;
+	font-size: 14px;
+	line-height: 1.2em;
+    color: #eee;
+	font-weight: bold;
+    font-family: tahoma;
+	text-shadow: 0px 1px 1px #555;
+}
+.menu li a:hover {
+    color: #222;
+}
+.menu li li a {
+    color: #fff;
+	font-size: 12px;
+	padding: 0.5em 2.5em 0.5em 2.5em;
+	background:url(images/dropdownmenu-bg.png);
+}
+
+.menu li li:hover > a {
+	background: #628097;
+}
+
+.menu li li { /* create borders around each item */
+	border-bottom: 1px solid #999;
+}
+.menu ul > li + li {	/* and remove the top border on all but first item in the list */
+	border-top: 0;
+}
+
+.menu li li:hover > ul { /* inset 2nd+ submenus, to show off overlapping */
+	top: 5px;
+	left: 90%;
+}
+
+
+/* @end Global Menu */
+
+/* @end Header */
+
+/* @group Footer */
+
+#footer {
+	margin: 0;
+	padding-top: 10px;
+}
+
+#footerCopyright {
+	float: left;
+	color: #333;
+	text-align:left;
+	width:60%;
+}
+
+a#footerHomeLink {
+	display: block;
+	float: right;
+	color: #333;
+	text-align:right;
+	width:30%;
+}
+
+a#footerHomeLink:hover {
+	color: black;
+}
+
+/* @end Footer*/
+
+/* @group Local Menu */
+
+#localMenu {
+	padding-top: 6px;
+	padding-bottom: 0px;
+	margin-bottom: 35px;
+	margin-left:-10px;
+	margin-right:-10px;
+}
+
+
+#localMenu ul {
+	margin: 0;
+}
+
+#localMenu li {
+	list-style: none;
+	font-size: 14px;
+	line-height: 1.1em;
+	font-family: tahoma;
+	border-bottom: 1px solid #c5cacd;
+	background: #e9eef2;
+}
+
+#localMenu li li,
+#localMenu li li li,
+#localMenu li li li li {
+	font-size: 12px;
+	border:none;
+}
+
+#localMenu li a {
+	color: #666;
+	display: block;
+	padding: 10px 8px;
+}
+
+#localMenu li li a {
+	padding-left: 22px;
+}
+
+#localMenu li li li a {
+	padding-left: 36px;
+}
+
+#localMenu li li li li a {
+	padding-left: 50px;
+}
+
+#localMenu li a:hover {
+	background: #7390a8;
+	color: #fff;
+}
+
+#localMenu li.current {
+	padding-top: 0;
+	padding-bottom: 0;
+	background: #597b96;
+}
+
+#localMenu li.current a {
+	color: #fff;
+}
+
+#localMenu li.current li a {
+	color: #666;
+}
+
+#localMenu li.current li a:hover {
+	color: #fff;
+}
+
+/* @end Local Menu */
+
+
+
+/* @group Module Styling */
+
+.moduleHeader {
+	margin: 0;
+	padding: 0 15px 0 0;
+	color: white;
+	background: url(images/right_module_cap.gif) no-repeat right top;
+	font-size: 17px;
+	text-shadow: 0px 1px 1px #000;
+	line-height: 1.1em;
+}
+
+.moduleHeader .moduleHeaderInnerWrap {
+	display: block;
+	padding: 7px 0 7px 10px;
+	background: url(images/left_module_cap.gif) no-repeat left top;
+}
+
+.moduleFooter {
+	height: 7px;
+	margin: 0;
+	padding-right: 15px;
+	background: url(images/right_module_bottom.gif) no-repeat right bottom;
+	font-size: 1px;
+	overflow: hidden;
+	line-height: 1em; !important /*it fixes the bug in IE7*/ 
+}
+
+.moduleFooter span {
+	display: block;
+	height: 7px;
+	background: url(images/left_module_bottom.gif) no-repeat left bottom;
+}
+
+.moduleBody {
+	padding: 10px 10px 5px 10px;
+	font-size: 12px;
+	background: #fff;
+}
+
+.moduleBodyWrap {
+	border-left: 1px solid #999999;
+	border-right: 1px solid #999999;
+	/* Please note that the thickness values on the two border values above will be overridden in the final output. Make sure these values match the constant moduleBodyBorderWidth */
+}
+
+.unframed .moduleBody,
+.unframed .moduleBodyWrap {
+	padding: 0;
+	border: 0;
+}
+
+.unframed .moduleBodyWrap {
+	background:none; 
+} 
+
+.moduleBodyBleed {
+	padding: 0;
+}
+
+.columnGroup {
+	margin-bottom: 10px;
+}
+
+.columnGroupRule {
+	border-bottom: 1px solid #999999;
+}
+
+.moduleGroup {
+	margin-bottom: 10px;
+	margin-top:5px;
+}
+
+.moduleFeature {
+	margin-bottom: 15px;
+}
+
+/* @end Module Styling */
+
+
+
+
+/* @group Forms */
+
+.csc-mailform-field label,
+.csc-mailform-field label {
+	display: block;
+}
+
+/* @end */
+
+
+
+/************* Section Menus ********************/
+
+.sectionMenuWrapper {
+	width: 100%;
+}
+
+.sectionMenu {
+	margin: 0;
+	text-align: left;
+}
+
+.sectionMenu .menuItem {
+	display: inline-block;
+	width: 305px;
+	margin: 0 20px 20px 0;
+	vertical-align: top;
+	zoom: 1; 
+	*display:inline; 
+}
+
+.wrapper {
+	vertical-align: top;
+}
+
+.menuItem > a + .wrapper {
+	margin-left: 120px;
+}
+
+.menuItem > a {
+	float: left;
+	vertical-align: top;
+}
+
+.menuItem h3 {
+	margin: 0;
+}
+
+
+
+/***************** form style ********************/
+
+label {
+	font-weight: bold;
+	display: block;
+	margin-top: 10px;
+}
+
+.instructions {
+	font-size: 10px;
+	line-height: 1.1em;
+}
+
+input[type=text],
+input[type=password],
+textarea,
+select {
+	background-color: #fff;
+	border: 1px solid #bbb;
+	margin: 5px 0 0 0;
+}
+
+input[type=text]:focus,
+input[type=password]:focus
+textarea:focus,
+select:focus {
+	border-color: #666;
+}
+
+input[type=text],
+input[type=password],
+textarea,
+select {
+	margin: 3px 0;
+}
+
+input[type=text],
+input[type=password] {
+	/* width: 300px; */
+	padding:3px;
+}
+
+textarea {
+	width: 390px;
+	height: 250px;
+	padding: 3px;
+}
+
+input[type=checkbox],
+input[type=radio] {
+	position: relative;
+	top: .25em;
+}
+
+/* Account for Frontend User Registration using <label> for checkbox items with no other surround markup */
+#tx-srfeuserregister-pi1-fe_users_form input[type=checkbox] + label,
+#tx-srfeuserregister-pi1-fe_users_form input[type=radio] + label {
+	margin-top: 0;
+	display: inline;
+	font-weight: normal;
+}
+#tx-srfeuserregister-pi1-fe_users_form input[type=checkbox] + label:after,
+#tx-srfeuserregister-pi1-fe_users_form input[type=radio] + label:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+
+.inline {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.error, .notice, .success {
+	border:2px solid #DDDDDD;
+	margin-bottom:1em;
+	padding:0.8em;
+}
+
+.error {
+	background: #FBE3E4 none repeat scroll 0 0;
+	border-color: #FBC2C4;
+	color: #8A1F11;
+}
+
+.success {
+	background: #E6EFC2 none repeat scroll 0 0;
+	border-color: #C6D880;
+	color: #264409;
+}
+
+.notice {
+	background: #FFF6BF none repeat scroll 0 0;
+	border-color: #FFD324;
+	color: #514721;
+}
+
+form ol,
+form ul {
+	list-style-type: none;
+	margin-left: 0;
+}
+
+form hr {
+	height: 1px;
+	border: none;
+	border-top: 1px solid #bbb;
+	margin: 15px 0 15px 0;
+}

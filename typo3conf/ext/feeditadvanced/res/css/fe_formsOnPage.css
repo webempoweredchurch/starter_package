@@ -1,0 +1,492 @@
+/**
+ * CSS for Advanced Frontend Editing (feeditadvanced)
+ *
+ * These styles are used for the editing forms, which are displayed inside
+ * the lightbox.
+ */
+body {
+	margin: 0;
+	background-color: black;
+}
+.formsOnPageWrapper {
+	overflow: auto;
+	background-color: #ECECEC;
+}
+
+table.formsOnPage {
+	width: 100%;
+}
+
+.typo3-dyntabmenu-divs {
+	padding: 5px;
+}
+
+/* added to fix flexforms in frontend... */
+.formsOnPage div.bgColor5 {
+	display: inline-block;
+	width: 150px;
+	margin-bottom: 4px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	background-color: transparent;
+	font-size: 10px;
+	vertical-align: top;
+	white-space: normal;
+}
+
+.formsOnPage div.bgColor4 {
+	display: inline-block;
+	margin-bottom: 4px;
+	margin-left: 4px;
+	background-color: transparent;
+}
+
+.formsOnPage .typo3-TCEforms-palette img {
+	border-width: 0 !important;
+}
+
+.formsOnPage a img {
+	border-width: 0 !important;
+}
+
+.formsOnPage .fieldHeader,
+.formsOnPage .fieldHeader *,
+.formsOnPage .field,
+.formsOnPage .field *,
+.formsOnPage .palFieldHeader,
+.formsOnPage .palFieldHeader *
+.formsOnPage .palField,
+.formsOnPage .palField * {
+	font-size: 11px !important;
+}
+
+.formsOnPage select * {
+	font-weight: normal !important;
+	border-width: 0 !important;
+	float: none !important;
+}
+
+.formsOnPage select input *,
+.formsOnPage .typo3-tree * {
+	float: none !important;
+	display: inline !important;
+}
+
+table.typo3-TCEforms select.formField {
+	width: 120px;
+}
+
+/* made template for bodytext - needs proper TS template configuration */
+.formsOnPage tr.bodytextField td {
+	width: 500px !important;
+}
+
+.formsOnPage .fieldHeader,
+.formsOnPage .fieldHeader *,
+.formsOnPage .palFieldHeader,
+.formsOnPage .palFieldHeader *
+.formsOnPage .palField,
+.formsOnPage .palField *,
+.formsOnPage .class-main21,
+.formsOnPage .class-main23,
+.formsOnPage .class-main25,
+.formsOnPage .class-main21 *,
+.formsOnPage .class-main23 *,
+.formsOnPage .class-main25 * {
+	font-size: 11px !important;
+	line-height: 12px;
+}
+
+.formsOnPage #typo3-tree td,
+.formsOnPage .palField,
+.formsOnPage .palField *,
+.formsOnPage select,
+.formsOnPage select * {
+	font-weight: normal !important;
+}
+
+.formsOnPage .field,
+.formsOnPage .palField,
+.formsOnPage .fieldHeader,
+.formsOnPage .palFieldHeader,
+.formsOnPage .field td,
+.formsOnPage .palField td,
+.formsOnPage .fieldHeader td,
+.formsOnPage .palFieldHeader td,
+.typo3-TCEforms-palette,
+.typo3-TCEforms-palette td {
+	border-width: 0 !important;
+}
+
+.formsOnPage tr.fieldHeader td {
+	padding-top: 5px;
+}
+
+.formsOnPage .typo3-TCEforms-palette {
+	margin-top: 5px !important;
+}
+
+.formsOnPage .typo3-TCEforms-palette td {
+	padding-right: 5px;
+}
+
+.formsOnPage tr.palField input.checkbox,
+.formsOnPage tr.field input.checkbox {
+	margin-right: 3px;
+}
+
+.formsOnPage tr.fieldHeader td,
+.formsOnPage tr.field td,
+.formsOnPage tr.palField td {
+	padding-top: 5px;
+}
+
+.formsOnPage tr.fieldHeader td {
+	padding-left: 12px;
+}
+
+.formsOnPage tr.palFieldHeader td {
+	padding-left: 16px;
+}
+
+.formsOnPage div.editorWrap div.htmlarea {
+	margin-left: 16px;
+}
+
+.formsOnPage .palettePadding {
+	padding-left: 4px;
+}
+
+.formsOnPage td.class-main23 table {
+	margin-left: 16px;
+}
+
+.formsOnPage .typo3-TCEforms-flexForm {
+	padding: 12px;
+}
+
+.formsOnPage td.class-main23 table.t3-form-field-header-flexsection {
+	margin-left: 0;
+}
+
+.formsOnPage #typo3-tree td img,
+.formsOnPage #typo3-tree td a {
+	border-width: 0 !important;
+	float: none !important;
+	display: inline;
+	text-align: left;
+	margin: 0 !important;
+	padding: 0 !important;
+	vertical-align: middle !important;
+}
+
+/* for tabbed menu*/
+.typo3-dyntabmenu a,
+.tabTable span.disabled {
+	font-size: 11px !important;
+}
+
+.typo3-dyntabmenu .tabTable {
+	margin-right: 2px;
+}
+
+.typo3-dyntabmenu .tabTable a:link,
+.typo3-dyntabmenu .tabTable a:visited,
+.tabTable span.disabled,
+.editForm .typo3-dyntabmenu .tab a,
+.editForm .typo3-dyntabmenu .tab a:link,
+.editForm .typo3-dyntabmenu .tab a:visited,
+.editForm .typo3-dyntabmenu .tab a:hover,
+.editForm .typo3-dyntabmenu .tabact a:link,
+.editForm .typo3-dyntabmenu .tabact a:visited,
+.editForm .typo3-dyntabmenu .tabact a:hover {
+	text-decoration: none !important;
+}
+
+.toggleShowHide {
+	margin-top: 2px;
+	padding-left: 2px;
+}
+
+.toggleShowHide a:link,
+.toggleShowHide a:visited,
+.toggleShowHide a:hover {
+	font-weight: bold;
+	text-decoration: none !important;
+	display: block;
+}
+
+/* TAB styles */
+.tabact *,
+.tab *,
+.disabled * {
+	border-width: 0 !important;
+	background-color: transparent !important;
+}
+
+/* generic tabs for several color themes */
+.tabTable .left,
+.tabTable .middle,
+.tabTable .right {
+	height: 18px !important;
+	overflow: hidden;
+	padding: 0 !important;
+	white-space: nowrap;
+}
+
+.tabTable .left,
+.bgColor4 .left,
+.bgColor5 .left,
+.tabTable .right,
+.bgColor4 .right,
+.bgColor5 .right {
+	width: 8px !important;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+	text-decoration: none;
+}
+
+.tabTable .left {
+	background: transparent url(../icons/forms/leftNoActive.gif) no-repeat 100% 0%;
+}
+
+.tabTable .middle {
+	background: transparent url(../icons/forms/middleNoActive.gif) repeat-x;
+}
+
+.tabTable .right {
+	background: transparent url(../icons/forms/rightNoActive.gif) no-repeat 0 0;
+}
+
+.bgColor4 .tabTable .left {
+	background: transparent url(../icons/forms/leftNoActive.gif) no-repeat 100% 0% !important;
+}
+
+.bgColor4 .tabTable .middle {
+	background: transparent url(../icons/forms/middleNoActive.gif) repeat-x !important;
+}
+
+.bgColor4 .tabTable .right {
+	background: transparent url(../icons/forms/rightNoActive.gif) no-repeat 0 0 !important;
+}
+
+.tab .tabTable .leftRounded {
+	background: transparent url(../icons/forms/leftRounded.gif) no-repeat 100% 0% !important;
+}
+
+.tab .tabTable .rightRounded {
+	background: transparent url(../icons/forms/rightRounded.gif) no-repeat 100% 0% !important;
+}
+
+.disabled .tabTable .left {
+	background: transparent url(../icons/forms/leftDisabled.gif) no-repeat 100% 0% !important;
+}
+
+.disabled .tabTable .middle {
+	background: transparent url(../icons/forms/middleDisabled.gif) repeat-x !important;
+}
+
+.disabled .tabTable .right {
+	background: transparent url(../icons/forms/rightDisabled.gif) no-repeat 0 0 !important;
+}
+
+.bgColor5 .tabTable .left,
+.tabact .tabTable .left,
+.sfhover .tabTable .left,
+li:hover .tabTable .left,
+.tabactEl .tabTable .left {
+	background: transparent url(../icons/forms/leftActive.gif) no-repeat 100% 0% !important;
+}
+
+.bgColor5 .tabTable .middle,
+.tabact .tabTable .middle,
+.sfhover .tabTable .middle,
+li:hover .tabTable .middle,
+.tabactEl .tabTable .middle {
+	background: transparent url(../icons/forms/middleActive.gif) repeat-x !important;
+}
+
+.bgColor5 .tabTable .right,
+.tabact .tabTable .right,
+.sfhover .tabTable .right,
+li:hover .tabTable .right,
+.tabactEl .tabTable .right {
+	background: transparent url(../icons/forms/rightActive.gif) no-repeat 0 0 !important;
+}
+
+/* other */
+
+.tabact a,
+.tab a,
+.disabled a,
+.tabTable a,
+.tabTable a:link,
+.tabTable a:visited,
+.tabTable a:hover,
+table.typo3-dyntabmenu a:link,
+table.typo3-dyntabmenu a:visited,
+table.typo3-dyntabmenu a:hover,
+div.typo3-dyntabmenu-divs-foldout a:link,
+div.typo3-dyntabmenu-divs-foldout a:visited,
+div.typo3-dyntabmenu-divs-foldout a:hover {
+	border-width: 0 !important;
+	padding: 2px 2px 2px 0 !important;
+	background-color: transparent !important;
+	display: block;
+	border-width: 0 !important;
+}
+
+.c-tablayer,
+.c-tablayer table,
+.typo3-dyntabmenu-divs {
+	margin-top: 0 !important;
+}
+
+table.typo3-dyntabmenu td.tab,
+table.typo3-dyntabmenu td.tabact,
+table.typo3-dyntabmenu td.disabled,
+table.typo3-dyntabmenu td.tab_over,
+table.typo3-dyntabmenu td.tabact_over,
+table.typo3-dyntabmenu td.disabled_over,
+div.typo3-dyntabmenu-divs-foldout div.tab,
+div.typo3-dyntabmenu-divs-foldout div.tabact,
+div.typo3-dyntabmenu-divs-foldout div.disabled,
+div.typo3-dyntabmenu-divs-foldout div.tab_over,
+div.typo3-dyntabmenu-divs-foldout div.tabact_over,
+div.typo3-dyntabmenu-divs-foldout div.disabled_over {
+	background-color: transparent !important;
+	border-width: 0 !important;
+	padding: 0 !important;
+	margin-left: 0 !important;
+}
+
+.tabTable td {
+	white-space: nowrap;
+}
+
+/*
+ *
+ * @todo	Temporary code added by Jeff to support Inner Echo mockups. Need
+ *			to figure out where we really want to add this.
+ */
+
+table.typo3-TCEforms div.typo3-dyntabmenu-tabs {
+	background: url(../icons/forms/tab_background.png) repeat-x !important;
+	height: 33px !important;
+	margin-top: 0 !important;
+	padding-top: 0;
+}
+
+table.typo3-TCEforms div.typo3-dyntabmenu-divs .wrapperTable {
+	border: 0;
+}
+
+table.typo3-TCEforms div.typo3-dyntabmenu-tabs td {
+	vertical-align: inherit;
+}
+
+table.typo3-dyntabmenu {
+	height: 33px;
+	margin-left: 5px;
+}
+
+table.typo3-dyntabmenu .disabled {
+	display: none;
+}
+
+#feEditAdvanced-editWindowContent div.feEditAdvanced-allWrapper {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+button.feEditAdvanced-actionButton,
+button#feEditAdvanced-closeButton {
+	border: 0;
+	cursor: pointer;
+	font-weight: bold;
+	padding: 0 20px 0 0;
+	margin: 8px 8px 6px 0;
+	text-align: center;
+	float: left;
+	width: auto;
+	overflow: visible;
+}
+button.feEditAdvanced-actionButton span,
+button#feEditAdvanced-closeButton span {
+	position: relative;
+	display: block;
+	white-space: nowrap;
+	padding: 0 0 0 20px;
+}
+
+*+html button span {
+	margin-top: 2px;
+}
+button.feEditAdvanced-actionButton {
+	background: url(../icons/forms/action_btn_right.png) right no-repeat;
+	font-size: 12px;
+	font-weight: bold;
+}
+button.feEditAdvanced-actionButton span {
+	height: 25px;
+	line-height: 25px;
+	background: url(../icons/forms/action_btn_left.png) left no-repeat;
+	color: #fff;
+}
+button#feEditAdvanced-closeButton {
+	height: 13px !important;
+	width: 14px !important;
+	background: url(../icons/forms/close_win.png) no-repeat;
+	position: absolute;
+	top: 5px;
+	right: 0;
+	border: 0;
+}
+
+.tabTable {
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+.tab .tabTable .left {
+	background: url(../icons/forms/tab_left.png) no-repeat !important;
+	width: 5px !important;
+}
+
+.tab .tabTable .middle {
+	background: url(../icons/forms/tab.png) repeat-x !important;
+}
+
+.tab .tabTable .middle a {
+	color: white !important;
+	padding: 5px 8px 2px 8px !important;
+}
+
+.tab .tabTable .right {
+	background: url(../icons/forms/tab_right.png) no-repeat !important;
+	width: 5px !important;
+}
+
+.tabact .tabTable .left {
+	background: url(../icons/forms/tab_left_active.png) no-repeat !important;
+	width: 5px !important;
+}
+
+.tabact .tabTable .middle {
+	background: url(../icons/forms/tab_active.png) repeat-x !important;
+}
+
+.tabact .tabTable .middle a {
+	color: white !important;
+	padding: 5px 8px 2px 8px !important
+}
+
+.tabact .tabTable .right {
+	background: url(../icons/forms/tab_right_active.png) no-repeat !important;
+	width: 5px !important;
+}
+
+div.c-tablayer {
+	margin-top: 5px !important;
+}

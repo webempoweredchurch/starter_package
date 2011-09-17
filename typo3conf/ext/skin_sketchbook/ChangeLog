@@ -1,0 +1,17 @@
+2010-06-22  ben
+
+	* css/mainstyles.css: removed z-index: 100 at header DIV and added
+	  z-index: 5 to topNav DIV. Since smoothgallary is z-index:15,
+	  changing z-index to 5 fixes the bug when using smoothgallary.
+
+2010-06-21  ben
+
+	* css/images/left_module_cap.gif, css/images/menu-bg.jpg,
+	  css/images/right_module_cap.gif,
+	  css/images/search-button-hover.png, css/mainstyles.css,
+	  typoscript/skin_typoscript.ts: skins bug fixing and template
+	  optimization.
+
+2010-06-18  jeff
+
+	* js/skin.js: Only use search JS if the searchbox is present.

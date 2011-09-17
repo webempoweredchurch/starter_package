@@ -1,0 +1,144 @@
+2006-06-01	Ingo Renner  <typo3@ingo-renner.com>
+	
+	* CHG IXR library moved to new folder '3rdparty'
+
+2006-04-15	Ingo Renner  <typo3@ingo-renner.com>
+
+	* FIX incompatibility with TYPO3 4.0.0
+	* ADD fixed bug 1719: added usefull alt and title for gravatar picture
+	* FIX fixed bug 2942: calendar: click on a category the calendar shows: December 1999, thanks to Frank Nägler
+
+2006-02-22	Ingo Renner  <typo3@ingo-renner.com>
+
+	* FIX tt_news GRSP handling
+
+2005-11-15	Ingo Renner  <typo3@ingo-renner.com>
+
+	* CHG Kubrick is now a one click install theme
+	* ADD added norwegian and russian translations
+	
+2005-10-30	Ingo Renner  <typo3@ingo-renner.com>
+
+	* CHG configurable, hierarchical category menu
+
+2005-10-29	Ingo Renner  <typo3@ingo-renner.com>
+
+	* ADD added Kubrick style category menu
+	* ADD added small calendar which show days that have posts
+	* FIX fixed Bug 0001737: TimTab modifies ve_guestbook
+	
+2005-10-25	Ingo Renner  <typo3@ingo-renner.com>
+
+	* ADD added post navigation previous and next to Kubrick
+	* FIX fixed missing substitution of a marker in Kubrick	
+
+2005-10-20	Ingo Renner  <typo3@ingo-renner.com>
+
+	* FIX fixed the inheritance of the Kubrick main template to all subpages which caused to show the posts on every page instead of only showing them on the homepage
+	* ADD added dutch translation
+	* CHG updated manual
+
+2005-09-07	Ingo Renner  <typo3@ingo-renner.com>
+
+	* ADD added API for importers
+
+2005-09-07	Ingo Renner  <typo3@ingo-renner.com>
+
+	* FIX fixes a bug with trackback where the homepage field of ve_guestbook was too short for long URLs
+	* ADD added italian language
+	* CHG version is now 0.4.3
+	
+2005-08-29	Ingo Renner  <typo3@ingo-renner.com>
+
+	* CHG disabled not working and not well tested options for first release
+	* CHG changed the way user information is stored in cookies	
+	* RMV removed unused markers in tx_timtab_fe
+	* ADD added blogger.newPost and blogger.EditPost
+	* ADD Kubrick now remembers the users name, email and homepage
+	* ADD first explainations in manual
+	* ADD added german translations
+	
+2005-08-24	Ingo Renner  <typo3@ingo-renner.com>
+
+	* ADD timtab now remembers the name, e-mail and homepage when someone leaves a comment
+	
+2005-08-23	Ingo Renner  <typo3@ingo-renner.com>
+
+	* CHG !!! renamed class timtab into timtab_fe
+	* CHG Kubrick template now only requires to build the page tree, set some page ID in Constants Editor and insert the ve_guestbook in SINGLE view
+	* RMV removed search field from Kubrick template
+	* ADD added support for disabling comments (requires ve_guestbook > 1.7.5)
+
+
+2005-08-08	Ingo Renner  <typo3@ingo-renner.com>
+
+	* ADD category support for XML-RPC interface
+	* CHG small fixes and optimizations
+
+2005-08-01	Ingo Renner  <typo3@ingo-renner.com>
+
+	* ADD blogroll links now showing in web->page view
+	* ADD new marker for use in ve_guestbook templates: ###BLOG_COMMENT_NUM### gives every comment a number starting with 1 and for every comment increasing by 1
+	* FIX blogroll can get the links from multiple pages now, if the startingpoint is set it will override the pid_list TS variable which is now necessary only if you're including the blogroll via TS into your template
+
+2005-07-24	Ingo Renner  <typo3@ingo-renner.com>
+
+	* CHG ! renamed markers for trackback link and rdf , now they beginn with BLOG_ , too
+	* FIX typo in type for tx_timtab.blogPid in constant editor corrected
+	* FIX small fixes in kubrick templates
+	* RMV removed the listing of the static TS template file for blogroll as it wasn't used
+	* RMV removed the registering for t3lib/class.t3lib_parsehtml.php XCLASS
+
+
+2005-07-21	Ingo Renner  <typo3@ingo-renner.com>
+
+	* CHG !!! renamed TS variable pidStore into pidStorePosts
+	* ADD added sending trackbacks - now works from BE and FE (external Tools using XML-RPC interface)
+	* ADD added receiving and logging of Trackback pings coming from other sites
+	* ADD added TS variable pidStoreComments, this defines where to store ve_guestbook entries as Trackbacks are stored like this
+	* ADD ! you need to patch t3lib/class.t3lib_parsehtml.php to receive Trackbacks from other sites, a patch is provided in res/patches
+
+2005-06-15	Ingo Renner  <typo3@ingo-renner.com>
+
+	* ADD added sending trackbacks (only works from the BE for now, still needs to get implemented for FE so that it works even from external tools)
+
+2005-06-15	Ingo Renner  <typo3@ingo-renner.com>
+
+	* ADD category support (getCategories)
+	* ADD function indexes for php source files
+	* FIX wrong WHERE clause in metaweblog.getPost
+
+2005-06-15	Ingo Renner  <typo3@ingo-renner.com>
+
+	* CHG updated Incutio XML-RPC library to version 1.7 beta
+
+2005-06-11	Ingo Renner  <typo3@ingo-renner.com>
+
+	* ADD now transformations between blog client and DB are supported like between RTE and DB
+	* CHG renamed TS variable clearPageCacheOnComment into clearPageCacheOnUpdate
+
+2005-06-03	Ingo Renner  <typo3@ingo-renner.com>
+
+	* CHG !!! renamed classes and files for XML-RPC Server, now meets naming conventions
+	* ADD Authentification class, thanks a lot to René Fritz for his help
+	* ADD configuration variables for Blooger and Movable Type APIs
+	* CHG code clean up and comments added in XML-RPC server
+	
+2005-05-30	Ingo Renner  <typo3@ingo-renner.com>
+
+	* ADD added metaWeblog API
+	* ADD some new configuration variables
+	* FIX date in IXR library wasn't returned right
+
+2005-05-09	Ingo Renner  <typo3@ingo-renner.com>
+
+	* FIX found the typo which kept new fields from appearing in the new blog post tab in tt_news
+	* ADD pi2 - this will be the XML-RPC interface, "listens" and responds at index.php?type=200
+	
+2005-04-19	Ingo Renner  <typo3@ingo-renner.com>
+
+	* FIX smaller fixes on Kubrick, blogroll and configuration
+
+2005-04-08	Ingo Renner  <typo3@ingo-renner.com>
+
+	* ADD added Gravatar Support, see http://www.gravatar.com

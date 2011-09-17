@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'wec_config'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="moduleFunction.tx_wecconfig_constants">Edit Site Constants</label>
+			<label index="moduleFunction.tx_wecconfig_templates">Select Site Template</label>
+			<label index="moduleFunction.tx_wecconfig_features">Manage Add-on Features</label>
+		</languageKey>
+	</data>
+</T3locallang>

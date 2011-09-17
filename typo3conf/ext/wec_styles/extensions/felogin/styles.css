@@ -1,0 +1,24 @@
+/**
+ * Zero out all the border and padding from the default pluginForm
+ */
+.tx-felogin-pi1 .pluginForm {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	background: none;
+}
+
+/**
+ * Default .fullRow aligns all content center.
+ */
+.tx-felogin-pi1 .pluginForm .fullRow {
+	text-align: inherit;
+}
+
+
+/**
+ * Default text elements have a width of 80%.
+ */
+.tx-felogin-pi1 input[type="text"] {
+	width: auto;
+}

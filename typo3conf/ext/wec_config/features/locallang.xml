@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for module &quot;&quot;</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="title">Manage Add-on Features</label>
+			<label index="installed">Currently Installed</label>
+			<label index="uninstalled">Available to Install</label>
+			<label index="install">Install</label>
+			<label index="uninstall">Uninstall</label>
+			<label index="enabled">Enabled</label>
+			<label index="disabled">Disabled</label>
+			<label index="status">Current Status</label>
+			<label index="none">None</label>
+		</languageKey>
+	</data>
+</T3locallang>

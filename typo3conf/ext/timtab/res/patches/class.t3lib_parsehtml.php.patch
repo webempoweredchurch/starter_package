@@ -1,0 +1,47 @@
+--- D:\Projects\typo3\TYPO3\packages\typo3_src-3.8.0\t3lib\class.t3lib_parsehtml.php	Mon May 23 02:41:10 2005
++++ D:\Projects\ingo-renner.com\www_v2\html\t3lib\class.t3lib_parsehtml.php	Thu Jul 21 23:24:18 2005
+@@ -598,6 +598,19 @@
+ 	 * @return	string		Processed HTML content
+ 	 */
+ 	function HTMLcleaner($content, $tags=array(),$keepAll=0,$hSC=0,$addConfig=array())	{
++		
++		//protect HTML comments from getting cleaned
++		$commentsFound = array();
++		$comments      = array();
++		preg_match_all('/<!--.*?-->/s', $content, $commentsFound);
++		$i = 0;
++		foreach($commentsFound[0] as $comment) {			
++			$comments[$i] = $comment;
++			
++			$content = str_replace($comment, '###'.$i.'###', $content);			
++			$i++;
++		}
++		
+ 		$newContent = array();
+ 		$tokArr = explode('<',$content);
+ 		$newContent[] = $this->processContent(current($tokArr),$hSC,$addConfig);
+@@ -776,14 +789,22 @@
+ 
+ 			// Unsetting tags:
+ 		reset($tagRegister);
++
+ 		while(list($tag,$positions)=each($tagRegister))	{
+ 			reset($positions);
+ 			while(list(,$pKey)=each($positions))	{
+ 				unset($newContent[$pKey]);
+ 			}
+ 		}
+-
+-		return implode('',$newContent);
++		
++		$newContent = implode('',$newContent);
++		
++		//replace markers with the according comments
++		foreach($comments as $k => $comment) {
++			$newContent = str_replace('###'.$k.'###', $comment, $newContent);	
++		}
++		
++		return $newContent;
+ 	}
+ 
+ 	/**

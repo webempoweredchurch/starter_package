@@ -1,0 +1,7 @@
+lib.downloadLink {
+	# cat=downloadLink/other/o1; type=string; label= Path to fileicons.
+	fileIconPath = EXT:pmkfdl/res/fileicons/
+	
+	# cat=downloadLink/other/o2; type=options[1,secure,forcedl,secure|forcedl]; label= makeDownloadLink mode.
+	makeDownloadLink = 1
+}

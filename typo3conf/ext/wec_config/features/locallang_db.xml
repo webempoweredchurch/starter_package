@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for module &quot;&quot;</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="title">Submodule in Info</label>
+			<label index="checklabel">Check box #1</label>
+			
+			<label index="tx_wecconfig_features">Feature</label>
+			<label index="tx_wecconfig_features.disabled">Disabled</label>
+			<label index="tx_wecconfig_features.title">Title</label>
+			<label index="tx_wecconfig_features.description">Description</label>
+			<label index="tx_wecconfig_features.elements">Records</label>
+			
+		</languageKey>
+	</data>
+</T3locallang>

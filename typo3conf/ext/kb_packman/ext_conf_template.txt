@@ -1,0 +1,13 @@
+
+# cat=basic; type=string; label=Compress directory target-folder: The folder into which compressed directories will be put
+dirTarget = ./
+
+# cat=basic; type=string; label=Compress file target-folder: The folder into which compressed file(s) will be put
+fileTarget = ./
+
+# cat=basic; type=options[zip,rar,tgz,tbz2]; label=Target archive type: The type of archive which should get created when files get archived
+targetExt = zip
+
+# cat=basic; type=boolean; label=DAM support: When set and DAM (+dam_index) is installed newly extracted files get indexed automatically
+DAMsupport = 1
+

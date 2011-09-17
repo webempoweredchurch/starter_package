@@ -1,0 +1,64 @@
+2011-02-02  jeff
+
+	* css/htc/PIE.htc: Upgraded to the latest version of CSS3 PIE.
+
+2010-09-02  jeff
+
+	* css/mainstyles.css, typoscript/skin_typoscript.ts: Added a little
+	  TS to only show first level menu items in F1A. Fixes bug #1858.
+
+2010-09-02  ben
+
+	* css/mainstyles.css, typoscript/skin_typoscript.ts: hide the
+	  submenu for F1a tempate
+
+2010-08-30  ben
+
+	* css/ie6.css, css/images/body-bg.jpg, css/images/cardboard-bg.gif,
+	  css/images/cardboard-bg.jpg, css/images/cardboard-bg.png,
+	  css/images/cardboard-bottom-bg.gif,
+	  css/images/cardboard-bottom-bg.png,
+	  css/images/cardboard-f1a-bg.gif, css/images/cardboard-f1a-bg.jpg,
+	  css/images/cardboard-f1a-bg.png,
+	  css/images/cardboard-f1a-bottom-bg.gif,
+	  css/images/cardboard-f1a-bottom-bg.png, css/mainstyles.css:
+	  reduced the images file sizes
+
+2010-08-23  jeff
+
+	* ext_emconf.php: Update emconf after TER release.
+	* js/skin.js: Removed dead JavaScript code.
+
+2010-08-23  ben
+
+	* css/ie6.css, css/images/cardboard-bg.gif,
+	  css/images/cardboard-bottom-bg.gif,
+	  css/images/cardboard-f1a-bg.gif,
+	  css/images/cardboard-f1a-bottom-bg.gif, css/mainstyles.css,
+	  ext_emconf.php, js/skin.js, typoscript/skin_typoscript.ts: misc
+	  edits.
+
+2010-08-17  jeff
+
+	* fonts/YouRookMarbelous.ttf, fonts/YouRookMarbelous.txt: Update to
+	  the latest You Rook Marbelous font.
+
+2010-08-13  jeff
+
+	* css/images/border.png, css/mainstyles.css,
+	  typoscript/skin_typoscript.ts: Added border-image support for IE.
+	* css/htc, css/htc/PIE.htc: Added CSS3 PIE.
+
+2010-08-09  jeff
+
+	* info.txt: Updating title within skin.
+	* .: Renaming skin_011 to skin_warehouse.
+	* Oops, renamed the wrong skin.
+	* Renamed skin_011 to skin_lilypads.
+
+2010-08-04  jeff
+
+	* Fixed line height and offsets.
+	* Temporarily adding font.
+	* Adding development version of skin_011.
+

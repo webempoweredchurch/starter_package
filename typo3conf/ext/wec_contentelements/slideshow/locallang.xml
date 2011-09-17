@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'wec_contentelements'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tt_content.slideshow.title">Rotating Images</label>
+			<label index="tt_content.slideshow.description">jQuery-based slideshow useful for showing rotating photos or ads on the home page.</label>
+
+			<label index="flexform.slideshow.displayTime">Display Time (in seconds; leave blank to disable rotation)</label>
+
+			<label index="flexform.slideshow.transitionStyle">Transition Style</label>
+			<label index="flexform.slideshow.transitionStyle.fade">Fade</label>
+			<label index="flexform.slideshow.transitionStyle.scrollUp">Scroll Up</label>
+			<label index="flexform.slideshow.transitionStyle.scrollDown">Scroll Down</label>
+			<label index="flexform.slideshow.transitionStyle.scrollLeft">Scroll Left</label>
+			<label index="flexform.slideshow.transitionStyle.scrollRight">Scroll Right</label>
+			<label index="flexform.slideshow.transitionStyle.shuffle">Shuffle</label>
+
+			<label index="flexform.slideshow.aspectRatio">Aspect Ratio</label>
+			<label index="flexform.slideshow.aspectRatio.standard">Standard (4x3)</label>
+			<label index="flexform.slideshow.aspectRatio.widescreen">Widescreen (16x9)</label>
+			<label index="flexform.slideshow.aspectRatio.custom">Custom</label>
+
+			<label index="flexform.slideshow.height">Height</label>
+			<label index="flexform.slideshow.width">Width (Leave blank for full container width)</label>
+			
+			<label index="flexform.slideshow.thumbnails">Thumbnails</label>
+			<label index="flexform.slideshow.thumbnails.none">None</label>
+			<label index="flexform.slideshow.thumbnails.small">Small</label>
+			<label index="flexform.slideshow.thumbnails.medium">Medium</label>
+			<label index="flexform.slideshow.thumbnails.large">Large</label>
+
+			<label index="flexform.slideshow.image">Image</label>
+			<label index="flexform.slideshow.imageFile">Image File</label>
+			<label index="flexform.slideshow.imageLink">Image Link</label>
+
+		</languageKey>
+	</data>
+</T3locallang>

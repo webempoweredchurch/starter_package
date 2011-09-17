@@ -1,0 +1,409 @@
+<!--
+=====================================================================================================
+###TEMPLATE_MAIN### begin
+=====================================================================================================
+-->
+
+<div class="tx_wecconnector_pi1 pluginContent">
+  <div class="pluginHeader">
+    <h3>###TITLE###</h3>
+ 	<!-- ###SHOW_INSTRUCTIONS### begin--> 
+    	<div class="instructions">###INSTRUCTIONS###</div>
+ 	<!-- ###SHOW_INSTRUCTIONS### end--> 
+    <!-- ###SHOW_RESPONSE_MSG### begin--> 
+    	<div class="success">###RESPONSE_MSG###</div>
+    <!-- ###SHOW_RESPONSE_MSG### end--> 
+  </div>
+
+  <!-- ###SHOW_NAV### begin--> 
+	<div class="pluginNav floatRight">###SUBSCRIBE_BTN### ###MODERATE_BTN### ###ADMIN_BTN###</div>
+  <!-- ###SHOW_NAV### end-->
+
+  <div class="pluginNav floatLeft">
+  	###ENTRY_FORM_TOGGLEOFF###
+  	###ENTRY_FORM###
+  </div>
+
+  <div class="pluginSection">
+  	###DISPLAY_ENTRIES###
+  </div>
+
+  <!-- ###PAGELINK### begin -->
+  <div class="pluginFooter">
+	###LINK_PREV###  ###PAGE_NUM### ###LINK_NEXT### 
+  </div>
+  <!-- ###PAGELINK### end -->
+</div>
+<!-- ###TEMPLATE_MAIN### end -->
+
+
+<!--
+=====================================================================================================
+###TEMPLATE_DISPLAYENTRIES### begin
+=====================================================================================================
+-->
+<div class="pluginNav">###CHOOSE_CATEGORY###</div>
+<div class="categoryHeader">###DISPLAY_HEADER### (###DISPLAY_TOTAL###)</div>
+<ul class="entries">
+  ###ENTRIES###
+</ul>
+<!-- ###DISPLAY_CATEGORY### begin
+	    What to show if break up into category. Leave blank if you don't want to see categories
+		---------------------------------------------------------------------------------------
+	-->
+	<div class="showCategory">
+		###SHOW_CATEGORY_NAME###
+		###SHOW_CATEGORY_IMAGE###
+	</div>
+<!-- ###DISPLAY_CATEGORY### end -->
+
+<!-- ###ENTRY### begin
+		Template for a single item. This is repeated for each item
+		----------------------------------------------------------------------------------
+	-->
+<li class="entry ###IS_HIDDEN### ###ALTERNATING_CLASS###">
+  <h3>###SUBJECT###</h3>
+  <div class="message">
+    ###IMAGE###
+    ###MESSAGE### 
+  </div>
+  <div class="entryInfo">
+    <div> <span class="entryBy">###POSTEDBY_TEXT### ###NAME###</span>
+      <!-- ###SHOW_LOCATION### begin -->
+      at <span class="entryLocation"> ###LOCATION### ###ADDRESS### ###CITY### ###STATE### ###ZIPCODE### ###COUNTRY###</span>
+      <!-- ###SHOW_LOCATION### end -->
+      <span class="entryDate"> on ###DATE### ###TIME###</span>
+      <!-- ###SHOW_WEBSITE_URL### begin-->
+      <span class="entryWebsite">###WEBSITE_URL###</span>
+      <!-- ###SHOW_WEBSITE_URL### end-->
+    </div>
+  </div>
+  <div class="buttonRow"> 
+	###VIEW_SINGLE###
+	###RESPOND_BUTTON###
+	###MODIFY_BUTTON###
+	###DELETE_BUTTON###
+	###HIDE_BUTTON### 
+  </div>
+</li>
+<!-- ###ENTRY### end-->
+
+<!-- ###ENTRY2### begin
+		Template for a single item. Used to display information in list format. This is repeated for each item
+		----------------------------------------------------------------------------------
+	-->
+<li class="entry ###IS_HIDDEN### ###ALTERNATING_CLASS###">
+  	<h3>###NAME###</h3>
+    <!-- ###SHOW_LOCATION### begin -->
+    <div class="entryLocation">
+		###ADDRESS###<br/> 
+		###CITY### ###STATE### ###ZIPCODE### ###COUNTRY###<br/>
+	</div>
+    <!-- ###SHOW_LOCATION### end -->
+	<div class="entryBy">
+  		<!-- ###SHOW_PHONE### begin-->Phone#: ###PHONE###<br/><!-- ###SHOW_PHONE### end-->
+  		<!-- ###SHOW_CONTACT_NAME### begin-->Ask For: ###CONTACT_NAME###<br/><!-- ###SHOW_CONTACT_NAME### end-->
+  		<!-- ###SHOW_EMAIL### begin-->Email: <span style="font-size:11px;">###EMAIL###</span><br/><!-- ###SHOW_EMAIL### end-->
+  		<!-- ###SHOW_WEBSITE_URL### begin-->Website: <font style="font-size:11px;">###WEBSITE_URL###</font><br /><!-- ###SHOW_WEBSITE_URL### end-->
+	</div>
+	<div class="showImage"> ###IMAGE###</div>
+ 	<div class="message">
+    	###MESSAGE###
+	</div>
+  <div class="buttonRow"> 
+	###RESPOND_BUTTON###
+	###MODIFY_BUTTON###
+	###DELETE_BUTTON###
+	###HIDE_BUTTON###
+  </div>
+
+</li>
+<!-- ###ENTRY2### end-->
+
+<!-- ###TEMPLATE_DISPLAYENTRIES### end -->
+
+<!--
+=====================================================================================================
+###TEMPLATE_DISPLAYSINGLE### begin
+=====================================================================================================
+  Display one item. You can customize this separately, otherwise it uses the ###ENTRY### fields above
+-->
+<div class="pluginContent">
+  <ul class="entries">
+	###SINGLE_ENTRY###
+   	<div>###BACK_BUTTON###</div>
+  </ul>
+</div>
+<!-- ###TEMPLATE_DISPLAYSINGLE### end -->
+
+<!--
+=====================================================================================================
+###TEMPLATE_ENTRYFORM### begin
+=====================================================================================================
+   Form for a new entry
+-->
+<a name="entry"></a>
+<form class="pluginForm" method="post" action="###ACTION_URL###" enctype="multipart/form-data">
+  <fieldset>
+  <legend>###FORM_LEGEND###</legend>
+  <!-- ###SHOW_ERROR### begin-->  
+  <div class="error">###FORM_ERROR### ###FORM_ERROR_FIELDS###</div>
+  <!-- ###SHOW_ERROR### end--> 
+  <!-- ###SHOW_REQUIRED_TEXT### begin--> 
+  <div class="notice">###SHOW_REQUIRED_TEXT###</div>
+  <!-- ###SHOW_REQUIRED_TEXT### end--> 
+  <ol>
+    <!-- ###SHOW_NAME### begin-->
+    <li>
+      <label for="name">###FORM_NAME###<em class="required">###FORM_NAME_REQUIRED###</em></label>
+      <input id="name" type="text" name="tx_wecconnector[name]" value="###VALUE_NAME###" />
+      <div class="instructions">###FORM_NAME_INSTRUCTIONS###</div>
+    </li>
+      <!-- ###SHOW_NAME### end-->
+    <!-- ###SHOW_CONTACT_NAME### begin-->
+    <li>
+      <label for="name">###FORM_CONTACT_NAME###<em class="required">###FORM_CONTACT_NAME_REQUIRED###</em></label>
+      <input id="contact_name" type="text" name="tx_wecconnector[contact_name]" value="###VALUE_CONTACT_NAME###" />
+      <div class="instructions">###FORM_CONTACT_NAME_INSTRUCTIONS###</div>
+    </li>
+      <!-- ###SHOW_CONTACT_NAME### end-->
+    <!-- ###SHOW_BUSINESS_NAME### begin-->
+    <li>
+      <label for="name">###FORM_BUSINESS_NAME###<em class="required">###FORM_BUSINESS_NAME_REQUIRED###</em></label>
+      <input id="business_name" type="text" name="tx_wecconnector[business_name]" value="###VALUE_BUSINESS_NAME###" />
+      <div class="instructions">###FORM_BUSINESS_NAME_INSTRUCTIONS###</div>
+    </li>
+      <!-- ###SHOW_BUSINESS_NAME### end-->
+      <!-- ###SHOW_LOCATION### begin-->
+    <li>
+      <label for="location">###FORM_LOCATION###<em class="required">###FORM_LOCATION_REQUIRED###</em></label>
+      <input id="location" type="text" name="tx_wecconnector[location]" value="###VALUE_LOCATION###" />
+      <div class="instructions">###FORM_LOCATION_INSTRUCTIONS###</div>
+    </li>
+    <!-- ###SHOW_LOCATION### end-->
+    <!-- ###SHOW_EMAIL### begin-->
+    <li>
+      <label for="email">###FORM_EMAIL###<em class="required">###FORM_EMAIL_REQUIRED###</em></label>
+      <input id="email" type="text" class="email" name="tx_wecconnector[email]" value="###VALUE_EMAIL###" />
+      <div class="instructions">###FORM_EMAIL_INSTRUCTIONS###</div>
+    </li>
+    <!-- ###SHOW_EMAIL### end-->
+    <!-- ###SHOW_SUBJECT### begin-->
+    <li>
+      <label for="subject">###FORM_SUBJECT###<em class="required">###FORM_SUBJECT_REQUIRED###</em></label>
+      <input id="subject" type="text" name="tx_wecconnector[subject]" value="###VALUE_SUBJECT###"/>
+      <div class="instructions">###FORM_SUBJECT_INSTRUCTIONS###</div>
+    </li>
+    <!-- ###SHOW_SUBJECT### end-->
+    <!-- ###SHOW_MESSAGE### begin-->
+    <li>
+      <label for="message">###FORM_MESSAGE###<em class="required">###FORM_MESSAGE_REQUIRED###</em></label>
+      <textarea name="tx_wecconnector[message]" rows="4" cols="40">###VALUE_MESSAGE###</textarea>
+      <div class="instructions">###FORM_MESSAGE_INSTRUCTIONS###</div>
+    </li>
+    <!-- ###SHOW_MESSAGE### end-->
+    <!-- ###SHOW_CATEGORY### begin-->
+    <li>
+      <label for="category">###FORM_CATEGORY###<em class="required">###FORM_CATEGORY_REQUIRED###</em></label>
+      ###VALUE_CATEGORY###
+      <div class="instructions">###FORM_CATEGORY_INSTRUCTIONS###</div>
+    </li>
+    <!-- ###SHOW_CATEGORY### end-->
+    <!-- ###SHOW_PHONE### begin-->
+    <li>
+      <label for="phone">###FORM_PHONE###<em class="required">###FORM_PHONE_REQUIRED###</em></label>
+      <input id="phone" type="text" class="phone" name="tx_wecconnector[phone]" value="###VALUE_PHONE###" />
+      <div class="instructions">###FORM_PHONE_INSTRUCTIONS###</div>
+    </li>
+    <!-- ###SHOW_PHONE### end-->
+    <!-- ###SHOW_ADDRESS### begin-->
+    <li>
+      <label for="location">###FORM_ADDRESS###<em class="required">###FORM_ADDRESS_REQUIRED###</em></label>
+      <input id="address" type="text" name="tx_wecconnector[address]" value="###VALUE_ADDRESS###" />
+      <div class="instructions">###FORM_ADDRESS_INSTRUCTIONS###</div>
+    </li>
+    <!-- ###SHOW_ADDRESS### end-->
+    <!-- ###SHOW_CITY### begin-->
+    <li>
+      <label for="city">###FORM_CITY###<em class="required">###FORM_CITY_REQUIRED###</em></label>
+      <input id="city" type="text" name="tx_wecconnector[city]" value="###VALUE_CITY###"/>
+      <div class="instructions">###FORM_CITY_INSTRUCTIONS###</div>
+    </li>
+    <!-- ###SHOW_CITY### end-->
+    <!-- ###SHOW_STATE### begin-->
+    <li>
+      <label for="state">###FORM_STATE###<em class="required">###FORM_STATE_REQUIRED###</em></label>
+      <input id="state" type="text" name="tx_wecconnector[state]" value="###VALUE_STATE###" />
+      <div class="instructions">###FORM_STATE_INSTRUCTIONS###</div>
+    </li>
+    <!-- ###SHOW_STATE### end-->
+    <!-- ###SHOW_ZIPCODE### begin-->
+    <li>
+      <label for="zipcode">###FORM_ZIPCODE###<em class="required">###FORM_ZIPCODE_REQUIRED###</em></label>
+      <input id="zipcode" type="text" name="tx_wecconnector[zipcode]" value="###VALUE_ZIPCODE###" />
+      <div class="instructions">###FORM_ZIPCODE_INSTRUCTIONS###</div>
+    </li>
+    <!-- ###SHOW_ZIPCODE### end-->
+    <!-- ###SHOW_COUNTRY### begin-->
+    <li>
+      <label for="country">###FORM_COUNTRY###<em class="required">###FORM_COUNTRY_REQUIRED###</em></label>
+      <input id="country" type="text" name="tx_wecconnector[country]" value="###VALUE_COUNTRY###"/>
+      <div class="instructions">###FORM_COUNTRY_INSTRUCTIONS###</div>
+    </li>
+    <!-- ###SHOW_COUNTRY### end-->
+    <!-- ###SHOW_WEBSITE_URL### begin-->
+    <li>
+      <label for="website_url">###FORM_WEBSITE_URL###<em class="required">###FORM_WEBSITE_URL_REQUIRED###</em></label>
+      <input id="website_url" type="text" class="url" name="tx_wecconnector[website_url]" value="###VALUE_WEBSITE_URL###" />
+      <span class="instructions">###FORM_WEBSITE_URL_INSTRUCTIONS###</span> </li>
+    <!-- ###SHOW_WEBSITE_URL### end-->
+    <!-- ###SHOW_IMAGE### begin-->
+    <li>
+      <label for="image">###FORM_IMAGE###<em class="required">###FORM_IMAGE_REQUIRED###</em></label>
+      <input type="file" name="tx_wecconnector[image]" value="###VALUE_IMAGE###" />
+      <span class="instructions">###FORM_IMAGE_INSTRUCTIONS###</span> </li>
+    <!-- ###SHOW_IMAGE### end-->
+    <!--###CAPTCHA_INSERT### this subpart is removed if CAPTCHA is not enabled! -->
+    <li>
+      <p class="textacross">###SR_FREECAP_NOTICE###</span>
+        <label for="captcha"><br />
+        ###SR_FREECAP_CANT_READ###<em class="required">*</em></label>
+        <input type="text" size="35" id="tx_wecconnector_pi1_captcha_response" name="tx_wecconnector[captcha_response]" title="###SR_FREECAP_NOTICE###" value="" />
+      <p>###SR_FREECAP_IMAGE###</p>
+    </li>
+    <!--###CAPTCHA_INSERT###-->
+	<!-- ###SHOW_EASY_CAPTCHA### begin-->
+	<li>
+		<label for="captcha">###FORM_CAPTCHA_LABEL###</label>
+		###EASY_CAPTCHA_IMAGE###
+		<input type="text" size=10 name="tx_wecconnector[captcha_response]" value="">
+	</li>
+	<!-- ###SHOW_EASY_CAPTCHA### end-->
+    <!-- ###SHOW_TEXT_CAPTCHA### begin-->
+    <li>
+      <label for="textcaptcha">###TEXT_CAPTCHA_LABEL###<em class="required">*</em></label>
+      ###TEXT_CAPTCHA_FIELD### 
+	</li>
+    <!-- ###SHOW_TEXT_CAPTCHA### end-->
+	<li class="fullRow">
+	  <input type="hidden" name="id" value="###PID###" />
+	  <input type="hidden" name="category" value="###CATEGORY###" />
+	  <input type="hidden" name="tx_wecconnector[msgid]" value="###MSGID###" />
+	  <input type="hidden" name="tx_wecconnector[submitted]" value="1" />
+	  <input type="submit" class="submit" value="###FORM_SUBMIT###" />
+	  ###HIDDEN_VARS###
+	  ###CANCEL_BUTTON###
+	</li>
+  </ol>
+  </fieldset>
+</form>
+<!-- ###TEMPLATE_ENTRYFORM### end -->
+
+<!--
+=====================================================================================================
+###TEMPLATE_RESPONSEFORM### begin
+=====================================================================================================
+   Form for a response to an entry
+
+-->
+<a name="response"></a>
+<h3>###RESPONSE_TITLE###</h3>
+<form class="pluginForm" method="post" action="###ACTION_URL###">
+  <fieldset>
+	  <!-- ###SHOW_ERROR### begin-->  
+	   <div class="error">###FORM_ERROR### ###FORM_ERROR_FIELDS###</div>
+	  <!-- ###SHOW_ERROR### end--> 
+	  <h4>###RESPONSE_HEADER###</h4>
+	  <div class="entry highlightBox">
+		  <h3>###ORIG_SUBJECT###</h3>
+		  <div class="message">###ORIG_MESSAGE###</div>
+		  <div class="entryInfo"> ###POSTEDBY_TEXT### ###ORIG_NAME### | ###ORIG_DATE### ###ORIG_TIME### </div>
+	  </div>
+	  <!-- ###SHOW_REQUIRED_TEXT### begin--> 
+	  <div class="notice">###SHOW_REQUIRED_TEXT###</div>
+	  <!-- ###SHOW_REQUIRED_TEXT### end-->
+	  <ol>
+	    <li>
+	      <label for="name">###FORM_NAME### <em class="required">###FORM_NAME_REQUIRED###</em></label>
+	      <input type="text" id="name" name="tx_wecconnector[name]" value="###VALUE_NAME###" />
+	    </li>
+	    <li>
+	      <label for="email">###FORM_EMAIL### <em class="required">###FORM_EMAIL_REQUIRED###</em></label>
+	      <input type="text" id="email" name="tx_wecconnector[email]" value="###VALUE_EMAIL###" />
+	    </li>
+	    <li>
+	      <label for="message">###FORM_MESSAGE### <em class="required">###FORM_MESSAGE_REQUIRED###</em></label>
+	      <textarea id="message" name="tx_wecconnector[message]" rows="4" cols="40">###VALUE_MESSAGE###</textarea>
+	    </li>
+		<li class="fullRow">
+		  <input type="hidden" name="id" value="###PID###" />
+		  <input type="hidden" name="tx_wecconnector[msgid]" value="###MSGNUM###" />
+		  <input type="hidden" name="tx_wecconnector[subject]" value="###ORIG_SUBJECT###" />
+		  <input type="hidden" name="tx_wecconnector[submitresponse]" value="1" />
+		  <input type="submit" class="submit" value="###FORM_SUBMIT###" />
+		  <input type="button" onClick="###CANCEL_URL###" value="###FORM_CANCEL###" />			
+		</li>
+	  </ol>
+  </fieldset>
+</form>
+<!-- ###TEMPLATE_RESPONSEFORM### end -->
+
+<!--
+=====================================================================================================
+###TEMPLATE_SUBSCRIBEFORM### begin
+=====================================================================================================
+   Form to subscribe/unsubscribe to a connector
+
+-->
+<h3>###SUBSCRIBE_HEADER###</h3>
+<!--- ###SHOW_ERROR### begin--><div class="error">###FORM_ERROR### ###FORM_ERROR_FIELDS###</div><!--- ###SHOW_ERROR### end-->
+<form class="pluginForm mediumWidth" method="post" action="###ACTION_URL###">
+  <fieldset>
+  <ol>
+    <li>
+      <label for="email">###FORM_EMAIL###</label>
+      <input type="text" id="email" name="tx_wecconnector[email]" value="###VALUE_EMAIL###" />
+    </li>
+	<li class="fullRow">
+	  <input type="hidden" name="id" value="###PID###" />
+	  <input type="submit" class="submit" name="tx_wecconnector[submitsubscribe]" value="###FORM_SUBMIT_SUB###" />
+	  <input type="submit" name="tx_wecconnector[submitunsubscribe]" value="###FORM_SUBMIT_UNSUB###" />
+	  <input type="button" onClick="###CANCEL_URL###" value="###FORM_CANCEL###" />
+	</li>
+  </ol>
+  </fieldset>
+</form>
+</div>
+<!-- ###TEMPLATE_SUBSCRIBEFORM### end -->
+
+
+<!--
+=====================================================================================================
+###TEMPLATE_PREVIEW### begin
+
+ Template for the preview display.
+=====================================================================================================
+-->
+<!-- ###PREVIEW_DISPLAY### begin-->
+	<div class="preview pluginContent">
+	  <h3>###PREVIEW_TITLE###</h3>
+	  <ul class="entries">
+	    ###PREVIEW_ENTRIES###
+	  </ul>
+	  <div>###PREVIEW_GOTO_LINK###</div>
+	</div>
+<!-- ###PREVIEW_DISPLAY### end-->
+
+<!-- ###PREVIEW_ENTRY### begin-->
+	<li>
+	  <h4>###PREVIEW_LINK_BEGIN### ###SUBJECT### ###PREVIEW_LINK_END###</h4>
+	  ###MESSAGE###
+	  <div class="entryInfo">###POSTEDBY_TEXT### ###NAME### ###ON_TEXT### ###DATE### ###TIME###</div>
+	</li>
+<!-- ###PREVIEW_ENTRY### end-->
+
+<!-- ###PREVIEW_NOENTRY### begin-->
+	<li class="notice"> ###NO_ENTRY_MESSAGE### </li>
+<!-- ###PREVIEW_NOENTRY### end-->
+
+<!-- ###TEMPLATE_PREVIEW### end -->

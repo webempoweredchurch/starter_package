@@ -1,0 +1,47 @@
+/*------------------------------- WEC SMS -------------------------------------------*/
+
+.tx-wecsermons-pi1-list-topics { clear: both; }
+.tx-wecsermons-pi1-list-topics dd { font-weight: normal; }
+.tx-wecsermons-pi1-list-speakers { float:right; margin: 1em 1em 1em 0; text-align: center; }
+.tx-wecsermons-pi1-list-speakers h2 { border-bottom: 1px solid black;  }
+.tx-wecsermons-pi1-list-speakers p {  float:left; margin: 0 .5em 0 .5em; }
+.tx-wecsermons-pi1-list-speakers img { clear: both; }
+.tx-wecsermons-pi1-mp3 { clear: both;}
+
+.tx-wecsermons-pi1-backlink { clear:both; }
+
+.tx-wecsermons-pi1-pdf-preview { float:left; margin: 0 1em 1em 0; border: 2px solid black; }
+
+.tx-wecsermons-pi1-sermon-brief div.tx-wecsermons-pi1-sermon-graphic { float: right; margin: 0 0 1em 1em; }
+.tx-wecsermons-pi1-speaker-brief img { margin: 1em 1em 1em 0; }
+
+ul#tx-wecsermons-pi1-list-brief { margin: 1em 0 1em; padding: 0 0 1em; }
+
+ul.tx-wecsermons-pi1-list-verbose h2,ul.tx-wecsermons-pi1-list-brief h2 { margin: 1em 0 0; }
+ul.tx-wecsermons-pi1-list-verbose,ul.tx-wecsermons-pi1-list-brief { padding: 1em 0 1em 0; margin: 1em 0 1em 0;}
+ul.tx-wecsermons-pi1-list-verbose li, ul.tx-wecsermons-pi1-list-brief li { padding: .5em 1em 1em .5em; clear: left;}
+
+li.tx-wecsermons-pi1-list { list-style-type:none; background-color: #D9D9D9; padding: .5em 0 .5em 1em; width: 80%;}
+li.tx-wecsermons-pi1-list-odd { background-color: #FFFFFF; } 
+#tx-wecsermons-pi1-list2 th { background-color: #779976; text-align: left;}
+#tx-wecsermons-pi1-list2 a { color: #003399; }
+#tx-wecsermons-pi1-list2 td { background-color: #ACCCAB;}
+#tx-wecsermons-pi1-latest2 th { background-color: #779976; text-align: left;}
+#tx-wecsermons-pi1-latest2 a { color: #003399; }
+#tx-wecsermons-pi1-latest2 td { background-color: #ACCCAB;}
+
+.tx-wecsermons-pi1-sermon-description { text-align: justify; }
+.tx-wecsermons-pi1-sermon-graphic { float: left; margin: 1em 1em 1em 0;}
+
+.tx-wecsermons-pi1-series-graphic { float: right; margin: 0 0 1em 1em;}
+
+div.tx-wecsermons-pi1-default dl {  margin-top: 0px; margin-bottom: 1em;}
+div.tx-wecsermons-pi1-flv div.tx-wecflashplayer-pi1 { float: left; }
+
+#tx-wecsermons-pi1-series-example { background-color: #C9FFC9; padding: .5em; }
+#tx-wecsermons-pi1-speakers-example { background-color: #FFBDBD; padding: .5em; }
+#tx-wecsermons-pi1-topics-example { background-color: #FFFFBF; padding: .5em; }
+#tx-wecsermons-pi1-mp3-example { background-color: #FFABFF; padding: .5em; }
+#tx-wecsermons-pi1-flv-example { background-color: #C7FFFE; padding: .5em; }
+#tx-wecsermons-pi1-pdf-example { background-color: #C4C4FF; padding: .5em; }
+#tx-wecsermons-pi1-default-example { background-color: #D9D9D9; padding: .5em; }

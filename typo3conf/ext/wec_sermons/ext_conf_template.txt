@@ -1,0 +1,4 @@
+
+# cat=basic/file/1; type=text; label = Resource Upload Path: The upload path where all files attached to SMS Resource records will be stored when using the 'File' field. Here you can specify the upload path that will be used in place of uploads/tx_wecsermons.
+resourceUploadPath = uploads/tx_wecsermons
+

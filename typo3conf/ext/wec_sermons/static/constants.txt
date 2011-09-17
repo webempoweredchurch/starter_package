@@ -1,0 +1,114 @@
+plugin.tx_wecsermons_pi1 {
+
+#------
+#Enable
+#------
+
+	# cat=plugin.tx_wecsermons_pi1/enable/10; type=boolean; label= Allow Caching: Whether or not pages containing the wec_sermons_pi1 plugin are cached. (Can greatly reduce responsiveness of these pages if set to 0!!)
+	allowCaching = 1
+
+	# cat=plugin.tx_wecsermons_pi1/enable/20; type=boolean; label= Use Storage Folder: Whether the SMS looks for records in the "General Storage Folder."
+	useStoragePid = 1
+
+	# cat=plugin.tx_wecsermons_pi1/enable/25; type=boolean; label= Enable Smart Display: Smart Display is the ability for the plugin to switch to SINGLE display mode when it detects a request for the details of a record to be shown. When this is enabled, you do not explicitly need a separate page set up to display SINGLE views. In some cases you may wish to disable this feature.
+	enableSmartDisplay = 1
+
+	# cat=plugin.tx_wecsermons_pi1/enable/30; type=boolean; label= LIST View - Enable Empty Groups: Enable display of empty "group" results. (Those group results which have no related "detail" records.)
+	listView.emptyGroups = 0
+
+	# cat=plugin.tx_wecsermons_pi1/enable/35; type=text; label= LATEST View - Use Creation Date: Order Items by Creation Date: Enable ordering of items by their creation date instead of other field. (Applied to LATEST view only.)
+	latestView.useCreationDate = 0
+
+	# cat=plugin.tx_wecsermons_pi1/enable/40; type=boolean; label= LATEST View - Enable Empty Groups: Enable display of empty "group" results. (Those group results which have no related "detail" records.)
+	latestView.emptyGroups = 0
+
+	# cat=plugin.tx_wecsermons_pi1/enable/50; type=boolean; label= XML View - Items Link to Resource Views: Enable item links, that is <item><link>.. tags, to link to the resource's single view rather than the sermon's single view.
+	xmlView.itemLinkToResource = 0
+
+	# cat=plugin.tx_wecsermons_pi1/enable/60; type=boolean; label= XML View - Order Items by Creation Date: Enable ordering of items by their creation date instead of other field. (xmlView Only)
+	xmlView.useCreationDate = 0
+
+	# cat=plugin.tx_wecsermons_pi1/enable/70; type=boolean; label= SINGLE View - Enable Meta Description: Enable/disable the page meta description tag, appending the record description to the tag's content.
+	singleView.enableMetaDescription = 0
+
+	# cat=plugin.tx_wecsermons_pi1/enable/80; type=boolean; label= Disable BibleGateway links (will prevent eBible and BibleGateway conflicts)
+	disableBibleGateway = 0
+	
+
+#------
+#Dims
+#------
+
+	# cat=plugin.tx_wecsermons_pi1/dims/20; type=text; label= LIST View - Max Pages Shown: How many pages are shown in the record browser between the <prev> and <next> links. (Applied to lists.)
+	listView.maxPages = 5
+
+	# cat=plugin.tx_wecsermons_pi1/dims/30; type=text; label= LIST View - Maxium Group Results: Maxium group results returned. (Applied to LIST view Series Layout only.)
+	listView.maxGroupResults = 5
+
+	# cat=plugin.tx_wecsermons_pi1/dims/40; type=text; label= LIST View - Maxium Detail Results: Maxium detail results returned per page. (Applied to LIST view only. Will not apply to Series Layout.)
+	listView.maxdetailResults = 20
+
+	# cat=plugin.tx_wecsermons_pi1/dims/50; type=text; label= LATEST View - Maxium Group Results: Maxium group results returned. (Applied to LATEST view Series Layout only.)
+	latestView.maxGroupResults = 5
+
+	# cat=plugin.tx_wecsermons_pi1/dims/60; type=text; label= LATEST View - Maxium Detail Results: Maxium detail results returned. (Applied to LATEST view only. Will not apply to Series Layout)
+	latestView.maxdetailResults = 20
+
+	# cat=plugin.tx_wecsermons_pi1/dims/70; type=text; label= SMS XML Feed - Maxium Detail Results: Maxium number of items to return in the xml feed. (Applied to xmlView view only.)
+	xmlView.maxdetailResults = 10
+
+	# cat=plugin.tx_wecsermons_pi1/dims/10; type=text; label= iTunes Encoding Bitrate (kb) : This bitrate setting is used in calculating the "duration" of a video or audio file for use in itunes
+	bitrate = 128
+
+#------
+#File
+#------
+
+	# cat=plugin.tx_wecsermons_pi1/file/10; type=text; label= Template File Path: The path to a modified HTML template file for display of all the SMS Views.
+	file.templateFile = EXT:wec_sermons/pi1/wecsermons.tmpl
+
+	# cat=plugin.tx_wecsermons_pi1/file/20; type=text; label= CSS File Path: The path to a modified .CSS file that will style the SMS Front End output upon rendering of page.
+	file.cssFile = EXT:wec_sermons/res/tx_wecsermons_styles.css
+
+#------
+#Typo
+#------
+
+	# cat=plugin.tx_wecsermons_pi1/typo/10; type=text; label= List View - Alternating class: Addtional class string that is appended to the end of odd numbered rows in LIST and LATEST views
+	listView.alternatingClass = tx-wecsermons-pi1-list-odd
+
+	# cat=plugin.tx_wecsermons_pi1/typo/20; type=text; label= Header for Topics: The text header added before the list of topics, if related to other records
+	topicsHeader = Topics:
+
+	# cat=plugin.tx_wecsermons_pi1/typo/30; type=text; label= Header for Season: The text header added before the season, if related to other records
+	seasonHeader = Seasons:
+
+	# cat=plugin.tx_wecsermons_pi1/typo/40; type=text; label= Header for Series: The text header added before the list of series, if related to other records
+	seriesHeader = Series:
+
+	# cat=plugin.tx_wecsermons_pi1/typo/50; type=text; label= Header for Series Start Date: The text header added before the start date of a series
+	seriesStartDateHeader =
+
+	# cat=plugin.tx_wecsermons_pi1/typo/60; type=text; label= Header for Series End Date: The text header added before the end date list of series
+	seriesEndDateHeader =
+
+	# cat=plugin.tx_wecsermons_pi1/typo/70; type=text; label= Header for Speaker: The text header added before the list of speakers, if related to other records
+	speakersHeader = Speakers:
+
+#------
+#Links
+#------
+
+	# cat=plugin.tx_wecsermons_pi1/links/10; type=int+; label= SMS Record Storage PID: The UID of the page where all SMS records are currently stored. (Must be set to use XML feed!)
+	pidList =
+
+	# cat=plugin.tx_wecsermons_pi1/links/20; type=int+; label= Single View - Single PID: The UID of the page where the Single View is displayed. (If you set this, you should also set pidListView!)
+	pidSingleView =
+
+	# cat=plugin.tx_wecsermons_pi1/links/30; type=int+; label= List View - List PID: The UID of the page where the List View is displayed
+	pidListView =
+
+	# cat=plugin.tx_wecsermons_pi1/links/40; type=int+; label= Search View - Search PID: The UID of the page where the Search View is displayed
+	pidSearchView =
+
+}

@@ -1,0 +1,1 @@
+Provides additional fields useful for WEC sites, such as church membership.  Also updates the template for sr_feuserregister to include these new fields.

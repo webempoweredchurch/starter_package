@@ -1,0 +1,36 @@
+<T3DataStructure>
+	<ROOT>
+		<TCEforms>
+			<cshFile>LLL:EXT:wec_contentelements/vimeo/locallang_csh.xml</cshFile>
+		</TCEforms>
+		<type>array</type>
+		<el>
+			<vimeoID>
+				<TCEforms>
+					<label>LLL:EXT:wec_contentelements/vimeo/locallang.xml:flexform.vimeo.vimeoID</label>
+					<config>
+						<type>input</type>
+					</config>
+				</TCEforms>
+			</vimeoID>
+			<height>
+				<TCEforms>
+					<label>LLL:EXT:wec_contentelements/vimeo/locallang.xml:flexform.vimeo.height</label>
+					<config>
+						<type>input</type>
+						<default>225</default>
+					</config>
+				</TCEforms>
+			</height>
+			<width>
+				<TCEforms>
+					<label>LLL:EXT:wec_contentelements/vimeo/locallang.xml:flexform.vimeo.width</label>
+					<config>
+						<type>input</type>
+						<default>400</default>
+					</config>
+				</TCEforms>
+			</width>
+		</el>
+	</ROOT>
+</T3DataStructure>

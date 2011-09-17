@@ -1,0 +1,24 @@
+*********************************
+** FUTURE RELEASES
+*********************************
+
+* Allow series records to have resources attached to them
+
+* Create a better streamlined import process for pulling records in
+
+* Develop an advanced search, allowing deeper searches and additional filtering of record types
+
+* Enable Front End editing
+
+
+General Stuff
+-------------
+
+Find a way to allow resources to be their own plugins which draw thier own content, and have a way to aggregate the content into one 'view'
+	NOTE: In finding a way for plugins to render their own content, Jeff discussed a 'registry' where plugins would register and explain how to render records. The idea of this registry, coupled with making a 'plugin' resource type, we could allow SMS to learn how to render a record by creating an instance of the plugin and pushing it the records it needs to render.
+	
+API
+---
+
+Frontend-Stuff
+----------------

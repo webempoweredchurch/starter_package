@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+    <description>CSH for table tx_wecsermons_series</description>
+    <type>CSH</type>
+    <csh_table>tx_wecsermons_series</csh_table>
+    <fileId>EXT:wec_sermons/csh/locallang_csh_series.xml</fileId>
+    <labelContext type="array" />
+	</meta>
+	<data type="array">
+    <languageKey index="default" type="array">
+      <label index=".description">Series represents a list of related series.</label>
+      <label index=".details">A sermon series is a common structure used in the church to denote a series of sermons inter-related by a common topic. The series record stores information that is specific to the series itself.</label>
+      <label index="sys_language_uid.description">The language of this series.</label>
+      <label index="sys_language_uid.details">This should be the default language unless this series represents a translation of another language.</label>
+      <label index="_sys_language_uid.seeAlso">tt_content:sys_language_uid,pages:sys_language_uid,pages_language_overlay:sys_language_uid</label>
+      <label index="hidden.description">Hides this record from Front End display.</label>
+      <label index="hidden.details">This checkbox will hide or unhide a series from the users of your site. You can use this to temporarily hide this record from the Front End while editing it in the Back End.</label>
+      <label index="_hidden.seeAlso">tx_wecsermons_series:starttime,tx_wecsermons_series:endtime,tx_wecsermons_series:fe_group,tx_wecsermons_series:islinked</label>
+      <label index="starttime.description">The date this record will be shown on the Front End.</label>
+      <label index="starttime.details">Start is the date that the series will first be available to your users. This will be 12:00 am, midnight, on the date specified.</label>
+      <label index="_starttime.seeAlso">tx_wecsermons_series:hidden,tx_wecsermons_series:endtime,tx_wecsermons_series:fe_group,tx_wecsermons_series:islinked</label>
+      <label index="endtime.description">The date this record will no longer be shown on the Front End.</label>
+      <label index="endtime.details">Stop is the date that the series will no longer be shown on the website. This will be at 12:00 am, midnight, on the date specified.</label>
+      <label index="_endtime.seeAlso">tx_wecsermons_series:hidden,tx_wecsermons_series:starttime,tx_wecsermons_series:fe_group,tx_wecsermons_series:islinked</label>
+      <label index="fe_group.description">Only members of the user group specified here will see this series.</label>
+      <label index="fe_group.details">Access specifies what user groups are allowed to see this series. If a user group is selected, this series will only be visible by those users who log into the Front End and are members of the specified user group.</label>
+      <label index="_fe_group.seeAlso">tx_wecsermons_series:hidden,tx_wecsermons_series:starttime,tx_wecsermons_series:endtime,tx_wecsermons_series:islinked</label>
+      <label index="islinked.description">Enables or disables linking to the single view of this record on the Front End.</label>
+      <label index="islinked.details">This checkbox allows you to have a series entered into the SMS and displayed on the Front End, but disallow users to view the series detail page by disabling the link to its single view.</label>
+      <label index="_islinked.seeAlso">tx_wecsermons_series:hidden,tx_wecsermons_series:starttime,tx_wecsermons_series:endtime,tx_wecsermons_series:fe_group,tx_wecsermons_series:islinked</label>
+      <label index="title.description">The title of the series.</label>
+      <label index="title.details">The title should reflect the naming of the series.</label>
+      <label index="subtitle.description">The subtitle of the series.</label>
+      <label index="subtitle.details">The subtitle can be used to provide a very brief summary of the series.</label>
+      <label index="startdate.description">The date this series was begun.</label>
+      <label index="startdate.details">The start date of a series should be the date that the first series in this series was presented on.</label>
+      <label index="_startdate.seeAlso">tx_wecsermons_series:enddate</label>
+      <label index="enddate.description">The date this series ended on.</label>
+      <label index="enddate.details">The end date of a series should be the last date a series in this series was presented on.</label>
+      <label index="_enddate.seeAlso">tx_wecsermons_series:startdate</label>
+      <label index="description.description">The general description of the series.</label>
+      <label index="description.details">The description can be used to give a brief summary of the series, and can be displayed on the series single view page.</label>
+      <label index="scripture.description">Scripture referenced in this series.</label>
+      <label index="scripture.details">Include here, any scripture you wish to associate with a series itself. Separate scriptures by a comma, ','.</label>
+      <label index="scripture.syntax">John 3:14,Num 21:9</label>
+      <label index="keywords.description">Any keywords associated with a series that you may wish to include.</label>
+      <label index="keywords.details">Keywords are typically words that you wish to associate with a series. These may be words that were not included in the description of the series, but are directly relevant.</label>
+      <label index="seasons_uid.description">Season this series occured in.</label>
+      <label index="seasons_uid.details">A season is flexible, and can be implemented as needed. It is used to categorize or group sermon series. You may use this to represent liturgical seasons.</label>
+      <label index="topics_uid.description">A topic this series is associated with.</label>
+      <label index="topics_uid.details">A topic can be used to make a particular subject stand out within a series, and relate a series to multiple topics.</label>
+      <label index="_topics_uid.seeAlso">tx_wecsermons_topics</label>
+      <label index="current.description">Flags this record as the &quot;currently&quot; promoted series.</label>
+      <label index="current.details">The current flag can be used by organizations to manually control what sermon or series is being actively promoted. This is used in conjunction wtih the CURRENT and PREVIOUS plug-in display options.</label>
+      <label index="resources_uid.description">Resources represent digital assets you wish to attach to a series and make them available to users of the website.</label>
+      <label index="resources_uid.details">Resources are flexible records that can store many types of digital assets. Many are provided out of the box, but site administrators can configure these through Resource Type records, TypoScript, and marker based templates.</label>
+      <label index="_resources_uid.seeAlso">tx_wecsermons_resources,tx_wecsermons_resource_types</label>
+      <label index="graphic.description">A digitial image associated with a series</label>
+      <label index="graphic.details">A graphic can represent an image or idea that this series is related to.</label>
+			<label index="alttitle.description">Text used int the Alt and Title attributes of a series graphic</label>
+			<label index="alttitle.details">Alt attributes are displayed in place of the series graphic if the browser can not display the image, while the title attribute is used as a "tooltip" pop-up.</label>
+    </languageKey>
+
+    <languageKey index="de" type="array">
+			<label index=".description">Die Reihe steh für eine Sammlung von entsprechenden Predigten.</label>
+			<label index=".details">Eine Predigtreihe ist eine Kategorie in welche Predigten eingeordnet werden um Zusammenhänge zu verdeutlichen oder gemeinsame Gegenstände kenntlich zu machen. Die Beschreibung der Reihen dient zur spezifizierung ihrer Inhalte.</label>
+			<label index="sys_language_uid.description">Sprache dieser Reihe.</label>
+			<label index="sys_language_uid.details">Dies ist die Standardbezeichung der Reihe, bis sie einen Übersetzung erhält.</label>
+			<label index="_sys_language_uid.seeAlso">tt_content:sys_language_uid,pages:sys_language_uid,pages_language_overlay:sys_language_uid</label>
+			<label index="title.description">Titel der Reihen.</label>
+			<label index="title.details">Der Titel soll den Namen der Reihen wiedergeben.</label>
+			<label index="startdate.description">Zeitpunkt an dem die Reihe begonnen wurde.</label>
+			<label index="startdate.details">Der Startzeitpunkt der Reihe soll dem Datum der ersten Predigt entsprechen.</label>
+			<label index="_startdate.seeAlso">tx_wecsermons_series:enddate</label>
+			<label index="enddate.description">Zeitpunkt an dem die Reihe endet.</label>
+			<label index="enddate.details">Der Endzeitpunkt der Reihe soll dem Datum der letzten Predigt entsprechen.</label>
+			<label index="_enddate.seeAlso">tx_wecsermons_series:startdate</label>
+			<label index="description.description">Allgemeine Beschreibung der Reihe.</label>
+			<label index="description.details">Die Beschreibung kann dazu benutzt werden um die Reihe und überfassenden Themen der Predigten zu beschreiben und dient der Anzeige bei den einzelnen Predigten.</label>
+			<label index="scripture.description">Bibelstellen dieser Folge.</label>
+			<label index="scripture.details">Gib hier Bibelstellen an, die du mit der Folge verbinden möchtest. Trenne die Stellen mittels Komma ab, (Nutze zur Versangabe einen Punkt','.</label>
+			<label index="scripture.syntax">Joh 3.14, Mat 21.9</label>
+			<label index="keywords.description">Stichworte die mit dieser Folge verbunden sein sollen.</label>
+			<label index="keywords.details">Stichwörter sind typische Worte die mit der Folge verbunden sein sollen. Dies sind vorallem Worte die nicht in der Beschreibung auftauchen, aber direkt relevant sind.</label>
+			<label index="seasons_uid.description">Reihe in der diese Folge enthalten ist.</label>
+			<label index="seasons_uid.details">Reihen sind flexibel und können mit Folgen verbunden werden. Reihen sind nützlich um Kategorien oder Gruppen zu bilden.</label>
+			<label index="topics_uid.description">Ein Gegenstand ist hiermit verbunden.</label>
+			<label index="topics_uid.details">Ein Gegenstand kann zum Bestandteil der Folge gemacht werden und mit somit Bezüge zu anderen, vielfältigen Gegenständen erfolgen.</label>
+			<label index="graphic.description">Ein Bild/Grafik mit der Serie verbinden.</label>
+			<label index="graphic.details">Ein Bild/eine Grafik kann eine Assoziation mit den Inhalten verdeutlichen.</label>
+    </languageKey>
+
+	</data>
+</T3locallang>

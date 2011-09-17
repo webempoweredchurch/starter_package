@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+  <meta type="array">
+	  <description>CSH for table tx_wecsermons_topics</description>
+	  <type>CSH</type>
+	  <csh_table>tx_wecsermons_topics</csh_table>
+	  <fileId>EXT:wec_sermons/csh/locallang_csh_topics.xml</fileId>
+	  <labelContext type="array" />
+  </meta>
+  <data type="array">
+	  <languageKey index="default" type="array">
+	    <label index=".description">General Topic associated with a sermon or series.</label>
+	    <label index=".details">A topic is a general categorization given to sermons or series, which helps identify its content further.</label>
+	    <label index="sys_language_uid.description">The language of this topic.</label>
+	    <label index="sys_language_uid.details">This should be the default language unless this topic represents a translation of another language.</label>
+	    <label index="hidden.description">Hides this record from front end display.</label>
+	    <label index="hidden.details">This checkbox will hide or unhide a topic from the users of your site. You can use this to temporarily hide this record from the Front End while editing it in the Back End.</label>
+	    <label index="_hidden.seeAlso">tx_wecsermons_topics:islinked</label>
+	    <label index="islinked.description">Enables or disables linking to the single view of this record on the Front End.</label>
+	    <label index="islinked.details">This checkbox allows you to have a topic entered into the SMS and displayed on the Front End, but disallow users to view the topics detail page by disabling the link to its single view.</label>
+	    <label index="islinked.seeAlso">tx_wecsermons_topics:hidden</label>
+	    <label index="title.description">The title of the topic.	</label>
+	    <label index="title.details">The title is the name you associate with this topic.</label>
+	    <label index="description.description">Description of this topic.</label>
+	    <label index="description.details">The description is a brief summary of the topic.</label>
+	  </languageKey>
+  </data>
+</T3locallang>

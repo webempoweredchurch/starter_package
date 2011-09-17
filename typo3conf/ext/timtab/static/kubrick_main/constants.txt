@@ -1,0 +1,26 @@
+
+#	$Id$
+
+page.file {
+    # cat=basic/file; type=file[html,htm,txt,inc,tmpl]; label=Template file:  This file is very important. It's the template of the homepage. It's working with markers and subparts which define where menus, content and images go.
+  template_main = EXT:timtab/res/kubrick/kubrick_main.tmpl
+
+    # cat=basic/file; type=file[html,htm,txt,inc,tmpl]; label=Template file:  This file is the template for standard content pages.
+  template_std = EXT:timtab/res/kubrick/kubrick_std.tmpl
+
+    # cat=basic/file; type=file[html,htm,txt,inc,tmpl]; label=Template file:  This file is the template for the post single view page.
+  template_single = EXT:timtab/res/kubrick/kubrick_single.tmpl
+
+    # cat=basic/file; type=file[css]; label=CSS file:  This file is very important, too. It's the total css of the website.
+  css = EXT:timtab/res/kubrick/style.css
+  
+  template_tt_news = EXT:timtab/res/kubrick/kubrick_tt_news.tmpl
+  template_ve_guestbook = EXT:timtab/res/kubrick/kubrick_ve_guestbook.tmpl
+
+  kubrickbgcolor = EXT:timtab/res/kubrick/images/kubrickbgcolor.jpg
+  kubrickbgwide = EXT:timtab/res/kubrick/images/kubrickbgwide.jpg
+  kubrickheader = EXT:timtab/res/kubrick/images/kubrickheader.jpg
+  kubrickfooter = EXT:timtab/res/kubrick/images/kubrickfooter.jpg
+}
+
+PAGE_TARGET = 

@@ -1,0 +1,10 @@
+
+plugin.tx_wecapi_list {
+	
+	# cat=plugin.tx_wecapi_list/file/1; type=file[html,htm,tmpl,txt]; label= Template File: HTML, marker-based template that is used to layout our output
+	templateFile = EXT:wec_api/res/rss2.tmpl
+	
+	# cat=plugin.tx_wecapi_list/file/2; type=string; label= Template Name: The suffix of the template subpart name. F.e. ###TEMPLATE_<templateName>###
+	templateName = rss2
+
+}

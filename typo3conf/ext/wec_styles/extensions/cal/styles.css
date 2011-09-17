@@ -1,0 +1,26 @@
+#month-header {
+	min-height:28px;
+}
+
+.tx-cal-controller table {
+	margin-bottom: 0;
+}
+
+.tx-cal-controller td,
+.tx-cal-controller th {
+	padding: 0;
+	margin: 0;
+}
+
+.tx-cal-controller table.month-large td,
+.tx-cal-controller table.month-large th {
+	padding: 5px;
+}
+
+.tx-cal-controller .navback table {
+	width: auto;
+}
+
+.tx-cal-controller #month-header {
+	width: auto;
+}

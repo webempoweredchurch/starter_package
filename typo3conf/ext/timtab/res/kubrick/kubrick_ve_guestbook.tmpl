@@ -1,0 +1,114 @@
+<!-- 
+	This is the template for ve_guestbook in the kubrick template
+
+	$Id: kubrick_ve_guestbook.tmpl,v 1.6 2005/08/23 22:26:48 ingorenner Exp $ 
+
+-->
+
+<!-- ###TEMPLATE_FORM### begin
+
+The guestbook form for a new frontend entry
+
+Following markers will be substituted:
+
+###FORM_FIRSTNAME### 	Firstname
+###FORM_SURNAME###		Surname
+###FORM_EMAIL### 		E-Mail
+###FORM_HOMEPAGE### 	Website
+###FORM_PLACE### 		Place
+###FORM_ENTRY### 		Message
+
+-->
+<h3 id="respond">###BLOG_LEAVE_REPLY###</h3>
+
+<form action="###ACTION_URL###" method="post" id="commentform">
+
+<p><input type="text" name="tx_veguestbook_pi1[firstname]" id="author" value="###VALUE_FIRSTNAME###" size="22" tabindex="1" />
+<label for="author"><small>###BLOG_NAME### ###FORM_FIRSTNAME_OBLIGATION###</small></label></p>
+
+<p><input type="text" name="tx_veguestbook_pi1[email]" id="email" value="###VALUE_EMAIL###" size="22" tabindex="2" />
+<label for="email"><small>###BLOG_MAIL### ###BLOG_NOT_PUBLISHED### ###FORM_EMAIL_OBLIGATION###</small></label></p>
+
+<p><input type="text" name="tx_veguestbook_pi1[homepage]" id="url" value="###VALUE_HOMEPAGE###" size="22" tabindex="3" />
+<label for="url"><small>###BLOG_HOMEPAGE### ###FORM_HOMEPAGE_OBLIGATION###</small></label></p>
+
+<p><small>###BLOG_REMEMBER_VISITOR###</small>
+<input type="radio" name="tx_timtab[remember_visitor]" value="1" checked="checked" id="remember_yes" /> <label for="remember_yes"><small>###BLOG_REMEMBER_YES###</small></label> 
+<input type="radio" name="tx_timtab[remember_visitor]" value="0" id="remember_no" /> <label for="remember_no"><small>###BLOG_REMEMBER_NO###</small></label>
+</p>
+
+<p><textarea name="tx_veguestbook_pi1[entry]" id="comment" cols="100%" rows="10" tabindex="4">###VALUE_ENTRY###</textarea></p>
+
+<p><input name="submit" type="submit" id="submit" tabindex="5" value="###FORM_SUBMIT###" />
+<input type="hidden" name="id" value="###PID###" />
+<input type="hidden" name="tx_veguestbook_pi1[submitted]" value="1" />
+</p>
+
+</form>
+<!-- ###TEMPLATE_FORM### end -->
+
+<!-- ###TEMPLATE_LIST### begin
+Teasing the gustbook
+
+Following markers will be substituted:
+
+###GUESTBOOK_FIRSTNAME### 	Firstname (Entry)
+###GUESTBOOK_SURNAME###		Surname (Entry)
+###GUESTBOOK_EMAIL_URL### 	E-Mail URL (Entry)
+###GUESTBOOK_EMAIL### 		E-Mail including spam protection if activated (Entry)
+###GUESTBOOK_HOMEPAGE### 	Website (Entry)
+###GUESTBOOK_PLACE### 		Place (Entry)
+###GUESTBOOK_ENTRY### 		Message (Entry)
+
+And the field names...
+
+###FORM_FIRSTNAME### 		Firstname
+###FORM_SURNAME###			Surname
+###FORM_EMAIL### 			E-Mail
+###FORM_HOMEPAGE### 		Website
+###FORM_PLACE### 			Place
+###FORM_ENTRY### 			Message
+-->
+ 
+<h3 id="comments">###BLOG_COMMENTS_COUNT### ###BLOG_RESPONSES### to &#8220;###BLOG_POST_TITLE###&#8221;</h3> 
+
+
+<ol class="commentlist">
+<!-- ###CONTENT### begin
+	  This is the part of the template substituted with the list of entries: 
+-->
+
+	<!-- ###ENTRY### begin 
+		Template for a single item 
+	-->
+	<li class="alt" id="comment-###BLOG_COMMENT_NUM###">
+		###BLOG_COMMENT_GRAVATAR### <cite>###BLOG_COMMENTER_NAME###</cite> Says:<br />
+		<small class="commentmetadata"><a href="#comment-###BLOG_COMMENT_NUM###" title="">###GUESTBOOK_DATE###</a> </small>
+			<p>###GUESTBOOK_ENTRY###</p>
+	</li>
+	<!-- ###ENTRY### end-->
+
+<!-- ###CONTENT###  end -->
+</ol>
+<!-- ###TEMPLATE_LIST### end -->
+
+
+
+<!-- ###TEMPLATE_NO_ENTRIES### begin
+No entries found :-(
+
+Following markers will be substituted:
+
+###GUESTBOOK_FIRSTNAME### 	Firstname
+###GUESTBOOK_SURNAME###		Surname
+###GUESTBOOK_EMAIL_URL### 	E-Mail (URL)
+###GUESTBOOK_EMAIL### 		E-Mail including spam protection if activated
+###GUESTBOOK_HOMEPAGE### 	Website
+###GUESTBOOK_PLACE### 		Place
+###GUESTBOOK_ENTRY### 		Message
+
+-->
+
+<!-- ###TEMPLATE_NO_ENTRIES### end -->
+
+

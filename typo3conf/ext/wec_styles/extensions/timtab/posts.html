@@ -1,0 +1,114 @@
+<!--
+	This is the template for tt_news in the kubrick template
+
+	$Id: kubrick_tt_news.tmpl,v 1.9 2005/10/24 23:02:07 ingorenner Exp $
+
+-->
+
+<!-- ###TEMPLATE_SINGLE### begin
+	This subpart is used to display single posts
+-->
+<div class="navigation">
+	<div class="alignleft">###BLOG_PREV_POST###</div>
+	<div class="alignright">###BLOG_NEXT_POST###</div>
+</div>
+<div class="post">
+	<h2>###BLOG_POST_TITLE###</h2>
+	<div class="entrytext">
+		###NEWS_CONTENT###
+
+		###TEXT_RELATED###
+		###NEWS_RELATED###
+
+		###TEXT_FILES###
+		###FILE_LINK###
+
+		###TEXT_LINKS###
+		###NEWS_LINKS###
+
+		###TEXT_RELATEDBYCATEGORY###
+		###NEWS_RELATEDBYCATEGORY###
+
+		###ADDINFO_WRAP_E###
+		###NEWS_IMAGE###
+
+		<p class="postmetadata alt">
+			<small>
+				This entry was posted on ###NEWS_DATE###
+				and is filed under ###NEWS_CATEGORY###.
+			<!--
+				You can follow any responses to this entry through the <a href='http://www.wordpress.loc/wp-commentsrss2.php?p=1'>RSS 2.0</a> feed.
+			-->
+				You can leave a response, or ###BLOG_TRACKBACK_LINK### from your own site.
+			</small>
+		</p>
+		###BLOG_TRACKBACK_RDF###
+	</div>
+</div>
+<!-- ###TEMPLATE_SINGLE### end -->
+
+
+<!-- ###TEMPLATE_LIST### begin
+	This is the template for the list of blog posts
+-->
+<div class="pluginContent">
+	<div class="pluginSection">
+		<ul class="entries">
+			<!-- ###CONTENT### begin
+				  This is the part of the template substituted with the list of blog posts:
+			-->
+				<!-- ###NEWS### begin
+					Template for a single post
+				-->
+					<li class="entry">
+						<h3><!--###LINK_ITEM###-->###NEWS_TITLE###<!--###LINK_ITEM###--></h3>
+
+						<div class="message">
+						###NEWS_SUBHEADER###
+						</div>
+
+						<div class="entryInfo">
+							<span class="meta">Posted on ###NEWS_DATE### by ###NEWS_AUTHOR### and filed under ###NEWS_CATEGORY###</span>
+							<span class="commentCount">###BLOG_COMMENTS_COUNT### ###BLOG_TEXT_COMMENTS###</span>
+						</div>
+					</li>
+				<!-- ###NEWS### end-->
+			<!-- ###CONTENT###  end -->
+		</ul>
+	</div>
+</div>
+<!-- ###TEMPLATE_LIST### end -->
+
+
+<!-- ###TEMPLATE_ARCHIVE### begin
+	Subpart for the blog archive menu
+ -->
+<ul>
+<!-- ###CONTENT### begin -->
+	<!-- ###MENUITEM### begin -->
+	<li><!--###LINK_ITEM###-->###ARCHIVE_TITLE###<!--###LINK_ITEM###--></li>
+	<!-- ###MENUITEM### end-->
+<!-- ###CONTENT###  end -->
+</ul>
+<!-- ###TEMPLATE_ARCHIVE### end -->
+
+
+<!-- ###TEMPLATE_ARCHIVE_NOITEMS### begin
+	Shown if the archive has no items!
+-->
+<ul>
+    <li>###ARCHIVE_EMPTY_MSG###</li>
+</ul>
+<!-- ###TEMPLATE_ARCHIVE_NOITEMS### end -->
+
+
+<!-- ###TEMPLATE_SEARCH### begin
+	Subpart for the search-form
+-->
+<form method="post" id="searchform" action="###FORM_URL###">
+	<div>
+	    <input type="text" value="###SWORDS###" name="tx_ttnews[swords]" id="s" />
+		<input type="submit" name="search" id="searchsubmit" value="###SEARCH_BUTTON###" />
+	</div>
+</form>
+<!-- ###TEMPLATE_SEARCH### end -->

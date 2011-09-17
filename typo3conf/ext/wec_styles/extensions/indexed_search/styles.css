@@ -1,0 +1,67 @@
+.tx-indexedsearch td {
+	padding: 0;
+	margin: 0;
+}
+
+.tx-indexedsearch table {
+	margin-bottom: 0;
+	padding: 0;
+}
+
+.tx-indexedsearch .tx-indexedsearch-searchbox input.tx-indexedsearch-searchbox-sword {
+	width: 300px;
+}
+
+.tx-indexedsearch .tx-indexedsearch-searchbox input.tx-indexedsearch-searchbox-button {
+	width: auto;
+}
+
+.tx-indexedsearch .tx-indexedsearch-noresults {
+	text-align: inherit;
+	font-size: 125%;
+}
+
+/**
+ * Hide the search term since its displayed prominently in the search box above.
+ */
+.tx-indexedsearch-whatis {
+	display: none;
+}
+
+/**
+ * Hide the pagebrowser at the top.  Bottom only is enough.
+ */
+.tx-indexedsearch-whatis + .tx-indexedsearch-browsebox .browsebox {
+	display: none;
+}
+
+.tx-indexedsearch-form label {
+	display: none;
+}
+
+/**
+ * Reset styles provided by .pluginForm since the form is the main part of
+ * indexed search
+ */
+.tx-indexedsearch .pluginForm {
+	margin: 0;
+	padding: 0;
+	max-width: auto;
+	border: none;
+	background: none;
+}
+
+/******************************
+ *
+ * Styles needed in skin
+ *
+ ******************************/
+
+.tx-indexedsearch .tx-indexedsearch-res .tx-indexedsearch-descr .tx-indexedsearch-redMarkup {
+	color: black;
+	font-weight: bold;
+}
+
+.tx-indexedsearch .res-tmpl-css {
+	border-bottom: 1px solid silver;
+}

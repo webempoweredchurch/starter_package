@@ -1,0 +1,47 @@
+2011-07-15  jeff
+
+	* doc/manual.sxw: Updated ChangeLog in manual.
+
+2011-06-27  jeff
+
+	* constants/class.tx_wecconfig_constants.php: Define empty params
+	  array outside the method call so that it can be passed by
+	  reference.
+
+2011-06-21  jeff
+
+	* constants/class.tx_wecconfig_constants.php: Fixed copy/paste bug
+	  with class name.
+
+2011-06-20  jeff
+
+	* constants/class.tx_wecconfig_constants.php: Added
+	  afterInitializeTSParserAndTSConfig hook for manipulating default
+	  TSConfig or swapping out t3lib_tsparser_ext.
+
+2011-06-17  jeff
+
+	* constants/class.tx_wecconfig_constants.php: Added hook for
+	  post-processing Constants Editor.
+	* constants/class.tx_wecconfig_constants.php: Fixed incorrect page
+	  id when getting TSConfig.
+
+2011-06-16  jeff
+
+	* mod1/index.php: Followup to #2107: Set exclude fields as part of
+	  permission switching.
+	* mod1/index.php: Enhanced webmount detection by finding first
+	  webmount with an accessible rootpage. Thanks to Stig Norgaard
+	  Faerch.
+	* constants/class.tx_wecconfig_constants.php: Added TSConfig option
+	  to turn on the standard constant editor buttons to revert to
+	  default values. Thanks to Stig Norgaard Faerch.
+	* constants/class.tx_wecconfig_constants.php: Added TSConfig option
+	  to hide constant name. Thanks to Stig Norgaard Faerch.
+	* mod1/index.php: Added feature #2070: Hide module function menu if
+	  only one item is available. Thanks to Stig Norgaard Faerch.
+	* constants/class.tx_wecconfig_constants.php,
+	  constants/locallang.xml: Fixed bug #2072: Edit Site Constants
+	  label should be localized. Thanks to Stig Norgaard Faerch.
+	* constants/class.tx_wecconfig_constants.php, mod1/index.php: Fixed
+	  bug #2107: Non-admin user cannot choose new templates.

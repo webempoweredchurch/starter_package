@@ -1,0 +1,215 @@
+#
+#	$Id$
+#
+
+
+# tt_news
+plugin.tt_news {
+
+  templateFile = {$page.file.template_tt_news}
+  
+  singlePid = {$plugin.tx_timtab.blogPid}
+  
+  displayList.date_stdWrap.strftime = %B %d, %Y
+  displaySingle.date_stdWrap.strftime =  %A, %B %d, %Y at %I:%M %p
+
+  dontUseBackPid = 1
+  catTextMode = 3
+  newsAmenuUserFunc =
+  useHRDates = 1
+  useHRDatesSingle = 1
+  useSubCategories = 1
+  limit = 10
+  
+  displayCatMenu {
+    mode = timtab
+    catmenu_stdWrap.wrap = <li><h2 class="news-catmenu">Categories</h2>|</li>
+  }
+
+  _LOCAL_LANG.default {
+    archiveHeader = Archives
+  }
+}
+
+#list all posts of the current month when in archive
+[globalVar = GP:tx_ttnews|year > 0]
+plugin.tt_news.limit = 100
+[global]
+[globalVar = GP:tx_ttnews|ps > 0]
+plugin.tt_news.limit = 100
+[global]
+
+# posts list
+temp.list < plugin.tt_news 
+temp.list {
+  code >
+  code = LIST
+}
+
+#post single view
+temp.single < plugin.tt_news 
+temp.single {
+  code >
+  code = SINGLE
+}
+
+# archives
+temp.archives < plugin.tt_news 
+temp.archives {
+  code >
+  code = AMENU
+}
+
+# categories
+temp.categories < plugin.tt_news 
+temp.categories {
+  code >
+  code = CATMENU
+}
+
+
+# ve_guestbook
+plugin.tx_veguestbook_pi1 {
+
+  templateFile = {$page.file.template_ve_guestbook}
+  limit = 1000
+  
+  _LOCAL_LANG.default {
+    form_firstname = Name
+    form_submit = Submit Comment
+    form_email = Mail
+    form_homepage = Website
+  }
+
+  _CSS_DEFAULT_STYLE =  
+}
+
+# pagenav, default: 2 levels
+temp.pagenav = HMENU
+temp.pagenav.wrap = <li id="pagenav"><h2>Pages</h2>|</li>
+temp.pagenav.1 = TMENU
+temp.pagenav.1 {
+  wrap = <ul>|</ul>
+  expAll = 1
+  noBlur = 1
+
+  NO {
+    wrapItemAndSub = <li class="page_item">|</li>
+    ATagTitle.field = abstract // description // title
+  }
+}
+temp.pagenav.2 = TMENU
+temp.pagenav.2 {
+  wrap = <ul> | </ul>
+  noBlur = 1
+  
+  NO {
+    allWrap = <li class="page_item">|</li>
+    ATagTitle.field = abstract // description // title
+  }
+}
+
+# filling markers
+temp.blogTitle = TEXT
+temp.blogTitle.value = {$plugin.tx_timtab.title}
+temp.blogTagline = TEXT
+temp.blogTagline.value = {$plugin.tx_timtab.tagline}
+temp.blogHomepage = TEXT
+temp.blogHomepage.value = {$plugin.tx_timtab.homepage}
+temp.blogRoll =< plugin.tx_timtab_pi1
+temp.blogRoll {
+  header_stdWrap.wrap = <li><h2>Blogroll</h2>|</li>
+  dontWrapInDiv = 1
+}
+
+# page cObject
+page >
+page = PAGE
+page {
+  typeNum = 0
+
+  # <head>
+  headTag = <head profile="http://gmpg.org/xfn/11">
+  headerData {
+    10 = TEXT
+    10.value = <link rel="pingback" href="{$plugin.tx_timtab.homepage}/?type=200" />
+    
+    20 = TEXT
+    20.value = <link rel="alternate" type="application/rss+xml" title="RSS-Feed" href="{$plugin.tx_timtab.homepage}/?type=100" />
+  }
+
+  # <body>
+  bodyTag = <body>
+  10 = TEMPLATE
+  10 {
+    template = FILE
+    template.file = {$page.file.template_std}
+    
+    workOnSubpart = DOCUMENT_BODY
+  
+    marks {
+      PAGENAV < temp.pagenav
+      ARCHIVES < temp.archives
+      CATEGORIES < temp.categories
+      BLOG_TITLE < temp.blogTitle
+      BLOG_TAGLINE < temp.blogTagline
+      BLOG_HOME < temp.blogHomepage
+      POSTS_LIST < temp.list
+      POST_SINGLE < temp.single
+      BLOG_CONTENT_NORMAL < styles.content.get
+      BLOG_CONTENT_RIGHT < styles.content.getRight
+      BLOG_BLOGROLL < temp.blogRoll
+    } # end marks
+  } # end page.10 (TEMPLATE)
+  
+  # add some 'dynamic' css
+  includeCSS.file001 = {$page.file.css}
+  CSS_inlineStyle (
+    body { background: url(/{$page.file.kubrickbgcolor}); }
+    #page { background: url(/{$page.file.kubrickbgwide}) repeat-y top; border: none; }
+    #header { background: url(/{$page.file.kubrickheader}) no-repeat bottom center; margin: 0 !important; margin: 0 0 0 1px; padding: 1px; height: 198px; width: 758px; }
+    #headerimg { margin: 7px 9px 0; height: 192px; width: 740px; }
+    #footer { background: url(/{$page.file.kubrickfooter}) no-repeat bottom; border: none;}
+  )
+  
+  config {
+    # get XHTML compliant output
+    xmlprologue = none
+    doctype = xhtml_trans
+    xhtml_cleaning = all
+  
+    # Spamprotection
+    spamProtectEmailAddresses = -3
+    spamProtectEmailAddresses_atSubst = <span>&#064;</span>
+  
+    # targets
+    intTarget = {$PAGE_TARGET}
+    extTarget = _blank
+  
+    # externalize js and css
+    removeDefaultJS = external
+
+    # advertise that we can receive Pingback
+    #additionalHeaders = X-Pingback: {$plugin.tx_timtab.homepage}/?type=200
+
+    # Admin Panel
+    admPanel = 1
+  } # end page.config
+  
+} # end page (PAGE)
+
+#remove cleargif
+content.headerSpace = 0|0
+content.space = 0|0
+
+# homepage
+[globalVar = TSFE:id = {$plugin.tx_timtab.homePid}]
+page.10.template.file = {$page.file.template_main}
+[global]
+
+# single view
+[globalVar = TSFE:id = {$plugin.tx_timtab.blogPid}]
+plugin.tx_timtab.gravatar.size = 23
+
+page.10.template.file = {$page.file.template_single}
+[global]

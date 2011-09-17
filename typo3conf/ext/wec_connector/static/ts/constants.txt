@@ -1,0 +1,81 @@
+plugin.tx_wecconnector_pi1 {
+# cat=plugin.tx_wecconnector_pi1/file/1; type=file[html,htm,tmpl,txt]; label= Template File: HTML template file for display of the Connector.
+  templateFile 	= EXT:wec_connector/template/wecconnector-old.tmpl
+# cat=plugin.tx_wecconnector_pi1/file/2; type=file[css]; label= connector CSS File
+  cssFile 		=
+
+#cat=plugin.tx_wecconnector_pi1/dims/9a; type=string; label= Image Width
+  imageWidth	= 150
+#cat=plugin.tx_wecconnector_pi1/dims/9b; type=string; label= Image Height
+  imageHeight	=
+
+#cat=plugin.tx_wecconnector_pi1/dims/2a; type=string; label= Content Width
+  contentWidth  = 100%
+#cat=plugin.tx_wecconnector_pi1/dims/2b; type=string; label= Content Maximum Width
+  contentMaxWidth  = 750px
+#cat=plugin.tx_wecconnector_pi1/dims/2c; type=string; label= Listing Width
+  listingWidth  = 100%
+#cat=plugin.tx_wecconnector_pi1/dims/4a; type=string; label= Preview Width
+  previewWidth  = 300px
+
+#cat=plugin.tx_wecconnector_pi1/dims/3a; type=string; label= Entry Form Width
+  entryFormWidth = 95%
+#cat=plugin.tx_wecconnector_pi1/dims/3b; type=string; label= Entry Form Label Width
+  entryFormLabelWidth = 28%
+#cat=plugin.tx_wecconnector_pi1/dims/3c; type=string; label= Entry Form Input Field Width
+  entryFormInputWidth = 70%
+
+#cat=plugin.tx_wecconnector_pi1/color/1a; type=color; label= Entry Background Color
+  entryBackColor 	= #FFFFFF
+#cat=plugin.tx_wecconnector_pi1/color/1b; type=color; label= Entry Text Color
+  entryColor 		= #202020
+#cat=plugin.tx_wecconnector_pi1/color/1b; type=string; label= Alternating Entry CSS ex.: "color:#888" or "background-color:#444"
+  alternatingEntry	=
+#cat=plugin.tx_wecconnector_pi1/color/1c; type=color; label= Form Background Color
+  formBackColor 	= #F0F0E0
+#cat=plugin.tx_wecconnector_pi1/color/1d; type=color; label= "Message Info" Color
+  msgInfoColor 		= #404040
+#cat=plugin.tx_wecconnector_pi1/color/1e; type=color; label= Subject Background Color
+  subjectBackColor  = 
+#cat=plugin.tx_wecconnector_pi1/color/1f; type=color; label= Subject Text Color
+  subjectTextColor  = #000000
+
+#cat=plugin.tx_wecconnector_pi1/color/2a; type=color; label= Button Background Color
+  btnBackColor 		= #888888
+#cat=plugin.tx_wecconnector_pi1/color/2b; type=color; label= Button Text Color
+  btnColor 			= #FFFFFF
+#cat=plugin.tx_wecconnector_pi1/color/2c; type=color; label= Button Hover Background Color
+  btnHoverBackColor = #AC0000
+#cat=plugin.tx_wecconnector_pi1/color/2d; type=color; label= Button Hover Color
+  btnHoverColor 	= #FFFFFF
+
+#cat=plugin.tx_wecconnector_pi1/color/3a; type=color; label= Choose Category Background Color
+  chooseCatBackColor = #B0A080
+#cat=plugin.tx_wecconnector_pi1/color/3b; type=color; label= Choose Category Selected Background Color
+  chooseCatSelBackColor = #F0E080
+#cat=plugin.tx_wecconnector_pi1/color/3c; type=color; label= Choose Category Hover Background Color
+  chooseCatHoverBackColor = #FF4020
+#cat=plugin.tx_wecconnector_pi1/color/3d; type=color; label= Choose Category Text Color
+  chooseCatColor 	= #202010
+
+#cat=plugin.tx_wecconnector_pi1/color/4a; type=color; label= Show Category Background Color
+  showCatBackColor 	= transparent
+#cat=plugin.tx_wecconnector_pi1/color/4b; type=color; label= Show Category Color
+  showCatColor 		= #202000
+
+
+#cat=plugin.tx_wecconnector_pi1/misc/1; type=options[date_added,name,subject]; label= Sorting Method For Entries
+  sortOrder			=	date_added
+
+#cat=plugin.tx_wecconnector_pi1/misc/1; type=string; label= Spam Words To Filter (reverse order)
+  spamWords	= argai,lodamar,lacirex,xepida,nirtub,lifaladat,lirtnob,teciroif,navita,nidociv,aidirem,artivel,muilav,ardehpe,lodamart,xanax,xertlav,enimretnehpma,lixap,ttub,citore,rekcil,naibsel,brutsam,dlokcuc,nrop,yssup,edun,tihs,kcuf,tnuc,kcufrehtom,erohw,kcoc,nmad,hctib,stit,selamehs,boj-wolb,boj wolb,bojwolb,tsecni,tnemegralne,sinep,enihcam tols,tolseerf,medloh,rekop,sparc,etteluor,kcajkcalb,gnilbmag enilno,gnilbmag,onisac,enotgnir,eerf ytud,gnidart yad,xelor,nemes,names,kcil ssa,yag toh,neet toh
+
+#cat=plugin.tx_wecconnector_pi1/misc/2; type=string; label= Additional Spam Words To Filter (non-reverse)
+  addSpamWords	=
+
+#cat=plugin.tx_wecconnector_pi1/misc/3; type=string; label= Delay Time in seconds to check for a duplicate post
+  duplicateCheckDelaySeconds = 15
+
+#cat=plugin.tx_wecconnector_pi1/links/1; type=text; label= Starting Point (pid_list): The PID of the page (or comma separated list of PIDs) where your entries are located.
+  pid_list =
+}

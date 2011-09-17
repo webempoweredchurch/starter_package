@@ -1,0 +1,49 @@
+###
+# This are the default TS-constants for wec_flashpresentation.
+##
+
+plugin.tx_wecflashpresentation_pi1 {
+  
+  # cat=plugin.tx_wecflashpresentation_pi1/video/1; type=file[swf]; label=Path to the Flash.
+  flashPath = typo3conf/ext/wec_flashpresentation/res/video_chart.swf
+   
+  # cat=plugin.tx_wecflashpresentation_pi1/video/2; type=int+; label=Width of the Flash.
+  width = 760
+  
+  # cat=plugin.tx_wecflashpresentation_pi1/video/3; type=int+; label=Height of the Flash.
+  height = 400
+
+  # cat=plugin.tx_wecflashpresentation_pi1/video/4; type=color; label=Text color for the Flash.
+  textcolor = #000000
+
+  # cat=plugin.tx_wecflashpresentation_pi1/video/5; type=color; label=Background color for the Flash.
+  bgcolor = #FFFFFF
+  
+  # cat=plugin.tx_wecflashpresentation_pi1/video/6; type=text; label=Label for low bandwidth version.
+  radioLabelLow = Low (Dialup)
+  
+  # cat=plugin.tx_wecflashpresentation_pi1/video/7; type=text; label=Label for high bandwidth version.
+  radioLabelHigh = High (Broadband)
+
+  # cat=plugin.tx_wecflashpresentation_pi1/video/8; type=boolean; label=Swap the default slide and video location, placing video on the left and slides on the rigt.
+  swapUI = 0
+}
+
+plugin.tx_wecflashpresentation_pi2 {
+  
+  # cat=plugin.tx_wecflashpresentation_pi2/audio/1; type=file[swf]; label=Path to the Flash.
+  flashPath = typo3conf/ext/wec_flashpresentation/res/mp3_chart.swf
+   
+  # cat=plugin.tx_wecflashpresentation_pi2/audio/2; type=int+; label=Width of the Flash.
+  width = 440
+  
+  # cat=plugin.tx_wecflashpresentation_pi2/audio/3; type=int+; label=Height of the Flash.
+  height = 420
+
+  # cat=plugin.tx_wecflashpresentation_pi2/video/4; type=color; label=Text color for the Flash.
+  textcolor = #000000
+  
+  # cat=plugin.tx_wecflashpresentation_pi2/audio/5; type=color; label=Background color for the Flash.
+  bgcolor = #FFFFFF
+
+}

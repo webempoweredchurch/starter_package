@@ -1,0 +1,8 @@
+2010-07-22  ben
+
+	* typoscript/skin_typoscript.ts: fix the login issue-when logged
+	  in, the user's name does not show up.
+
+2010-07-21  ben
+
+	* css/mainstyles.css: fix the staff extension breaking issue.

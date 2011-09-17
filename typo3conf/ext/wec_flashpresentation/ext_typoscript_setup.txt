@@ -1,0 +1,188 @@
+plugin.tx_wecflashpresentation_pi1 {
+	# @description	Path to Flash movie to be loaded.
+	# @see			constants
+	flashPath = TEXT
+	flashPath.value = {$plugin.tx_wecflashpresentation_pi1.flashPath}
+
+	# @description	Width of the Flash movie.
+	# @see			constants
+	width = TEXT
+	width.value  = {$plugin.tx_wecflashpresentation_pi1.width}
+
+	# @description	Height of the Flash movie.
+	# @see			constants
+	height = TEXT
+	height.value = {$plugin.tx_wecflashpresentation_pi1.height}
+
+	# @description	Text color.
+	# @see			Constants
+	textcolor = TEXT
+	textcolor.value  = {$plugin.tx_wecflashpresentation_pi1.textcolor}
+
+	# @description	Background color for Flash movie.
+	# @see			Constants
+	bgcolor = TEXT
+	bgcolor.value = {$plugin.tx_wecflashpresentation_pi1.bgcolor}
+
+	# @description	Title of the video.
+	# @see			FlexForm
+	classtitle = TEXT
+	classtitle.value =
+
+	# @description	Welcome or instructional text.
+	# @see			FlexForm
+	intromessage = TEXT
+	intromessage.value =
+
+	# @description	Path to load background image from.
+	bgbase = TEXT
+	bgbase.value = uploads/tx_wecflashpresentation/
+
+	# @description	Background image for Flash movie.
+	# @see			FlexForm
+	bgimage = TEXT
+	bgimage.value =
+
+	# @description	Path to load bandwidth detection from.
+	bwbase = TEXT
+	bwbase.value = typo3conf/ext/wec_flashpresentation/res/
+
+	# @description	Image to use for bandwidth checking
+	bwimage = TEXT
+	bwimage.value = 100k.jpg
+
+	# @description	Path to load video files from.
+	videobase = TEXT
+	videobase.value = uploads/tx_wecflashpresentation/
+
+	# @description	Filename of low bandwidth video.
+	# @see			FlexForm
+	videolow = TEXT
+	videolow.value =
+
+	# @description	Bitrate of the low bandwidth video.
+	# @see			FlexForm
+	videolowEC = TEXT
+	videolowEC.value =
+
+	# @description	Label for low bandwidth version.
+	# @see			constants
+	radioLabelLow = TEXT
+	radioLabelLow.value = {$plugin.tx_wecflashpresentation_pi1.radioLabelLow}
+
+	# @description	Filename of high bandwidth video.
+	# @see			FlexForm
+	videohigh = TEXT
+	videohigh.value =
+
+	# @description	Bitrate of high bandwidth video.
+	# @see			FlexForm
+	videohighEC = TEXT
+	videohighEC.value =  
+
+	# @description	Label for high bandwidth version.
+	# @see			constants  
+	radioLabelHigh = TEXT
+	radioLabelHigh.value = {$plugin.tx_wecflashpresentation_pi1.radioLabelHigh}
+
+	# @description	Path to load images from.
+	# @see			FlexForm
+	imagesbase = TEXT
+	imagesbase.value =
+	
+	# @description	Comma separated list of slide images.
+	# @see			FlexForm
+	slides = TEXT
+	slides.value =
+
+	# @description	Swap the display of video and slides.
+	# @see			Constants
+	swapUI = TEXT
+	swapUI.value = {$plugin.tx_wecflashpresentation_pi1.swapUI}
+
+	# @description	wmode parameter for flash.	Can be opaque, transparent, or window.
+	wmode = TEXT
+	wmode.value = opaque
+}
+
+plugin.tx_wecflashpresentation_pi2 {
+	# @description	Path to Flash movie to be loaded.
+	# @see			constants
+	flashPath = TEXT
+	flashPath.value = {$plugin.tx_wecflashpresentation_pi2.flashPath}
+
+	# @description	Width of the Flash movie.
+	# @see			constants
+	width = TEXT
+	width.value	 = {$plugin.tx_wecflashpresentation_pi2.width}
+
+	# @description	Height of the Flash movie.
+	# @see			constants
+	height = TEXT
+	height.value = {$plugin.tx_wecflashpresentation_pi2.height}
+
+	# @description	Text color.
+	# @see			Constants
+	textcolor = TEXT
+	textcolor.value	 = {$plugin.tx_wecflashpresentation_pi2.textcolor}
+
+	# @description	Background color for Flash movie.
+	# @see			Constants
+	bgcolor = TEXT
+	bgcolor.value = {$plugin.tx_wecflashpresentation_pi2.bgcolor}
+
+	# @description	Title of the video.
+	# @see			FlexForm
+	classtitle = TEXT
+	classtitle.value =
+
+	# @description	Welcome or instructional text.
+	# @see			FlexForm
+	intromessage = TEXT
+	intromessage.value =
+
+	# @description	Path to load background image from.
+	bgbase = TEXT
+	bgbase.value = uploads/tx_wecflashpresentation/
+
+	# @description	Background image for Flash movie.
+	# @see			FlexForm
+	bgimage = TEXT
+	bgimage.value =
+
+	# @description	Path to load bandwidth detection from.
+	bwbase = TEXT
+	bwbase.value = typo3conf/ext/wec_flashpresentation/res/
+
+	# @description	Image to use for bandwidth checking
+	bwimage = TEXT
+	bwimage.value = 100k.jpg
+
+	# @description	Path to load MP3 files from.
+	audiobase = TEXT
+	audiobase.value = uploads/tx_wecflashpresentation/
+
+	# @description	Filename of MP3 file.
+	# @see			FlexForm
+	audiofile = TEXT
+	audiofile.value =
+
+	# @description	Bitrate of MP3 file.
+	# @see			FlexForm
+	audioEC = TEXT
+	audioEC.value =
+	
+	# @description	Path to load images from.
+	# @see			FlexForm
+	imagesbase = TEXT
+	imagesbase.value =
+
+	# @description	Comma separated list of slide images.
+	# @see			FlexForm
+	slides = TEXT
+	slides.value =
+	
+	# @description	wmode parameter for flash.	Can be opaque, transparent, or window.
+	wmode = TEXT
+	wmode.value = opaque
+}

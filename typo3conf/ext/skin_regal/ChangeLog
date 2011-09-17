@@ -1,0 +1,125 @@
+2010-09-09  ben
+
+	* css/rte.css: add some missing rtc css
+
+2010-08-30  ben
+
+	* css/images/feature-bg.jpg: change the feature bg image.
+
+2010-06-24  jeff
+
+	* ext_emconf.php: Updated emconf after TER release.
+
+2010-06-22  ben
+
+	* css/mainstyles.css: removed z-index: 100 at header DIV and added
+	  z-index: 5 to topNav DIV. Since smoothgallary is z-index:15,
+	  changing z-index to 5 fixes the bug when using smoothgallary.
+
+2010-06-21  ben
+
+	* css/images/feature_shadow.png, css/images/global_menu_left.jpg,
+	  css/images/global_menu_left_hover.jpg,
+	  css/images/global_menu_right.jpg,
+	  css/images/global_menu_right_hover.jpg,
+	  css/images/menu_hover_bg.png, css/mainstyles.css,
+	  typoscript/skin_constants.ts, typoscript/skin_typoscript.ts:
+	  skins bug fixing and template optimization.
+
+2010-06-02  jeff
+
+	* ext_emconf.php: Updated emconf after TER release.
+
+2010-05-18  ben
+
+	* css/mainstyles.css: fix the main menu display issue in IE7
+	* typoscript/skin_typoscript.ts: fix the header content not showing
+	  issue in IE7, we have this problem after we fixed the TYPO3
+	  frontend editing button issue. (to change clearOnly to clear will
+	  fix the problem.)
+
+2010-05-10  jeff
+
+	* ext_emconf.php: Updated emconf after TER release.
+
+2010-05-06  ben
+
+	* css/mainstyles.css: fix the horizonal dropdown menu width issue
+	  when the first level menu is short but the second level menu is
+	  long.
+	* css/mainstyles.css: fix the issue when the site title gets very
+	  long.
+
+2010-05-05  jeff
+
+	* ext_emconf.php: Updated emconf after release to TYPO3.org
+	* css/ie6.css: Added copyright to ie6.css
+
+2010-05-04  jeff
+
+	* ext_emconf.php: Update emconf.
+	* ext_icon.gif: Updated extension icons with the newest versions
+	  from Ben.
+
+2010-05-04  ben
+
+	* css/mainstyles.css, typoscript/skin_typoscript.ts: fix the bugs
+	  in IE
+
+2010-05-04  jeff
+
+	* ext_emconf.php: Updated EMCONF title for skin_sketchbook.
+
+2010-05-04  ben
+
+	* css/images/left_module_cap.gif, css/images/right_module_cap.gif,
+	  css/mainstyles.css: change the style for the module and fix the
+	  issue when site title gets very long.
+
+2010-05-03  jeff
+
+	* css/mainstyles.css, js/skin.js: Remove gray bar under header.
+	* css/images/body_bg.jpg, css/images/header_bg.jpg,
+	  css/mainstyles.css: Adding the latest changes from Ben. Mainly
+	  changing the menu colors.
+
+2010-04-30  ben
+
+	* css/mainstyles.css, typoscript/skin_constants.ts: edit alignment
+	  issue for generated section.
+	* screenshot.gif: edit skin screenshot
+
+2010-04-29  jeff
+
+	* css/mainstyles.css, js/skin.js: User larger header by default
+	  then shrink with Javascript for better behavior when JS is not
+	  available.
+	* typoscript/skin_typoscript.ts: Remove localMenu modifications so
+	  that it starts at 2nd level page.
+	* css/mainstyles.css: Decrease default header height.
+	* js/skin.js: Adjust hover function to change header height,
+	  pushing content down and making second level menu visible.
+	* typoscript/skin_typoscript.ts: Removed test CSS class.
+	* css/mainstyles.css: Added some CSS tweaks.
+	* typoscript/skin_typoscript.ts: Fixed additionalDocHeadCode for
+	  jQuery hoverIntent.
+
+2010-04-27  jeff
+
+	* css/images/header_bg.jpg, css/mainstyles.css,
+	  js/jquery.hoverIntent.minified.js, js/skin.js,
+	  typoscript/skin_typoscript.ts: Tweaked top menu to activate on
+	  hover. Includes TS, JS, and CSS changes.
+
+2010-04-19  ben
+
+	* css/images/body_bg.jpg, css/images/header_bg.jpg,
+	  css/images/menu_hover_bg.png, css/mainstyles.css,
+	  typoscript/skin_typoscript.ts: change the top menu and fix the
+	  local menu.
+
+2010-04-15  jeff
+
+	* ., info.txt: Renamed skin_007 to skin_regal.
+	* Added 2 new developmental skins.
+
