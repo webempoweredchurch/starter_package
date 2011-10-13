@@ -2,26 +2,11 @@
 plugin.tx_wecebible_api {
 	# cat=WEC eBible//10; type=boolean; label=Enable Scripture parsing: Enables Scripture parsing on this page
 	enableParsing = 1
-	
-	# cat=WEC eBible//15; type=boolean; label=Include external eBible CSS?
-	useExternalCSS = 1
-	
-	# cat=WEC eBible//16; type=options [Mouseover=mouseover, Snippet=snippet, Link=link, Study=study]; label=Display Mode: Mouseover - displays the passage in a javascript popup when moused over. Snippet - dynamically replaces all passage references with the actual passage text as a snippet. Link - simply hyperlinks all passage references to eBible.com "Quick View" page. Study - simply hyperlinks all passage references directly to eBible.com "Study Browser"
-	mode = 
-	
-	# cat=WEC eBible//17; type=options [English Standard Version=ESV, Holman Christian Standard Bible=HCSB, King James Version=KJV, New American Standard Bible=NASB, New Century Version=NCV, New King James Version=NKJV, New International Version=NIV, The Message=MSG, Today's New International Version=TNIV, 1909 Spanish Reina-Valera Antigua=SpaRV, Italian Riveduta (1927)=ItalRV]; label=Translation
-	translation = 
-	
+
+	# cat=WEC eBible//17; type=user[EXT:wec_ebible/class.tx_wecebible_itemsProcFunc.php:&tx_wecebible_itemsProcFunc->getSelectForConstants]; label=Translation
+	translation =
+
 	# cat=WEC eBible//18; type=boolean; label=Allow User Definable Translation?:This will allow FE users to choose their preferred translation
 	allowUserTranslation = 1
-		
-	# cat=WEC eBible//20; type=boolean; label=Open Links in New Window?:This option only applies for study and link mode.
-	new_window = 1
-	
-	# cat=WEC eBible//25; type=int[0-10]; label=Related Topics: The number of related topics to display in snippet or mouseover mode.
-	related_topics =
-	
-	# cat=WEC eBible//30; type=string; label=Element:Narrow the search for passage references to this element.
-	element = 
 }
 
