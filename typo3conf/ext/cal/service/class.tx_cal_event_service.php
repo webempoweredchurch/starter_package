@@ -88,12 +88,13 @@ class tx_cal_event_service extends tx_cal_base_service {
 		$this->setStartAndEndPoint($start_date, $end_date);
 		$dontShowOldEvents = (integer)$this->conf['view.'][$this->conf['view'].'.']['dontShowOldEvents'];
 		if($dontShowOldEvents>0){
+			$now = new tx_cal_date();
 			if ($dontShowOldEvents==2){
-				$now = new tx_cal_date($this->conf['getdate']);
-			} else {
-				$now = new tx_cal_date();
+				$now->setHour(0);
+				$now->setMinute(0);
+				$now->setSecond(0);
 			}
-
+			
 			if($start_date->getTime() <= $now->getTime()){
 				$start_date->copy($now);
 			}
@@ -1077,8 +1078,9 @@ t3lib_div::debug($orderBy);
 				
 			require_once(t3lib_extMgm::extPath('cal').'controller/class.tx_cal_functions.php');
 			$fields = $event->getValuesAsArray();
-			$fields['delete'] = 1;
+			$fields['deleted'] = 1;
 			$fields['tstamp'] = $updateFields['tstamp'];
+			
 			$this->_notify($fields);
 			$this->stopReminder($uid);
 			
@@ -1344,7 +1346,7 @@ t3lib_div::debug($orderBy);
 		$categorySearchString = $categoryService->getCategorySearchString($pidList, $includePublic);
 		$calendarSearchString = $calendarService->getCalendarSearchString($pidList, $includePublic, $linkIds,$this->conf['view.']['calendar']?$this->conf['view.']['calendar']:'');
 		
-		$timeSearchString = ' AND tx_cal_event.pid IN ('.$pidList.') '.$this->cObj->enableFields('tx_cal_event').' AND ((tx_cal_event.start_date>='.$formattedStarttime.' AND tx_cal_event.start_date<='.$formattedEndtime.') OR (tx_cal_event.end_date<='.$formattedEndtime.' AND tx_cal_event.end_date>='.$formattedStarttime.') OR (tx_cal_event.end_date>='.$formattedEndtime.' AND tx_cal_event.start_date<='.$formattedStarttime.') OR (tx_cal_event.start_date<='.$formattedEndtime.' AND (tx_cal_event.freq IN ("day","week","month","year") AND (tx_cal_event.until>='.$formattedStarttime.' OR tx_cal_event.until=0))))';
+		$timeSearchString = ' AND tx_cal_event.pid IN ('.$pidList.') '.$this->cObj->enableFields('tx_cal_event').' AND ((tx_cal_event.start_date>='.$formattedStarttime.' AND tx_cal_event.start_date<='.$formattedEndtime.') OR (tx_cal_event.end_date<='.$formattedEndtime.' AND tx_cal_event.end_date>='.$formattedStarttime.') OR (tx_cal_event.end_date>='.$formattedEndtime.' AND tx_cal_event.start_date<='.$formattedStarttime.') OR (tx_cal_event.start_date<='.$formattedEndtime.' AND (tx_cal_event.freq IN ("day","week","month","year") AND (tx_cal_event.until>='.$formattedStarttime.' OR tx_cal_event.until=0)))) OR (tx_cal_event.rdate AND tx_cal_event.rdate_type IN ("date_time","date","period")) ';
 
 		if($locationIds!='' && $locationIds!='0'){
 			$locationSearchString = ' AND location_id in ('.$locationIds.')';
@@ -1509,10 +1511,11 @@ t3lib_div::debug($orderBy);
 		$startDate = $event->getStart();
 		$dontShowOldEvents = (integer)$this->conf['view.'][$this->conf['view'].'.']['dontShowOldEvents'];
 		if($dontShowOldEvents>0){
+			$now = new tx_cal_date();
 			if ($dontShowOldEvents==2){
-				$now = new tx_cal_date($this->conf['getdate']);
-			} else {
-				$now = new tx_cal_date();
+				$now->setHour(0);
+				$now->setMinute(0);
+				$now->setSecond(0);
 			}
 
 			if($startDate->getTime() > $now->getTime()){

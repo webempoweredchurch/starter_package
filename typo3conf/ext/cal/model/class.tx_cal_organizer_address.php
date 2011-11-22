@@ -46,9 +46,9 @@ class tx_cal_organizer_address extends tx_cal_organizer {
 	  * @param	string		$pidList	The pid-list to search in
  	  */
  	 function tx_cal_organizer_address($row, $pidlist){
- 	 	$this->setType('tx_tt_address');
-		$this->setObjectType('organizer');
  	 	$this->tx_cal_organizer($row, $pidlist);
+		$this->setObjectType('organizer');
+		$this->setType('tx_tt_address');
 		$this->createOrganizer($row);
 		$this->templatePath = $this->conf['view.']['organizer.']['organizerModelTemplate4Address'];
  	 }

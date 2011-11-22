@@ -412,7 +412,7 @@ class tx_cal_todo_service extends tx_cal_event_service {
 				
 			require_once(t3lib_extMgm::extPath('cal').'controller/class.tx_cal_functions.php');
 			$fields = $event->getValuesAsArray();
-			$fields['delete'] = 1;
+			$fields['deleted'] = 1;
 			$fields['tstamp'] = $updateFields['tstamp'];
 			$this->_notify($fields);
 			$this->stopReminder($uid);

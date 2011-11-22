@@ -53,7 +53,7 @@ class tx_cal_new_dayview extends tx_cal_new_timeview {
 	/**
 	 *  Constructor.
 	 */
-	public function tx_cal_new_dayview($day, $month, $year){
+	public function tx_cal_new_dayview($day, $month, $year, $parentMonth = -1){
 		$this->tx_cal_new_timeview();
 		$this->mySubpart = 'DAY_SUBPART';
 		$this->day = intval($day);
@@ -66,10 +66,18 @@ class tx_cal_new_dayview extends tx_cal_new_timeview {
 		$this->weekdayNumber = $date->format('%w');
 		$this->Ymd = $date->format('%Y%m%d');
 		$this->time = $date->getTime();
+		if ($parentMonth >= 0) {
+			$this->setParentMonth(intval($parentMonth));
+		} else {
+			$this->setParentMonth($this->month);
+		} 
 	}
 	
 	public function addEvent(&$event){
-		$this->events[$event->getStart()->format('%H%M')][] = &$event;
+//		if (($event->isAllday())&&($event->getStart()->format('%Y%m%d')!=$this->Ymd) ) {
+//		} else {
+			$this->events[$event->getStart()->format('%H%M')][] = &$event;
+//		}
 	}
 	
 	public function getEventsMarker(& $template, & $sims, & $rems, & $wrapped, $view){
@@ -116,6 +124,9 @@ class tx_cal_new_dayview extends tx_cal_new_timeview {
 		$viewArray = Array();
 		$positionArray = Array();
 		$timeKeys = array_keys($this->events);
+		
+		// Sort by starttime, otherwise $pos_array keys may be assigned multiple times and events may therefore overwrite each other
+		asort($timeKeys);
 
 		foreach($timeKeys as $timeKey){
 			$eventKeys = array_keys($this->events[$timeKey]);
@@ -215,7 +226,6 @@ class tx_cal_new_dayview extends tx_cal_new_timeview {
 			preg_match('/([0-9]{2})([0-9]{2})/', $cal_time, $dTimeStart);
 			$cal_time_obj->setHour($dTimeStart[1]);
 			$cal_time_obj->setMinute($dTimeStart[2]);
-//debug($cal_time_obj->format('%Y%m%d %H%M'));
 			$key = $cal_time_obj->format($conf['view.'][$conf['view'].'.']['timeFormatDay']);
 
 			if ($val != '' && count($val) > 0) {
@@ -275,8 +285,7 @@ class tx_cal_new_dayview extends tx_cal_new_timeview {
 		if(!empty($this->events) || $this->hasAlldayEvents){
 			$classes .= ' withEventDay';
 		}
-		$controller = &tx_cal_registry::Registry('basic','controller');
-		if($controller->getDateTimeObject->getMonth() != $this->month){
+		if(intval($this->getParentMonth()) != intval($this->month)){
 			$classes .= ' monthOff';
 		}
 		

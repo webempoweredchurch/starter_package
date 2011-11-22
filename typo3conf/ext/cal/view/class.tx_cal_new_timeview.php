@@ -49,6 +49,7 @@ abstract class tx_cal_new_timeview {
 	var $weekDayFormat = '%A';
 	var $current = false;
 	var $selected = false;
+	var $parentMonth;
 	
 	/**
 	 *  Constructor.
@@ -488,6 +489,14 @@ abstract class tx_cal_new_timeview {
 
 			$sims['###CREATE_EVENT_LINK###'] .= $local_cObj->cObjGetSingle($conf['view.'][$view.'.']['event.']['addLink'],$conf['view.'][$view.'.']['event.']['addLink.']);
 		}
+	}
+	
+	public function getParentMonth(){
+		return $this->parentMonth;
+	}
+	
+	public function setParentMonth($parentMonth){
+		$this->parentMonth = $parentMonth;
 	}
 }
 

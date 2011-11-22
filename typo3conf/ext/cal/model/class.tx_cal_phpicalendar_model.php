@@ -133,16 +133,12 @@ class tx_cal_phpicalendar_model extends tx_cal_model {
 				case 'startdate':
 				case 'starttime':
 				case 'startminutes':
-					$start = new tx_cal_date(tx_cal_functions::getYmdFromDateString($this->conf, strip_tags($piVars['startdate'])).'000000');
+					$start = new tx_cal_date(tx_cal_functions::getYmdFromDateString($this->conf, strip_tags($piVars['startdate']?$piVars['startdate']:$piVars['getdate'])).'000000');				
 					if(strlen($piVars['starttime'])==4){
 						$tempArray = Array();
 						preg_match ('/([0-9]{2})([0-9]{2})/',$piVars['starttime'],$tempArray);
 						$start->setHour(intval($tempArray[1]));
 						$start->setMinute(intval($tempArray[2]));
-					}else if($piVars['starttime']=='now'){
-						$now = new tx_cal_date();
-						$start->setHour($now->getHour());
-						$start->setMinute($now->getMinute());
 					}else{
 						$start->setHour(intval($piVars['starttime']));
 						$start->setMinute(intval($piVars['startminutes']));
@@ -172,7 +168,7 @@ class tx_cal_phpicalendar_model extends tx_cal_model {
 						preg_match ('/([0-9]{2})([0-9]{2})/',$piVars['endtime'],$tempArray);
 						$end->setHour(intval($tempArray[1]));
 						$end->setMinute(intval($tempArray[2]));
-					}else{
+					}else {
 						$end->setHour(intval($piVars['endtime']));
 						$end->setMinute(intval($piVars['endminutes']));
 					}
@@ -403,6 +399,15 @@ class tx_cal_phpicalendar_model extends tx_cal_model {
 			$newAttendeeArray = Array();
 			$this->setAttendees($newAttendeeArray);
 		}
+
+	    if($this->conf['rights.']['create.']['event.']['fields.']['dynamicStarttimeOffset']){
+			$now = new tx_cal_date();
+			$now->addSeconds(intval($this->conf['rights.']['create.']['event.']['fields.']['dynamicStarttimeOffset']));
+			$start->setHour($now->getHour());
+			$start->setMinute($now->getMinute());
+			$this->setStart($start);			
+	    }
+		
 		if(!$startDateIsSet && $piVars['mygetdate']){
 			$startDay = strip_tags($piVars['mygetdate']);
 			$startHour = '00';
@@ -935,9 +940,20 @@ class tx_cal_phpicalendar_model extends tx_cal_model {
 									'uid_foreign' => $user_uid,
 									'tablenames' => 'fe_users',
 									'sorting' => 1,
-									'pid' => $this->conf['rights.']['create.']['event.']['saveEventToPid']
+									'pid' => $this->conf['rights.']['create.']['event.']['saveEventToPid'],
+									'offset' => $this->conf['view.']['event.']['remind.']['time']									
 								);
 								$GLOBALS['TYPO3_DB']->exec_INSERTquery($table, $fields_values);
+
+								require_once(t3lib_extMgm::extPath('cal').'controller/class.tx_cal_functions.php');
+								$pageTSConf = t3lib_befunc::getPagesTSconfig($this->conf['rights.']['create.']['event.']['saveEventToPid']);
+								$offset = is_numeric($pageTSConf['options.']['tx_cal_controller.']['view.']['event.']['remind.']['time']) ? $pageTSConf['options.']['tx_cal_controller.']['view.']['event.']['remind.']['time'] * 60 : 0;
+								$date = new tx_cal_date($insertFields['start_date'].'000000');
+								$date->setTZbyId('UTC');
+								$reminderTimestamp = $date->getTime() + $insertFields['start_time'] - $offset;
+								$reminderService = &tx_cal_functions::getReminderService();
+								$reminderService->scheduleReminder($uid);
+								
 							} else {
 								if ($this->conf['subscribeWithCaptcha'] == 1 && t3lib_extMgm :: isLoaded('captcha')) {
 									session_start();

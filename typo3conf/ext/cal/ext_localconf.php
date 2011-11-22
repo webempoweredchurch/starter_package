@@ -697,14 +697,16 @@ if (t3lib_div::inList($TYPO3_CONF_VARS['EXT']['extList'], 'scheduler')) {
     // find type of ext and determine paths
     // add these to the global TYPO3_LOADED_EXT
 	$temp_extKey = 'scheduler';
-	if (@is_dir(PATH_typo3conf . 'ext/' . $temp_extKey . '/')) {
-	    $GLOBALS['TYPO3_LOADED_EXT'][$temp_extKey] = array('type' => 'L', 'siteRelPath' => 'typo3conf/ext/' . $temp_extKey . '/', 'typo3RelPath' => '../typo3conf/ext/' . $temp_extKey . '/');
-	} elseif (@is_dir(PATH_typo3 . 'ext/' . $temp_extKey . '/')) {
-	    $GLOBALS['TYPO3_LOADED_EXT'][$temp_extKey] = array('type' => 'G', 'siteRelPath' => TYPO3_mainDir . 'ext/' . $temp_extKey . '/', 'typo3RelPath' => 'ext/' . $temp_extKey . '/');
-	} elseif (@is_dir(PATH_typo3 . 'sysext/' . $temp_extKey . '/')) {
-	    $GLOBALS['TYPO3_LOADED_EXT'][$temp_extKey] = array('type' => 'S', 'siteRelPath' => TYPO3_mainDir . 'sysext/' . $temp_extKey . '/', 'typo3RelPath' => 'sysext/' . $temp_extKey . '/');
+	if (!isset($GLOBALS['TYPO3_LOADED_EXT'][$temp_extKey])) {
+		if (@is_dir(PATH_typo3conf . 'ext/' . $temp_extKey . '/')) {
+		    $GLOBALS['TYPO3_LOADED_EXT'][$temp_extKey] = array('type' => 'L', 'siteRelPath' => 'typo3conf/ext/' . $temp_extKey . '/', 'typo3RelPath' => '../typo3conf/ext/' . $temp_extKey . '/');
+		} elseif (@is_dir(PATH_typo3 . 'ext/' . $temp_extKey . '/')) {
+		    $GLOBALS['TYPO3_LOADED_EXT'][$temp_extKey] = array('type' => 'G', 'siteRelPath' => TYPO3_mainDir . 'ext/' . $temp_extKey . '/', 'typo3RelPath' => 'ext/' . $temp_extKey . '/');
+		} elseif (@is_dir(PATH_typo3 . 'sysext/' . $temp_extKey . '/')) {
+		    $GLOBALS['TYPO3_LOADED_EXT'][$temp_extKey] = array('type' => 'S', 'siteRelPath' => TYPO3_mainDir . 'sysext/' . $temp_extKey . '/', 'typo3RelPath' => 'sysext/' . $temp_extKey . '/');
+		}
 	}
-	 
+	
 	$GLOBALS['TYPO3_CONF_VARS']['EXT']['extList_FE'] .= ',scheduler';
 	$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['tx_cal_calendar_scheduler'] = array(
 		'extension'        => $_EXTKEY,
@@ -718,7 +720,7 @@ if (t3lib_div::inList($TYPO3_CONF_VARS['EXT']['extList'], 'scheduler')) {
 		'description'      => 'cal reminder scheduler integration',
 		'additionalFields' => ''
 	);
-	if(TYPO3_MODE == 'FE'){
+	if (TYPO3_MODE == 'FE'){
 		$extensionPath = t3lib_extMgm::extPath('scheduler');
 		$requiredClasses = array(
 			'tx_scheduler' => $extensionPath . 'class.tx_scheduler.php',

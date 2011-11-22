@@ -224,7 +224,9 @@ class tx_cal_subscription_manager_view extends tx_cal_base_view {
 	function subscribe($email, $event, $subscriptionHash) {
 		$md5 = md5($event->getUid().$email.$event->getCreationDate());
 		$eventUID = $event->getUID();
-		
+		$eventPID = $event->getPID();
+
+		$offset = $this->conf['view.']['event.']['remind.']['time'];
 		/* If the subscription hash matches, subscribe */
 		if($md5 == $subscriptionHash) {
 			$user_uid = $this->getFrontendUserUid($email);
@@ -236,7 +238,17 @@ class tx_cal_subscription_manager_view extends tx_cal_base_view {
 			}
 
 			/* Insert the user ID into the monitor table */
-			$this->insertMMRow('tx_cal_fe_user_event_monitor_mm', $eventUID, $user_uid, $user_table, 1);
+			$this->insertMMRow('tx_cal_fe_user_event_monitor_mm', $eventUID, $user_uid, $user_table, 1, $offset, $eventPID);
+
+			require_once(t3lib_extMgm::extPath('cal').'controller/class.tx_cal_functions.php');
+			$pageTSConf = t3lib_befunc::getPagesTSconfig($eventPID);
+			$offset = is_numeric($pageTSConf['options.']['tx_cal_controller.']['view.']['event.']['remind.']['time']) ? $pageTSConf['options.']['tx_cal_controller.']['view.']['event.']['remind.']['time'] * 60 : 0;
+			$date = new tx_cal_date($insertFields['start_date'].'000000');
+			$date->setTZbyId('UTC');
+			$reminderTimestamp = $date->getTime() + $insertFields['start_time'] - $offset;
+			$reminderService = &tx_cal_functions::getReminderService();
+			$reminderService->scheduleReminder($eventUID);
+					
 			$returnValue = true;
 		} else {
 			$returnValue = false;
@@ -254,7 +266,7 @@ class tx_cal_subscription_manager_view extends tx_cal_base_view {
 	 * @param		integer		Sort order.
 	 * @return		integer		True/false whether a new row was inserted.
 	 */
-	function insertMMRow($mmTable, $uid_local, $uid_foreign, $table, $sorting) {
+	function insertMMRow($mmTable, $uid_local, $uid_foreign, $table, $sorting, $offset=0, $eventPid=0) {
 		$already_exists = false;
 		
 		/* Check if row already exists */
@@ -274,6 +286,8 @@ class tx_cal_subscription_manager_view extends tx_cal_base_view {
 				'uid_foreign' => $uid_foreign,
 				'tablenames' => $table,
 				'sorting' => $sorting,
+				'offset' => $offset,
+				'pid' => $eventPid,
 			);
 			$GLOBALS['TYPO3_DB']->exec_INSERTquery($mmTable, $fields_values);
 			$insertedRow = true;

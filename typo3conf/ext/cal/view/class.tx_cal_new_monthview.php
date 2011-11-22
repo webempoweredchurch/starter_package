@@ -96,9 +96,9 @@ debug('could not unserialize cache for month:'.$month.'_'.$year);
 		if($this->month == 12 && $weekEnd == 1){
 			do {
 				if($weekNumber == $weekEnd){
-					$this->weeks[($newDate->getYear() + 1).'_'.$weekNumber] = new tx_cal_new_weekview($weekNumber, $newDate->getYear() + 1);
+					$this->weeks[($newDate->getYear() + 1).'_'.$weekNumber] = new tx_cal_new_weekview($weekNumber, $newDate->getYear() + 1, $this->month);
 				} else {
-					$this->weeks[$newDate->getYear().'_'.$weekNumber] = new tx_cal_new_weekview($weekNumber, $newDate->getYear());
+					$this->weeks[$newDate->getYear().'_'.$weekNumber] = new tx_cal_new_weekview($weekNumber, $newDate->getYear(), $this->month);
 				}
 				$newDate->addSeconds(86400 * 7);
 				$weekNumber = $newDate->getWeekOfYear();
@@ -110,16 +110,16 @@ debug('could not unserialize cache for month:'.$month.'_'.$year);
 		} else if($this->month == 1){
 			do {
 				if($weekNumber > 6){
-					$this->weeks[$newDate->getYear().'_'.$weekNumber] = new tx_cal_new_weekview($weekNumber, $newDate->getYear());
+					$this->weeks[$newDate->getYear().'_'.$weekNumber] = new tx_cal_new_weekview($weekNumber, $newDate->getYear(), $this->month);
 				} else {
-					$this->weeks[$this->year.'_'.$weekNumber] = new tx_cal_new_weekview($weekNumber, $this->year);
+					$this->weeks[$this->year.'_'.$weekNumber] = new tx_cal_new_weekview($weekNumber, $this->year, $this->month);
 				}
 				$newDate->addSeconds(86400 * 7);
 				$weekNumber = $newDate->getWeekOfYear();
 			} while($weekNumber <= $weekEnd && $newDate->year == $this->year);
 		} else {
 			do {
-				$this->weeks[$this->year.'_'.$weekNumber] = new tx_cal_new_weekview($weekNumber, $newDate->getYear());
+				$this->weeks[$this->year.'_'.$weekNumber] = new tx_cal_new_weekview($weekNumber, $newDate->getYear(), $this->month);
 				$newDate->addSeconds(86400 * 7);
 				$weekNumber = $newDate->getWeekOfYear();
 			} while($weekNumber <= $weekEnd && $newDate->year == $this->year);
@@ -133,6 +133,18 @@ debug('could not unserialize cache for month:'.$month.'_'.$year);
 		$eventEndWeek = $event->getEnd()->getWeekOfYear();
 		$eventStartYear = $event->getStart()->year;
 		$eventEndYear = $event->getEnd()->year;
+		if(($eventStartWeek == 52 || $eventStartWeek == 53) && $event->getStart()->month == 1){
+			$eventStartYear--;
+		}
+		if(($eventEndWeek == 52 || $eventEndWeek == 53) && $event->getEnd()->month == 1){
+			$eventEndYear--;
+		}
+		if($eventStartWeek == 1 && $event->getStart()->month == 12){
+			$eventStartYear++;
+		}
+		if($eventEndWeek == 1 && $event->getEnd()->month == 12){
+			$eventEndYear++;
+		}
 		do{
 			if($this->weeks[$eventStartYear.'_'.$eventStartWeek]) {
 				$this->weeks[$eventStartYear.'_'.$eventStartWeek]->addEvent($event);

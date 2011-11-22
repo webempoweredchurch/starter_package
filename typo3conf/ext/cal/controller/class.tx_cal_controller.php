@@ -604,7 +604,9 @@ class tx_cal_controller extends tslib_pibase {
 		if (!is_numeric($pid)) {
 			$pid = $GLOBALS['TSFE']->id;
 		}
+		
 		$eventType = intval($this->piVars['event_type']);
+		$uid = intval($this->piVars['uid']);	
 		$modelObj = &tx_cal_registry::Registry('basic','modelcontroller');
 
 		$event = null;
@@ -613,7 +615,7 @@ class tx_cal_controller extends tslib_pibase {
 		} else {
 			$event = $modelObj->saveEvent($this->conf['uid'], $this->conf['type'], $pid);
 		}
-	
+
 		// Hook: postSaveEvent
 		$this->executeHookObjectsFunction($hookObjectsArr, 'postSaveEvent');
 
@@ -652,7 +654,8 @@ class tx_cal_controller extends tslib_pibase {
 		unset($this->conf['type']);
 		$this->conf['type'] = '';
 		$this->clearConfVars();
-		$this->checkRedirect($this->piVars['uid']?'edit':'create', 'event');
+
+		$this->checkRedirect($uid?'edit':'create', 'event');
 	}
 
 	function removeEvent() {
@@ -2582,6 +2585,10 @@ class tx_cal_controller extends tslib_pibase {
 		} else if(is_array($event)){
 			$eventValues = $event;
 		}
+		if($eventValues['isFreeAndBusyEvent'] == 1){
+			$eventValues['titel'] = $this->conf['view.']['freeAndBusy.']['eventTitle'];
+			$eventValues['description'] = $event->getCalendarObject()->getTitle();
+		}
 		$ajaxStringArray = Array();
 		
 		$badchr        = array(
@@ -3226,10 +3233,15 @@ class tx_cal_controller extends tslib_pibase {
 				$date->setTZbyID('UTC');
 	
 				$oldYearWeek = ($date->format('%U') > 1)?'0':'1';
-				$offset = $date->format('%w') - $this->piVars['weekday'];
-				$days = Date_Calc::dateToDays($date->getDay(),$date->getMonth(),$date->getYear());
-				$daysTotal = ($this->piVars['week'] - $oldYearWeek) * 7 - $offset + $days;
+
+				$offset = $date->format('%w') - $this->piVars['weekday'] + DATE_CALC_BEGIN_WEEKDAY;
+				if($offset<=0){
+					$offset = 7;
+				} 
 				
+				$days = Date_Calc::dateToDays($date->getDay(),$date->getMonth(),$date->getYear());
+				$daysTotal = ($this->piVars['week'] - $oldYearWeek) * 7 - $offset + $days+ DATE_CALC_BEGIN_WEEKDAY;
+
 				$this->piVars['getdate'] = Date_Calc::daysToDate($daysTotal,'%Y%m%d');
 				
 				unset($this->piVars['year']);

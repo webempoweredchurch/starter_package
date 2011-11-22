@@ -1490,8 +1490,6 @@ plugin.tx_cal_controller {
 			event < plugin.tx_cal_controller.view.event.event
 			event {
 			
-				timeFormat = %i:%M
-	
 				# @description	Content object for the event title of an all day event.
 				alldayTitle = TEXT
 				alldayTitle {
@@ -1978,18 +1976,9 @@ plugin.tx_cal_controller {
 			event < plugin.tx_cal_controller.view.day.event
 			event {
 			
-				dateFormat = %Y-%m-%d
-				timeFormat = %H:%M
-				
 				# @description	Content object of the event title
 				title {
 					crop >
-				}
-				
-				eventLink {
-					typolink {
-						ATagParams.override = class="url"
-					}
 				}
 				
 				starttime {

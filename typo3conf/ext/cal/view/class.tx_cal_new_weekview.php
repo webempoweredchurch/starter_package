@@ -59,7 +59,7 @@ class tx_cal_new_weekview extends tx_cal_new_timeview {
 	/**
 	 *  Constructor.
 	 */
-	public function tx_cal_new_weekview($week, $year){
+	public function tx_cal_new_weekview($week, $year, $parentMonth = -1){
 		$this->tx_cal_new_timeview();
 		$this->mySubpart = 'WEEK_SUBPART';
 		if(DATE_CALC_BEGIN_WEEKDAY == 0){
@@ -67,6 +67,7 @@ class tx_cal_new_weekview extends tx_cal_new_timeview {
 		}
 		$this->week = intval($week);
 		$this->year = intval($year);
+		$this->setParentMonth($parentMonth);
 		$this->generateDays();
 	}
 
@@ -82,13 +83,19 @@ class tx_cal_new_weekview extends tx_cal_new_timeview {
 		$weekStart = new tx_cal_date(Date_Calc::daysToDate($daysTotal,'%Y%m%d'));
 		$this->weekStart = $weekStart->format('%Y%m%d');
 		$this->month = $weekStart->getMonth();
+
+		if ($this->getParentMonth() < 0) {
+			$this->setParentMonth($this->month);
+		} 		
+		
 		$this->days = Array();
 		$this->alldays = Array();
 		$this->dayNums = Array();
 		for($i = 0; $i < 7; $i++){
 			$this->dayNums[$i] = $weekStart->day;
-			$this->days[$weekStart->format('%Y%m%d')] = new tx_cal_new_dayview($weekStart->day, $weekStart->month,$weekStart->year);
-			$this->alldays[$weekStart->format('%Y%m%d')] = Array();
+			$weekStartFormated = $weekStart->format('%Y%m%d');
+			$this->days[$weekStartFormated] = new tx_cal_new_dayview($weekStart->day, $weekStart->month,$weekStart->year, $this->getParentMonth());
+			$this->alldays[$weekStartFormated] = Array();
 			$weekStart->addSeconds(86400);
 		}
 		$this->weekEnd = $weekStart->format('%Y%m%d');
@@ -103,7 +110,18 @@ class tx_cal_new_weekview extends tx_cal_new_timeview {
 		$eventEndYear = $event->getEnd()->year;
 		$eventStartWeek = $event->getStart()->getWeekOfYear();
 		$eventEndWeek = $event->getEnd()->getWeekOfYear();
-
+		if(($eventStartWeek == 52 || $eventStartWeek == 53) && $event->getStart()->month == 1){
+			$eventStartYear--;
+		}
+		if(($eventEndWeek == 52 || $eventEndWeek == 53) && $event->getEnd()->month == 1){
+			$eventEndYear--;
+		}
+		if($eventStartWeek == 1 && $event->getStart()->month == 12){
+			$eventStartYear++;
+		}
+		if($eventEndWeek == 1 && $event->getEnd()->month == 12){
+			$eventEndYear++;
+		}
 		if($event->isAllday() || $eventStartFormatted != $eventEndFormatted){
 			if($eventStart->year.sprintf("%02d",$eventStart->getWeekOfYear()) < $this->year.sprintf("%02d",$this->week) && $event->getEnd()->year.sprintf("%02d",$event->getEnd()->getWeekOfYear()) >= $this->year.sprintf("%02d",$this->week)){
 				do {
@@ -439,12 +457,24 @@ class tx_cal_new_weekview extends tx_cal_new_timeview {
 		if($this->dayHasEvent[$weekdayIndex] == 1){
 			$classes .= ' withEventsDay';
 		}
-		if($this->currentDayIndex == $weekdayIndex){
+		
+		$localDayIndex = $this->currentDayIndex+DATE_CALC_BEGIN_WEEKDAY;
+		if ($localDayIndex == 7) {
+			$localDayIndex = 0;
+		} 
+		
+		if($localDayIndex == $weekdayIndex){
 			$classes .= ' currentDayHeader';
 		}
+		
+		$localWeekdayIndex = $weekdayIndex-DATE_CALC_BEGIN_WEEKDAY;
+		if ($localWeekdayIndex == -1) {
+			$localWeekdayIndex = 6;
+		}
+		
 		$controller = &tx_cal_registry::Registry('basic','controller');
 		$daysKeys = array_keys($this->days);
-		if($controller->getDateTimeObject->getMonth() != $this->days[$daysKeys[$weekdayIndex]]->month){
+		if(intval($this->getParentMonth()) != intval($this->days[$daysKeys[$localWeekdayIndex]]->month)){
 			$classes .= ' monthOff';
 		}
 

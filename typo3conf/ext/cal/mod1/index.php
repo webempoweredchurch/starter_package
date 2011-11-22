@@ -38,7 +38,7 @@ include_once(t3lib_extMgm::extPath('cal').'controller/class.tx_cal_functions.php
 #require ($BACK_PATH.'init.php');
 #require ($BACK_PATH.'template.php');
 
-$GLOBALS['LANG']->includeLLFile('EXT:cal/mod1/locallang.php');
+$GLOBALS['LANG']->includeLLFile('EXT:cal/mod1/locallang.xml');
 require_once (PATH_t3lib.'class.t3lib_scbase.php');
 // include this to enable accessing the database via tce
 require_once (PATH_t3lib.'class.t3lib_tcemain.php');
@@ -113,7 +113,7 @@ class tx_cal_recurrence_generator_module1 extends t3lib_SCbase {
 				</script>
 			';
 
-			$headerSection = $this->doc->getHeader('pages',$this->pageinfo,$this->pageinfo['_thePath']).'<br>'.$GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_core.php:labels.path').': '.t3lib_div::fixed_lgd_pre($this->pageinfo['_thePath'],50);
+			$headerSection = $this->doc->getHeader('pages',$this->pageinfo,$this->pageinfo['_thePath']).'<br>'.$GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_core.php:labels.path').': '.t3lib_div::fixed_lgd_cs($this->pageinfo['_thePath'],-50);
 
 			$this->content.=$this->doc->startPage($GLOBALS['LANG']->getLL('title'));
 			$this->content.=$this->doc->header($GLOBALS['LANG']->getLL('title'));

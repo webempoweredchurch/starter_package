@@ -46,9 +46,9 @@ class tx_cal_location_address extends tx_cal_location {
 	 * @param	string		$pidList	The pid-list to search in
 	 */
 	function tx_cal_location_address($row, $pidList){
-		$this->setType('tx_tt_address');
-		$this->setObjectType('location');
 		$this->tx_cal_location($row, $pidList);
+		$this->setObjectType('location');
+		$this->setType('tx_tt_address');
 		$this->createLocation($row);
 		$this->templatePath = $this->conf['view.']['location.']['locationModelTemplate4Address'];
 	}
