@@ -28,7 +28,7 @@
  * @author     Elmar Hinz <elmar.hinz@team-red.net>
  * @copyright  2006-2007 Elmar Hinz
  * @license    http://www.opensource.org/licenses/lgpl-license.php LGPL
- * @version    SVN: $Id$
+ * @version    SVN: $Id: class.tx_div2007_controller.php 82 2011-07-19 15:04:37Z franzholz $
  * @since      0.1
  */
 
@@ -398,7 +398,7 @@ class tx_div2007_controller extends tx_div2007_object {
 	}
 
 	/**
-	 * Controll common processes after the action call.
+	 * Control common processes after the action call.
 	 *
 	 * @param	  object    Controller
 	 * @return	object    Controller
@@ -412,7 +412,7 @@ class tx_div2007_controller extends tx_div2007_object {
 	}
 
 	/**
-	 * Controll common processes before the action call.
+	 * Control common processes before the action call.
 	 *
 	 * @param	  object    Controller
 	 * @return	object    Controller
