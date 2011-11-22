@@ -24,7 +24,7 @@
 /**
  * Class/Function which manipulates the item-array for table/field tx_templavoila_tmplobj_datastructure.
  *
- * $Id: class.tx_templavoila_handlestaticdatastructures.php 38079 2010-09-14 06:43:00Z tolleiv $
+ * $Id$
  *
  * @author    Kasper Skaarhoj <kasper@typo3.com>
  */
@@ -214,7 +214,7 @@ class tx_templavoila_handleStaticDataStructures {
 			if (strlen($dataSource)) {
 				$toList = $toRepo->getTemplatesByDatastructure($ds, $storagePid);
 				foreach ($toList as $toObj) {
-					if($toObj->isPermittedForUser($params['table'], $removeTOItems)) {
+					if(!$toObj->hasParent() && $toObj->isPermittedForUser($params['table'], $removeTOItems)) {
 						$params['items'][] = array(
 							$toObj->getLabel(),
 							$toObj->getKey(),
@@ -265,7 +265,7 @@ class tx_templavoila_handleStaticDataStructures {
 
 			$toList = $toRepo->getTemplatesByDatastructure($dsObj, $storagePid);
 			foreach ($toList as $toObj) {
-				if($toObj->isPermittedForUser($params['row'], $removeTOItems)) {
+				if(!$toObj->hasParent() && $toObj->isPermittedForUser($params['row'], $removeTOItems)) {
 					$curDS[] = array(
 						$toObj->getLabel(),
 						$toObj->getKey(),
@@ -295,7 +295,7 @@ class tx_templavoila_handleStaticDataStructures {
 			// Check for alternative storage folder
 		$field = $params['table'] == 'pages' ? 'uid' : 'pid';
 		$modTSConfig = t3lib_BEfunc::getModTSconfig($params['row'][$field], 'tx_templavoila.storagePid');
-		if (is_array($modTSConfig) && t3lib_div::testInt($modTSConfig['value'])) {
+		if (is_array($modTSConfig) && tx_templavoila_div::canBeInterpretedAsInteger($modTSConfig['value'])) {
 			$storagePid = intval($modTSConfig['value']);
 		}
 		return $storagePid;

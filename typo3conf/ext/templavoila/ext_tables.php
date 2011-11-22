@@ -1,5 +1,5 @@
 <?php
-# TYPO3 CVS ID: $Id: ext_tables.php 42562 2011-01-25 10:16:15Z tolleiv $
+# TYPO3 CVS ID: $Id$
 if (!defined ('TYPO3_MODE'))  die ('Access denied.');
 
 // unserializing the configuration so we can use it here:
@@ -189,7 +189,7 @@ if ($_EXTCONF['enable.']['selectDataStructure']) {
 }
 
 
-if(t3lib_div::int_from_ver(TYPO3_version) >= 4005000) {
+if(tx_templavoila_div::convertVersionNumberToInteger(TYPO3_version) >= 4005000) {
 
 		$TCA['tt_content']['types'][$_EXTKEY . '_pi1']['showitem'] =
 					'--palette--;LLL:EXT:cms/locallang_ttc.xml:palette.general;general,
@@ -300,7 +300,7 @@ $tempColumns = array (
 t3lib_extMgm::addTCAcolumns('pages', $tempColumns, 1);
 if ($_EXTCONF['enable.']['selectDataStructure']) {
 
-	if(t3lib_div::int_from_ver(TYPO3_version) >= 4005000) {
+	if(tx_templavoila_div::convertVersionNumberToInteger(TYPO3_version) >= 4005000) {
 		t3lib_extMgm::addToAllTCAtypes('pages', 'tx_templavoila_ds;;;;1-1-1,tx_templavoila_to', '', 'replace:backend_layout');
 		t3lib_extMgm::addToAllTCAtypes('pages', 'tx_templavoila_next_ds;;;;1-1-1,tx_templavoila_next_to', '', 'replace:backend_layout_next_level');
 		t3lib_extMgm::addToAllTCAtypes('pages', 'tx_templavoila_flex;;;;1-1-1', '', 'after:title');
@@ -314,10 +314,15 @@ if ($_EXTCONF['enable.']['selectDataStructure']) {
 	$TCA['pages']['ctrl']['requestUpdate'] .= 'tx_templavoila_ds,tx_templavoila_next_ds';
 
 } else {
-	if(t3lib_div::int_from_ver(TYPO3_version) >= 4005000) {
-		t3lib_extMgm::addToAllTCAtypes('pages', 'tx_templavoila_to;;;;1-1-1', '', 'replace:backend_layout');
-		t3lib_extMgm::addToAllTCAtypes('pages', 'tx_templavoila_next_to;;;;1-1-1', '', 'replace:backend_layout_next_level');
-		t3lib_extMgm::addToAllTCAtypes('pages', 'tx_templavoila_flex;;;;1-1-1', '', 'after:title');
+	if(tx_templavoila_div::convertVersionNumberToInteger(TYPO3_version) >= 4005000) {
+		if (!$_EXTCONF['enable.']['oldPageModule']) {
+			t3lib_extMgm::addToAllTCAtypes('pages', 'tx_templavoila_to;;;;1-1-1', '', 'replace:backend_layout');
+			t3lib_extMgm::addToAllTCAtypes('pages', 'tx_templavoila_next_to;;;;1-1-1', '', 'replace:backend_layout_next_level');
+			t3lib_extMgm::addToAllTCAtypes('pages', 'tx_templavoila_flex;;;;1-1-1', '', 'after:title');
+		} else {
+			t3lib_extMgm::addFieldsToPalette('pages', 'layout', '--linebreak--, tx_templavoila_to;;;;1-1-1, tx_templavoila_next_to;;;;1-1-1', 'after:backend_layout_next_level');
+			t3lib_extMgm::addToAllTCAtypes('pages', 'tx_templavoila_flex;;;;1-1-1', '', 'after:title');
+		}
 	} else {
 		t3lib_extMgm::addToAllTCAtypes('pages','tx_templavoila_to;;;;1-1-1,tx_templavoila_next_to;;;;1-1-1,tx_templavoila_flex;;;;1-1-1');
 	}
@@ -341,33 +346,16 @@ if (TYPO3_MODE=='BE')	{
 if (TYPO3_MODE == 'BE' ||
 	(TYPO3_MODE == 'FE' && isset($GLOBALS['BE_USER']) && method_exists($GLOBALS['BE_USER'], 'isFrontendEditingActive')  && $GLOBALS['BE_USER']->isFrontendEditingActive())
 ) {
-	if(t3lib_div::int_from_ver(TYPO3_version) >= 4004000) {
-		$icons = array(
-			'paste' => t3lib_extMgm::extRelPath('templavoila') . 'mod1/clip_pasteafter.gif',
-			'pasteSubRef' => t3lib_extMgm::extRelPath('templavoila') . 'mod1/clip_pastesubref.gif',
-			'makelocalcopy' => t3lib_extMgm::extRelPath('templavoila') . 'mod1/makelocalcopy.gif',
-			'clip_ref' => t3lib_extMgm::extRelPath('templavoila') . 'mod1/clip_ref.gif',
-			'clip_ref-release' => t3lib_extMgm::extRelPath('templavoila') . 'mod1/clip_ref_h.gif',
-			'unlink' => t3lib_extMgm::extRelPath('templavoila') . 'mod1/unlink.png',
-			'htmlvalidate' => t3lib_extMgm::extRelPath('templavoila') . 'resources/icons/html_go.png',
-			'type-fce' => t3lib_extMgm::extRelPath('templavoila') . 'icon_fce_ce.png'
-		);
-		t3lib_SpriteManager::addSingleIcons($icons, $_EXTKEY);
-	} else {
-		$icons = array(
-			'extensions-templavoila-paste' => t3lib_extMgm::extRelPath('templavoila') . 'mod1/clip_pasteafter.gif',
-			'extensions-templavoila-pasteSubRef' => t3lib_extMgm::extRelPath('templavoila') . 'mod1/clip_pastesubref.gif',
-			'extensions-templavoila-makelocalcopy' => t3lib_extMgm::extRelPath('templavoila') . 'mod1/makelocalcopy.gif',
-			'extensions-templavoila-clip_ref' => t3lib_extMgm::extRelPath('templavoila') . 'mod1/clip_ref.gif',
-			'extensions-templavoila-clip_ref-release' => t3lib_extMgm::extRelPath('templavoila') . 'mod1/clip_ref_h.gif',
-			'extensions-templavoila-unlink' => t3lib_extMgm::extRelPath('templavoila') . 'mod1/unlink.png',
-			'extensions-templavoila-htmlvalidate' => t3lib_extMgm::extRelPath('templavoila') . 'resources/icons/html_go.png',
-			'extensions-templavoila-type-fce' => t3lib_extMgm::extRelPath('templavoila') . 'icon_fce_ce.png'
-		);
-		$GLOBALS['TBE_STYLES']['spritemanager']['singleIcons'] = array_merge(
-			(array) $GLOBALS['TBE_STYLES']['spritemanager']['singleIcons'],
-			$icons
-		);
-	}
+	$icons = array(
+		'paste' => t3lib_extMgm::extRelPath('templavoila') . 'mod1/clip_pasteafter.gif',
+		'pasteSubRef' => t3lib_extMgm::extRelPath('templavoila') . 'mod1/clip_pastesubref.gif',
+		'makelocalcopy' => t3lib_extMgm::extRelPath('templavoila') . 'mod1/makelocalcopy.gif',
+		'clip_ref' => t3lib_extMgm::extRelPath('templavoila') . 'mod1/clip_ref.gif',
+		'clip_ref-release' => t3lib_extMgm::extRelPath('templavoila') . 'mod1/clip_ref_h.gif',
+		'unlink' => t3lib_extMgm::extRelPath('templavoila') . 'mod1/unlink.png',
+		'htmlvalidate' => t3lib_extMgm::extRelPath('templavoila') . 'resources/icons/html_go.png',
+		'type-fce' => t3lib_extMgm::extRelPath('templavoila') . 'icon_fce_ce.png'
+	);
+	t3lib_SpriteManager::addSingleIcons($icons, $_EXTKEY);
 }
 ?>

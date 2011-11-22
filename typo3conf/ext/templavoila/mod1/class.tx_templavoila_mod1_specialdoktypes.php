@@ -24,7 +24,7 @@
 /**
  * Submodule 'special doktypes' for the templavoila page module
  *
- * $Id: class.tx_templavoila_mod1_specialdoktypes.php 47511 2011-05-10 12:34:44Z tolleiv $
+ * $Id$
  *
  * @author     Robert Lemke <robert@typo3.org>
  */
@@ -89,8 +89,8 @@ class tx_templavoila_mod1_specialdoktypes {
 		global $LANG, $BE_USER, $TYPO3_CONF_VARS;
 
 			// Prepare the record icon including a content sensitive menu link wrapped around it:
-		$recordIcon = tx_templavoila_icons::getIconForRecord('pages', $pageRecord);
-		$iconEdit = tx_templavoila_icons::getIcon('actions-document-open', array('title' => htmlspecialchars($LANG->sL('LLL:EXT:lang/locallang_mod_web_list.xml:editPage'))));
+		$recordIcon = t3lib_iconWorks::getSpriteIconForRecord('pages', $pageRecord);
+		$iconEdit = t3lib_iconWorks::getSpriteIcon('actions-document-open', array('title' => htmlspecialchars($LANG->sL('LLL:EXT:lang/locallang_mod_web_list.xml:editPage'))));
 		$editButton = $this->pObj->link_edit($iconEdit, 'pages', $pageRecord['uid']);
 
 		switch ($pageRecord['urltype']) {
@@ -124,21 +124,13 @@ class tx_templavoila_mod1_specialdoktypes {
 		}
 
 		$urlInfo = ' <br /><br /><strong><a href="' . $url . '" target="_new">' . htmlspecialchars(sprintf($LANG->getLL ('jumptoexternalurl'), $url)) . '</a></strong>';
-		if (t3lib_div::int_from_ver(TYPO3_version) >= 4003000) {
-			$flashMessage = t3lib_div::makeInstance(
-				't3lib_FlashMessage',
-				$notice,
-				'',
-				t3lib_FlashMessage::INFO
-			);
-			$content = $flashMessage->render() . $urlInfo;
-		} else {
-			$content =
-				$this->doc->icons(1).
-				$notice.
-				$urlInfo
-			;
-		}
+		$flashMessage = t3lib_div::makeInstance(
+			't3lib_FlashMessage',
+			$notice,
+			'',
+			t3lib_FlashMessage::INFO
+		);
+		$content = $flashMessage->render() . $urlInfo;
 		return $content;
 	}
 
@@ -153,34 +145,25 @@ class tx_templavoila_mod1_specialdoktypes {
 		global $LANG, $BE_USER, $TYPO3_CONF_VARS;
 
 			// Prepare the record icon including a content sensitive menu link wrapped around it:
-		$recordIcon = tx_templavoila_icons::getIconForRecord('pages', $pageRecord);
+		$recordIcon = t3lib_iconWorks::getSpriteIconForRecord('pages', $pageRecord);
 		$recordButton = $this->doc->wrapClickMenuOnIcon($recordIcon, 'pages', $pageRecord['uid'], 1, '&callingScriptId='.rawurlencode($this->doc->scriptID), 'new,copy,cut,pasteinto,pasteafter,delete');
-		$iconEdit = tx_templavoila_icons::getIcon('actions-document-open', array('title' => htmlspecialchars($LANG->sL('LLL:EXT:lang/locallang_mod_web_list.xml:editPage'))));
+		$iconEdit = t3lib_iconWorks::getSpriteIcon('actions-document-open', array('title' => htmlspecialchars($LANG->sL('LLL:EXT:lang/locallang_mod_web_list.xml:editPage'))));
 		$editButton = $this->pObj->link_edit($iconEdit, 'pages', $pageRecord['uid']);
 
 		if (intval($pageRecord['shortcut_mode']) == 0) {
 			$shortcutSourcePageRecord = t3lib_beFunc::getRecordWSOL('pages', $pageRecord['shortcut']);
 			$jumpToShortcutSourceLink = '<strong><a href="index.php?id='.$pageRecord['shortcut'].'">'.
-										tx_templavoila_icons::getIcon('apps-pagetree-page-shortcut').
+										t3lib_iconWorks::getSpriteIcon('apps-pagetree-page-shortcut').
 										$LANG->getLL ('jumptoshortcutdestination', '',1).'</a></strong>';
 		}
 
-		if (t3lib_div::int_from_ver(TYPO3_version) >= 4003000) {
-			$flashMessage = t3lib_div::makeInstance(
-				't3lib_FlashMessage',
-				sprintf ($LANG->getLL ('cannotedit_shortcut_'.intval($pageRecord['shortcut_mode'])), $shortcutSourcePageRecord['title']),
-				'',
-				t3lib_FlashMessage::INFO
-			);
-			$content = $flashMessage->render() . $jumpToShortcutSourceLink;
-		} else {
-			$content =
-				$this->doc->icons(1).
-				htmlspecialchars(sprintf ($LANG->getLL ('cannotedit_shortcut_'.intval($pageRecord['shortcut_mode'])), $shortcutSourcePageRecord['title'])).
-				'<br /><br />' .
-				$jumpToShortcutSourceLink
-			;
-		}
+		$flashMessage = t3lib_div::makeInstance(
+			't3lib_FlashMessage',
+			sprintf ($LANG->getLL ('cannotedit_shortcut_'.intval($pageRecord['shortcut_mode'])), $shortcutSourcePageRecord['title']),
+			'',
+			t3lib_FlashMessage::INFO
+		);
+		$content = $flashMessage->render() . $jumpToShortcutSourceLink;
 		return $content;
 	}
 
@@ -197,34 +180,26 @@ class tx_templavoila_mod1_specialdoktypes {
 		if (!$pageRecord['mount_pid_ol']) return FALSE;
 
 			// Put together the records icon including content sensitive menu link wrapped around it:
-		$recordIcon = tx_templavoila_icons::getIconForRecord('pages', $pageRecord);
+		$recordIcon = t3lib_iconWorks::getSpriteIconForRecord('pages', $pageRecord);
 		$recordIcon = $this->doc->wrapClickMenuOnIcon($recordIcon, 'pages', $this->id, 1, '&amp;callingScriptId='.rawurlencode($this->doc->scriptID));
-		$iconEdit = tx_templavoila_icons::getIcon('actions-document-open', array('title' => htmlspecialchars($LANG->sL('LLL:EXT:lang/locallang_mod_web_list.xml:editPage'))));
+		$iconEdit = t3lib_iconWorks::getSpriteIcon('actions-document-open', array('title' => htmlspecialchars($LANG->sL('LLL:EXT:lang/locallang_mod_web_list.xml:editPage'))));
 		$editButton = $this->pObj->link_edit($iconEdit, 'pages', $pageRecord['uid']);
 
 		$mountSourcePageRecord = t3lib_beFunc::getRecordWSOL('pages', $pageRecord['mount_pid']);
-		$mountSourceIcon = tx_templavoila_icons::getIconForRecord('pages', $mountSourcePageRecord);
+		$mountSourceIcon = t3lib_iconWorks::getSpriteIconForRecord('pages', $mountSourcePageRecord);
 		$mountSourceButton = $this->doc->wrapClickMenuOnIcon($mountSourceIcon, 'pages', $mountSourcePageRecord['uid'], 1, '&callingScriptId='.rawurlencode($this->doc->scriptID), 'new,copy,cut,pasteinto,pasteafter,delete');
 
 		$mountSourceLink = '<br /><br />
 			<a href="index.php?id='.$pageRecord['mount_pid'].'">'.htmlspecialchars($LANG->getLL ('jumptomountsourcepage')).'</a>
 		';
 
-		if (t3lib_div::int_from_ver(TYPO3_version) >= 4003000) {
-			$flashMessage = t3lib_div::makeInstance(
-				't3lib_FlashMessage',
-				sprintf ($LANG->getLL ('cannotedit_doktypemountpoint'), $mountSourceButton . $mountSourcePageRecord['title']),
-				'',
-				t3lib_FlashMessage::INFO
-			);
-			$content = $flashMessage->render() . '<strong>' . $mountSourceLink . '</strong>';
-		} else {
-			$content =
-				$this->doc->icons(1).
-				htmlspecialchars(sprintf ($LANG->getLL ('cannotedit_doktypemountpoint'), $mountSourcePageRecord['title'])).
-				$mountSourceButton . '<strong>' . $mountSourceLink . '</strong>
-			';
-		}
+		$flashMessage = t3lib_div::makeInstance(
+			't3lib_FlashMessage',
+			sprintf ($LANG->getLL ('cannotedit_doktypemountpoint'), $mountSourceButton . $mountSourcePageRecord['title']),
+			'',
+			t3lib_FlashMessage::INFO
+		);
+		$content = $flashMessage->render() . '<strong>' . $mountSourceLink . '</strong>';
 		return $content;
 	}
 
@@ -240,41 +215,32 @@ class tx_templavoila_mod1_specialdoktypes {
 
 			// Prepare the record icon including a content sensitive menu link wrapped around it:
 		$pageTitle = htmlspecialchars(t3lib_div::fixed_lgd_cs(t3lib_BEfunc::getRecordTitle('pages', $pageRecord), 50));
-		$recordIcon = tx_templavoila_icons::getIconForRecord('pages', $pageRecord);
-		$iconEdit = tx_templavoila_icons::getIcon('actions-document-open', array('title' => htmlspecialchars($LANG->sL('LLL:EXT:lang/locallang_mod_web_list.xml:editPage'))));
+		$recordIcon = t3lib_iconWorks::getSpriteIconForRecord('pages', $pageRecord);
+		$iconEdit = t3lib_iconWorks::getSpriteIcon('actions-document-open', array('title' => htmlspecialchars($LANG->sL('LLL:EXT:lang/locallang_mod_web_list.xml:editPage'))));
 		$editButton = $this->pObj->link_edit($iconEdit, 'pages', $pageRecord['uid']);
 
 		if ($this->userHasAccessToListModule()) {
-			if (t3lib_div::int_from_ver(TYPO3_version) < 4005000) {
+			if (tx_templavoila_div::convertVersionNumberToInteger(TYPO3_version) < 4005000) {
 				$listModuleURL = t3lib_div::getIndpEnv('TYPO3_SITE_URL') . TYPO3_mainDir . 'db_list.php?id='.intval($this->pObj->id);
 			} else {
-				$listModuleURL = t3lib_BEfunc::getModuleUrl('web_list', array ('id' => intval($this->pObj->id)), FALSE, TRUE);
+				$listModuleURL = t3lib_BEfunc::getModuleUrl('web_list', array ('id' => intval($this->pObj->id)), '');
 			}
 			$onClick = "top.nextLoadModuleUrl='".$listModuleURL."';top.fsMod.recentIds['web']=".intval($this->pObj->id).";top.goToModule('web_list',1);";
 			$listModuleLink = '<br /><br />'.
-				tx_templavoila_icons::getIcon('actions-system-list-open').
+				t3lib_iconWorks::getSpriteIcon('actions-system-list-open').
 				'<strong><a href="#" onClick="'.$onClick.'">'.$LANG->getLL('editpage_sysfolder_switchtolistview','',1).'</a></strong>
 			';
 		} else {
 			$listModuleLink = $LANG->getLL('editpage_sysfolder_listview_noaccess','',1);
 		}
 
-		if (t3lib_div::int_from_ver(TYPO3_version) >= 4003000) {
-			$flashMessage = t3lib_div::makeInstance(
-				't3lib_FlashMessage',
-				$LANG->getLL('editpage_sysfolder_intro', '', 1),
-				'',
-				t3lib_FlashMessage::INFO
-			);
-			$content = $flashMessage->render() . $listModuleLink;
-		} else {
-			$content =
-				$this->doc->icons(1).
-				$LANG->getLL('editpage_sysfolder_intro', '', 1).
-				$listModuleLink
-			;
-		}
-
+		$flashMessage = t3lib_div::makeInstance(
+			't3lib_FlashMessage',
+			$LANG->getLL('editpage_sysfolder_intro', '', 1),
+			'',
+			t3lib_FlashMessage::INFO
+		);
+		$content = $flashMessage->render() . $listModuleLink;
 		return $content;
 	}
 

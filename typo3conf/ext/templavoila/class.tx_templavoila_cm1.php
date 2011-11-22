@@ -24,7 +24,7 @@
 /**
  * Addition of an item to the clickmenu
  *
- * $Id: class.tx_templavoila_cm1.php 39959 2010-11-08 22:21:10Z tolleiv $
+ * $Id$
  *
  * @author		Kasper Skaarhoj <kasper@typo3.com>
  * @coauthor 	Robert Lemke <robert@typo3.org>
@@ -149,7 +149,7 @@ class tx_templavoila_cm1 {
 				// Adding link for "View: DS/TO" (admin only):
 			if ($BE_USER->isAdmin() && $isTVelement) {
 
-				if (t3lib_div::testInt($backRef->rec['tx_templavoila_ds']))	{
+				if (tx_templavoila_div::canBeInterpretedAsInteger($backRef->rec['tx_templavoila_ds']))	{
 					$url = t3lib_extMgm::extRelPath('templavoila').'cm1/index.php?'.
 								'table=tx_templavoila_datastructure&uid='.$backRef->rec['tx_templavoila_ds'];
 
@@ -182,7 +182,7 @@ class tx_templavoila_cm1 {
 				if ($res) {
 					while (false != ($referenceRecord = $TYPO3_DB->sql_fetch_assoc ($res))) {
 						$pageRecord = t3lib_beFunc::getRecord('pages', $referenceRecord['pid']);
-						$icon = tx_templavoila_icons::getIconForRecord('pages', $pageRecord);
+						$icon = t3lib_iconWorks::getSpriteIconForRecord('pages', $pageRecord);
 	// To do: Display language flag icon and jump to correct language
 #						if ($referenceRecord['lkey'] != 'lDEF') {
 #							$icon .= ' lKey:'.$referenceRecord['lkey'];

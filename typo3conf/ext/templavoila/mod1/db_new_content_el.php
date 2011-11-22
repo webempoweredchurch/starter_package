@@ -27,7 +27,7 @@
 /**
  * New content elements wizard for templavoila
  *
- * $Id: db_new_content_el.php 42570 2011-01-25 13:16:46Z tolleiv $
+ * $Id$
  * Originally based on the CE wizard / cms extension by Kasper Skaarhoj <kasper@typo3.com>
  * XHTML compatible.
  *
@@ -123,29 +123,21 @@ class tx_templavoila_dbnewcontentel {
 		$this->parentRecord = t3lib_div::_GP('parentRecord');
 		$this->altRoot = t3lib_div::_GP('altRoot');
 		$this->defVals = t3lib_div::_GP('defVals');
-		$this->returnUrl = tx_templavoila_div::sanitizeLocalUrl(t3lib_div::_GP('returnUrl'));
+		$this->returnUrl =  t3lib_div::sanitizeLocalUrl(t3lib_div::_GP('returnUrl'));
 
 			// Starting the document template object:
 		$this->doc = t3lib_div::makeInstance('template');
 		$this->doc->docType= 'xhtml_trans';
 		$this->doc->backPath = $BACK_PATH;
-		if(t3lib_div::int_from_ver(TYPO3_version) >= 4003000) {
-			$this->doc->setModuleTemplate('EXT:templavoila/resources/templates/mod1_new_content.html');
-		} else {
-			$this->doc->setModuleTemplate(t3lib_extMgm::extRelPath('templavoila') . 'resources/templates/mod1_new_content.html');
-		}
+		$this->doc->setModuleTemplate('EXT:templavoila/resources/templates/mod1_new_content.html');
 		$this->doc->bodyTagId = 'typo3-mod-php';
 		$this->doc->divClass = '';
 		$this->doc->JScode='';
 
-		if (t3lib_div::int_from_ver(TYPO3_version) >= 4003000) {
-			$pageRenderer = $this->doc->getPageRenderer()->loadPrototype();
-		} else {
-			$this->doc->loadJavascriptLib('contrib/prototype/prototype.js');
-		}
+		$this->doc->getPageRenderer()->loadPrototype();
 
 
-		if(t3lib_div::int_from_ver(TYPO3_version) < 4005000) {
+		if(tx_templavoila_div::convertVersionNumberToInteger(TYPO3_version) < 4005000) {
 			$this->doc->JScodeLibArray['dyntabmenu'] = $this->doc->getDynTabMenuJScode();
 		} else {
 			$this->doc->loadJavascriptLib('js/tabmenu.js');
@@ -188,7 +180,7 @@ class tx_templavoila_dbnewcontentel {
 			$this->content.=$this->doc->spacer(5);
 
 			$elRow = t3lib_BEfunc::getRecordWSOL('pages',$this->id);
-			$header= tx_templavoila_icons::getIconForRecord('pages', $elRow);
+			$header= t3lib_iconWorks::getSpriteIconForRecord('pages', $elRow);
 			$header.= t3lib_BEfunc::getRecordTitle('pages',$elRow,1);
 			$this->content.=$this->doc->section('',$header,0,1);
 			$this->content.=$this->doc->spacer(10);
@@ -326,7 +318,7 @@ class tx_templavoila_dbnewcontentel {
 
 			// Back
 		if ($this->returnUrl) {
-			$backIcon = tx_templavoila_icons::getIcon('actions-view-go-back');
+			$backIcon = t3lib_iconWorks::getSpriteIcon('actions-view-go-back');
 			$buttons['back'] = '<a href="' . htmlspecialchars(t3lib_div::linkThisUrl($this->returnUrl)) . '" class="typo3-goBack" title="' . $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_core.php:labels.goBack', TRUE) . '">' .
 								$backIcon .
 							   '</a>';

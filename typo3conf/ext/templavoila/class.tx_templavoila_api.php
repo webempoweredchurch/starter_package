@@ -24,7 +24,7 @@
 /**
  * Public API for TemplaVoila
  *
- * $Id: class.tx_templavoila_api.php 40835 2010-12-05 18:43:54Z tolleiv $
+ * $Id$
  *
  * @author     Robert Lemke <robert@typo3.org>
  */
@@ -1413,7 +1413,7 @@ class tx_templavoila_api {
 			'title' => t3lib_div::fixed_lgd_cs(t3lib_BEfunc::getRecordTitle($table, $row),50),
 			'fullTitle' => t3lib_BEfunc::getRecordTitle($table, $row),
 			'icon' => t3lib_iconWorks::getIcon($table,$row), // kept because it's not clear if this is used elsewhere
-			'iconTag' => tx_templavoila_icons::getIconForRecord($table,$row),
+			'iconTag' => t3lib_iconWorks::getSpriteIconForRecord($table,$row),
 			'sys_language_uid' => $row['sys_language_uid'],
 			'l18n_parent' => $row['l18n_parent'],
 			'CType' => $row['CType'],
@@ -1778,7 +1778,7 @@ class tx_templavoila_api {
 
 		// Check for alternative storage folder
 		$modTSConfig = t3lib_BEfunc::getModTSconfig($pageUid, 'tx_templavoila.storagePid');
-		if (is_array($modTSConfig) && t3lib_div::testInt($modTSConfig['value'])) {
+		if (is_array($modTSConfig) && tx_templavoila_div::canBeInterpretedAsInteger($modTSConfig['value'])) {
 			$storagePid = intval($modTSConfig['value']);
 		}
 

@@ -24,7 +24,7 @@
 /**
  * Submodule 'localization' for the templavoila page module
  *
- * $Id: class.tx_templavoila_mod1_localization.php 43363 2011-02-09 23:59:29Z tolleiv $
+ * $Id$
  *
  * @author     Robert Lemke <robert@typo3.org>
  */

@@ -30,23 +30,6 @@
 final class tx_templavoila_div {
 
 	/**
-	 * Wrapper function for checking valid URL for redirect
-	 *
-	 * @param $url
-	 */
-	public static function sanitizeLocalUrl($url = '') {
-		if (t3lib_div::int_from_ver(TYPO3_version) >= 4003000) {
-			return t3lib_div::sanitizeLocalUrl($url);
-		} elseif (t3lib_div::int_from_ver(TYPO3_version) > 4002000 && method_exists('t3lib_div', 'sanitizeLocalUrl')) {
-			return t3lib_div::sanitizeLocalUrl($url);
-		} else {
-			return self::internalSanitizeLocalUrl($url);
-		}
-
-	}
-
-
-	/**
 	 * Checks if a given string is a valid frame URL to be loaded in the
 	 * backend.
 	 *
@@ -58,10 +41,8 @@ final class tx_templavoila_div {
 	private static function internalSanitizeLocalUrl($url = '') {
 		$sanitizedUrl = '';
 		$decodedUrl = rawurldecode($url);
-		if (t3lib_div::int_from_ver(TYPO3_version) > 4002000) {
-			if ($decodedUrl !== t3lib_div::removeXSS($decodedUrl)) {
-				$decodedUrl = '';
-			}
+		if ($decodedUrl !== t3lib_div::removeXSS($decodedUrl)) {
+			$decodedUrl = '';
 		}
 		if (!empty($url) && $decodedUrl !== '') {
 			$testAbsoluteUrl = t3lib_div::resolveBackPath($decodedUrl);
@@ -127,7 +108,6 @@ final class tx_templavoila_div {
 		return $denyItems;
 	}
 
-
 	/**
 	 * Get a list of referencing elements other than the given pid.
 	 *
@@ -189,6 +169,45 @@ final class tx_templavoila_div {
 			$foreignRefs = count($references['pages']) || count($references['pages_language_overlay']);
 		}
 		return $foreignRefs;
+	}
+
+	/**
+	 * Returns an integer from a three part version number, eg '4.12.3' -> 4012003
+	 * Compatibility layer to make sure TV works in systems < 4.6
+	 *
+	 * @see t3lib_utility_VersionNumber::convertVersionNumberToInteger
+	 * @param $versionNumber string Version number on format x.x.x
+	 * @return integer Integer version of version number (where each part can count to 999)
+	 */
+	public function convertVersionNumberToInteger($version) {
+		$result = 0;
+		if (class_exists('t3lib_utility_VersionNumber')) {
+			$result = t3lib_utility_VersionNumber::convertVersionNumberToInteger($version);
+		} else {
+			$result = t3lib_div::int_from_ver($version);
+		}
+		return $result;
+	}
+
+
+	/**
+	 * Forces the integer $theInt into the boundaries of $min and $max. If the $theInt is FALSE then the $defaultValue is applied.
+	 *
+	 * @see t3lib_utility_Math::canBeInterpretedAsInteger
+	 * @param $theInt integer Input value
+	 * @param $min integer Lower limit
+	 * @param $max integer Higher limit
+	 * @param $defaultValue integer Default value if input is FALSE.
+	 * @return integer The input value forced into the boundaries of $min and $max
+	 */
+	public static function canBeInterpretedAsInteger($var) {
+
+		if (class_exists('t3lib_utility_Math')) {
+			$result = t3lib_utility_Math::canBeInterpretedAsInteger($var);
+		} else {
+			$result = t3lib_div::testInt($var);
+		}
+		return $result;
 	}
 }
 ?>

@@ -1,5 +1,5 @@
 <?php
-# TYPO3 CVS ID: $Id: ext_localconf.php 44010 2011-02-22 12:27:18Z tolleiv $
+# TYPO3 CVS ID: $Id$
 if (!defined ('TYPO3_MODE')) 	die ('Access denied.');
 
 // unserializing the configuration so we can use it here:
@@ -12,14 +12,13 @@ if (!$_EXTCONF['enable.']['renderFCEHeader']) {
 	$tvSetup[] = 'tt_content.templavoila_pi1.10 >';
 }
 
-if(t3lib_div::int_from_ver(TYPO3_version) >= 4003000) {
 		//sectionIndex replacement
-	$tvSetup[] = 'tt_content.menu.20.3 = USER
+$tvSetup[] = 'tt_content.menu.20.3 = USER
 	tt_content.menu.20.3.userFunc = tx_templavoila_pi1->tvSectionIndex
 	tt_content.menu.20.3.select.where >
 	tt_content.menu.20.3.indexField.data = register:tx_templavoila_pi1.current_field
-	';
-}
+';
+
 
 t3lib_extMgm::addTypoScript($_EXTKEY,'setup',implode(PHP_EOL, $tvSetup), 43);
 
@@ -27,10 +26,11 @@ t3lib_extMgm::addTypoScript($_EXTKEY,'setup',implode(PHP_EOL, $tvSetup), 43);
 t3lib_extMgm::addPageTSConfig('
     mod.web_list.newPageWiz.overrideWithExtension = templavoila
 	mod.web_list.newContentWiz.overrideWithExtension = templavoila
-	mod.web_txtemplavoilaM2.templatePath = templates
+	mod.web_txtemplavoilaM2.templatePath = templates,default/templates
 	mod.web_txtemplavoilaM1.enableDeleteIconForLocalElements = 0
 	mod.web_txtemplavoilaM1.enableContentAccessWarning = 1
 	mod.web_txtemplavoilaM1.enableLocalizationLinkForFCEs = 0
+	mod.web_txtemplavoilaM1.useLiveWorkspaceForReferenceListUpdates = 1
 ');
 
  	// Use templavoila instead of the default page module
@@ -59,6 +59,7 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['templavoila']['mod1']['renderPreviewCont
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['templavoila']['mod1']['renderPreviewContent']['mailform']          = 'EXT:templavoila/classes/preview/class.tx_templavoila_preview_type_text.php:&tx_templavoila_preview_type_text';
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['templavoila']['mod1']['renderPreviewContent']['header']            = 'EXT:templavoila/classes/preview/class.tx_templavoila_preview_type_header.php:&tx_templavoila_preview_type_header';
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['templavoila']['mod1']['renderPreviewContent']['multimedia']        = 'EXT:templavoila/classes/preview/class.tx_templavoila_preview_type_multimedia.php:&tx_templavoila_preview_type_multimedia';
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['templavoila']['mod1']['renderPreviewContent']['media']             = 'EXT:templavoila/classes/preview/class.tx_templavoila_preview_type_media.php:&tx_templavoila_preview_type_media';
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['templavoila']['mod1']['renderPreviewContent']['uploads']           = 'EXT:templavoila/classes/preview/class.tx_templavoila_preview_type_uploads.php:&tx_templavoila_preview_type_uploads';
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['templavoila']['mod1']['renderPreviewContent']['textpic']           = 'EXT:templavoila/classes/preview/class.tx_templavoila_preview_type_textpic.php:&tx_templavoila_preview_type_textpic';
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['templavoila']['mod1']['renderPreviewContent']['splash']            = 'EXT:templavoila/classes/preview/class.tx_templavoila_preview_type_textpic.php:&tx_templavoila_preview_type_textpic';
@@ -253,19 +254,5 @@ $TYPO3_CONF_VARS['BE']['AJAX']['tx_templavoila_mod1_ajax::moveRecord'] =
 
 $TYPO3_CONF_VARS['BE']['AJAX']['tx_templavoila_cm1_ajax::getDisplayFileContent'] =
 	'EXT:templavoila/cm1/class.tx_templavoila_cm1_ajax.php:tx_templavoila_cm1_ajax->getDisplayFileContent';
-
-if(t3lib_div::int_from_ver(TYPO3_version) < 4003000) {
-	$list = include(t3lib_extMgm::extPath('templavoila') . '/ext_autoload.php');
-	require_once $list['tx_templavoila_api'];
-	require_once $list['tx_templavoila_div'];
-	require_once $list['tx_templavoila_icons'];
-	require_once $list['tx_templavoila_datastructure'];
-	require_once $list['tx_templavoila_datastructure_dbbase'];
-	require_once $list['tx_templavoila_datastructure_staticbase'];
-	require_once $list['tx_templavoila_datastructurerepository'];
-	require_once $list['tx_templavoila_template'];
-	require_once $list['tx_templavoila_templaterepository'];
-	require_once $list['tx_templavoila_staticdstools'];
-}
 
 ?>

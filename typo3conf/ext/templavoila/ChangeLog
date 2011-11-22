@@ -1,3 +1,13 @@
+2011-09-28 Tolleiv Nietsch <nietsch@aoemedia.de> 
+
+	* Fixed issue: #18291: Section index might be wrong if it's placed after an FCE  (Thanks to Thomas Layh)
+
+2011-08-27 Tolleiv Nietsch <nietsch@aoemedia.de> 
+
+	* Fixed issue: #18261: t3lib_div_int_from_ver is deprecated 
+	* Fixed issue: #18147: Install as global should be possible
+	* Fixed bug: #18158: The requested URL /typo3conf/ext/templavoila/mod1/mod.php was not found on this server. 
+
 2011-05-12 Tolleiv Nietsch <nietsch@aoemedia.de> 
 
 	* Fixed bug: #18076: Page templates using Inherited language mode don't work properly on page module
@@ -13,6 +23,7 @@
 	* Fixed bug: #18101: Preview icons missing in new page wizard if TYPO3 is installed in subdirectory of DocumentRoot (Thanks to Tobias Schaefer)
 	* Fixed bug: #18116: CE sitemap: Check if content ids exist (Thanks to Benjamin Mack)
 	* Fixed bug: #18098: Link to db_list.php is deprecated in Typo3 4.5 (Thanks to Daniel Minder)
+	* Fixed bug: #18100: One 4.2 hack left over in mod2/index.php (Thanks to Bjorn Pedersen)
 
 2011-03-25 Tolleiv Nietsch <nietsch@aoemedia.de> 
 
@@ -21,9 +32,13 @@
 	* Fxied bug: #18037: Mod2 icons lack proper tooltips 
 	* Fixed bug: #18033: RANGE for "unnamed" elements exclude the current element 
 
-2011-03-13 Tolleiv Nietsch <nietsch@aoemedia.de> 
+2011-03-12 Tolleiv Nietsch <nietsch@aoemedia.de> 
 
-	* Fixed bug: #17871: Use of deprecated function t3lib_div::view_array 
+	* Fixed bug: #17871: Use of deprecated function t3lib_div::view_array
+
+2011-02-26 Tolleiv Nietsch <nietsch@aoemedia.de> 
+
+	* Fixed bug: #17781: Remove TYPO3 4.2 compatibility blocks
 
 2011-02-24 Tolleiv Nietsch <nietsch@aoemedia.de> 
 
@@ -1756,6 +1771,6 @@ See the updated many for more information. BTW: Thanks for the extra fields!
 
 2003-10-28  Kasper Skaarhoej
 
-	* Added $Id: ChangeLog 47634 2011-05-12 14:08:36Z tolleiv $ keywords tags.
+	* Added $Id$ keywords tags.
 	* Added support+icon for iframe tags in htmlmarkup class.
 	* Added package/subpackage tags.

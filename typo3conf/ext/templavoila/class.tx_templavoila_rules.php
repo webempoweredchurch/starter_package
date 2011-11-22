@@ -26,7 +26,7 @@
  *
  * Deprecated - not used anymore since version 1.0.0
  *
- * $Id: class.tx_templavoila_rules.php 25264 2009-10-11 18:25:56Z tolleiv $
+ * $Id$
  *
  * @author     Robert Lemke <robert@typo3.org>
  */

@@ -24,7 +24,7 @@
 /**
  * Plugin 'Flexible Content' for the 'templavoila' extension.
  *
- * $Id: class.tx_templavoila_pi1.php 47514 2011-05-10 12:39:48Z tolleiv $
+ * $Id$
  *
  * @author    Kasper Skaarhoj <kasper@typo3.com>
  * @coauthor  Robert Lemke <robert@typo3.org>
@@ -76,7 +76,7 @@ class tx_templavoila_pi1 extends tslib_pibase {
 
 	var $inheritValueFromDefault=1;		// If set, children-translations will take the value from the default if "false" (zero or blank)
 
-	static $enablePageRenderer = FALSE;
+	static $enablePageRenderer = TRUE;
 
 	/**
 	 * Markup object
@@ -232,10 +232,8 @@ class tx_templavoila_pi1 extends tslib_pibase {
 	 */
 	function initVars($conf)	{
 		$this->inheritValueFromDefault = $conf['dontInheritValueFromDefault'] ? 0 : 1;
-		if (t3lib_div::int_from_ver(TYPO3_version) >= 4003000) {
-				// naming choosen to fit the regular TYPO3 integrators needs ;)
-			self::$enablePageRenderer = isset($conf['advancedHeaderInclusion']) ? $conf['advancedHeaderInclusion'] : self::$enablePageRenderer;
-		}
+			// naming choosen to fit the regular TYPO3 integrators needs ;)
+		self::$enablePageRenderer = isset($conf['advancedHeaderInclusion']) ? $conf['advancedHeaderInclusion'] : self::$enablePageRenderer;
 		$this->conf=$conf;
 	}
 
@@ -482,6 +480,9 @@ class tx_templavoila_pi1 extends tslib_pibase {
 							$savedParentInfo[$dkey] = $dvalue;
 							$unsetKeys[] = $dkey;
 						}
+						if (preg_match('/^tx_templavoila_pi1\.(nested_fields|current_field)/', $dkey)) {
+							$savedParentInfo[$dkey] = $dvalue;
+						}
                     }
 
                     // Step 2: unset previous parent info
@@ -502,12 +503,6 @@ class tx_templavoila_pi1 extends tslib_pibase {
                     $registerKeys[] = 'tx_templavoila_pi1.parentRec.__SERIAL';
                 }
             }
-
-			if (isset($GLOBALS['TSFE']->register['tx_templavoila_pi1.nested_fields'])) {
-				$nested_fields = $GLOBALS['TSFE']->register['tx_templavoila_pi1.nested_fields'];
-			} else {
-				$nested_fields = '';
-			}
 
 				// For each DS element:
 			foreach($DSelements as $key => $dsConf)	{
@@ -668,8 +663,6 @@ class tx_templavoila_pi1 extends tslib_pibase {
             foreach ($savedParentInfo as $dkey => $dvalue) {
                 $GLOBALS['TSFE']->register[$dkey] = $dvalue;
             }
-
-			$GLOBALS['TSFE']->register['tx_templavoila_pi1.nested_fields'] = $nested_fields;
         }
     }
 

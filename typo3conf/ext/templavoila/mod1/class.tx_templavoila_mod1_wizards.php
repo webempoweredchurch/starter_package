@@ -24,7 +24,7 @@
 /**
  * Submodule 'wizards' for the templavoila page module
  *
- * $Id: class.tx_templavoila_mod1_wizards.php 47548 2011-05-10 21:32:59Z tolleiv $
+ * $Id$
  *
  * @author     Robert Lemke <robert@typo3.org>
  */
@@ -209,9 +209,7 @@ class tx_templavoila_mod1_wizards {
 		$this->doc->postCode.= $CMparts[2] . $tceforms->printNeededJSFunctions();
 
 			// fix due to #13762
-		if (t3lib_div::int_from_ver(TYPO3_version) >= 4003000) {
-			$this->doc->inDocStyles .= '.c-inputButton{ cursor:pointer; }';
-		}
+		$this->doc->inDocStyles .= '.c-inputButton{ cursor:pointer; }';
 
 		$content.=$this->doc->header($LANG->sL('LLL:EXT:lang/locallang_core.xml:db_new.php.pagetitle'));
 		$content.=$this->doc->startPage($LANG->getLL ('createnewpage_title'));

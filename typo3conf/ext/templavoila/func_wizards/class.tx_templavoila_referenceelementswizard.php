@@ -25,7 +25,7 @@
  * Reference elements wizard,
  * References all unused elements in a treebranch to a specific point in the TV-DS
  *
- * $Id: class.tx_templavoila_referenceelementswizard.php 43363 2011-02-09 23:59:29Z tolleiv $
+ * $Id$
  *
  * @author     Robert Lemke <robert@typo3.org>
  */
@@ -96,7 +96,7 @@ class tx_templavoila_referenceElementsWizard extends t3lib_extobjbase {
 		$tree->init('AND '.$GLOBALS['BE_USER']->getPagePermsClause(1));
 
 			// Creating top icon; the current page
-		$HTML = tx_templavoila_icons::getIconForRecord('pages', $treeStartingRecord);
+		$HTML = t3lib_iconWorks::getSpriteIconForRecord('pages', $treeStartingRecord);
 		$tree->tree[] = array(
 			'row' => $treeStartingRecord,
 			'HTML' => $HTML

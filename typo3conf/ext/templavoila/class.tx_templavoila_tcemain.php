@@ -25,7 +25,7 @@
 /**
  * Class 'tx_templavoila_tcemain' for the templavoila extension.
  *
- * $Id: class.tx_templavoila_tcemain.php 47628 2011-05-12 13:11:59Z tolleiv $
+ * $Id$
  *
  * @author     Robert Lemke <robert@typo3.org>
  */

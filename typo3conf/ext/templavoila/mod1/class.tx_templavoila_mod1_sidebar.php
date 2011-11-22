@@ -24,7 +24,7 @@
 /**
  * Submodule 'sidebar' for the templavoila page module
  *
- * $Id: class.tx_templavoila_mod1_sidebar.php 43313 2011-02-09 07:26:41Z tolleiv $
+ * $Id$
  *
  * @author     Robert Lemke <robert@typo3.org>
  */
@@ -96,8 +96,10 @@ class tx_templavoila_mod1_sidebar {
 		$hideIfEmpty = $pObj->modTSconfig['properties']['showTabsIfEmpty'] ? FALSE : TRUE;
 
 			// Register the locally available sidebar items. Additional items may be added by other extensions.
-		if (t3lib_extMgm::isLoaded('version') && $GLOBALS['BE_USER']->check('modules','web_txversionM1'))	{
-			$this->sideBarItems['versioning'] = array (
+		if (t3lib_extMgm::isLoaded('version') && !t3lib_extMgm::isLoaded('workspaces')
+			&& $GLOBALS['BE_USER']->check('modules', 'web_txversionM1')
+		) {
+			$this->sideBarItems['versioning'] = array(
 				'object' => &$this,
 				'method' => 'renderItem_versioning',
 				'label' => $LANG->getLL('versioning'),
@@ -196,8 +198,8 @@ class tx_templavoila_mod1_sidebar {
 				// Create the whole sidebar:
 			switch ($this->position) {
 				case 'left':
-					$minusIcon = tx_templavoila_icons::getIcon('actions-view-table-collapse');
-					$plusIcon = tx_templavoila_icons::getIcon('actions-view-table-expand');
+					$minusIcon = t3lib_iconWorks::getSpriteIcon('actions-view-table-collapse');
+					$plusIcon = t3lib_iconWorks::getSpriteIcon('actions-view-table-expand');
 					$sideBar = '
 						<!-- TemplaVoila Sidebar (left) begin -->
 
@@ -352,27 +354,14 @@ class tx_templavoila_mod1_sidebar {
 				</tr>
 			');
 
-			if (t3lib_div::int_from_ver(TYPO3_version) >= 4004000) {
-				$tableRows[] = '
-				<tr class="bgColor4">
-					<td width="20">
-						&nbsp;
-					</td>
-					<td colspan="9">' . $versionSelector . '</td>
-				</tr>
-				';
-			} else {
-				$tableRows[] = '
-				<tr class="bgColor4">
-					<td width="20">
-						&nbsp;
-					</td><td width="200" style="vertical-align:middle;">
-						' . $GLOBALS['LANG']->getLL('sidebar_versionSelector', 1) . ':
-					</td>
-					<td>' . $versionSelector . '</td>
-				</tr>
-				';
-			}
+			$tableRows[] = '
+			<tr class="bgColor4">
+				<td width="20">
+					&nbsp;
+				</td>
+				<td colspan="9">' . $versionSelector . '</td>
+			</tr>
+			';
 
 			return '<table border="0" cellpadding="0" cellspacing="1" class="lrPadding" width="100%">' . implode ('', $tableRows) . '</table>';
 		}
@@ -418,25 +407,6 @@ class tx_templavoila_mod1_sidebar {
 					<td>'.t3lib_BEfunc::getFuncCheck($pObj->id,'SET[showOutline]',$pObj->MOD_SETTINGS['showOutline'],'','').'</td>
 				</tr>
 			';
-		}
-
-			// Render cache menu:
-		if ($pObj->id>0) {
-			$cacheMenu = $this->doc->clearCacheMenu(intval($pObj->id), FALSE);
-			if ($cacheMenu != '') {
-					// Show cache functions only if they are available to the user
-				$cshItem = t3lib_BEfunc::cshItem('xMOD_csh_corebe', 'TCEforms_cacheSelector', $GLOBALS['BACK_PATH'],'', TRUE);
-				$tableRows[] = '
-					<tr class="bgColor4">
-						<td width="20">
-							' . $cshItem . '
-						</td><td width="200" style="vertical-align:middle;">
-							' . $LANG->getLL('sidebar_advancedfunctions_labelcachefunctions', 1) . ':
-						</td>
-						<td>' . $cacheMenu . '</td>
-					</tr>
-				';
-			}
 		}
 
 		return (count ($tableRows)) ? '<table border="0" cellpadding="0" cellspacing="1" class="lrPadding" width="100%">'.implode ('', $tableRows).'</table>' : '';
