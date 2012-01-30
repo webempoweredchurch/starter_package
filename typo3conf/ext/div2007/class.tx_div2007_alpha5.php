@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2011 Kasper Skårhøj (kasperYYYY@typo3.com)
+*  (c) 2012 Kasper Skårhøj (kasperYYYY@typo3.com)
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -26,36 +26,25 @@
 ***************************************************************/
 
 /**
- * Collection of static functions to work in cooperation with the extension lib (lib/div)
+ * Collection of static functions contributed by different people
  *
- * PHP version 5
+ * This class contains diverse staticfunctions in "alpha" status.
+ * It is a kind of quarantine for newly suggested functions.
  *
+ * The class offers the possibilty to quickly add new functions to div2007,
+ * without much planning before. In a second step the functions will be reviewed,
+ * adapted and fully implemented into the system of div2007 classes.
  *
  * @package    TYPO3
  * @subpackage div2007
  * @author     Kasper Skårhøj <kasperYYYY@typo3.com>
  * @author     Franz Holzinger <franz@ttproducts.de>
  * @license    http://www.opensource.org/licenses/lgpl-license.php LGPL
- * @version    SVN: $Id: class.tx_div2007_alpha5.php 95 2011-11-16 08:30:16Z franzholz $
+ * @version    SVN: $Id: class.tx_div2007_alpha5.php 110 2012-01-28 17:07:14Z franzholz $
  * @since      0.1
  */
 
-/**
- * Collection of static functions contributed by different people
- *
- * This class contains diverse staticfunctions in "alphpa" status.
- * It is a kind of quarantine for newly suggested functions.
- *
- * The class offers the possibilty to quickly add new functions to div,
- * without much planning before. In a second step the functions will be reviewed,
- * adapted and fully implemented into the system of lib/div classes.
- *
- * @package    TYPO3
- * @subpackage div2007
- * @author     different Members of the Extension Coordination Team
- */
-
-require_once (PATH_BE_div2007.'class.tx_div2007_ff.php');
+require_once (PATH_BE_div2007 . 'class.tx_div2007_ff.php');
 
 class tx_div2007_alpha5 {
 
@@ -87,22 +76,39 @@ class tx_div2007_alpha5 {
 	 * @access	public
 	 *
 	 */
-	static public function getSetupOrFFvalue_fh002 (&$cObj, $code, $codeExt, $defaultCode, $T3FlexForm_array, $fieldName='display_mode', $useFlexforms=1, $sheet='sDEF',$lang='lDEF',$value='vDEF') {
-		$rc = '';
+	static public function getSetupOrFFvalue_fh002 (
+		&$cObj,
+		$code,
+		$codeExt,
+		$defaultCode,
+		$T3FlexForm_array,
+		$fieldName = 'display_mode',
+		$useFlexforms = 1,
+		$sheet = 'sDEF',
+		$lang = 'lDEF',
+		$value = 'vDEF'
+	) {
+		$result = '';
 		if (empty($code)) {
 			if ($useFlexforms) {
 				// Converting flexform data into array:
-				$rc = tx_div2007_ff::get($T3FlexForm_array, $fieldName, $sheet, $lang, $value);
+				$result = tx_div2007_ff::get(
+					$T3FlexForm_array,
+					$fieldName,
+					$sheet,
+					$lang,
+					$value
+				);
 			} else {
-				$rc = strtoupper(trim($cObj->stdWrap($code, $codeExt)));
+				$result = strtoupper(trim($cObj->stdWrap($code, $codeExt)));
 			}
-			if (empty($rc)) {
-				$rc = strtoupper($defaultCode);
+			if (empty($result)) {
+				$result = strtoupper($defaultCode);
 			}
 		} else {
-			$rc = $code;
+			$result = $code;
 		}
-		return $rc;
+		return $result;
 	}
 
 
@@ -322,38 +328,46 @@ class tx_div2007_alpha5 {
 	 * Returns the localized label of the LOCAL_LANG key, $key used since TYPO3 4.6
 	 * Notice that for debugging purposes prefixes for the output values can be set with the internal vars ->LLtestPrefixAlt and ->LLtestPrefix
 	 *
-	 * @param	object		tx_div2007_alpha_language_base object
+	 * @param	object		tx_div2007_alpha_language_base or a tslib_pibase object
 	 * @param	string		The key from the LOCAL_LANG array for which to return the value.
 	 * @param	string		output: the used language
 	 * @param	string		Alternative string to return IF no value is found set for the key, neither for the local language nor the default.
 	 * @param	boolean		If TRUE, the output label is passed through htmlspecialchars()
 	 * @return	string		The value from LOCAL_LANG.
 	 */
-	static public function getLL_fh002 (&$langObj, $key, &$usedLang, $alternativeLabel = '', $hsc = FALSE) {
+	static public function getLL_fh002 (&$langObj, $key, &$usedLang = '', $alternativeLabel = '', $hsc = FALSE) {
+		$typoVersion = '';
 
-		$typoVersion = $langObj->getTypoVersion();
+		if (method_exists($langObj, 'getTypoVersion')) {
+			$typoVersion = $langObj->getTypoVersion();
+		} else {
+			$typoVersion =
+				class_exists('t3lib_utility_VersionNumber') ?
+					t3lib_utility_VersionNumber::convertVersionNumberToInteger(TYPO3_version) :
+					t3lib_div::int_from_ver(TYPO3_version);
+		}
 
 		if ($typoVersion >= 4006000) {
 			if (isset($langObj->LOCAL_LANG[$langObj->LLkey][$key][0]['target'])) {
 
 				$usedLang = $langObj->LLkey;
 					// The "from" charset of csConv() is only set for strings from TypoScript via _LOCAL_LANG
-				if (isset($langObj->LOCAL_LANG_charset[$langObj->LLkey][$key])) {
+				if (isset($langObj->LOCAL_LANG_charset[$usedLang][$key])) {
 					$word = $GLOBALS['TSFE']->csConv(
-						$langObj->LOCAL_LANG[$langObj->LLkey][$key][0]['target'],
-						$langObj->LOCAL_LANG_charset[$langObj->LLkey][$key]
+						$langObj->LOCAL_LANG[$usedLang][$key][0]['target'],
+						$langObj->LOCAL_LANG_charset[$usedLang][$key]
 					);
 				} else {
 					$word = $langObj->LOCAL_LANG[$langObj->LLkey][$key][0]['target'];
 				}
 			} elseif ($langObj->altLLkey && isset($langObj->LOCAL_LANG[$langObj->altLLkey][$key][0]['target'])) {
-
 				$usedLang = $langObj->altLLkey;
+
 					// The "from" charset of csConv() is only set for strings from TypoScript via _LOCAL_LANG
-				if (isset($langObj->LOCAL_LANG_charset[$langObj->altLLkey][$key])) {
+				if (isset($langObj->LOCAL_LANG_charset[$usedLang][$key])) {
 					$word = $GLOBALS['TSFE']->csConv(
-						$langObj->LOCAL_LANG[$langObj->altLLkey][$key][0]['target'],
-						$langObj->LOCAL_LANG_charset[$langObj->altLLkey][$key]
+						$langObj->LOCAL_LANG[$usedLang][$key][0]['target'],
+						$langObj->LOCAL_LANG_charset[$usedLang][$key]
 					);
 				} else {
 					$word = $langObj->LOCAL_LANG[$langObj->altLLkey][$key][0]['target'];
@@ -362,9 +376,8 @@ class tx_div2007_alpha5 {
 
 				$usedLang = 'default';
 					// Get default translation (without charset conversion, english)
-				$word = $langObj->LOCAL_LANG['default'][$key][0]['target'];
+				$word = $langObj->LOCAL_LANG[$usedLang][$key][0]['target'];
 			} else {
-
 					// Return alternative string or empty
 				$word = (isset($langObj->LLtestPrefixAlt)) ? $langObj->LLtestPrefixAlt . $alternativeLabel : $alternativeLabel;
 			}
@@ -396,14 +409,30 @@ class tx_div2007_alpha5 {
 	/**
      * used since TYPO3 4.6
 	 * Loads local-language values by looking for a "locallang.php" file in the plugin class directory ($langObj->scriptRelPath) and if found includes it.
-	 * Also locallang values set in the TypoScript property "_LOCAL_LANG" are merged onto the values found in the "locallang.php" file.
+	 * Also locallang values set in the TypoScript property "_LOCAL_LANG" are merged onto the values found in the "locallang.xml" file.
 	 *
+	 * @param	object		tx_div2007_alpha_language_base or a tslib_pibase object
+	 * @param	string		language file to load
+	 * @param	boolean		If TRUE, then former language items can be overwritten from the new file
 	 * @return	void
 	 */
-	static public function loadLL_fh002 (&$langObj, $langFileParam = '', $overwrite = TRUE) {
-
+	static public function loadLL_fh002 (
+		&$langObj,
+		$langFileParam = '',
+		$overwrite = TRUE
+	) {
 		if (is_object($langObj)) {
-			$typoVersion = $langObj->getTypoVersion();
+			$typoVersion = '';
+
+			if (method_exists($langObj, 'getTypoVersion')) {
+				$typoVersion = $langObj->getTypoVersion();
+			} else {
+				$typoVersion =
+					class_exists('t3lib_utility_VersionNumber') ?
+						t3lib_utility_VersionNumber::convertVersionNumberToInteger(TYPO3_version) :
+						t3lib_div::int_from_ver(TYPO3_version);
+			}
+
 			$langFile = ($langFileParam ? $langFileParam : 'locallang.xml');
 
 			if (substr($langFile, 0, 4) === 'EXT:' || substr($langFile, 0, 5) === 'typo3' ||  substr($langFile, 0, 9) === 'fileadmin') {
@@ -411,7 +440,6 @@ class tx_div2007_alpha5 {
 			} else {
 				$basePath = t3lib_extMgm::extPath($langObj->extKey) . ($langObj->scriptRelPath ? dirname($langObj->scriptRelPath) . '/' : '') . $langFile;
 			}
-
 				// Read the strings in the required charset (since TYPO3 4.2)
 			$tempLOCAL_LANG = t3lib_div::readLLfile($basePath, $langObj->LLkey, $GLOBALS['TSFE']->renderCharset);
 
@@ -436,9 +464,9 @@ class tx_div2007_alpha5 {
 					foreach ($langObj->LOCAL_LANG as $langKey => $tempArray) {
 						if (is_array($tempLOCAL_LANG[$langKey])) {
 							if ($overwrite) {
-								$langObj->LOCAL_LANG[$langKey] = array_merge($langObj->LOCAL_LANG[$langKey],$tempLOCAL_LANG[$langKey]);
+								$langObj->LOCAL_LANG[$langKey] = array_merge($langObj->LOCAL_LANG[$langKey], $tempLOCAL_LANG[$langKey]);
 							} else {
-								$langObj->LOCAL_LANG[$langKey] = array_merge($tempLOCAL_LANG[$langKey],$langObj->LOCAL_LANG[$langKey]);
+								$langObj->LOCAL_LANG[$langKey] = array_merge($tempLOCAL_LANG[$langKey], $langObj->LOCAL_LANG[$langKey]);
 							}
 						}
 					}
@@ -525,7 +553,7 @@ class tx_div2007_alpha5 {
 			}
 			$langObj->LOCAL_LANG_loaded = 1;
 		} else {
-			$output = 'error in call of tx_div2007_alpha::loadLL_fh001: parameter $langObj is not an object';
+			$output = 'error in call of tx_div2007_alpha::loadLL_fh002: parameter $langObj is not an object';
 			debug($output, '$output'); // keep this
 		}
 	}
@@ -572,9 +600,17 @@ class tx_div2007_alpha5 {
 			// Initializing variables:
 		$pointer = intval($pObject->ctrlVars[$pointerName]);
 		$count = intval($pObject->internal['resCount']);
-		$limit = t3lib_div::intInRange($pObject->internal['limit'],1,1000);
+		$limit = (
+			class_exists('t3lib_utility_Math') ?
+				t3lib_utility_Math::forceIntegerInRange($pObject->internal['limit'], 1, 1000) :
+				t3lib_div::intInRange($pObject->internal['limit'], 1, 1000)
+			);
 		$totalPages = ceil($count/$limit);
-		$maxPages = t3lib_div::intInRange($pObject->internal['maxPages'],1,100);
+		$maxPages = (
+			class_exists('t3lib_utility_Math') ?
+				t3lib_utility_Math::forceIntegerInRange($pObject->internal['maxPages'], 1, 100) :
+				t3lib_div::intInRange($pObject->internal['maxPages'], 1, 100)
+			);
 		$bUseCache = self::autoCache_fh001($pObject, $pObject->ctrlVars);
 
 			// $showResultCount determines how the results of the pagerowser will be shown.
@@ -594,7 +630,11 @@ class tx_div2007_alpha5 {
 				$pagefloat = ceil(($maxPages - 1)/2);
 			} else {
 				// pagefloat set as integer. 0 = left, value >= $pObject->internal['maxPages'] = right
-				$pagefloat = t3lib_div::intInRange($pObject->internal['pagefloat'],-1,$maxPages-1);
+				$pagefloat = (
+					class_exists('t3lib_utility_Math') ?
+						t3lib_utility_Math::forceIntegerInRange($pObject->internal['pagefloat'], -1, $maxPages-1) :
+						t3lib_div::intInRange($pObject->internal['pagefloat'], -1, $maxPages-1)
+				);
 			}
 		} else {
 			$pagefloat = -1; // pagefloat disabled
@@ -649,7 +689,11 @@ class tx_div2007_alpha5 {
 				$firstPage = max(0,$lastPage-$maxPages);
 			} else {
 				$firstPage = 0;
-				$lastPage = t3lib_div::intInRange($totalPages,1,$maxPages);
+				$lastPage = (
+					class_exists('t3lib_utility_Math') ?
+						t3lib_utility_Math::forceIntegerInRange($totalPages, 1, $maxPages) :
+						t3lib_div::intInRange($totalPages, 1, $maxPages)
+				);
 			}
 			$links=array();
 
@@ -814,9 +858,17 @@ class tx_div2007_alpha5 {
 			// Initializing variables:
 		$pointer = intval($pObject->ctrlVars[$pointerName]);
 		$count = intval($pObject->internal['resCount']);
-		$limit = t3lib_div::intInRange($pObject->internal['limit'],1,1000);
+		$limit = (
+			class_exists('t3lib_utility_Math') ?
+				t3lib_utility_Math::forceIntegerInRange($pObject->internal['limit'], 1, 1000) :
+				t3lib_div::intInRange($pObject->internal['limit'], 1, 1000)
+		);
 		$totalPages = ceil($count/$limit);
-		$maxPages = t3lib_div::intInRange($pObject->internal['maxPages'],1,100);
+		$maxPages = (
+			class_exists('t3lib_utility_Math') ?
+				t3lib_utility_Math::forceIntegerInRange($pObject->internal['maxPages'], 1, 100) :
+				t3lib_div::intInRange($pObject->internal['maxPages'], 1, 100)
+		);
 		$bUseCache = self::autoCache_fh001($pObject, $pObject->ctrlVars);
 
 			// $showResultCount determines how the results of the pagerowser will be shown.
@@ -836,7 +888,11 @@ class tx_div2007_alpha5 {
 				$pagefloat = ceil(($maxPages - 1)/2);
 			} else {
 				// pagefloat set as integer. 0 = left, value >= $pObject->internal['maxPages'] = right
-				$pagefloat = t3lib_div::intInRange($pObject->internal['pagefloat'],-1,$maxPages-1);
+				$pagefloat = (
+					class_exists('t3lib_utility_Math') ?
+						t3lib_utility_Math::forceIntegerInRange($pObject->internal['pagefloat'], -1, $maxPages-1) :
+						t3lib_div::intInRange($pObject->internal['pagefloat'], -1, $maxPages-1)
+				);
 			}
 		} else {
 			$pagefloat = -1; // pagefloat disabled
@@ -891,7 +947,11 @@ class tx_div2007_alpha5 {
 				$firstPage = max(0,$lastPage-$maxPages);
 			} else {
 				$firstPage = 0;
-				$lastPage = t3lib_div::intInRange($totalPages,1,$maxPages);
+				$lastPage = (
+					class_exists('t3lib_utility_Math') ?
+						t3lib_utility_Math::forceIntegerInRange($totalPages, 1, $maxPages) :
+						t3lib_div::intInRange($totalPages, 1, $maxPages)
+				);
 			}
 			$links=array();
 

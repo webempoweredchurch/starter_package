@@ -30,7 +30,7 @@
  * interface for the language object
  * You can use a pibase object for it.
  *
- * $Id: class.tx_div2007_alpha_language_base.php 93 2011-11-15 12:00:32Z franzholz $
+ * $Id: class.tx_div2007_alpha_language_base.php 107 2012-01-23 19:54:28Z franzholz $
  *
  * @author  Kasper Skaarhoj <kasperYYYY@typo3.com>
  * @maintainer	Franz Holzinger <franz@ttproducts.de>
@@ -41,7 +41,7 @@
 
 
 
-class tx_div2007_alpha_language_base	{
+class tx_div2007_alpha_language_base {
 	public $cObj;
 	public $LOCAL_LANG = Array();		// Local Language content
 	public $LOCAL_LANG_charset = Array();	// Local Language content charset for individual labels (overriding)
@@ -76,7 +76,11 @@ class tx_div2007_alpha_language_base	{
 		$this->extKey = $extKey;
 		$this->conf = $conf;
 		$this->scriptRelPath = $scriptRelPath;
-		$this->typoVersion = t3lib_div::int_from_ver($GLOBALS['TYPO_VERSION']);
+		$this->typoVersion = (
+			class_exists('t3lib_utility_VersionNumber') ?
+				t3lib_utility_VersionNumber::convertVersionNumberToInteger(TYPO3_version) :
+				t3lib_div::int_from_ver(TYPO3_version)
+		);
 	}
 
 	public function &getLocallang () {
@@ -101,7 +105,7 @@ class tx_div2007_alpha_language_base	{
 }
 
 
-if (defined('TYPO3_MODE') && $GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/div2007/class.tx_div2007_alpha_language_base.php'])	{
+if (defined('TYPO3_MODE') && $GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/div2007/class.tx_div2007_alpha_language_base.php']) {
 	include_once($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/div2007/class.tx_div2007_alpha_language_base.php']);
 }
 

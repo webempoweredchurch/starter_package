@@ -36,7 +36,7 @@
  * @author     Elmar Hinz <elmar.hinz@team-red.net>
  * @copyright  2006-2011 Elmar Hinz
  * @license    http://www.opensource.org/licenses/lgpl-license.php LGPL
- * @version    SVN: $Id: class.tx_div2007.php 81 2011-07-19 09:29:48Z franzholz $
+ * @version    SVN: $Id: class.tx_div2007.php 107 2012-01-23 19:54:28Z franzholz $
  * @since      0.1
  */
 

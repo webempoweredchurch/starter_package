@@ -28,7 +28,7 @@
 /**
  * Contains the reknown class "t3lib_div" with general purpose functions
  *
- * $Id: class.tx_div2007_div.php 72 2011-04-03 12:30:41Z franzholz $
+ * $Id: class.tx_div2007_div.php 94 2011-11-15 12:27:44Z franzholz $
  * Revised for TYPO3 4.6 October/2011
  * XHTML compliant
  *
