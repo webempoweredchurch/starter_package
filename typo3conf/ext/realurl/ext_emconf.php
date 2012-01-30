@@ -3,7 +3,7 @@
 ########################################################################
 # Extension Manager/Repository config file for ext "realurl".
 #
-# Auto generated 08-07-2011 10:07
+# Auto generated 30-01-2012 10:23
 #
 # Manual updates:
 # Only the data in the array - everything else is removed by next
@@ -15,7 +15,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'description' => 'Creates nice looking URLs for TYPO3 pages: converts http://example.com/index.phpid=12345&L=2 to http://example.com/path/to/your/page/. Please, ask for free support in TYPO3 mailing lists or contact the maintainer for paid support.',
 	'category' => 'fe',
 	'shy' => 0,
-	'version' => '1.11.2',
+	'version' => '1.12.0',
 	'dependencies' => '',
 	'conflicts' => '',
 	'priority' => '',
@@ -44,7 +44,7 @@ $EM_CONF[$_EXTKEY] = array(
 		'suggests' => array(
 		),
 	),
-	'_md5_values_when_last_written' => 'a:29:{s:9:"ChangeLog";s:4:"f487";s:10:"_.htaccess";s:4:"a6b1";s:20:"class.ext_update.php";s:4:"8518";s:20:"class.tx_realurl.php";s:4:"0155";s:29:"class.tx_realurl_advanced.php";s:4:"3efa";s:32:"class.tx_realurl_autoconfgen.php";s:4:"5226";s:26:"class.tx_realurl_dummy.php";s:4:"6e1b";s:28:"class.tx_realurl_tcemain.php";s:4:"93e1";s:33:"class.tx_realurl_userfunctest.php";s:4:"dda5";s:21:"ext_conf_template.txt";s:4:"c890";s:12:"ext_icon.gif";s:4:"ea80";s:17:"ext_localconf.php";s:4:"e297";s:14:"ext_tables.php";s:4:"faed";s:14:"ext_tables.sql";s:4:"1b11";s:17:"locallang_csh.xml";s:4:"369d";s:16:"locallang_db.xml";s:4:"584a";s:43:"cleanup/class.tx_realurl_cleanuphandler.php";s:4:"a18c";s:12:"doc/TODO.txt";s:4:"b8cb";s:14:"doc/manual.sxw";s:4:"f0a2";s:13:"mod1/conf.php";s:4:"f960";s:14:"mod1/index.php";s:4:"9be3";s:18:"mod1/locallang.xml";s:4:"23df";s:22:"mod1/locallang_mod.xml";s:4:"9fd8";s:19:"mod1/moduleicon.png";s:4:"6b5a";s:38:"modfunc1/class.tx_realurl_modfunc1.php";s:4:"0268";s:41:"modfunc1/class.tx_realurl_pagebrowser.php";s:4:"b616";s:22:"modfunc1/locallang.xml";s:4:"7e4f";s:16:"testmod/conf.php";s:4:"309a";s:17:"testmod/index.php";s:4:"d33b";}',
+	'_md5_values_when_last_written' => 'a:20:{s:9:"ChangeLog";s:4:"9996";s:10:"_.htaccess";s:4:"a6b1";s:20:"class.ext_update.php";s:4:"8518";s:20:"class.tx_realurl.php";s:4:"c5e9";s:29:"class.tx_realurl_advanced.php";s:4:"3efa";s:32:"class.tx_realurl_autoconfgen.php";s:4:"5226";s:28:"class.tx_realurl_tcemain.php";s:4:"fb6f";s:16:"ext_autoload.php";s:4:"a6ff";s:21:"ext_conf_template.txt";s:4:"c890";s:12:"ext_icon.gif";s:4:"ea80";s:17:"ext_localconf.php";s:4:"e297";s:14:"ext_tables.php";s:4:"7182";s:14:"ext_tables.sql";s:4:"ba22";s:17:"locallang_csh.xml";s:4:"369d";s:16:"locallang_db.xml";s:4:"584a";s:12:"doc/TODO.txt";s:4:"b8cb";s:14:"doc/manual.sxw";s:4:"5b07";s:38:"modfunc1/class.tx_realurl_modfunc1.php";s:4:"dca9";s:41:"modfunc1/class.tx_realurl_pagebrowser.php";s:4:"b616";s:22:"modfunc1/locallang.xml";s:4:"7e4f";}',
 );
 
 ?>
