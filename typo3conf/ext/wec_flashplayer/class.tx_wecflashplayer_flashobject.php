@@ -2,7 +2,7 @@
 /***************************************************************
 * Copyright notice
 *
-* (c) 2006 Foundation for Evangelism
+* (c) 2006-2008 Foundation for Evangelism
 * All rights reserved
 *
 * This file is part of the Web-Empowered Church (WEC)
@@ -61,10 +61,17 @@ class tx_wecflashplayer_flashobject {
 	 * @param	string	The path to the FlashObject javascript.
 	 */
 	function tx_wecflashplayer_flashobject($flashMoviePath, $name, $width, $height, $version, $bgColor, $flashObjectPath) {
-		$this->flashObjectVariables =array();
-		$this->flashObjectPath = $flashObjectPath;
+		$this->flashObjectVariables = array();
+		$this->flashObjectParameters = array();
 		
-		$this->flashObject = "var fo = new FlashObject('".$flashMoviePath."', 'flash', '".$width."', '".$height."', '8', '".$bgColor."');";
+		$this->flashObjectPath = $flashObjectPath;
+		$this->flashMoviePath = $flashMoviePath;
+		$this->name = $name;
+		$this->width = $width;
+		$this->height = $height;
+		$this->version = $version;
+		
+		$this->flashObjectParameters['bgcolor'] = $bgColor;
 	}
 	
 	/*
@@ -74,7 +81,7 @@ class tx_wecflashplayer_flashobject {
 	 * @return	null
 	 */
 	function addVariable($var, $value) {
-		$this->flashObjectVariables[] = "fo.addVariable(escape('".addslashes($var)."'), escape('".addSlashes($value)."'));";		
+		$this->flashObjectVariables[$var] = $value;
 	}
 	
 	/*
@@ -83,32 +90,36 @@ class tx_wecflashplayer_flashobject {
 	 * @param	string	The value of the parameter.
 	 */
 	function addParameter($var, $value) {
-		$this->flashObjectVariables[] = "fo.addParam(escape('".addslashes($var)."'), escape('".addSlashes($value)."'));";		
+		$this->flashObjectParameters[$var] = $value;
 	}
-	
-	/*
-	 * Sets the DOM ID that FlashObject will write to.
-	 * @param	string	 The ID to be replaced.
-	 * @return	null
-	 */
-	function write($id) {
-		$this->flashObjectWrite = "fo.write('".$id."');";
-	}
-	
 	
 	/*
 	 * Generates the Javascript output for FlashObject.
 	 * @return	string	Javascript output of FlashObject.
 	 */
-	function output() {
+	function outputHeader() {
 		
+		$javascript = array();
+		
+		$javascript[] = "var flashvars = {";
+		$variables = array();
+		foreach($this->flashObjectVariables as $key => $value) {
+			$variables[] = "	".addSlashes($key).": escape('".addSlashes($value)."')";
+		}
+		$javascript[] = implode(','.chr(10), $variables);
+		$javascript[] = '}';
+		
+		$javascript[] = "var params = {";
+		$parameters = array();
+		foreach($this->flashObjectParameters as $key => $value) {
+			$parameters[] = "	".addSlashes($key).": '".addSlashes($value)."'";
+		}
+		$javascript[] = implode(','.chr(10), $parameters);
+		$javascript[] = '}';
+		$javascript[] = "swfobject.embedSWF('".$this->flashMoviePath."', '".$this->name."', '".$this->width."', '".$this->height."', '8', '', flashvars, params);";
+
 		$GLOBALS['TSFE']->additionalHeaderData['tx_wecflashplayer_flashobject'] = '<script type="text/javascript" src="'.$this->flashObjectPath.'swfobject.js"></script>';		
-				
-		$output .= $this->flashObject.chr(10);
-		$output .= implode(chr(10), $this->flashObjectVariables).chr(10);
-		$output .= $this->flashObjectWrite.chr(10);
-		
-		return t3lib_div::wrapJS($output);
+		$GLOBALS['TSFE']->additionalHeaderData[] = t3lib_div::wrapJS(implode(chr(10), $javascript));
 	}
 }
 
