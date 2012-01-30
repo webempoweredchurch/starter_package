@@ -6,7 +6,7 @@
 * All rights reserved
 *
 * This file is part of the Web-Empowered Church (WEC)
-* (http://WebEmpoweredChurch.org) ministry of Christian Technology Ministries 
+* (http://WebEmpoweredChurch.org) ministry of Christian Technology Ministries
 * International (http://CTMIinc.org). The WEC is developing TYPO3-based
 * (http://typo3.org) free software for churches around the world. Our desire
 * is to use the Internet to help offer new life through Jesus Christ. Please
@@ -28,18 +28,14 @@
 ***************************************************************/
 
 	// DEFAULT initialization of a module [BEGIN]
-unset($MCONF);
-require_once('conf.php');
-require_once($BACK_PATH.'init.php');
-require_once($BACK_PATH.'template.php');
-
+require_once($GLOBALS['BACK_PATH'] . 'template.php');
 $LANG->includeLLFile('EXT:wec_map/mod2/locallang.xml');
-require_once(PATH_t3lib.'class.t3lib_scbase.php');
-$BE_USER->modAccess($MCONF,1);	// This checks permissions and exits if the users has no permission for entry.
+require_once(PATH_t3lib . 'class.t3lib_scbase.php');
+$BE_USER->modAccess($MCONF, 1);	// This checks permissions and exits if the users has no permission for entry.
 	// DEFAULT initialization of a module [END]
 
-require_once('../class.tx_wecmap_cache.php');
-require_once('../class.tx_wecmap_shared.php');
+require_once(t3lib_extMgm::extPath('wec_map') . 'class.tx_wecmap_cache.php');
+require_once(t3lib_extMgm::extPath('wec_map') . 'class.tx_wecmap_shared.php');
 
 
 /**
@@ -120,7 +116,7 @@ class  tx_wecmap_module1 extends t3lib_SCbase {
 					script_ended = 1;
 					if (top.fsMod) top.fsMod.recentIds["web"] = 0;
 				</script>';
-			
+
 			$this->doc->inDocStylesArray[] = '
 					.dirmenu a:link, .dirmenu a:visited {
 						text-decoration: underline;
@@ -347,8 +343,7 @@ class  tx_wecmap_module1 extends t3lib_SCbase {
 		$countryField = tx_wecmap_shared::getAddressField('fe_users', 'country');
 
 		include_once(t3lib_extMgm::extPath('wec_map').'map_service/google/class.tx_wecmap_map_google.php');
-		$className=t3lib_div::makeInstanceClassName('tx_wecmap_map_google');
-		$map = new $className($apiKey, $width, $height);
+		$map = t3lib_div::makeInstance('tx_wecmap_map_google', $apiKey, $width, $height);
 
 		// evaluate map controls based on configuration
 		switch ($mapcontrolsize) {

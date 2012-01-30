@@ -1,175 +1,3743 @@
-2.3.5
-[FIX] German localization fixes.
-[FIX] Custom icons can now be used for Simple Maps that are setup in the Flexform only. 
-[FIX] Enable Show Info on Load again. Behavior for maps with more than on marker is undefined.
-[FIX] Google Maps now shows correctly in Javascript tabs. Thanks to Michael Waider for the fix!
+commit b40034a8317f7718f3bf11a8cb9d5e6025759c0f
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Mon Nov 28 10:12:50 2011 -0600
 
-2.3.4
-[FIX] Only use relative height for the map height when it is a static HTML map.
-[FIX] Enable Show Info on Load again. Behavior for maps with more than on marker is undefined.
+    Change relative require paths to absolute
+    
+    After the change from calling backend modules directly to using the
+    TYPO3 dispatcher, relative paths in backend modules no longer work
+    properly and need to be replaced with absolute paths.
 
-2.3.3
-[NEW] New icons
-[FIX] Restore TYPO3 4.2 compatibility
+commit dcbb3713ce4aecdffcd6c85edd6f0277cd1e1af0
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Thu Nov 10 12:05:00 2011 -0600
 
-2.3.2
-[NEW] enable static maps/failover. See TS reference in docs for more info (experimental)
-[FIX] Fatal Error when a required class wasn't included in some situations
-[FIX] urlencode everything sent to the geocoders instead of manually replacing certain characters
-[FIX] little default CSS tweak to be more specific
+    Adapt JavaScript and related AJAX calls to backend module dispatcher.
 
-2.3.1
-[FIX] subdomain API key handling was broken
+commit 8b6d2089f7deae7eda0edbfaf7f6adf15a2deea2
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Thu Nov 10 11:09:40 2011 -0600
 
-2.3.0
-[NEW] move JS into an external file. Should improve load time and multiple maps on one page. Thanks to Benni Mack!
-[NEW] add French localization. Thanks to Patrick Gaumond!
-[NEW] add Google Earth API view; browser plugin required.
-[NEW] make the API URL configurable. Needed for Premier API keys.
-[NEW] added syslog logging for better error visibility.
-[NEW] change plugins to USER_INT, improving caching and speed. Thanks to Benni Mack!
-[NEW] make city and country groups in the WEC FE User Map hidable. Thanks to Benni Mack!
-[FIX] fix a typo responsible for not allowing customized icons to show up.
-[FIX] fix from-here-to (written) directions. Locations were flipped.
-[FIX] replace some deprecated TYPO3 methods with newer ones.
-[FIX] small bug in API key domain matching. Thanks to Steffen Kamper!
+    Replace deprecated t3lib_div::GParrayMerged() with t3lib_div::_GPmerged()
 
-2.2.1
-[NEW] WEC Table Map now allows for custom SELECT phrase in addition to the JOIN and WHERE.
-[FIX] add workaround for Google Maps API bug #881
-[FIX] minor documentation fixes
-[FIX] better error handling in worldkit geocoder
-[FIX] a few small HTML validation fixes
+commit c2affe23feb2ed95609e3a749166345647194128
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Thu Nov 10 10:43:16 2011 -0600
 
-2.2.0
-[NEW] Allow the Google Maps API version to be chosen from the Extension Manager
-[NEW] Use Hierarchical Map Type control for more map space
-[NEW] Add Terrain view to map type selector and map flexforms as initial setting
-[NEW] Add new hook to set center coordinates and zoom level
-[FIXED] More solid error handling with Geocoder.us
-[FIXED] Google API key signup link updated 
+    Raise minimum TYPO3 version to 4.3
 
-2.1.2
-[FIXED] revert to old method of loading modules due to lots of path errors in BE modules.
-[FIXED] minor label changes
+commit bb942d713676b8f462cee140c3a423af3a10b750
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Thu Nov 10 10:43:03 2011 -0600
 
-2.1.1
-[NEW] API and TS Setting to set the maximum auto zoom
-[FIXED] use correct sidebar title field for pi2 and pi3 by default
-[FIXED] change TS wraps to only show if there is actually content
+    Remove usage of t3lib_div::makeInstanceClassName for TYPO3 4.6 compatibility.
 
-2.1.0
-[NEW] !!!IMPORTANT WEC Simple Map marker bubble TS changed significantly. "title" was formerly defined as TEXT and is now COA
-[NEW] WEC Table Map TS adds a join option to be included in the custom SQL query
-[NEW] Change module inclusion to the new preferred way that gets rid of the relative paths in conf.php
-[FIXED] Pass title through htmlspecialchars to prevent js errors in case it contained quotes
+commit a341161d8e6e301de843d6204eb009aa6b6224c5
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Thu Nov 10 10:39:06 2011 -0600
 
-2.0.1
-[FIXED] Properly pass groups by reference. Fixes problems in PHP4 with maps not showing up.
-[FIXED] "Show info bubble on load" now works again.
-[FIXED] Update API documentation with missing methods.
-[FIXED] Error messages from the API are now properly shown.
-[FIXED] Added another layer to geocoding to make country detection more reliable.
-[FIXED] Tweak what we send to the Yahoo geocoder to get more accurate information back.
-[FIXED] Changed how low-level zoom markers are shown in FE User Map both in the FE plugin and BE module.
-[FIXED] Checks for template inclusion in WEC Table Map work better now.
+    Adapt backend modules to use TYPO3 dispatcher.
 
-2.0.0
-[NEW] !IMPORTANT Optimize TS by requiring an extra static template which needs to be added to the template before the map will work
-[NEW] Add new plugin that will map records from any record configured for WEC Map, by default fe_users, tt_address, and cal.
-[NEW] Improved WEC FE User map TS config options. See docs.
-[NEW] Add radius search to map. Only markers within given radius around given address will show.
-[NEW] Ability to add custom marker icons, thanks to Andreas Hupfau
-[NEW] Add ability to overlay any kml file to map via backend records
-[NEW] Add context sensitive help to plugin flexforms (TYPO3 4.2+ only)
-[NEW] Add new method setCenterByAddress() to API
-[NEW] New new method addTab() to API, used to add a new tab to a marker
-[NEW] Add title and desc setters for marker objects
-[NEW] Add error messages in the plugins if static templates are missing.
-[NEW] Add hook to pi3 for marker preprocessing
-[NEW] Add sidebar with links to markers
-[NEW] Directions are now shown on the first tab below the content, similar to maps.google.com
-[NEW] Significantly cleaned up javascript output
-[NEW] Add option to set default country for address lookup
-[FIXED] Really large info bubbles are now smaller
-[FIXED] Pass all the marker objects by reference now
-[FIXED] Keep wec_map at the bottom of the ext list for correct TCA inclusion
-[FIXED] Remove dependency on our prototype and use TYPO3's instead.
-[FIXED] Remove unneeded javascript helper methods
-[FIXED] Remove API key from FlexForms and TypoScript; all API key management is done through the Map Domain Manager
-[FIXED] Fixed divide by zero error in batch geocoder
+commit 1fb694916efe7f4c29844e6c72c285905e94c4fd
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Oct 8 19:18:16 2010 +0000
 
-1.3.6
-[FIXED] Regression bug: Filtering the FE Map by usergroup now works correctly if users are in more than one group
+    don't include prototype anymore, it's done automatically now.
 
-1.3.5
-[FIXED] wrong function call in the Batch Geocoder
+commit 48d604a835734194ef305043565e9c089f80826d
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Aug 2 21:48:46 2010 +0000
 
-1.3.4
-[FIXED] Google Geocoder works correctly again
+    change defaulttitle to COA to make it more consistent. This will break a customized defaulttitle, though it shouldn't be customized in the first place.
 
-1.3.3
-[FIXED] Filtering the FE Map by usergroup now works correctly if users are in more than one group
+commit a6c7243f0bcf3febc2084e5078891e898f63280b
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Aug 2 21:12:58 2010 +0000
 
-1.3.2
-[NEW] Localize Google Maps error messages
-[NEW] Add a conflicting extension
-[FIXED] Bug when addresses are normalized in some places (_cache) and not in others (_backend)
-[FIXED] Incorrect API key usage when geocoding from the backend
-[FIXED] Add more descriptive error message for directions
-[FIXED] Update docs with 
-1.3.1 changelog and fix wrong CSS reference
-[FIXED] Map now zooms properly when only a manual center is given
+    Use core content object methods to ensure correct display. This fixes a bug that would display content objects out of order.
 
-1.3.1
-[NEW] Add German translation thanks to Christoph Kuhn
-[FIXED] Direction "to here from" were flipped around
-[FIXED] Deleting domains in the API Key Settings works now
-[FIXED] Missing inclusion of the install tool class caused bug in TYPO3 versions < 4.1
+commit b3e3fbe6377de2a54c0d75ae8a1c0aa3278ff1fd
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Aug 2 21:12:53 2010 +0000
 
-1.3.0
-[NEW] Domain management for API keys so the extension can be used on multidomain setups.
-[NEW] Add map controls to the FE User Map in the BE.
-[NEW] Directions are now built into the map, complete with written driving directions.
-[NEW] Add method that adds a marker based on just a table and uid. The address info is taken out of the TCA. See documentation for more details.
-[NEW] If there is only one marker on the map it's now possible to open the info bubble on load.
-[FIXED] potential bug that could cause funky errors due to clearing of cache when it wasn't necessary.
-[FIXED] "cannot redeclare $this" error message in PHP in a TYPO3 hook declaration.
-[FIXED] In some instances the geocoder would override manually changed coordinates.
-[FIXED] Make the map independent of the Prototype JS library. This fixes possible compatibility problems with other JS libraries and saves several hundred kb of files to be loaded.
-[FIXED] Don't include Google's API and other files more than once in the header if there is more than one map on a page.
-[FIXED] Some improvements to the geocoders.
+    Update API section in the docs with all the arguments for the addMarker* methods.
 
-1.2.0
-[NEW] More than one map can now be put on one page.
-!!! To make this possible, the id of the containing div had to be made unique. That means if you used it in your CSS to style the map you will have to change it from the id “map” to the class “tx-wecmap-map”. There is also a way to manually specify the id, see the TS reference for both plugins for more information. !!!
-[NEW] Initial center and zoom level can now be set via TS. See TS reference for more information.
-[FIX] Unescaped quotes causing the map to not show in certain cases
+commit 83b1a885c70b95f41d0a97d1b613002a205537f1
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Aug 2 21:12:47 2010 +0000
 
-1.1.2
-[FIX] Path error resulting in Prototype not being included properly in the BE
-[FIX] Extension can now be installed globally without errors
+    change grey to gray in some inline css
 
-1.1.1
-[NEW] Add status indicator image when saving a cache record
-[FIX] Improve rendering of record table with long coordinates
-[FIX] Bug that caused the current cache record's buttons to freeze
+commit 6f193039598a41dcc14c78fdbfa3fad8fff2830d
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Jun 12 19:46:14 2010 +0000
 
-1.1.0
-[NEW] Improved WEC Admin Geocode Admin including record filter, inline editing of records, sortable tables columns, speed improvements and overall design improvements, all using AJAX
-[NEW] API now supports tabs for marker info windows. See “Using the WEC Map API” for more information
-[NEW] API and plugins now support directions
-[FIX] Several bugs with geocode status in BE records not saving correctly
-[FIX] Deleted records are no longer geocoded and displayed
-[FIX] Geocode status now shows the right amount of significant digits
-[FIX] Variable name typo causing addresses in the FE User Map Plugin to not be mapped
+    update emconf with new version info for 2.3.5
 
-1.0.1
-[NEW] Add ability to set initial map type
-[NEW] Address fields are now read from the TCA
-[FIX] Some typos in localization
-[FIX] Replace short open tag with full open tag
-[FIX] Progress bar in Batch Geocoder now renders correctly
+commit 18125d44395bc269755d32de0b9adfd8b92531f4
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Jun 12 19:46:07 2010 +0000
 
-1.0.0
-Initial release.
+    remove changelog from sxw file.
+
+commit e5e9e885f3c40fbf90ba716486809d45ff96fd95
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Jun 12 19:46:00 2010 +0000
+
+    add the whole changelog to the CHANGELOG file, so we only have to maintain it in one place.
+
+commit 67b2756b9d7f0caac1a610db0236960a1838d3c4
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed May 26 14:54:56 2010 +0000
+
+    actually add the icon to the single marker. Update doc to reflect this additional option.
+
+commit ef8bd3459bc1a4176b9a82b2fbba926032bc0636
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed May 26 14:19:00 2010 +0000
+
+    update changelogs.
+
+commit b36faec971367380dec064fcc7696be4c77c4c8a
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed May 26 13:47:17 2010 +0000
+
+    move icon adding code out a bit to make sure markers can be added even if the extension is configured in the flexform.
+
+commit 4c6e2beed72a949b6b4e9d994f77afc2d12714d6
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed May 26 13:34:58 2010 +0000
+
+    spelling fixes in the German localization.
+
+commit 6fd53713236d3b54722edf1ffdbc5cc34c2a1018
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Apr 18 03:09:46 2010 +0000
+
+    make maps work with javascript tabs. This would fix bug #782, too. Thanks to Michael Waider for the fix!
+
+commit 526876ad5dec6238f959bbb3daccb9130c626b4f
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Apr 18 03:09:40 2010 +0000
+
+    Revert "use non-deprecated function." The log says it was deprecated in TYPO3 3.7, but that's obviously not the case.
+    
+    This reverts commit 7e037a1e4a835edbaa3b59eab313aff2100c2dcf.
+
+commit da08a9125c9570067a8fbf3be4a0b443d48c57aa
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Apr 17 20:32:49 2010 +0000
+
+    fix bug #1689. show info on load wasn't working.
+
+commit 6ea49e13f04f00a98a172148011eb26446012b62
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Apr 17 20:32:28 2010 +0000
+
+    use non-deprecated function.
+
+commit 19ca635ab438ad1358b0e0b05a98efbac4e7aa71
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Mar 16 15:44:20 2010 +0000
+
+    Updated emconf after TER release.
+
+commit 18808efd0330d5b02b102d001a10196c496b71c3
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Mar 16 15:02:36 2010 +0000
+
+    Update changelog file and manual.
+
+commit 87a3de666e779a4dd1657dfa57c3371790ed0fe1
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Mar 16 04:37:00 2010 +0000
+
+    only use relative height for the map div if we're using static maps.
+
+commit 94e30fa635a7d6fb7658a151daa0fe5bdb9323ec
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Mar 10 18:54:25 2010 +0000
+
+    update emconf for 2.3.3 release.
+
+commit e42706819de5fe7b9dcebebafeef51f781dfde52
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Mar 10 18:44:25 2010 +0000
+
+    update changelog for 2.3.3 release
+
+commit f6ba2efea0fd2055ecc134c8abb1f1ad6598b8dc
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Mar 10 18:44:20 2010 +0000
+
+    update extension plugin icons, too.
+
+commit a499ae2fac0c594ecf08779caf025ef6ac9c806f
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Mar 10 18:44:13 2010 +0000
+
+    swap out icons for brand spankin' new ones!
+
+commit 78662d750e4842a7293bf3f23156edab8c9175ac
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Mar 10 18:44:07 2010 +0000
+
+    add new icon for external resource.
+
+commit 9314553122bf52e83ad210fcbd906086fa1fe9bd
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Mar 5 19:25:22 2010 +0000
+
+    Remove 4.3 exclusive method to regain 4.2 compatibility.
+
+commit 06e4ed06a746c151b29d191af3ec96064d288d6e
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Feb 26 17:51:43 2010 +0000
+
+    update emconf for 2.3.2 release
+
+commit 185259da88bd5c67b8d5186eb4f0f365bcae5e58
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Feb 26 17:51:37 2010 +0000
+
+    bring changelogs up to date.
+
+commit 65bcedac9b65af58f68b9409e37910cbacf8f8da
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jan 27 15:30:07 2010 +0000
+
+    fix Fatal Error when a required class wasn't included in some situations
+
+commit 7bc3984513970ab215c5916a5bd579e12f263d90
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Dec 15 22:41:17 2009 +0000
+
+    change default CSS to be more exclusive.
+
+commit 8ef3ea56437a6c8caee3b91450f6996e7f34f4b1
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Dec 15 22:16:51 2009 +0000
+
+    urlencode everything we send to a geocoder to account for special characters. Experimental at this point, though it shouldn't break anything.
+
+commit 5bed4535bc7aa999975667b3aa77777e4f94c2ef
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jul 30 17:04:49 2009 +0000
+
+    Change static map marker size to match the one in the dynamic map
+
+commit 396e50b99d08178c99d2ed87250bd7f1f8d1749c
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jul 24 17:46:05 2009 +0000
+
+    update changelogs. Also update docs with TS ref and API ref for static maps
+
+commit bd0b23fbd4aafc934674e8e7e6f93139cb54ecb2
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jul 24 17:14:36 2009 +0000
+
+    graciously failover if sidebar and/or radius search are enabled
+
+commit 5253c288aa46c4101cbd820006d4543ea02fd583
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jul 24 17:14:29 2009 +0000
+
+    add static options to pi2 and pi3
+
+commit 6e755a7b510da34849bc88272cd432c7e8989610
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jul 24 17:14:20 2009 +0000
+
+    add TS config for static maps fallback to pi1
+
+commit 87f6156a6e57c24dc76899a0f9bb3a3a9054e805
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jul 24 17:14:13 2009 +0000
+
+    provide reasonable defaults for static
+
+commit 25e7843900f3014ddfb17c74ea443639f4e9ebec
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jul 24 17:14:06 2009 +0000
+
+    add url parameter option to force static
+
+commit e9933bd55ff87944d34deb98590f525fd452642a
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jul 24 17:14:01 2009 +0000
+
+    only set explicit height if js is enabled. otherwise set a generic 100% height
+
+commit 6cbc6d79a63f6f4493eb606d3d740855f335b9aa
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jul 24 17:13:53 2009 +0000
+
+    add static map to API and test in pi1 for now
+
+commit 4d5bcb8839e6f7c24de92bb6f3ccc55d8e390689
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jul 24 14:54:57 2009 +0000
+
+    update emconf for 2.3.1 release
+
+commit c2e5df598ac564c298bc8a8b6e3ec0000a1cea2a
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jul 24 14:50:42 2009 +0000
+
+    add changelog
+
+commit d495462f58d6b736a1e2b470588137ad178c0efb
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jul 24 14:42:22 2009 +0000
+
+    Revert "flip needle and haystack, thanks to Steffen Kamper for noticing."
+    It broke subdomain detection
+    
+    This reverts commit e498705334575968ea524984bf3743d338c6d88e.
+
+commit 7e298e7e6036b7dd4271d96ab067a23e95747ec4
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jul 16 20:40:31 2009 +0000
+
+    update emconf after 2.3.0 update
+
+commit 1215f5489391a2022d903827b90a87f124c7c4e3
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jul 16 20:18:10 2009 +0000
+
+    update changelogs for 2.3.0 release
+
+commit 04f54cc057cfa250cf79e94d83794f1a5766ce1d
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jul 15 19:31:11 2009 +0000
+
+    fix comment
+
+commit 13779fb89ff283751539fc0ad44d79d162631005
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jul 15 19:24:58 2009 +0000
+
+    dial back severity for syslog to error
+
+commit 327cd6f7a177888787e07c8aa7db59c0f76a31cc
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jul 15 18:37:20 2009 +0000
+
+    add French localization thanks to Patrick Gaumond
+    
+    some whitespace changes in locallang file
+
+commit f67183bc6c26d08f9bf788d36e5b912444f9febd
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jul 15 01:50:08 2009 +0000
+
+    Fix from here to directions. Arguments were flipped.
+
+commit acc8d7e3b513c25e64aa048a067eb45dd819e15b
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jul 10 17:54:50 2009 +0000
+
+    Lots of changes:
+    - move js into an external file. Thanks to Benni Mack! Fixes #1472
+    - make city and country groups hideable. Fixes #1473. Thanks to Benni Mack!
+    - add some syslog information for better troubleshooting.
+    - more bugfixes
+
+commit ca6431ed735cda23430952279173335496a372f0
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri May 22 15:09:52 2009 +0000
+
+    add more devlog debug for radius
+
+commit a9d188fe88333cb58ff59450992273e4024ba529
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri May 22 15:09:47 2009 +0000
+
+    flip needle and haystack, thanks to Steffen Kamper for noticing.
+
+commit 420bba57f651dad15f39b61da8be8edc51dc7f93
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri May 22 15:09:40 2009 +0000
+
+    Make city and country groups hideable. Fixes #1473. Thanks to Benni Mack!
+
+commit 4242f50c75085f61b3e98ad704cfa3f6e9c2886a
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri May 22 15:09:33 2009 +0000
+
+    just whitespace changes
+
+commit 6f3a6399b8a88661caafc10fe01226a05e234316
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Apr 18 19:35:43 2009 +0000
+
+    remove some old todos and whitespace
+
+commit 7388d2225465f770b2466fb36d1dd4e0da7b7059
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Apr 18 17:16:31 2009 +0000
+
+    apply benni's patch to switch plugins to USER_INT. Fixes #1279.
+
+commit 442ca032fd368b91970b5a530fca9ac7d4d19bc1
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Apr 18 17:06:36 2009 +0000
+
+    just some whitespace changes
+
+commit 85d1751ed3c311b8226b71a36640c63c28a2cadc
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Apr 18 17:05:17 2009 +0000
+
+    use GEvent to load maps
+
+commit 0120cee0bd9a19786c1dc83fefee4f774f440039
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Apr 18 15:33:39 2009 +0000
+
+    minify the js for a little faster loading
+
+commit 5df69bf33697a9c0b67313f27a2b5904ff33dd8b
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Apr 16 16:21:45 2009 +0000
+
+    fix typo in iconIDs.
+
+commit d0ef83c5b6435c6b29c7b021a07758d36e0391e7
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Apr 16 16:21:29 2009 +0000
+
+    some doc changes
+
+commit 1a04dcd9611f6dbecc81fd427410146c63c1cd65
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Feb 20 21:29:16 2009 +0000
+
+    make api url configurable. Needed for Premier API keys.
+
+commit 44b8337106fac9e9737299469b651b06c10c3c87
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Feb 20 21:29:10 2009 +0000
+
+    add more information about geocoding to devlog
+
+commit a34a3f11d4f79673913a912cd5b86b30cbbfaf7d
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Feb 20 21:29:05 2009 +0000
+
+    fix deprecation warning in modules
+
+commit 64b367f5486bfc4b788455e36dbf54bb03bf86cb
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Jan 19 22:31:51 2009 +0000
+
+    update changelog
+
+commit ffc1bf056da031f30ab8de976a6f3376fb0fd451
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Jan 19 22:31:46 2009 +0000
+
+    add showGoogleEarth TS option in the TSref in the manual.
+
+commit b8ef25cdff5e134a98812f244fca4e1f5f877b26
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Jan 19 22:31:41 2009 +0000
+
+    enable flexform and TS setting to enable Google Earth Map Type. Still need to add it to the flexform at some point
+
+commit 4e3abdbb8b07b8955bf1c2c7b2043d3522eb6a44
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Jan 19 22:31:35 2009 +0000
+
+    add devlog to Table Map hook as well
+
+commit 19b1bf8427077b08af9b549a1e383eeb3b7bfa47
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Jan 19 22:31:30 2009 +0000
+
+    add devlog entry if hook is called
+
+commit bb609ffaabd17b34fc07d8de407a5cf7658c0632
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Jan 19 22:31:24 2009 +0000
+
+    remove some debug statements that were commented out
+
+commit c65d8236e9aceb16b30d062d2626f5316072c307
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jan 16 19:06:57 2009 +0000
+
+    update emconf for 2.2.1 release and reset changelog
+
+commit a48c0a560f1b39dea8f1742fc7746af9d4c59aa0
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jan 16 19:02:12 2009 +0000
+
+    some more doc and changelog updates
+
+commit aefa8edb818a1845efb86cfdb364188702eb3096
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jan 16 19:02:07 2009 +0000
+
+    update changelogs
+
+commit 8f53d203d467d7c0bc2f467a299553afec507d14
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jan 16 19:01:59 2009 +0000
+
+    add XCLASS info to shared class
+
+commit 4500e5ea4c489cef41210038a18c567ea990fa4b
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jan 16 18:09:12 2009 +0000
+
+    change copyright notice
+
+commit a3458fec2afa5f405736cf117f4b831779fc4fd8
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jan 14 19:47:18 2009 +0000
+
+    fix typo in TS reference in docs
+
+commit 58a10bad6919d63c7124cc2a7794962ed47dcbb7
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Jan 3 02:41:51 2009 +0000
+
+    undo test commit
+
+commit bc386d851f35dd7a8ea93da13234953d3c152166
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Jan 3 02:41:24 2009 +0000
+
+    test commit
+
+commit 893da15f07eea0217643f9f2514732a09487c67a
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Nov 24 16:28:36 2008 +0000
+
+    add workaround for Google API bug #881
+
+commit 8d65c25adb1be36e916cea15514adc840489d9f3
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Nov 24 16:28:30 2008 +0000
+
+    fixed a small invalid html snippet inside the generated javascript
+
+commit 510625ae2f550f801a3cc697c8dbabce92d7014f
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Oct 23 19:36:51 2008 +0000
+
+    add select clause option to WEC Table Map
+
+commit e3862053184ec9e6df6e63affa392f779914a47b
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Sep 24 14:57:31 2008 +0000
+
+    remove stray api key references from code examples in manual. Fixes #1275.
+
+commit 87c9aad15dfc36b6b8d77e1bf5b822f7d1389521
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Sep 13 17:18:19 2008 +0000
+
+    reset changelog
+
+commit 25a07847e151d53a628e54d0e3ecfe2326e564c6
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Sep 5 02:40:07 2008 +0000
+
+    undo test
+
+commit 416f3414a340289e6c33118dd722704b3bdbea94
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Sep 5 02:40:01 2008 +0000
+
+    test
+
+commit a55d3a0f0a4af6e9f5d2009b30fddd3fb00c0206
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Sep 4 20:28:30 2008 +0000
+
+    fix html validation error
+
+commit 959f70e68a4ef1ffe82d2581e469ea996157c474
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Aug 14 22:20:35 2008 +0000
+
+    better error handling in worldkit geocoder
+
+commit b202f5d5ca4e254b71eb1810ee6555e44105e79b
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Aug 13 22:18:14 2008 +0000
+
+    update emconf for 2.2.0 release
+
+commit f8bd1c97b676de4bdb2bb368e1b05eada1785da9
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Aug 13 22:12:59 2008 +0000
+
+    update changelog
+
+commit 31ba194f16aebbeb6384a280a311aa418ca58b0c
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Aug 13 20:26:33 2008 +0000
+
+    update changelog
+
+commit 96d03898d7374b0b90308edb24cd48a310e2229c
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Aug 13 20:26:05 2008 +0000
+
+    more solid error handling with Geocoder.us
+
+commit eaab228decc55e5e75c9f60f7f33beb7aa797cf8
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Jul 28 21:39:40 2008 +0000
+
+    update changelogs
+
+commit 5b6d2a8b9c200a5a32bd729a31719939218f2927
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Jul 28 21:12:31 2008 +0000
+
+    make google maps api version selectable from the EM
+
+commit 6b33590b88b8c0afac9b5b6ddb881b7227da044a
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jul 17 05:08:17 2008 +0000
+
+    update docs with TSref for where stdWrap
+
+commit 7d83382e7bf88991c070497ed56896452df55e97
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jul 17 04:28:37 2008 +0000
+
+    pass where clause through stdWrap
+
+commit be902ac956e9ac841513310a97723af2ccb267cf
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jul 15 15:46:52 2008 +0000
+
+    a few module html fixes. Thanks to Tapio Markula for reporting.
+
+commit 05c403189f2daab44d79a35d1b9e2ccb85f9b4e7
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Jul 14 22:25:28 2008 +0000
+
+    fix use of deprecated method
+
+commit 2fb7462d065551031731850f2999cf9ebfe535e3
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jul 2 17:00:13 2008 +0000
+
+    pass language to google to get localized labels
+
+commit d805ac30370f0c6b30514047a2f00a78da55d95f
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jul 2 16:59:56 2008 +0000
+
+    update changelogs
+
+commit 3a9deb8105f6a29fb0747a369f76c6e01153b162
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jul 1 21:32:43 2008 +0000
+
+    automatically add terrain type selector to the map type control
+
+commit 222c0863732911c3febb8c2433bdefae6ddbeae7
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jul 1 21:32:24 2008 +0000
+
+    change label to Terrain
+
+commit f01f17b73baaceb130fa2888ad5fb36d03cfc4de
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jul 1 21:32:05 2008 +0000
+
+    add physical map type to flexforms as initial map type option
+
+commit 8d2817a848f6706ebf8fd481fb1bf133a03090ac
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jul 1 21:31:48 2008 +0000
+
+    use hierarchical map type control by default
+
+commit a1415a2cc09609ceb2170bc46a6c8894c847cff2
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jun 27 17:31:35 2008 +0000
+
+    update docs with missing Simple Map TS options
+
+commit 1f4b266baf3f9d615f6fca938def7ac968c6d986
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jun 13 21:28:13 2008 +0000
+
+    add test case for new getAddressField method and rename test case classes
+
+commit bb7288c3636d6d84fca5e62c214c9dc2fb437a24
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jun 13 21:27:55 2008 +0000
+
+    remove all direct access to the TCA and use one method instead. First step to implementing #795
+
+commit 8b0b9c55407b76647186d305a5b9288454ac28fd
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jun 13 18:25:24 2008 +0000
+
+    update changelog and hook documentation in doc file
+
+commit 81f37a6fc6edd7146e0a57d1ed08856497178d5b
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jun 13 18:24:58 2008 +0000
+
+    implement center and zoom hook
+
+commit d60428eeb0c01d8f3c12a1aed4c33e4262f77c00
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jun 13 18:24:39 2008 +0000
+
+    update changelog
+
+commit 26d1d1a6dd3cb9ad94324a5fd718773256943d82
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jun 13 14:18:47 2008 +0000
+
+    update google maps api key signup url
+
+commit f6306902cb1124f4a2504e37ceed349176b8da34
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Jun 9 15:51:41 2008 +0000
+
+    undo test commit
+
+commit 4c12110af0d8be8552cfadefa79497b0fc94d60d
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Jun 9 15:50:51 2008 +0000
+
+    test commit
+
+commit a92f90f20910fde20e9b5ccf7be95e0c6e9460ea
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jun 4 20:34:01 2008 +0000
+
+    test
+
+commit 4ba4a0255956e8374d03aa44a8eb2aed6dd32281
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jun 4 20:25:13 2008 +0000
+
+    not sure
+
+commit c621cf0b3fc6f40fa456d268d35280d4d585beac
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jun 4 20:17:08 2008 +0000
+
+    test
+
+commit 97448887550ec350f1e547a83689be23b4bb5ed9
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Jun 2 15:47:46 2008 +0000
+
+    test
+
+commit 18c27b4414ed195cebb02328c792dd1541ab69c5
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Jun 2 14:19:06 2008 +0000
+
+    test
+
+commit 708b5033f49564a98fb14775b3c0d8a708c3deb4
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Jun 1 22:30:29 2008 +0000
+
+    test
+
+commit 95eaa376ab8a1c7241fe4c312e61775175697b44
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Jun 1 22:16:16 2008 +0000
+
+    test
+
+commit 4960730b284b4eda791fdf934f537d6126906868
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Jun 1 22:15:13 2008 +0000
+
+    test
+
+commit cb8857e6664d393992b2e1929e8a1770620ef06e
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat May 31 17:38:40 2008 +0000
+
+    undo test
+
+commit fd031bd9147940b35d9ad1948e7beefe5a1c67e3
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat May 31 17:19:56 2008 +0000
+
+    test
+
+commit 608f34637619d5afa415b9437c244f3b7b6f874a
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat May 31 17:11:10 2008 +0000
+
+    reset changelog
+
+commit 95e75a5f04dcdc83a352c0a4e6aa0011bb5e5cbf
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu May 29 02:42:02 2008 +0000
+
+    update ext_emconf.php for 2.1.2 release
+
+commit 26aaf56a0518998270b69adf6d3978e5e98da738
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu May 29 02:33:54 2008 +0000
+
+    update changelogs
+
+commit efbb2d39c858096441822c2b769720c9c28386f1
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu May 29 02:24:37 2008 +0000
+
+    change submit label to save in api key admin
+
+commit b766b914a7b35ff4cd2c1c441f920c68781eb507
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu May 29 02:15:00 2008 +0000
+
+    more explanation in the changelog
+
+commit 98fb3dfb9d86cd7098985b2078958a43e7f90f96
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu May 29 01:55:15 2008 +0000
+
+    update changelogs
+
+commit 473839078b0c67d4787874aa0325aa224ba1713c
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu May 29 01:16:02 2008 +0000
+
+    Revert "Change module inclusion to the new preferred way that gets rid of the relative paths in conf.php"
+    
+    This reverts commit 2aeccf29a782861683fecc780ea127394eb23826.
+
+commit 8b927cdfdc60a2a138a85dd135d303a8a0044634
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu May 29 01:15:46 2008 +0000
+
+    undo change
+
+commit 90d4a0568a07a26b6dc7000105c790fad72b9a90
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu May 29 00:34:22 2008 +0000
+
+    change
+
+commit 69847d78b2186eab1134ee354cb8f87a1a6f35a2
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue May 27 23:34:26 2008 +0000
+
+    update ext_emconf.php for 2.1.1 release
+
+commit eb6ba06eb7b321a8f65433c1bd22881f0bd2a1ba
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri May 23 22:40:32 2008 +0000
+
+    update changelog in docs and changelog file
+
+commit 2783c79617f3171387fe47508d6eea9eb8da6f3c
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri May 23 22:40:08 2008 +0000
+
+    change default sidebar title field to info_title since it's used by pi2 and pi3, this way we only have to overwrite it for pi1
+
+commit 4e573741cf95508da3887c94514db005bcc1edc8
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri May 23 22:39:51 2008 +0000
+
+    fix empty sidebar due to wrong data field being used
+
+commit 62a66c06019a046e9352f268971ab4811b80f3d4
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri May 23 20:44:19 2008 +0000
+
+    validate new zoom to integer
+
+commit 4138eb395d5470eb90aa5bb4a784cd31d168a480
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri May 23 20:39:55 2008 +0000
+
+    one argument too many in the test
+
+commit bf41e6af6c7956a4e1a28fd9c70b5e3313c2297f
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri May 23 20:28:45 2008 +0000
+
+    update changelog for 2.1.1 release
+
+commit 9305794953620562e98e089c4ce7d25d212011c2
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri May 23 20:28:30 2008 +0000
+
+    add 2.1.1 changelog and update API reference in the docs
+
+commit 21e71e94a01bd9d286304dcd642faa83c7b69ad3
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri May 23 20:28:07 2008 +0000
+
+    update TS reference in docs
+
+commit 84f6dbf1afaa2deb2fccb61319cbf716f0776624
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri May 23 20:27:43 2008 +0000
+
+    add TS setting for maxAutoZoom to all 3 plugins
+
+commit 1c8806d51bc5259c156c3af3445b62779c43e44e
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri May 23 20:27:24 2008 +0000
+
+    add unit tests for new functionality. Yay!
+
+commit 0c68ce81d798377e6d4d21eb864302d5a4da6a39
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri May 23 20:27:05 2008 +0000
+
+    add option to set max auto zoom via API
+
+commit ef441938f88e3dc4c8f3e60a77019af2e3a10548
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri May 23 03:33:04 2008 +0000
+
+    change TS wraps to only show if there is actually content.
+    Removes stray characters added by the wraps.
+
+commit 2b90a37aaf4455851babbaec9a2e1f86a3233a56
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue May 13 00:06:12 2008 +0000
+
+    clear changelog for next release
+
+commit a4ab50258e91f7d68b7a8dfd05daae84e44f0371
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue May 13 00:02:39 2008 +0000
+
+    changed emconf for 2.1.0 release
+
+commit 456a86f055b7731b4d1c0e86b0d9103c54ac9036
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue May 13 00:02:26 2008 +0000
+
+    add changelog to docs for 2.1 release
+
+commit 0c92795b1633954483016686119d5008fb2d009f
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Apr 30 01:56:17 2008 +0000
+
+    update all copyrights for switch to CTMI
+
+commit 415833e3d5cfe0e3bf3c6b4555fc430d7f19363a
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Apr 29 06:45:58 2008 +0000
+
+    update changelog
+
+commit 9360da993b75db949d1cf61fae3d7faad8c44200
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Apr 29 06:45:46 2008 +0000
+
+    change default TS for pi1 to be more readable
+
+commit 1042bdb17cb4f1c8da61e66b5598124d3013c9fd
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Apr 29 06:45:30 2008 +0000
+
+    update changelog
+
+commit fe8cd5d4b8a1f623598cabcbb30be716a3a2e5cd
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Apr 29 06:44:15 2008 +0000
+
+    remove address COA from pi1 TS to streamline and unify TS setup.
+
+commit 1ca0f3f8434936b5dbcc19a2d7232e46cf3ac560
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Apr 29 06:44:01 2008 +0000
+
+    update TS changes in the docs for pi1 title and pi3 join clause
+
+commit f8f9aa0cbc4f294c8c215420b8dd49fd5ca44b1b
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Apr 29 06:43:37 2008 +0000
+
+    add example of join option into TS
+
+commit 0973ae8371783e1b3615218e3204479a77a1803f
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Apr 29 06:43:22 2008 +0000
+
+    add option to join tables in pi3 for mm relations
+
+commit 6af867d304f8a591e3af093c8e1b3eec7c8eaddd
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Apr 26 19:22:46 2008 +0000
+
+    whitespace changes
+
+commit 91d6e4cd9cefd8a1a4bcfb0d41428ec2632e57e2
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Apr 26 19:22:36 2008 +0000
+
+    show address by default in pi1.
+    When the address is defined either by FF or separate fields in TS, automatically show it in the info bubble. In all other cases, i.e. lat/long or address string, we leave it up to the user to enter the address as part of the description.
+
+commit 8d0f7d90e4e142b800af22553b4daa2b17b62c4a
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Apr 26 19:22:19 2008 +0000
+
+    fix address TS in pi1
+
+commit c3e5a2f8d9f27ab5a36124af5a1b3bc9020d79f8
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Apr 19 11:45:01 2008 +0000
+
+    update changelog
+
+commit bd1e06c4572cdb8ead053493cd1ca407278ba845
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Apr 19 11:39:16 2008 +0000
+
+    pass title through htmlspecialchars to prevent js errors in case it contained quotes
+
+commit 15ded0cc30eb2239b50d195ce38793615eeca36e
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Apr 19 01:41:35 2008 +0000
+
+    Change module inclusion to the new preferred way that gets rid of the relative paths in conf.php
+
+commit 9f6a2a12fc8a6ccd2a2a6e587c924b43ffb7b5b7
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Apr 18 03:15:29 2008 +0000
+
+    undo previous change
+
+commit 62b69ad7075910b6ae72a474148200def2bd1a89
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Apr 18 03:04:30 2008 +0000
+
+    test
+
+commit 1b0c0034817e349acd9ba491b589212ba7ab732e
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Apr 18 02:44:20 2008 +0000
+
+    and enough with the testing.
+
+commit 8ddf443cd778f37169b2b955e6f12d4df0288b49
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Apr 18 02:43:17 2008 +0000
+
+    test :)
+
+commit 30711693d4396b6370ec6f64cadf97ccdfcdc59d
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Apr 18 02:00:39 2008 +0000
+
+    we're not supposed to be shy after all
+    Remove the change we made earlier, it's wrong.
+
+commit 61700c10ab580a58d4d65088f6093b97bcff1ec0
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Apr 18 01:58:20 2008 +0000
+
+    we're shy now
+
+commit 379a0eaf4ee2eca11ab3dd201034836b7540674e
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Apr 18 01:53:26 2008 +0000
+
+    get rid of the nonsense changes.
+
+commit 72327e7bebe27a8f8a035e7568a63e5426855d58
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Apr 18 01:51:51 2008 +0000
+
+    another change
+
+commit 2607d5620959b260347c17206314f89103397691
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Apr 18 01:51:35 2008 +0000
+
+    test commit for changelog
+
+commit 3b9f3856fcb3fa0a46be7fd5437ea06b6593e7a5
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Apr 16 22:48:33 2008 +0000
+
+    change TS for title and description and use both in the marker instead of consolidating both into the description. Makes for better compatibility with the sidebar.
+
+commit dcdc76a584d73219a85291c06b479208350f7230
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Apr 12 02:17:27 2008 +0000
+
+    reset changelog for next release
+
+commit caf0049d3e33bc6f3b861efe62d2fa59886a1dc0
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Apr 12 02:14:38 2008 +0000
+
+    update ext_emconf.php for 2.0.1 release
+
+commit 7b36f49fa9c0687a2621012430710768b70aa256
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Apr 12 02:08:57 2008 +0000
+
+    update changelog in documentation
+
+commit b3d33f05c93b8dae69c0551dd609557d3b888172
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Apr 12 01:50:29 2008 +0000
+
+    Checks for template inclusion in WEC Table Map work better now.
+
+commit 9bceed3333404fc529198926bbf8ee30ceb5bc3b
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Apr 12 00:48:23 2008 +0000
+
+    Changed how low-level zoom markers are shown in FE User Map both in the FE plugin and BE module.
+
+commit 398d347ced8797ae595dcb4eb80186cf1cc1c26c
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Apr 12 00:20:08 2008 +0000
+
+    Tweak what we send to the Yahoo geocoder to get more accurate information back
+
+commit fb11caaa3fdd62db76ec011eefa5e5c15bdd07cc
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Apr 12 00:14:09 2008 +0000
+
+    Added another layer to geocoding to make country detection more reliable
+
+commit 99e8919030297f52d30c01faf65db724d9b58470
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Apr 11 22:53:01 2008 +0000
+
+    Error messages from the API are now properly shown.
+
+commit 00563c854d1a45a560cf8a4792b39d7c83fb2f37
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Apr 11 22:18:00 2008 +0000
+
+    update api docs with missing methods
+
+commit d65d5b1d7218a26af39a72ba5cb44e0f1eea4c39
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Apr 10 21:56:31 2008 +0000
+
+    "Show info bubble on load" now works again
+
+commit 106ba7894057b1988b9875fb7b33bb91dfaff4e7
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Apr 10 04:48:00 2008 +0000
+
+    update changelog
+
+commit aa78ee7b64372a3548aef23012d5de26ae4381ed
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Apr 10 04:20:58 2008 +0000
+
+    properly pass group by reference. Fixes problems in PHP4.
+
+commit 787fda1455574a9d62181d72580626921a5e7c2d
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Apr 9 02:23:44 2008 +0000
+
+    reset changelog for next release
+
+commit 1c0f146d43651d505e282cd48b6659fc2189a45c
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Apr 9 02:20:43 2008 +0000
+
+    update ext_emconf.php for 2.0.0 release
+
+commit 557936d31730e20a53735383f2cf54c49221de5a
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Apr 9 02:17:50 2008 +0000
+
+    Change version number to last released version so it will be correct in TER
+
+commit 20a0210e25d8ee6453bb9195a4e6ff38e5414f06
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Apr 8 00:52:01 2008 +0000
+
+    remove debug statement
+
+commit 2956f482d47464bfd2653cf40e4d815096ad75b2
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Apr 7 23:58:13 2008 +0000
+
+    this should fix #117, linebreaks to <br />
+
+commit c8f5342305264cd33072db692514eea12d2364be
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Apr 7 23:18:32 2008 +0000
+
+    fix api addmarker call if sr_feuser_register isn't installed
+
+commit bb48c3bff04f3fcf251a835c2ef45c361b93c103
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Apr 4 05:25:37 2008 +0000
+
+    tweak bubble content config for pi2
+
+commit e7a082e830da269ad2405168cc0c031c1421ae94
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Apr 4 02:14:07 2008 +0000
+
+    commit google geocoder patch, thanks to Benni Mack!
+
+commit 998a84f0fa01ebb847cb376e4957e40b881235f9
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Apr 4 01:54:10 2008 +0000
+
+    rename description and title fields that are passed on to TS for the sidebar
+
+commit 20c086825699cf94aa8390eac84e4cdab5a8b5e3
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Apr 4 01:50:48 2008 +0000
+
+    tweak pi1 sidebar handling and update docs. Also fixes #112.
+
+commit 9942c209d0aa2c89930a713edc5b6a2e4c42aeb1
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Apr 2 22:44:26 2008 +0000
+
+     * remove unneeded file
+     * tweak address output for pi2
+
+commit 7ecf37b078d227dc81a5f5da0f6aedf67a625add
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Apr 2 22:25:52 2008 +0000
+
+    underline links, remove inline styles in favor of header included classes
+
+commit 5f2467b5e2b4419b5a0003c7d11f12cdf7daaf59
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Apr 2 22:05:18 2008 +0000
+
+    remove info title for zoomed out bubbles.
+
+commit 7585cda5d2ed10ccc8b12bfcc65461e00ead8fe6
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Apr 2 21:56:45 2008 +0000
+
+    fix address display in the BE FE User Map. Tried to pass it through TS, which isn't available in the BE.
+
+commit 9e1eb1a3255abefc3114cccb2d1133c1f5ac9979
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Apr 2 21:09:45 2008 +0000
+
+    update changelog and docs with changes
+
+commit ec16a79594212fe2f2fd761c34ad760936d9ba60
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Apr 2 21:07:49 2008 +0000
+
+    code formatting
+
+commit 161998959093d03e49c633864fe950cba166fc0e
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Apr 2 21:06:55 2008 +0000
+
+    add option to set default country for address lookup (#109)
+
+commit 3817c67de941c882ebe1f2aa1e92273534e08400
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Apr 2 20:41:33 2008 +0000
+
+    add more data to the sidebar TS rendering for more flexibility (#108)
+
+commit d9bab8a2e47cc565ca36dea986e4bfb45bcf07d5
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Apr 1 03:50:07 2008 +0000
+
+     * move radius after all the map config
+     * more devlog goodness
+
+commit 21fdc8ee7d287f2f28e62998a6f0bf27574458a6
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Apr 1 02:29:29 2008 +0000
+
+    remove some devlog entries
+
+commit b99cfbab328050baf2cf57185e2f5ce32f7fbe59
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Apr 1 02:19:21 2008 +0000
+
+    tweak creation of LANG object a bit
+
+commit fb8d6226a893e8ecdad0aa5a2724ebc393d43376
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Apr 1 02:18:23 2008 +0000
+
+    fix locallang object init in pi1-3
+
+commit 2c5c837fc65d2e811b4f7b9a7d7aaeeccb13fffe
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Apr 1 01:27:57 2008 +0000
+
+    localize address form labels (#105 )
+
+commit 61fe40aaf3b20d46534a35f03dbcf5a4c2fcf6ba
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Mar 31 21:05:58 2008 +0000
+
+    move default title and description into the WEC Map API static template
+
+commit ba9ac6124c45f9b6e4a1d64dd0e6b0a7ee33b29c
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Mar 31 20:37:47 2008 +0000
+
+    no address form in pi1
+
+commit 1b99e86f6f8c643f4d802d51506f3533a4cff2e3
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Mar 31 20:23:14 2008 +0000
+
+    fix createMarker function name to allow more than one map per page
+
+commit 228562d4305b53a19bdb0d50a7cc6670e08783ab
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Mar 31 19:58:45 2008 +0000
+
+     * add changelog to docs
+     * tweak changelog wording a bit
+
+commit ca6e83e0a753c0d41183129aae895dacb0931a26
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 29 00:57:26 2008 +0000
+
+    tweak devlog a bit
+
+commit d76c063f5ca1bf52b8b92390aa0c97b2e196b4df
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 29 00:24:01 2008 +0000
+
+    update docs
+
+commit cceba03ff86dc68dac53c89dc434b169eac27c5e
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Mar 23 21:51:11 2008 +0000
+
+     * fix sidebar styles
+     * add ids and class to marker
+
+commit 543edd57a3850572f6ec3ee368d957e843a0f42b
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Mar 23 21:42:09 2008 +0000
+
+    and remove rogue characters
+
+commit 63e834e884ad644cac139bf2d6f14e99b9d9576f
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Mar 23 21:41:40 2008 +0000
+
+    remove debug statements
+
+commit fc7fe77bfff8428bc0b6604f922e82593eec945d
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 22 21:23:02 2008 +0000
+
+     * clean up code, removing unnecessary methods
+     * enable prefill address again
+
+commit 4b8fa30864a4558ad2009da98309801c704c1123
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 22 04:22:31 2008 +0000
+
+    update changelog
+
+commit f942cff0b5dea3de709c3d30d5f91f0a5aecf367
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 22 04:21:25 2008 +0000
+
+    don't need this method anymore
+
+commit 8a897d97de91e533f5a766861f0739fb0127849f
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 22 04:20:29 2008 +0000
+
+    change "show Directions" label, since it's not a tab anymore
+
+commit f55e2dcfaacc1f9e1249af50341cd4b151d4405f
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 22 04:19:17 2008 +0000
+
+    fix crazy large info bubble problem
+
+commit 1d69055e88c3e7098be899d71a9ca79229571b2d
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 22 04:16:36 2008 +0000
+
+     * major changes to how javascript is generated
+     * directions now appears below the description instead of in a new tab
+
+commit d525e2a32b50645719f1125a03365964e71b1380
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Fri Mar 21 21:10:27 2008 +0000
+
+    Fixed bug with missing PATH_tslib.
+
+commit 1020781290c48acb66c2e5579abeda4e3faa6c95
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Mar 21 21:04:39 2008 +0000
+
+    remove slash from path
+
+commit 879a9670f1a57f38afe8060559bef1ece8aa22c9
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Mar 21 21:00:42 2008 +0000
+
+    include cObj class just in case
+
+commit 23485ef6f1aa8476cf6cc424a5f3c3c8936d5b79
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Mar 21 02:22:53 2008 +0000
+
+    a few more German local changes
+
+commit 368d8c1f4ffdcac71191fdf1be3ba776c2cf1182
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Mar 21 02:18:49 2008 +0000
+
+    a few more German local changes
+
+commit 06ec2dedbaeefb62395185ac5eecd333ec9ee468
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Mar 21 02:17:09 2008 +0000
+
+    add some localizations and tweak some strings
+
+commit 1f4c20430b2608d5def0149c1dfe69e2a0408255
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Mar 20 20:01:35 2008 +0000
+
+    create $LANG object if it doesn't exist yet.
+
+commit 8a11e0be6420317c69d2ae22da91e4f4a2b5f906
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Mar 20 01:59:49 2008 +0000
+
+    change home icon somewhat
+
+commit 137de99f7f8a637331a2a90d0634742670927cdd
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Mar 20 01:32:34 2008 +0000
+
+    tweak radius search description to show the just-typed address
+    fix sidebar display if no markers are visible
+
+commit 70cab004ddc27fb841a9180df23459e9c8040336
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Mar 20 01:03:20 2008 +0000
+
+    change release version to 2.0.0
+
+commit 477704c1b7fd240ec2ba245ec97d76cac784881a
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Mar 19 23:05:00 2008 +0000
+
+    more manual updates
+
+commit 967f3ba9d6c3596b153614e5a587db25a5068391
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Mar 19 23:04:37 2008 +0000
+
+    temporary changelog for 1.4.0 release
+
+commit a3267bf4e11abd51387f1c7286773cf0e0f89b73
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Mar 19 21:37:20 2008 +0000
+
+    update api reference in docs
+
+commit bb1efb4817acda68510e7da5f024073a10ee53ac
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Mar 19 21:37:01 2008 +0000
+
+    fix method name typo
+
+commit d4c7c7cd0a686ba9531991e975b063de4e0671e6
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Mar 18 00:39:55 2008 +0000
+
+    and more devlog
+
+commit dfe8f6000672bf08d6def9180888d49185e7006b
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Mar 18 00:00:20 2008 +0000
+
+    more devlog
+
+commit 634cceba71df0995e37dfacb0274952abf9629e6
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Mar 17 23:20:31 2008 +0000
+
+    update devlog debugging
+
+commit 6b58e16859e79f779b354ef2395ee2f64e02c681
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Mar 17 20:32:15 2008 +0000
+
+    some more FF fixes
+
+commit a6775b1c720622f6f0a8974b4295fa8e43af86fe
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Mar 17 20:24:58 2008 +0000
+
+    allow kml records on any page
+
+commit cb968a3ad1e18b7480fa68db5a06a11c3c123bb7
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Mar 17 20:19:00 2008 +0000
+
+    update kml overlays with link wizard
+
+commit ad0a8fcbe761ade225683ec8cd6a074aa22b56f2
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Mar 17 19:48:25 2008 +0000
+
+    don't need helpers anymore
+
+commit abb120f3cf1191321dc82bae92934e6a1432767b
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Mar 17 18:53:15 2008 +0000
+
+    add TS only option for kml overlays to pi2
+
+commit 3fee86d97281fc43a3cb79c9a6c8336310a0a89a
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Mar 17 18:49:27 2008 +0000
+
+    tweak output order a bit
+
+commit 1b1848648f07f944c5a9541713723a4e836e328b
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Mar 17 18:48:57 2008 +0000
+
+    add ability to overlay any kml file to pi3 map via backend records
+
+commit 04a9e7ab69bb522b50f69de3a1c00de9d894a805
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Mar 17 00:14:59 2008 +0000
+
+    use TYPO3 methods where we can
+
+commit 50af174bfe448ce81bc61fabdcfc841237fd57d0
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 15 22:04:58 2008 +0000
+
+    some more fixes for flexform inclusion of options
+
+commit dbd3591e3ee91fd563428923b94c925a368d1df4
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 15 21:49:29 2008 +0000
+
+    fix flexform inclusion of options
+
+commit ffcb7b45923df53e02b219beb4db5209d26a3bbb
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 15 21:41:11 2008 +0000
+
+    dynamically insert sidebar height based on map height
+
+commit e9188e7ee54c30107451134ee6b7c688117b3f25
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 15 20:04:59 2008 +0000
+
+    add CSS default styles to all plugins
+
+commit 47d02e06250f1c0f1048a426ccbb248a40f6dfb3
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 15 05:07:41 2008 +0000
+
+    add context sensitive help to plugin flexforms
+
+commit 5669c77c7ab4cbca3702192ff786b4a9094f9fb8
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 15 05:02:01 2008 +0000
+
+    fix js output somewhat, double quotes to single quotes.
+
+commit c929a1666670dd47cfb9d70b6ab604e8cbc666b7
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 15 04:40:42 2008 +0000
+
+    addslashes on tablabel
+
+commit 3ef4cc395d0f7e7ca382ecc7eeff9504f5c32222
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 15 04:36:42 2008 +0000
+
+    need a tab label, as well.
+
+commit 8d143e120be906e0fc91b81bec92821d7533969d
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 15 04:28:48 2008 +0000
+
+    commit prototype addTab method to add a new tab to the marker.
+
+commit 07b7ddd621c641ddbd9f366505e3de7363564570
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 15 04:17:17 2008 +0000
+
+    add title and desc setters for marker objects
+
+commit 2b36f3ac19cd808618ae830b1a0b69556c91905d
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Sat Mar 15 03:38:22 2008 +0000
+
+    Fixed the hook so that the parameter array isn't nested too deep.
+
+commit f4037ac550514cb37608cd271874a9df3c6950b4
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 15 03:28:47 2008 +0000
+
+    Add error messages in the plugins if static templates are missing.
+
+commit 3a26463698c8346df74623770b8793cc9a3be1ee
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 15 02:23:33 2008 +0000
+
+    keep wec_map at the bottom of the ext list in order for our TCA modifications to tt_address to work.
+
+commit 93842a721e7349fd38e4529f03d1a2c948c21def
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 15 01:02:14 2008 +0000
+
+    add hook to pi3. needs testing.
+
+commit 3a1d962190518e99578b4347dc1f0528a9bb3483
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Mar 13 06:38:13 2008 +0000
+
+    add home icon to api static template since we use it in both pi2 (as of this commit) and pi3.
+
+commit a361daf70e12a6638a9a7e99cb5b823938f00a47
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Mar 13 06:32:47 2008 +0000
+
+    add default title and description for pi3.
+    It's defined in TS and used when there is no other TS is defined for it.
+
+commit 4d177dd43163e84054196c582201558cd7322e00
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Mar 13 06:30:14 2008 +0000
+
+    Pass all the marker objects by reference
+
+commit 0b49bdb2bdac3198cfcae9b26938622f2904d51b
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Mar 9 10:30:06 2008 +0000
+
+    add home icon to radius search in pi3
+
+commit 9cc31f62daee929480b2c95a39ad8c5056a53d44
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Mar 9 08:40:07 2008 +0000
+
+    fix sidebar handling
+    add sidebar to pi3
+
+commit 24ec740aed5d52fc8e8e717e21e527ede1164f3c
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Mar 9 08:34:18 2008 +0000
+
+    fix directions
+    improve sidebar zoom level
+
+commit d0f9ea68a0f58b9a7ebd8b3cdb63afd43bbc15ca
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 8 20:52:51 2008 +0000
+
+    fix a bad bug that would double the markers displayed with each marker added.
+
+commit e230357803223c22d6bdf4fb7919b1c114c90552
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Mar 6 04:23:45 2008 +0000
+
+    only show records that are not hidden or deleted
+
+commit 1d19af32a7fc40480983cff0ec735ebbc9389d5c
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Mar 6 02:18:08 2008 +0000
+
+    implement sidebar into pi2
+
+commit 580f78fb9de50d0551896fb55a290d77450a9b4f
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Mar 6 02:12:00 2008 +0000
+
+    clean up js by introducing a group object that stores the markers and belongs to a map, which can have several groups.
+
+commit 8153c57bf2655e472ab0a38044bdb042277dc225
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Mar 5 10:14:32 2008 +0000
+
+    wrong place for this class
+
+commit 6b8cd5f46cf4753abf1c1c2ef6f3545f873ac83c
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Mar 4 22:55:22 2008 +0000
+
+    Add empty marker group class
+
+commit 44d6b1ad6512c3f32d4cb343c2e4aa558fa72e4b
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Mar 2 08:51:54 2008 +0000
+
+    add pi3 tsref to docs. Still need a whole new section on it though.
+
+commit 2b743de9515d05f556ed4560acf4c0c7dadb9754
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Mar 2 08:51:16 2008 +0000
+
+    fix #93, add radius search to pi3
+
+commit ab8cbef6ea76995196eee1cfdaf8406649258bf5
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Mar 2 08:50:36 2008 +0000
+
+    fix #92, add radius search to pi2.
+
+commit dd1c82a51df9126503223b1592d3ef7a4bc8c982
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Mar 2 05:31:25 2008 +0000
+
+    implement radius search into pi3
+
+commit 7d553c2247bcca620596fb4d3af28686179737a5
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Mar 2 05:26:10 2008 +0000
+
+    implement radius search in pi2
+
+commit d0210c0e9ff8947405366ca320b045ccf20ed92c
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Mar 2 05:25:46 2008 +0000
+
+    change address form radius to dropdown box
+
+commit f9aed08f95813496f95140875b0cc33647095967
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Mar 2 02:50:27 2008 +0000
+
+    fix #76, add radius searching. This is now implemented into the API and just needs to be added to the plugins.
+
+commit f466e1784e010b237d670caa5dffcb4d14237c7f
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Mar 2 02:45:02 2008 +0000
+
+    fix #81, make address form a FORM cObj
+
+commit 8dc71b484ef51cd322a3bbdee5dc8d212a1c405d
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Mar 2 02:04:58 2008 +0000
+
+    add new method setCenterByAddress()
+
+commit 67e0b9e0fa79c8dbb6ef0ddbf546f0fb1259a108
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 1 20:32:01 2008 +0000
+
+    add TS output processing to pi3 like we did with the other plugins.
+
+commit 475a9298a9e6d1a71f4fe572c2792130de60e051
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 1 20:31:21 2008 +0000
+
+    fix formatting
+
+commit 89c8a20b64e5ed615385b1c866c94e58b6adfc89
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 1 20:21:04 2008 +0000
+
+    finish TS config for pi3. See docs for more info (once I add that).
+
+commit a69a861cd2e6db433c9823831739cbdbaee80e6c
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 1 20:19:32 2008 +0000
+
+    remove debug statement
+
+commit 1bc78c789dab6ed1ebfd3594393f2afa1ba19128
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 1 02:24:09 2008 +0000
+
+    oops, we don't want custom icons by default
+
+commit 3c1a306edf95a82ff392bad9707b37f86835fd0b
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 1 02:22:44 2008 +0000
+
+    update the docs with instructions on how to customize the info bubble
+
+commit 93e60a37dfadafac4efcbb439bf049afcf1aa3ef
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 1 01:46:28 2008 +0000
+
+    add custom icon config to WEC FE User Map
+    zoom levels in pi2 are now configurable
+    update docs to reflect the TS changes, including how to customize markers. May expand that at a later point.
+
+commit f9b4fa01d94004950342feac27a27c6aba054f40
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Feb 28 02:23:27 2008 +0000
+
+    add API doc for the addMarkerIcon method
+
+commit 63c6be89c0faccace7785f89016ba8faa210498f
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Feb 28 02:16:26 2008 +0000
+
+    users can now add as many custom icons to as many markers via TS as they want.
+
+commit 8d38d627caf49fd53445223b93abde4ab7179573
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Feb 28 00:45:35 2008 +0000
+
+    fix #82, remove dependency on our prototype and use TYPO3's instead.
+
+commit f6470bbc8875ea74e9fe1546968e23d2ca320069
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Feb 28 00:25:47 2008 +0000
+
+    rename pi3 to WEC Table Map
+    Fix query for pi3 to include records from all given storage folders (union instead of intersection)
+
+commit 09ecdffe66d5492c918cf5f9dc26d25d7adc3f8c
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Feb 27 09:21:37 2008 +0000
+
+    add tsref parsing tags to manual. Fixes #85
+
+commit cbfc46d3470ac382265d7484e832c2d70cb11581
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Feb 27 09:05:29 2008 +0000
+
+    localize the tab label
+
+commit 0da0dd9d722d6f65852b2fdb9c5a72eae4b648e4
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Feb 27 08:47:21 2008 +0000
+
+    add map to its own tab in BE records
+
+commit 025ed350ca34d94425af97025a833b98fea878c0
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Feb 27 04:53:48 2008 +0000
+
+    fix #88
+
+commit 060f04e7bf16c9391bd2307adde8f1a0dcec327c
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Feb 27 04:45:25 2008 +0000
+
+    remove api key from FF and TS
+
+commit be2954c4b5e9e4a759747c4e937c58b20a40c6dc
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Feb 14 01:36:09 2008 +0000
+
+    Tweak rendering in pi2 by making it more structured.
+
+commit 80f0c5a7472b70beace81c7e3c0fbee8bad0ba09
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Jan 26 09:27:52 2008 +0000
+
+    Replacement icon can now be defined in pi1 and pi2 via TS. pi2 may need more icons to define.
+
+commit 2020b0b3ffaa256f0bfd0ed054c16412c0328c62
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Jan 26 09:26:57 2008 +0000
+
+    Change the addmarkericon method to take an array of values instead of single values as argument. That way we can simply pass a TS array to it.
+
+commit 7d3846f5cfb53361cc056151c90aa0a67212ad46
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Jan 21 23:19:34 2008 +0000
+
+    improve custom icon code
+
+commit 5508253120f12d2a13ec02b3f09853302fc12ada
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Jan 20 08:58:18 2008 +0000
+
+    remove whitespace
+    only calculate distance if no radius is set
+
+commit 7dc4d32a5ac7ff39d60389e05540a42ad5083b3f
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Jan 20 08:57:47 2008 +0000
+
+    make method names more descriptive
+
+commit 00572bf00b110362a8deee74d9f5f35f40e19be4
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Jan 20 08:41:58 2008 +0000
+
+    some more templates stuff
+
+commit 9a1ccf810828aad5ad88bcb4ec7bf1debff0d80d
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Jan 19 02:22:03 2008 +0000
+
+    add new static template for common TS config. This will allow us to define content more flexibly and in which order content is displayed. This changeset implements that in the Simple Map plugin (pi1).
+    Note that the WEC Map API static template must be added before all the other WEC Map static templates or nothing will show.
+
+commit bfd04bcb400c89eeb2f034a59c9a35f60dacf2db
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Jan 19 02:20:01 2008 +0000
+
+    add radius limit to API, addresses #76 partly.
+
+commit 32e421536c7dc34f6be4b4436f8a89db439aa13e
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jan 3 03:57:44 2008 +0000
+
+    Added patch by Andreas Hupfau to add custom icons
+
+commit eba9d634daf05ee48fa167bc24c5372f682d2752
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Wed Oct 31 19:33:39 2007 +0000
+
+    Fixed divide by zero error.
+
+commit bc6478aa35a455a256f721bdce3ce4651643b66c
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Oct 26 18:30:57 2007 +0000
+
+    use new TS render method in mod2 FE User Map
+
+commit 85ba8acea50edc78433fb1e05e839c1412978520
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Oct 26 02:23:11 2007 +0000
+
+    remove some whitespace
+
+commit 531201fe46a3f40894776132ad2c561269ef8898
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Wed Oct 24 23:00:13 2007 +0000
+
+    Cleaned up a couple variable names and fixed sidebar support for marker by TS string.
+
+commit 576e543cb763d46eedc557ebd68c58ec49a1676f
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Oct 24 20:13:11 2007 +0000
+
+    improve sidebar api integration
+    make triggerMarker js function unique with map name
+
+commit c9b29b54fcb7250fe759a5d8a2ef4330daa46fef
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Oct 24 18:31:08 2007 +0000
+
+    improve code used to evaluate the TS config for the markers
+
+commit 875e4382efde7bfcee492e6e84f16323275b5845
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Oct 20 00:52:04 2007 +0000
+
+    roll back [373], removal of API key for Google geocoding
+
+commit b94364d20bbb0d41258bc68a3fea4296784ae868
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Oct 20 00:48:23 2007 +0000
+
+    improve simple map plugin, streamlining format, removing duplication
+
+commit e5516aea9579daa16403a6b6ab6c5a15859e56e9
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Oct 9 23:18:07 2007 +0000
+
+    merge [374]-[377] into trunk from 1.3.X branch
+
+commit 244dcd6a0da5d1d135bba74edda2484f25259cc2
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Oct 5 20:44:37 2007 +0000
+
+    merge [370]-[371] from branch into trunk: remove api key references from geocoding
+
+commit 29c84918afce8fc43e3ef44d47bf03cb417226ff
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Oct 5 20:43:13 2007 +0000
+
+    roll back [367], api key removal
+
+commit cc6262643985f1b268b89554329e005e97c39d9d
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Oct 5 00:08:56 2007 +0000
+
+    remove all api key related code since Google doesn't require it anymore.
+
+commit 709045c402e66bf7de4ef8e487ad784822629922
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Oct 3 21:15:58 2007 +0000
+
+    Add way to define sidebar link with TS
+
+commit 7d88d0ca147a9f4a7bba1a694d39cea50afb282a
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Sep 24 21:57:20 2007 +0000
+
+    add possibility to add marker by lat and long via TS in Simple Map. Need to update docs still.
+
+commit ad68fab7376c5881e60b25bff30fc26c9ef3c1f3
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Sep 18 21:58:55 2007 +0000
+
+    test commit
+
+commit e5a33f937efa668d492b24f04ac055048a66f9e9
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Sep 18 21:57:53 2007 +0000
+
+    test commit
+
+commit 03244b9643a850546f8e10fb6fdde508d01c43f2
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Sep 18 06:15:42 2007 +0000
+
+    test commit
+
+commit a64fe4e6d88ae2e7aab8303a5bdeb7b0b3faae0b
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Sep 18 06:12:27 2007 +0000
+
+    test commit
+
+commit b6d73a5f4c7632b36edab73cc7e89919ea3fec44
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Sep 12 00:19:23 2007 +0000
+
+    prototype sidebar for pi1
+
+commit a4d93a33e489743c0f1d9dee0f401e7c1e3c8272
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Sep 11 02:21:05 2007 +0000
+
+    remove lots of trailing whitespace
+
+commit 208453d6a14ce07a71bd066172f143fc3ea779b4
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Sep 11 02:16:25 2007 +0000
+
+    working pi3
+
+commit 2f44e518a75d6634496203802dd337ecaed679b6
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Sep 11 01:29:26 2007 +0000
+
+    use shared methods
+
+commit ed981e67f15416ca24fdee94e26e75952344553a
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Sep 10 21:43:27 2007 +0000
+
+    [FIXED] Users that were part of several user groups would not be shown on the FE User Map under certain circumstances
+
+commit 2c6430bcd1d4436c676dd7e34bd314e8465ce170
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Sep 7 20:41:12 2007 +0000
+
+    Use shared methods in pi1 and pi2
+
+commit 5094a43b7357b461becf4f1a266b2600fb1832e8
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Sep 7 20:40:18 2007 +0000
+
+    Add class with shared methods to reduce repetition
+
+commit 6527d0f03bd3cba18735a5cfa4f268541d4fd8b5
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Sep 5 23:02:21 2007 +0000
+
+    filtering by starting point works now
+
+commit da865b02cac9f148b1083a95a9b0b332a7246e5b
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Sep 5 22:53:24 2007 +0000
+
+    flexform workaround
+
+commit 73e23806259ce138f66bf3ab216249e5e396aa04
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Sep 5 22:28:28 2007 +0000
+
+    add starting point
+
+commit d045e88a31b601c050c9b637c5a6b4c4551e61a5
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Sep 5 22:09:33 2007 +0000
+
+    tweak labels a bit
+    mapping works correctly in pi3 now
+
+commit 8a4d3d1c6fc68855e58632228b996a935c405e80
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Sep 5 21:51:43 2007 +0000
+
+    and more
+
+commit f856a2526816777e9961d4802427c1e5ea9ebe47
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Sep 5 21:46:31 2007 +0000
+
+    update flexform
+
+commit 1a5b992fd5df9d34883517304b216e29196d0092
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Sep 5 21:33:52 2007 +0000
+
+    Add itemsprocfunc
+    add static templates
+
+commit 4ff134d2ea832a8dd7c302a3ecef92e6813c1a9d
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Sep 5 20:22:49 2007 +0000
+
+    Add TCA config for mappable data in tt_address
+    Actually add the files for pi3
+
+commit 061b1170d977f21074338a098e5a6a395e8e24a9
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Sep 5 19:19:49 2007 +0000
+
+    Add skeleton for pi3 map anything plugin
+
+commit 14e7bd611348e208816225e3d5c645bf9679acca
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Sep 5 02:42:02 2007 +0000
+
+    remove directions div since the dev using the API is supposed to add it. See #72 for discussion
+
+commit 9337975b952c6a6ed7d8d395f7729f871173dca6
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Sep 5 01:50:13 2007 +0000
+
+    update ext_emconf.php for 1.3.2 release
+
+commit 3345668409bb1fe31c1bf51ce337f3103c0084b8
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Sep 5 00:58:56 2007 +0000
+
+    update changelog for 1.3.2 release
+
+commit 90e24ab3c3e8494e6e53104a4dde133eabd6e6b9
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Sep 5 00:46:16 2007 +0000
+
+    Need global variable $LANG
+    move localizations into one line to prevent JS errors
+
+commit 1f41612aa0d62209443ff029d9f2020d8f744672
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Sep 4 23:50:24 2007 +0000
+
+    [NEW] Localize gmaps error messages
+
+commit 503ba7387f330811fed70320be2547aa8dce9e03
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Sat Sep 1 02:15:38 2007 +0000
+
+    Fix for bug when addresses are normalized in some places (_cache) and not in others (_backend).
+
+commit ec8d0699bf3fc94270e96216445b694e6f6cb66f
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Sat Sep 1 01:44:15 2007 +0000
+
+    Fixed incorrect API key usage when geocoding from the backend.
+
+commit 30f2a6ee37a3ef5e201b1042df59772fb15ebe3b
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Aug 29 01:11:22 2007 +0000
+
+    [FIXED] Add more descriptive error message for directions
+
+commit 2a8c4c8a277a9b366624ed9f73cbb046c18dfab6
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Aug 29 00:41:04 2007 +0000
+
+    Update docs with 1.3.1 changelog and fix wrong CSS reference
+
+commit 0013515d9d2ad51c05a26caf85d90d6a5f5301db
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Aug 29 00:18:28 2007 +0000
+
+    update auto zoom algorithm
+
+commit adf08189adda7a708e2580ca00346a66c3f231a0
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Aug 28 23:35:41 2007 +0000
+
+    remove debug statement
+
+commit 9511eaaf005b4cfab61d30dc30fc93ec49260f3b
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Aug 28 23:35:20 2007 +0000
+
+    remove debug statement
+
+commit 2f59ac05cc4e8a655542c0de3e0ce407f7b793e7
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Aug 28 23:32:38 2007 +0000
+
+    [FIXED] map now zooms properly when only a manual center is given
+
+commit 01989b5797487bed9a8661fd810071048c8fe43e
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Aug 28 07:36:42 2007 +0000
+
+    add conflicting extension
+
+commit 5872ee89ee4541b1815782165ab06f22550742f8
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Aug 21 03:14:29 2007 +0000
+
+    trivial whitespace
+
+commit 7e35909bd8aa44203ea0a44cfe886da8cf7417ad
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Aug 21 01:56:28 2007 +0000
+
+    update ext_emconf for 1.3.1 release
+
+commit ae885730e455cbdd2374d470d3608e0651550b1c
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Aug 20 21:32:21 2007 +0000
+
+    [NEW] Add German translation thanks to Christoph Kuhn
+
+commit ba24223f16303b23702db4b323227416674ff9cd
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Aug 6 09:08:00 2007 +0000
+
+    [FIXED] Direction "to here from x" were flipped around
+
+commit 1ac1de4f52d2b4911db23dc82f9f83228fe13bdb
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Aug 4 00:27:21 2007 +0000
+
+    [FIXED] Deleting domains in the API Key Settings works now
+
+commit edf5b32da67ffbc3d87c4510873245dd119773f1
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Jul 30 21:39:21 2007 +0000
+
+    [Fixed] Include install tool class since we are creating an object from it.
+
+commit 4879af8117a0963f92f4747b79d5b1b887fd7bb6
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jul 26 22:33:33 2007 +0000
+
+    Change ext_emconf.php for 1.3.0 release
+
+commit 7783be6d2fe77cc6e0407b668b8680f10a015d22
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jul 26 22:28:51 2007 +0000
+
+    add XCLASS definition and PHP end tag.
+
+commit 1c4afa13fa3ffa78e642305376069be46ec0251d
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jul 25 21:00:37 2007 +0000
+
+    Make error message a little more descriptive
+
+commit 2bbb66000caeb77ef82f3605607a33eb903fd99f
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jul 24 00:46:19 2007 +0000
+
+    update docs to reflect changes in 1.3.0
+
+commit cf551cadf790c72821c39a6f245c7c927c18a65a
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Jul 23 23:17:33 2007 +0000
+
+    fixed clearing cache when it really wasn't necessary and produced some funky errors
+
+commit a64d06f76722f02bca392bb61287e73ba36de4ce
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Jul 23 19:31:55 2007 +0000
+
+    remove some debug calls
+
+commit 3947d33b1ec032fd00187108d46a091f7984fe80
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Jul 23 19:30:30 2007 +0000
+
+    wording and formatting changes
+
+commit ab52300bb7de25869e463bfc94917f7c118a6b6c
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Jul 23 19:29:29 2007 +0000
+
+    Outsource domain -> API key handling to domain manager class
+
+commit 24e907d6463199fd8b26eabdc235be727822471f
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Jul 23 19:19:34 2007 +0000
+
+    Fixed bug that causes an error in PHP: cannot redeclare $this
+    Some code formatting
+
+commit b724314297f8f4777c6d2eecb5f1884c02e2b66c
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jul 19 19:09:24 2007 +0000
+
+    remove old pagination code from mod1
+
+commit 3977a054b462cf903af1ac1ac141491a3042098e
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jul 19 17:53:43 2007 +0000
+
+    code formatting changes
+
+commit ed4cfdac4beaab7ed0fdfb1b14d5b5a7c005f267
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jul 19 17:52:36 2007 +0000
+
+    Fixed: In some instances the geocoder would override manually changed coordinates.
+
+commit 95af66a3a04d1d27cdcd186005e49769178a0670
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jul 11 00:57:39 2007 +0000
+
+    remove background from image
+
+commit 03699be818baeee4834b98fb2bb16095d9e601c6
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jul 11 00:54:30 2007 +0000
+
+    add borders back to all input elements but images
+
+commit 89065b8eb7783edf30a53d9cba1a8df116907fb7
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jul 11 00:51:42 2007 +0000
+
+    remove border around trashcan icon
+
+commit 4e78eecf6cab17f0cb4715ab709335c15e8b363c
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jul 11 00:46:46 2007 +0000
+
+    fix domain handling
+
+commit 0dbbecbf3bccd0851a59ce30e25066e94a79c763
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jul 10 21:10:04 2007 +0000
+
+    replace delete buttons with icons
+
+commit 2ea71e6308cb698f1a41c9acfab61a2813f21978
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Jul 9 22:03:08 2007 +0000
+
+    Remove labels for domain management, it should be obvious. Some other small improvements.
+
+commit 44e9ad31e153ea74c55635f1e054912e8bf9cb31
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jul 5 20:11:24 2007 +0000
+
+    Add delete button to blank domain entry form as well.
+
+commit cb49aed69dbb9a4a0f72c0483aec8ab72a66b304
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jul 5 19:57:02 2007 +0000
+
+    Refactor domain sniffing and tweak domain managing to work as expected
+
+commit b068b1cbfec66014480f11b3c4ae2b2e81119a61
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jul 5 18:55:51 2007 +0000
+
+     * Add helper.js file that includes helper functions which....
+     * Make the map independent of prototype. This fixes possible compatibility problems with other js libraries and saves us several hundred kb of files to be loaded
+     * don't include google's api and other files more than once in the header if we have more than one map on one page.
+
+commit a719664fa19032306d7d6967d0e85e5230d7bf22
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jul 3 01:39:03 2007 +0000
+
+    improve domain handling dialog
+
+commit c640787d3c60807d1c3d1375ffcc0f37a736eef5
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Jul 2 21:47:00 2007 +0000
+
+    Add method that adds a marker based on just a table and uid. The address info is taken out of the TCA.
+
+commit c0b976ff88895ad953489b501ea7699c1cdbb65f
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Jul 1 03:08:59 2007 +0000
+
+    Easier way to pop up a marker on load
+
+commit 7b1dadb553860bf853e64f5111a0c8e025e5aee2
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jun 28 22:06:47 2007 +0000
+
+     * add option to show marker info bubble on load automatically
+     * some refactoring of the marker class
+     * make label for WEC Map Admin settings more descriptive
+
+commit 4c5e4f5cd1b4019cd237abbc45a073d1bbf2e337
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jun 28 19:39:05 2007 +0000
+
+    if we are given just a country code, convert to a real country name for the geocoder to understand
+
+commit d0804c1383c8117816bd1b41b4985b7494a79233
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jun 22 19:33:02 2007 +0000
+
+    Implement different domains in API
+
+commit 611a4f5608a46c92e1759368241c2dc182d92e10
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jun 22 18:37:10 2007 +0000
+
+    Domain -> API key mapping in the WEC Map Admin
+
+commit 984e600dd82076b90cf150fa6efe5da7b62c5976
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jun 22 18:36:33 2007 +0000
+
+    Add last control to the FE User Map in the BE.
+
+commit bb593e68c04a38bee99dee6fce4fbe82289054e2
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jun 20 21:35:25 2007 +0000
+
+     * add written direction option to FF and TS for pi1 and pi2
+     * started adding settings to FE Usermap Mod in the BE
+
+commit c4ff4613b9a655714178702660bcb8471c70ecf3
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jun 20 00:31:02 2007 +0000
+
+    add new directions to BE user map.
+
+commit 5529041b866ca3d7a74d3495eeddee0272ee4b2b
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Jun 17 21:04:53 2007 +0000
+
+     * add div that's holding the driving directions when using directions
+     * make all info markers close when asking for directions
+
+commit 864f8c7c8e0f012dd6198e00f9a8f8e280b3bbc9
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Jun 16 01:07:47 2007 +0000
+
+    commit first attempt to implement directions in the current map
+
+commit 8265dbd96eeca20296315a0c7fac442a548feeef
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jun 13 22:54:04 2007 +0000
+
+    update ext_emconf.php for 1.2.0 release
+
+commit 68a5d9ada8e0e6b0a1f488eda0024fd882e28eb9
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jun 13 00:07:28 2007 +0000
+
+    update manual changelog
+
+commit 834a66d1d251d9c6daf0f17db6f4bd39a942a7e7
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jun 12 23:56:47 2007 +0000
+
+    Fixes #62, thanks to Tiberiu Contiu for the help!
+
+commit ac306261f332c73a9a11f6669b1cbd1f9e1255a7
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jun 12 07:00:56 2007 +0000
+
+    add TS stubs for new options
+
+commit 91df300fe1bd68133e10724a300cc573e025c22a
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat May 26 03:59:01 2007 +0000
+
+    update documentation for new release
+
+commit 3034480bfb78c3ac691f7584e151a7b7cb4e6547
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat May 26 02:01:44 2007 +0000
+
+    merge [269]-[272] back into trunk
+
+commit 5c7f88857fa609be483f4796d36424be889aeb0f
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Mar 27 03:27:27 2007 +0000
+
+    merge [260]-[265] back into trunk
+
+commit fa3b66777d482abbe21414a6290cc3a9de25762e
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Mar 26 23:15:05 2007 +0000
+
+    fix wrong path causing prototype to not be included correctly in the BE
+
+commit ac233154c2920a433f22e17fa805a9b3979859b7
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Mar 25 01:46:58 2007 +0000
+
+    merge [245]-[253] back into trunk
+
+commit c537d8f4e6586293f0f3a7a29feff7b960ceb5d0
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Mar 11 03:54:55 2007 +0000
+
+    update emconf for 1.1.0 release
+
+commit 8651b7929c15e8275eadc778f432207e5ba8e048
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Mar 11 03:43:45 2007 +0000
+
+    Update documentation
+
+commit 78c8b58371ff302298f0ef5b1107a28fcd1c235b
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 10 22:27:44 2007 +0000
+
+    fix wrong variable for street db field, causing addresses to not show.
+
+commit 60434f15de3ee377306783286a8d96344d4feaa2
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 10 21:03:33 2007 +0000
+
+    and now, let's actually include a locallang file
+
+commit dc992e1ef2f1ede591a16296092cdece99beea09
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 10 20:40:32 2007 +0000
+
+    fix missing $LANG object in Google Marker class
+
+commit dc5602e423dbb8ef2bf95915cecd3b9d95fe52b0
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Mar 8 23:30:56 2007 +0000
+
+    fix #57, localize directions features
+
+commit 9a8267e6b3540b1742f2b2abe88f102f95e3abfd
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Mar 8 23:08:48 2007 +0000
+
+    Add another method: addMarkerByStringWithTabs()
+
+commit 58f082b8c6cdeb6c18205cdba76837ba67f16497
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Mar 3 03:08:17 2007 +0000
+
+    Implement directions into plugins and backend mods and functions
+
+commit 1c3aa2bed2feb15b578f4d6a3aa6265e80633884
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Mar 2 05:28:43 2007 +0000
+
+    accidently deleted a few lines
+
+commit 4f89ed7d55f20721a01b2fdf1e276c3445ade966
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Mar 2 05:26:26 2007 +0000
+
+    remove hardcoded feuser id
+
+commit 8e7a5053f2c45eaf9322734c9065fdd569073662
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Mar 2 05:25:44 2007 +0000
+
+     * now support tabs with extra API methods
+     * supports directions out of the box
+     * can optionally fill in address of logged in fe_user in directions
+     * change pi1 static setup: defaults messed with TS setup in certain cases
+
+commit 67bb311e6bbc9251fab359d71387b847ea6a5656
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Feb 27 23:49:09 2007 +0000
+
+    improved edit record interface with icons
+
+commit a2b8468c27a59c757f150f228187dfcc92c1e765
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Feb 27 22:08:34 2007 +0000
+
+    Localized label for search box.
+
+commit 71570a5c768c02e293224e873cc5065839d3b77a
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Feb 27 20:34:07 2007 +0000
+
+    be consistent and always show info text in search box when we're not searching
+
+commit 00552d3e25a3dc28f7945f3bab4ce9c17ea636b2
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Feb 27 20:28:26 2007 +0000
+
+    only need these files once
+
+commit 6fe0154c2fafd595141a3d49c3654c7415191243
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Feb 27 20:26:06 2007 +0000
+
+     * several search word now possible, just use space to separate them
+     * do all searching on lowercase strings
+
+commit 600248dd34f462c87292b7876fdc03b7fb90da59
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Feb 27 06:17:16 2007 +0000
+
+    add option to reset search
+
+commit c50d7ee49ff6b4e9774a96b41c4162bd38129e66
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Feb 27 05:35:40 2007 +0000
+
+    Make live filter via search box work
+
+commit a8a2cd22d90257d0de0d10631ff6a3b39109d63b
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Feb 27 04:40:59 2007 +0000
+
+    Fix JS problems with reserved keywords
+
+commit 2deb83019e8a86a751a34bd5a294e1cbed658f1d
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Feb 27 04:20:22 2007 +0000
+
+    add record filter ability; still broken :)
+
+commit 246c62dda8e4d0b32503a27a11f38ff362774bd4
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Feb 27 01:23:08 2007 +0000
+
+     * remove code for old cache handling method
+     * remove real href links; everyone needs javascript anyway
+
+commit baa804c8ad522f9e125c3d42cd50c851c1f1e7eb
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Feb 27 01:18:17 2007 +0000
+
+    make cache management a lot user friendly with ajax
+
+commit d1e0daa24099298e54fd0f4b0859ae60b92b30e1
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Feb 24 07:23:26 2007 +0000
+
+    merge [217] and [218] back into trunk
+
+commit 90108ef16d382779642659c9e373e9a2e4fd6fb3
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Feb 23 10:26:17 2007 +0000
+
+    remove debug call
+
+commit 6602ed1ce867998f7106c2a8e033ecbb05316d8e
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Feb 23 10:25:34 2007 +0000
+
+    add pagination to cache records
+
+commit fe2ff86bcd9f427cd8c44e1878a617e9c0d01258
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Fri Feb 23 05:56:36 2007 +0000
+
+    Added sortable table in WEC Map Admin.  Very beta though...
+
+commit 88d94a37b2439663d954bb2fc3afe7e6b18c6f85
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Feb 22 04:50:04 2007 +0000
+
+    fix bug where an incorrect SQL query was generated when both storage folder and user group where specified
+
+commit fde6e3f78378adb4a1c0c3a2572b7ab034ab8212
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Feb 20 05:02:34 2007 +0000
+
+     * fix a typo
+     * workaround country field problems in mod2; already added in pi2
+     * lots of localization improvements
+
+commit 94f4e979fafe7f02d9fdf1710ed5197f212329cb
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Feb 20 02:26:08 2007 +0000
+
+    Added post-save hook to geocode address related info in response to ticket #51.  Still needs review and testing before the ticket is closed.
+
+commit a019bdb1815c02286001f741806fbbab844a477a
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Feb 20 01:21:14 2007 +0000
+
+    fix #47, bubbles appearing empty.
+
+commit c39404d1adf5c2b21525ef0dac36034edde0dfe5
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Feb 20 01:14:34 2007 +0000
+
+    Before deleting a lat/long entry, make sure that the original value existed and the new value is blank.  Partial fix for ticket #49.
+
+commit 2361261bd027ed1a6ec0ab5a2eefd3eb9a2e6da8
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Feb 20 00:46:14 2007 +0000
+
+    remove some todos
+
+commit c93e9323455f810f79efffc9ae98f0d52dd64e85
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Mon Feb 19 22:46:11 2007 +0000
+
+    Added deleted record filter to batch geocoder in response to ticket #50.
+
+commit 8b52a6be8f593c1f240d396797a111903ca19442
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Mon Feb 19 22:22:18 2007 +0000
+
+    Corrected typo in FE User Map module in response to ticket #48.
+
+commit 72d892713eee0b2d9e49b77a312026d3dbd55704
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Feb 14 04:31:32 2007 +0000
+
+    remove unused file
+
+commit 042cec2021b08f2e4d0463539b2e8c53d7054338
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Feb 14 04:27:14 2007 +0000
+
+    update em_config after TER upload
+
+commit 6e1e0e4a4195fb285b329b77a50b74fc0acb63ff
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Feb 14 04:17:33 2007 +0000
+
+    final updates to docs
+
+commit 5f7f1d55239c9a6c0837bceddac77758f0427209
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Feb 14 00:17:11 2007 +0000
+
+    update changelog in docs
+
+commit 47a6995319fa588bae3c86305cfcb28cc3d21f05
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Feb 14 00:05:53 2007 +0000
+
+     * update manual for new features
+     * add temporary fix for unused country db field
+     * move initial map type into mapConfig instead of controls in the FF
+     * move initialMapType TS property out of controls
+
+commit e766bfb3d8db25d9846375c5e82afbacc487068e
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Feb 13 23:39:22 2007 +0000
+
+    fix a typo
+
+commit 94e170c36c30c0d877aeacd330a07e96561912d7
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Feb 13 23:06:49 2007 +0000
+
+    Added ability to set initial map type in response to ticket #44.
+
+commit b6254dc06e8ee15f060092cee2c4e02a256b2d0e
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Feb 13 22:40:59 2007 +0000
+
+    Updates for ticket #44.  Map API now supports a defined type.  Still need plugin support for this.
+
+commit 5a8008e961d442d6f40c179d2feae207c528b179
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Feb 13 22:39:59 2007 +0000
+
+    Updates for ticket #43.  Address fields are now read from the TCA and we try to make things work better when the sr_feuser_register address fields aren't present.
+
+commit 208d6328acff1a12c0014472f2b4222a46f41418
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Feb 13 20:36:17 2007 +0000
+
+    remove changelog from subversion
+
+commit 72e73cf445d71a43d8cf8e180f2c571128fe11de
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Feb 13 20:31:59 2007 +0000
+
+    Add Change log
+
+commit 9d3127789535116897107e87239ac56a656b7113
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Feb 13 20:24:40 2007 +0000
+
+    Fix typo
+
+commit 2eba830c81c9da07094c32db5ab229f0f775ee24
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Feb 13 20:21:47 2007 +0000
+
+    Removed short open tag for PHP in response to ticket #45.  Moved progress bar width calculation to util class.
+
+commit d7a934c23080aa85db26b0843ef6e0834cccb4cb
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Feb 13 05:16:59 2007 +0000
+
+    update emconf
+
+commit 59aba545a717246fdf0c02011dd951164af63876
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Feb 13 04:38:07 2007 +0000
+
+    latest doc version. Should be final.
+
+commit f8b3d4d41df57311a6af7a928aed295631a39230
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Feb 13 02:11:02 2007 +0000
+
+    Updated to Bill's latest manual.
+
+commit f5c9c6c7a8e0144f8e38f23143deeb67c9e69cd4
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Feb 13 02:09:26 2007 +0000
+
+    Added module definitions to ext_emconf.php
+
+commit 85a01f0d35b3a3858190e86013d08b36bafb22fc
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Feb 13 02:04:29 2007 +0000
+
+    More cleanups for XCLASS definitions.
+
+commit 623ccf466f0cfa0707113b6847a22f082c78e670
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Feb 13 01:27:28 2007 +0000
+
+    Updated version, state, and TYPO3 version requirement.
+
+commit 3032ad31affebbbe82324ab86f48dde06aada224
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Feb 13 01:26:11 2007 +0000
+
+    Added XCLASS definitions.
+
+commit 4588636f5dc03afd8e07de7993781102a7a9a2cd
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Feb 13 01:25:38 2007 +0000
+
+    Added XCLASS definitions.
+
+commit 889c7d07f5a28c415a67de4ffd2a1d4398a11051
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Feb 13 01:25:01 2007 +0000
+
+    Corrected service name in comments.
+
+commit 1a212e51e22b5e37447b941b5a30ca5089125eec
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Feb 13 01:24:16 2007 +0000
+
+    Removed unneeded Kickstarter files.
+
+commit 27d118410a93074dafcc2d79435ec43360d5e3af
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Mon Feb 12 21:42:45 2007 +0000
+
+    Added conditional code for choosing which field contains the country. Should fix ticket #42.
+
+commit c96cd36917a37973c88f3fe5962ef685b9fdf161
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Mon Feb 12 20:27:14 2007 +0000
+
+    Corrected label for update lat/long button.  Fixes ticket #41.
+
+commit dbba2c11bc1b15c753ef2c32f90656244a160613
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Mon Feb 12 20:25:28 2007 +0000
+
+    Cleanup for the batch geocoder.  Added localization and comments.  Added optional constructor argument to set the geocoding limit and merged duplicated code for HTML output into a common function.
+
+commit f284eb7da797c34af655bb7e226c7d96cc588d6a
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Sat Feb 10 04:27:29 2007 +0000
+
+    Updates for ticket #35.
+
+commit 0582ea41922ed8de2f68a7a5306dedb0aa1ff574
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Feb 10 03:29:20 2007 +0000
+
+    updated docs
+
+commit 5c0ddcb38a5004063e1231dd4020d04bfb1af72a
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Feb 9 04:45:25 2007 +0000
+
+    update documentation
+
+commit 56315255d7a71f7c8a475c9cb8360ab0698954dc
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Feb 9 03:35:43 2007 +0000
+
+    move batch geocode up in map admin module
+
+commit 3de99c73459576ec3f0712fb4db2c9a45999619a
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Fri Feb 9 03:27:45 2007 +0000
+
+    Fixes for geocoder services when address is outside US.
+
+commit 8259bdcec94be5d0252f2fabf36225650cbcf7ea
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Feb 9 03:26:47 2007 +0000
+
+    setTimeout takes ms as argument. Add 0.5 second timeout before loading BE maps now.
+
+commit 20bf0909436a05bd3a7f2c21ee15c4f5e7e75770
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Feb 8 23:12:06 2007 +0000
+
+    update documentation. Thanks Bill!
+
+commit f665884a7e0c89561dd5739f3f8b131f2444c71d
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Thu Feb 8 11:06:09 2007 +0000
+
+    Converted lookup() into a wrapper function to address ticket #37.
+
+commit 59ce8ff1bb1e5aa6edf99cb7140677481a0d00fb
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Thu Feb 8 10:32:21 2007 +0000
+
+    Cleaned up connections between TS and markers.
+
+commit 6706f501f051f24ed1b6da950929135a869f1b17
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Thu Feb 8 10:31:29 2007 +0000
+
+    Cleaned up Typoscript.
+
+commit 8946f558ef2de0e3f47c43dc33aea14baff60efd
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Feb 8 05:20:47 2007 +0000
+
+     * fix default value for &pObj in lookup
+     * preliminary fix for #36, showing address by default.
+
+commit e9d5b9d795c09080ea1cc8433df25a0225e8438c
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Thu Feb 8 05:16:30 2007 +0000
+
+    Cleaned up JS formatting.
+
+commit 507ceffcb9f97cb98a5e273c30eacb19c710e65e
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Feb 8 04:32:36 2007 +0000
+
+    default static template for pi1
+
+commit ec49990d8846d6e50359cc5a24341bc9adb1cbab
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Thu Feb 8 02:48:25 2007 +0000
+
+    More cleanups for batch geocoder.
+
+commit 4f4ca727c95ed0eab4cb13163032a3b2365c5660
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Thu Feb 8 01:31:21 2007 +0000
+
+    Lots of work on the batch geocoder.
+
+commit db83c3abd26afd6d21bb5a02900748dd5b37865a
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Feb 7 06:20:11 2007 +0000
+
+     * add ajax interface for batch geocoding
+     * add two getter methods to the batch geocoding class
+
+commit 57546d2e96961b53bd99bd503a241518028a76f3
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Wed Feb 7 04:42:34 2007 +0000
+
+    Minor cleanups for batch geocoding.
+
+commit 80f10ee7f9aa0314467298dc290c29afa276b511
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Wed Feb 7 04:25:15 2007 +0000
+
+    Beginnings of the batch geocoder.  Warning: Very ugly code..
+
+commit 4b9970da7755f6798b75e5a26aaf6f7946896824
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Wed Feb 7 04:24:35 2007 +0000
+
+    Moved address mapping to the ctrl section of the TCA to reduce duplicated config.
+
+commit 72b6bf0f991f623fd1cc06c22747237fc3d2cea6
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Wed Feb 7 01:39:19 2007 +0000
+
+    Corrected typo and added debug array for devLog messages.
+
+commit ea533272afcf0ad404c52b8c392b190487bbcb33
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Wed Feb 7 01:05:06 2007 +0000
+
+    Added devLog output to help in debugging issues on large sites.
+
+commit 7936c53100aa9cc6a49e96ae53e79e538eb2634b
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Wed Feb 7 00:10:40 2007 +0000
+
+    Updated Google geocoder to better address failure conditions.  This is part of the solution for ticket #33.
+
+commit 2b956ef906b55b29567f8bbcd0c653da58c56a8e
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Feb 6 21:21:38 2007 +0000
+
+    Updated plugin and template names in response to ticket #32.
+
+commit b5e2f5a939b29bebeaa5b577281b8fc8fff0740e
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Feb 6 06:01:13 2007 +0000
+
+    Updated calls to addMarkerByAddress in response to ticket #31.
+
+commit 4c21c1b33e984e6a80cf1c7d8c08d60a7effe33d
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Feb 6 04:11:31 2007 +0000
+
+    Fixed inclusion of locallang files for new content wizard.  Fixes ticket #30.
+
+commit 68dfedfe16606fc3c884a3356beb440a513d2f45
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Feb 3 09:44:07 2007 +0000
+
+    Change double quotes to single quotes where applicable. Should make the code just a little bit faster.
+
+commit 97afe6a534a5d12c3881549ce43cd9a2e6d849d4
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Feb 3 02:08:48 2007 +0000
+
+    Fix references to locallang.php files
+
+commit 0d7e75c1a2fef886e57bbbb7032768e6d651d6f2
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Feb 3 02:05:12 2007 +0000
+
+    change plugin locallang files to xml format
+
+commit 57f816ee1cf597beef3293d584e9baf7506dc78c
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Feb 3 01:37:36 2007 +0000
+
+    localize another label in backend functions
+
+commit b9d3716649bc35f8677a460adf081a954c3f782a
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Feb 3 01:32:10 2007 +0000
+
+    Add javadocs to the methods
+
+commit ec4f98c79527ebd740f9a7f0550f97b939b79283
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Feb 3 01:16:49 2007 +0000
+
+    remove todo and constructor for wecmap marker class since it's never used
+
+commit 4af75346d31f6f3a1f1a1bd397990031f463f9df
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Feb 3 01:10:23 2007 +0000
+
+     * remove a todo
+     * remove wecmap_map class constructor since it's never used and put just a stub instead
+
+commit bb20eb92737b0a5d7265c3dfc01a310642df4afa
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Feb 3 00:33:48 2007 +0000
+
+    pseudo normalize data. Fixes #14 for now until we implement normalization properly.
+
+commit e57ac85b550202e87a21e1191a004b3301e22553
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Fri Feb 2 04:50:51 2007 +0000
+
+    Added check for empty address in response to ticket #26.
+
+commit a98389e7c5fdc0609d0bb0ce8ab5c0441155da97
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Fri Feb 2 01:24:23 2007 +0000
+
+    Marker Manager titles are now passed through makeTitle so that TS wrapping applies.
+
+commit 335c58be77075532111b815dacfbd8b245117ffa
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Fri Feb 2 01:22:23 2007 +0000
+
+    Added h1 wrap since title is no longer wrapped by the marker class.
+
+commit c024b1f2280712b3965c4c6f70e29fe65ac38936
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jan 31 00:11:44 2007 +0000
+
+     * change span tags to p tags in drawMap method error messages
+     * add check for set width and height and don't show anything if either is zero
+
+commit c765d2333541123927cd88a3bc6daf8bd3737d35
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 30 23:28:43 2007 +0000
+
+    don't show hidden and deleted users. Fixes #23.
+
+commit 4bf3a704887f2e18024dffdff609376b31a8ee62
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 30 06:32:06 2007 +0000
+
+    update documentation
+
+commit e32cff2659c95866f82ab376030a68f44d06e799
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 30 06:11:48 2007 +0000
+
+    replace locallang_db.php with an xml file. Fixes #18.
+
+commit 8bfc60994f686cbb14f82f5b7500d2fcb7e54021
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 30 05:32:33 2007 +0000
+
+     add 'none' radio button to map controls flexform. Fixes #21.
+
+commit aa0fff3d119e395ec898090d00381672b066774a
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 30 05:09:06 2007 +0000
+
+     add TS option to make more than one marker for the Simple Map plugin using TS. Flexform still takes precedence.
+
+commit 34defd4ecef61d5816d9ba1d49b9b7f6361f4a9b
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Jan 30 02:25:47 2007 +0000
+
+    Removed comment for completed todo.
+
+commit 98bfd4e12baa5ab4a02c6cbda873f8755c73e679
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Jan 30 01:52:38 2007 +0000
+
+    Change the way language processing is initialized.  PATH_typo3 doesn't always work in the frontend, and using t3lib_extMgm is better anyway.
+
+commit 87dafcfa29a72ad7757fdcf198e66db729148f85
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Jan 30 01:46:21 2007 +0000
+
+    Reversed zoom limits after cleanup in autozoom functions.
+
+commit e55c708ec856c2b7d151851aeb16434e6498fb85
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Jan 30 01:37:38 2007 +0000
+
+    Removed comments for completed todos.  Finished cleanup of autozoom code.
+
+commit c842d0c1ec9069a53feb118fa9243281b1d4b413
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 30 01:09:41 2007 +0000
+
+    remove static folder this time
+
+commit dff7667ac858eb60a8fe11303be284af7276a272
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 30 01:06:57 2007 +0000
+
+     * move static template files into respective plugin folder
+     * add static templates to ext_tables
+     * delete ext_typoscript_setup.txt; everything was moved to a static template
+
+commit f14ce552182ee44c99a36ad8859a8c0687bcdfb3
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Jan 30 01:00:36 2007 +0000
+
+    Removed todos that have been completed.
+
+commit 4a627a958eaa07846d7fcf662c11ce9543b50e0f
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 30 00:55:44 2007 +0000
+
+    merge [110]-[120] into trunk from review branch. Thanks Jeff!
+
+commit 8466edbc1c88d4eb792fabf39f7b03a0fbd0082e
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jan 26 05:47:03 2007 +0000
+
+    merge [107]-[108] into trunk
+
+commit 9a50af52eb60859240065b66ca9483cc546417b4
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jan 26 04:59:55 2007 +0000
+
+    Merge [97]-[105] into trunk
+
+commit aa570f6904587c0d6d8bd788a641737bd44f1684
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Thu Jan 25 23:34:52 2007 +0000
+
+    Updated inline documentation.
+
+commit 6e1c33d7db4fd1d3638bd35d87f72da6e7624124
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Thu Jan 25 23:23:36 2007 +0000
+
+    More cleanup.  Changing Web Empowered to Web-Empowered.
+
+commit ba6ada03e0412d9f25f537d871a2bfb229ad4e20
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Thu Jan 25 23:17:46 2007 +0000
+
+    Cleanups to fix copyright notices, etc.  Added locallang to mod1.
+
+commit c11e93ad5d02ea072d14da01db266dffbff009f8
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jan 25 10:27:35 2007 +0000
+
+     * Remove silly debug condition in pi2
+     * it's _new, not new :)
+
+commit 5cbc5d5e8fde23f2e3f125155c88a04af91488d7
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Thu Jan 25 05:02:05 2007 +0000
+
+    Made API signup link open in new window and removed stray debug statement.
+
+commit 2f0cfe9e02d2832c219028b667e7ce3e75a9d141
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jan 25 04:41:16 2007 +0000
+
+    Add error message when there is nothing to display
+
+commit 6c5637de26b14ef98c2039006108fb77cbc64e4a
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jan 25 04:34:24 2007 +0000
+
+    Change the title of the BE map to match the title of the FE User Map
+
+commit f17f000b0b74028e0503c0176f737409e4d65c30
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jan 24 05:19:29 2007 +0000
+
+    Add a method that allows adding a marker by just an address string. Since it will just be put back together for geocoding, this is pretty fool proof.
+
+commit fb216e2311068622ff7a9ba6eefa7af263e31a98
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jan 24 04:45:39 2007 +0000
+
+    Add description to BE maps
+
+commit 7488928e801730d2e701a54bc969739c90d07728
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jan 24 04:42:34 2007 +0000
+
+    Remove hardcoded h1 tags for marker title.
+
+commit 0313d7e8e52eec72dd26be8c77f3e91bba0885a0
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jan 24 04:35:24 2007 +0000
+
+    Fixes #8, thanks to Jeff for the code
+
+commit e230bc1b05964155b265c86030b9319bacfa473a
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jan 24 04:07:25 2007 +0000
+
+    extension now checks whether there is anything to display and we have an API key before drawing a map. If there is no key, an error message will show that links to the Google Maps site.
+
+commit 2a6c60d63835f26c333f02f891881d6038ec64be
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Wed Jan 24 04:05:33 2007 +0000
+
+    Added initial version of Settings module for managing API Key.
+
+commit 3bb3aa15e7d1cc5f58f092c78f314a7bfd2a850c
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jan 24 03:36:59 2007 +0000
+
+    Temporary fix for #13. BE functions can now be turned on and off during installation, default being off for both BE map and geocode status.
+
+commit 6bb1d6461793196f727ce43a00921ac8a2b6d113
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jan 24 03:02:11 2007 +0000
+
+    Fix #10, also added Primary Key to the table
+
+commit e0727d46bd6a76d850ba2a9a6e219ff5710c9c1b
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Jan 24 02:54:27 2007 +0000
+
+    Fix for #9, thanks to Jeff!
+
+commit d03307ae585ed419ebf43830bb02a5fb52262edf
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Jan 23 03:15:31 2007 +0000
+
+    Added new extension icons from Barbara.
+
+commit fd6a4220e52180ceed872bb12e338630ada113d8
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 23 01:20:40 2007 +0000
+
+    small updates to docs
+
+commit 3c7a6b2e470f7fa3ec02e93dfff17cbeb92aa44e
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Jan 22 09:49:22 2007 +0000
+
+    one more small little update
+
+commit 353e51aac46460cd26dac91b68cea9ae35bef943
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Jan 22 09:45:48 2007 +0000
+
+    Update documentation. Ready for review now.
+
+commit 26bda3538afbc83fb5a9c156db13331de0dc1fd8
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Jan 20 19:51:57 2007 +0000
+
+     * add a new filter function in front of the description that filters out all line breaks and replaces them with <br />. PHP's nl2br function doesn't do that because it doesn't take out the line breaks. This should fix a few problems but might cause others. Testing needed.
+
+commit fa475149ef5aedd32f1d41b762a225cc589fed80
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Jan 20 01:41:43 2007 +0000
+
+    Add TS support for descriptions in pi1. Description in flexform needs to be empty in order for the TS one to work.
+
+commit 5c849c89a3ee985b685798b5b50b3579f8c638b5
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jan 19 04:59:00 2007 +0000
+
+    fix fatal error when for some reason BE data was empty.
+
+commit 5ff01b74839aa59f9bc64df3941c38f375c1f910
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jan 19 03:58:38 2007 +0000
+
+    fix number of users.
+
+commit 780e6b14c29002967981d41bd1675e28506a01ad
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jan 19 03:51:07 2007 +0000
+
+     * don't show all markers if we are only showing cities anyway. Instead show the city layer longer
+     * When privacy mode is on, show a count of users for each city.
+     * make city bubble more descriptive by showing the city name
+
+commit 1c860f4ec865fd58d01170070958cb3c1ed3974f
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Fri Jan 19 00:23:40 2007 +0000
+
+    Need addslashes() on title also.
+
+commit 583c0b8a8bb2f73196f65b8d991eb40bb760bb41
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jan 19 00:03:28 2007 +0000
+
+    Use the static_info_country field first and if it is empty, use country only
+
+commit 06018072aebc08d1dd41daead472c50f45259323
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jan 18 23:48:07 2007 +0000
+
+    Add TS skeleton for easier config.
+
+commit ac784bd5eab41b73dd95901ae8383e0d0244f31f
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jan 18 05:28:01 2007 +0000
+
+     * correct some flexform labels
+     * move starting point stuff to the end of flexform, just like it usually is in TYPO3
+
+commit c473c5ab82f5ed23e866ec36560649c96beb84ba
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jan 18 05:10:35 2007 +0000
+
+    in pi2, make selection of storage folder easier with page browser
+
+commit f6039273e3ae96e39f47029348023ee1be0ae4dd
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jan 18 04:56:32 2007 +0000
+
+     * in pi2, add option to specify which storage folder to take FE users from
+     * can be set by flexform or TS
+     * update documentation
+
+commit b1df416a2b912d5ed793ea373313457e229df482
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jan 18 04:44:01 2007 +0000
+
+    If no address is entered in the BE, adjust status to be more helpful to users
+
+commit 71cdff5b229329a3b04ebad55c4329a39dada7e5
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jan 18 04:11:41 2007 +0000
+
+    Add some default controls to the BE record map
+
+commit 78a5adae35639731560d00d8f5e63b716ae878b0
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jan 18 04:08:23 2007 +0000
+
+    Remove manual drawMap() calls from modules and include it in the API
+
+commit 789ebb98e8c2f2fd8a33cff4c5ad69d887b9f735
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jan 18 03:57:00 2007 +0000
+
+     * Rename BE modules to 'WEC Map Admin'
+     * Fix some minor naming errors
+
+commit be1a15fafc74fa562c4c48f74bae34be95e9f022
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jan 18 03:50:48 2007 +0000
+
+    Remove dividers2tabs so we don't mess up BE user records with weird tabs
+
+commit ad7b5f5a75fc36e4d516e8b4d5e3c2ccf7f9cf8d
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jan 18 03:35:51 2007 +0000
+
+     * localize map label in BE user records
+     * disable settings page in BE User Map module until we actually add settings
+
+commit 0add40909ceb4306eff685b33ed0ce1228576583
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jan 18 03:27:35 2007 +0000
+
+     * Re-enable BE record map
+     * update documentation to say that the API key needs to be specified globally in the extension manager for the BE stuff to work
+
+commit c2c1710d11cc2049496d6e78216445ceb3b9e244
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 16 07:05:20 2007 +0000
+
+    Should have done it right the first time. Formatted to match trac.
+
+commit 81d2c7e4c5fd7f0f5678ab363a9c247d8303bd99
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 16 07:01:39 2007 +0000
+
+    Change documentation format to fit trac.
+
+commit 5f807be57c1379d80b9f428b96dd25cb0f468922
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 16 06:59:20 2007 +0000
+
+    Update documentation
+
+commit 164dc7faf144a0f7faf1bb617bd7baad25d7721e
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 16 06:41:37 2007 +0000
+
+    Just in time for r50, I present to you: The BE map that allows finding FE users on the map and jumping to edit their record directly from there.
+
+commit eabdf4d365d2fa82f697618b44bf0139d7ef9509
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 16 06:40:02 2007 +0000
+
+    disable backend map rendering for now. Map key was hardcoded. Will fix that sometime.
+
+commit 00498abacf54b6adc61de382263051f1d23cb970
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 16 05:35:51 2007 +0000
+
+     * fix while loop; users now all show
+     * change path for icons
+
+commit 8343a3c34a3a8ba9c1dde651d14f6156e53c5a13
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Jan 16 04:56:53 2007 +0000
+
+    Added check for BE or FE mode.
+
+commit 48ea1c41912e6ffcc07e8173214f6f3ffdff88d8
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 16 04:20:34 2007 +0000
+
+    fixed typo, js is executed now.
+
+commit b2a840e1a760331a6bd5ac780b1145afca8d7582
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 16 04:18:04 2007 +0000
+
+     * fix path to locallang file in modules. Was set to wec_geocode
+     * add second module that is similar to pi2 and allows admins to look at users by location and edit their record from within google maps. Not working yet.
+
+commit 45c7560a56bf04a33a423fda2c2af8c0a176cdc7
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 16 02:49:20 2007 +0000
+
+    add privacy option to pi2, turning off address geocoding and just using the city instead.
+
+commit c5ad8da3be7de95d53796db9fa2d3007e5f30a46
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 16 01:56:01 2007 +0000
+
+     * improve geocode status function and separate data and view
+     * add flexform data for geocode status function
+     * add userFunc for pi1 plugin that shows coordinates
+     * make coordinates in flexform editable; reset if both are empty.
+
+commit 136be0693f59f3f36932b96b9292baf5449461e0
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Jan 14 23:27:30 2007 +0000
+
+    switch google geocode back to csv. xml was causing to many problems with some addresses.
+
+commit 0bbc3f032a8adb2f19cfa38c121d780c599af2f9
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Jan 13 11:45:31 2007 +0000
+
+    Make label more descriptive. Fixes #1
+
+commit 62da1fbd6d4bd860d16afb53472c8b6df00163bf
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Jan 13 11:31:27 2007 +0000
+
+    Forgot to take that out....
+
+commit 7cb35415185cfdc4d73498c165138be4b15b3985
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Jan 13 11:30:24 2007 +0000
+
+    make handling of markers smarter for lower zoom levels for second plugin. Now it will (should) point to an area where somebody actually lives when it's zoomed out farther.
+
+commit f1fdefceb570226808daae6c7255a56c4a906d70
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Jan 13 11:22:04 2007 +0000
+
+    add TS config option to second plugin
+
+commit db93e2960927b446e4ce92ac2654dda99c1a31c6
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Jan 13 05:28:03 2007 +0000
+
+    add TS options to first plugin. Everything can be configured by TS now.
+
+commit 3353188d485fe26a5ab1842f203434725d7a990f
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 9 22:10:40 2007 +0000
+
+    and turn caching back on....
+
+commit dba1b29d856a82dac036bf6066b40f01af460e54
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 9 22:09:28 2007 +0000
+
+    Google Geocode and Map API keys are the same after all. Now there is only one place it needs to go.
+
+commit 60db7a3f6edf572b84a9114b37b0cbc502be6952
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 9 09:09:13 2007 +0000
+
+     * set API keys through extension config right after install
+     * right now the geocode API key can only be set from the EM
+     * change Google geocode answer to XML. Maybe we can use the nice feature that returns a pretty address.
+
+commit c882ceed7fae8713073975f04eee58d6688b68f8
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 9 08:05:36 2007 +0000
+
+    Change priority of Google geocode service back.
+
+commit 4ed4fa9375cc4fd18aa531522f35d8b97d213f97
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 9 07:54:17 2007 +0000
+
+     Make yahoo geocoder higher priority than google's
+
+commit 77d09b3ea88a038c13b5d8fba13d7fae2b743233
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 9 07:42:38 2007 +0000
+
+    Forgot to get country from the flexform
+
+commit 5cd0ee611f3d7ba5f95bf11f91cf20661c417b8c
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 9 07:34:34 2007 +0000
+
+     * add country to simple map
+     * remove USA hack from pi2 and add city. It seems that Google's geocode service doesn't return any coordinates for country names only.
+
+commit 89913a07034c9a5aa601813f34dcd7d4f03ce8d2
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 9 07:28:01 2007 +0000
+
+     * add api key in ext conf for a global key
+     * remove hardcoded key from geocode service
+
+commit a86483d2517ff0ccb7b23f35c57424c5b93505e6
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Jan 9 04:30:01 2007 +0000
+
+    Put that hardcoded marker back in since it wasn't hardcoded at all. Oops.
+
+commit ffefee53d9d0de51f9f85e5ffa1a8d6e152a7e33
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Jan 8 07:30:07 2007 +0000
+
+    test commit
+
+commit a52a91ef3e6457d5a11b57b9495c9330d37c4323
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Jan 6 21:26:25 2007 +0000
+
+    Add both plugins to plugin list for new content element so they can be added easier
+
+commit fcaf74df30b3ff747284738771a8b4d5eb5908bb
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Jan 6 20:06:13 2007 +0000
+
+    Some changes to auto center and zoom. Still not the best, but it worked well in my tests.
+
+commit 8fd08de5ae1a75f42c9f68372dc4f0d2ded74e80
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Jan 6 06:56:28 2007 +0000
+
+    Fix USA not showing as country
+
+commit 732cd97af7cd5106e986d3742d4d9b3842db1b9d
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Jan 6 06:43:41 2007 +0000
+
+     * add map controls to this plugin
+     * show how to use the new GMarkerManager API stuff. It will show a marker for each country on low zoom levels, one marker for each city on medium zoom levels, and all markers on higher zoom levels.
+     * Still need to fix an issue with no country marker for the USA appearing
+
+commit 2fb01d26820e5147456b0d9513e41439b2c6ec27
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Jan 6 06:37:04 2007 +0000
+
+    Take out hardcoded marker
+
+commit 86e4e08a9240073d3f61bb20058d681ad4062f16
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Jan 6 06:31:42 2007 +0000
+
+     * add GMarkerManager to handle all markers. This is transparent to the user. To use it, specify a min and/or max zoom level with the addMarkerByX method
+     * replace file_get_contents with t3lib_div::getURL()
+     * add check to yahoo geocode to make sure we don't try to look for results when there are none
+     * replace .= with = for array assignments
+     * fix switched map height and width
+     * some wording improvements
+
+commit 5d390852e90d8bc9517c9fd3c37d5f93949c2dd7
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jan 5 03:31:55 2007 +0000
+
+     * add the rest of the map controls to our API
+     * update the example plugin with the new controls
+
+commit a0d9b3aed45d9ab49b91eba5c135df77a1c206eb
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Dec 29 01:09:36 2006 +0000
+
+     * outsource control handling so that it can be accessed easily by developers
+     * changed simple plugin to show those; controls can now be toggled in the flexform
+
+commit c1fb0f9df1a717e92639184fb8c9107655753e97
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Dec 29 01:04:51 2006 +0000
+
+    Cache management module works now.
+
+commit 917a3657e616dc34e53348a7b22df73660c72559
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Dec 29 01:01:29 2006 +0000
+
+    Don't need these.
+
+commit f2f452b2345b5e6873f04c1bd3af54ff6fa9db42
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sun Dec 24 00:24:57 2006 +0000
+
+    Change plugin name to WEC Map
+
+commit 9d6ebc858e82523b9f3f5a6cc250772531f022c3
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Aug 8 16:51:32 2006 +0000
+
+    Oops..messed up the last commit.  Removed unneeded drawMap() call to fix IE problems.  Removed extension JS include since it was done twice.
+
+commit 219076c80cb6b0bd690311cac87ab917bfe55ff4
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Aug 8 16:49:47 2006 +0000
+
+    Removed unneeded drawMap() call to fix IE problems.  Removed extension JS include since it was done twice.
+
+commit e5e42eb549a0a8a9c0ef354d51096e8a0af64344
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Tue Aug 8 15:41:12 2006 +0000
+
+    Corrected unclosed XML tag.
+
+commit 02c13803c1241971a036ea9fd8a5cf8c0030a405
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Mon Aug 7 21:33:32 2006 +0000
+
+    Removed changelog.
+
+commit be9a3a273a4febeea7bbd50ceeaf688a4bd1637d
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Mon Aug 7 21:33:09 2006 +0000
+
+    Added basic backend module for cache management.
+
+commit ca9a4259afe6cd33abe9f3b45c234e81ea4a9f51
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Jul 22 04:16:02 2006 +0000
+
+    just some single quotes instead of double quotes
+
+commit 829c448f56d5e6fed522dae0a775cda90803c1b2
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Fri Jul 21 21:55:15 2006 +0000
+
+    Added support for Google geocoding service.  Still needs more testing.
+
+commit a798cfee5ea10394ee3397c421c1325fbcdfed46
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Fri Jul 21 21:54:31 2006 +0000
+
+    Added support for country parameter.
+
+commit 74ee004f43b960ca1d2bfe4dd725fa50605d0179
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Jul 21 20:19:44 2006 +0000
+
+    escape double quotes to not mess up the JS
+
+commit 17a618962eb4732bfeb04ee4cd6c61c1dac7e026
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Fri Jul 21 18:38:56 2006 +0000
+
+    Updated to latest dev version.  May be unstable and broken.
+
+commit 2524147be86f55dcd7f16fce483aef602f27b0cf
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Mon Dec 5 21:44:23 2005 +0000
+
+    Cleaned up formatting.  Added basic manual.
+
+commit 004a45b3ad5253502b0a02f36b339ef733727047
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Fri Sep 30 18:27:10 2005 +0000
+
+    Removed debug statement from _pi2.
+
+commit 0577b6860388b781170896ea3ab157a6a583c086
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Wed Sep 28 21:19:31 2005 +0000
+
+    Initial import of wec_map extension.

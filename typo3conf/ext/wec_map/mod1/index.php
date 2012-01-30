@@ -6,7 +6,7 @@
 * All rights reserved
 *
 * This file is part of the Web-Empowered Church (WEC)
-* (http://WebEmpoweredChurch.org) ministry of Christian Technology Ministries 
+* (http://WebEmpoweredChurch.org) ministry of Christian Technology Ministries
 * International (http://CTMIinc.org). The WEC is developing TYPO3-based
 * (http://typo3.org) free software for churches around the world. Our desire
 * is to use the Internet to help offer new life through Jesus Christ. Please
@@ -27,23 +27,17 @@
 * This copyright notice MUST APPEAR in all copies of the file!
 ***************************************************************/
 
-
 	// DEFAULT initialization of a module [BEGIN]
-unset($MCONF);
-require_once('conf.php');
-require_once($BACK_PATH.'init.php');
-require_once($BACK_PATH.'template.php');
-
-require_once(PATH_t3lib.'class.t3lib_install.php');
-require_once(PATH_t3lib.'class.t3lib_extmgm.php');
-
+require_once($GLOBALS['BACK_PATH'] . 'template.php');
+require_once(PATH_t3lib . 'class.t3lib_install.php');
+require_once(PATH_t3lib . 'class.t3lib_extmgm.php');
 $LANG->includeLLFile('EXT:wec_map/mod1/locallang.xml');
-require_once(PATH_t3lib.'class.t3lib_scbase.php');
-$BE_USER->modAccess($MCONF,1);	// This checks permissions and exits if the users has no permission for entry.
+require_once(PATH_t3lib . 'class.t3lib_scbase.php');
+$BE_USER->modAccess($MCONF, 1);	// This checks permissions and exits if the users has no permission for entry.
 	// DEFAULT initialization of a module [END]
 
-require_once('../class.tx_wecmap_cache.php');
-require_once('../class.tx_wecmap_domainmgr.php');
+require_once(t3lib_extMgm::extPath('wec_map') . 'class.tx_wecmap_cache.php');
+require_once(t3lib_extMgm::extPath('wec_map') . 'class.tx_wecmap_domainmgr.php');
 
 
 /**
@@ -202,9 +196,8 @@ class  tx_wecmap_module1 extends t3lib_SCbase {
 		$count 	= $GLOBALS['TYPO3_DB']->exec_SELECTgetRows('COUNT(*)', 'tx_wecmap_cache','');
 		$count = $count[0]['COUNT(*)'];
 
-		require_once('class.tx_wecmap_recordhandler.php');
-		$recordhandlerClass = t3lib_div::makeInstanceClassname('tx_wecmap_recordhandler');
-		$recordHandler = new $recordhandlerClass($count);
+		require_once(t3lib_extMgm::extPath('wec_map') . 'mod1/class.tx_wecmap_recordhandler.php');
+		$recordHandler = t3lib_div::makeInstance('tx_wecmap_recordhandler', $count);
 
 		global $LANG;
 
@@ -232,8 +225,7 @@ class  tx_wecmap_module1 extends t3lib_SCbase {
 	function apiKeyAdmin() {
 		global $TYPO3_CONF_VARS, $LANG;
 
-		$domainmgrClass = t3lib_div::makeInstanceClassname('tx_wecmap_domainmgr');
-		$domainmgr = new $domainmgrClass();
+		$domainmgr = t3lib_div::makeInstance('tx_wecmap_domainmgr');
 
 		$blankDomainValue = 'Enter domain....';
 
@@ -334,10 +326,8 @@ class  tx_wecmap_module1 extends t3lib_SCbase {
 		$content = array();
 
 	 	require_once(t3lib_extMgm::extPath('wec_map').'class.tx_wecmap_batchgeocode.php');
-		$batchGeocodeClass = t3lib_div::makeInstanceClassname('tx_wecmap_batchgeocode');
-
 		/* Set the geocoding limit to 1 so that we only get the count, rather than actually geocoding addresses */
-		$batchGeocode = new $batchGeocodeClass(1);
+		$batchGeocode = t3lib_div::makeInstance('tx_wecmap_batchgeocode', 1);
 		$batchGeocode->addAllTables();
 		$batchGeocode->geocode();
 
@@ -357,6 +347,8 @@ class  tx_wecmap_module1 extends t3lib_SCbase {
 		}
 		$content[] = '</ul>';
 		$content[] = '<script type="text/javascript" src="'.t3lib_div::getIndpEnv('TYPO3_SITE_URL').'typo3/contrib/prototype/prototype.js"></script>';
+
+		$updaterPath = t3lib_extMgm::extRelPath('wec_map') . 'mod1/tx_wecmap_batchgeocode_ai.php';
 		$content[] = '<script type="text/javascript">
 						function startGeocode() {
 							var updater;
@@ -364,7 +356,7 @@ class  tx_wecmap_module1 extends t3lib_SCbase {
 							$(\'startGeocoding\').disable();
 							$(\'status\').setStyle({display: \'block\'});
 
-							updater = new Ajax.PeriodicalUpdater(\'status\', \'tx_wecmap_batchgeocode_ai.php\', { method: \'get\', frequency: 5, decay: 10 });
+							updater = new Ajax.PeriodicalUpdater(\'status\', \'' . $updaterPath . '\', { method: \'get\', frequency: 5, decay: 10 });
 						}
 						</script>';
 
