@@ -86,7 +86,7 @@ plugin.tx_wecflashpresentation_pi1 {
 	radioLabelHigh.value = {$plugin.tx_wecflashpresentation_pi1.radioLabelHigh}
 
 	# @description	Path to load images from.
-	# @see			FlexForm
+	@ @see			FlexForm
 	imagesbase = TEXT
 	imagesbase.value =
 	
@@ -96,7 +96,7 @@ plugin.tx_wecflashpresentation_pi1 {
 	slides.value =
 
 	# @description	Swap the display of video and slides.
-	# @see			Constants
+	@ @see			Constants
 	swapUI = TEXT
 	swapUI.value = {$plugin.tx_wecflashpresentation_pi1.swapUI}
 
@@ -173,7 +173,7 @@ plugin.tx_wecflashpresentation_pi2 {
 	audioEC.value =
 	
 	# @description	Path to load images from.
-	# @see			FlexForm
+	@ @see			FlexForm
 	imagesbase = TEXT
 	imagesbase.value =
 

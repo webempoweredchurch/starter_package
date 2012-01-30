@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<description>CSH labels for the WEC Flash Presentation - Audio Frontend Plugin</description>
+		<type>CSH</type>
+		<csh_table></csh_table>
+		<fileId>EXT:wec_flashpresentation/csh/locallang_csh_pi2.xml</fileId>
+		<labelContext type="array"></labelContext>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="classtitle.description">Optional title of the class or video that will appear above the audio presentation.</label>
+			<label index="intromessage.description">Optional text that will appear before the audio presentation loads.</label>
+			<label index="bgimage.description">Optional background image that will be used behind the audio presentation.</label>
+			<label index="audiofile.description">MP3 file to playback in the Flash Audio Presentation.</label>
+			<label index="audioEC.description">Bitrate of the MP3 file.</label>
+			<label index="audioEC.details">The bitrate is used to determine when slides should change.</label>
+			<label index="imagesbase.description">Directory that images are stored in, relative to the TYPO3 root.</label>
+			<label index="imagesbase.details">Example: /fileadmin/images/</label>
+			<label index="slides.description">Pairing of image filenames and the time that image should be displayed.</label>
+			<label index="slides.details">
+				<![CDATA[
+					image1.jpg 7
+					image2.jpg 05:15
+					image3.jpg 01:10:24
+
+					This example creates three slide image/timing pairs.  The first slide will appear when the video playback reaches 7 second, the second at 5 minutes, 15 seconds, and the third at 1 hour, 10 minutes, 24 seconds. Time should always be entered in the HH:MM:SS format but any time entered will default to the lowest possibility (ex. 7:10 is interpreted as 7 minutes, 10 seconds rather than 7 hours, 10 seconds).
+				]]>
+			</label>
+		</languageKey>
+	</data>
+</T3locallang>
