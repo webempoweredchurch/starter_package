@@ -1,0 +1,503 @@
+commit 70d4544b968fbcca79de4c6aba654fd9606f2707
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Thu Dec 1 11:35:05 2011 -0600
+
+    Updated ChangeLog in manual
+
+commit 91cd580ea87827e23c9b04b807f572b700c6642d
+Merge: fc3e278 02b17b4
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Thu Dec 1 11:25:27 2011 -0600
+
+    Merge branch 'master' into develop
+
+commit 02b17b4b194851ce26c579407032074fd1b508a5
+Author: Bill T-B <bill@webempoweredchurch.org>
+Date:   Thu Dec 1 11:14:59 2011 -0600
+
+    eBible Manual Update
+    
+    Removed VOD. Reworked text. Updated links.
+
+commit fc3e2783e92c31e317a5c170378c12c9abe4b07a
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Tue Nov 29 20:21:54 2011 -0600
+
+    Change VerseLink inclusion to work around MooTools conflict
+
+commit 6836a535ba8e90d336634cd7003e05f6404c7e44
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Tue Nov 29 20:21:23 2011 -0600
+
+    Update extension description to remove Verse of the Day
+
+commit b0af6447ed95c28603f0210748d79805139db1b2
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Thu Oct 6 09:45:37 2011 -0500
+
+    Update emconf after release to TYPO3.org
+
+commit dbe7ce7ee93337c4d6c955509d21799de4aed9ed
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Wed Oct 5 17:06:01 2011 -0500
+
+    Update ChangeLog in manual.
+
+commit 10c38f6182e7482aedc842499dc567078139aa29
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Wed Oct 5 17:03:13 2011 -0500
+
+    Remove manually maintained Changelog
+
+commit 2beccf3c81a46ecf9fbd6d83a881963428ca4596
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Wed Oct 5 17:02:41 2011 -0500
+
+    Fix bug with itemsProcFunc and sr_feuser_register
+
+commit 7fd19e2fec6cbc2ce86043140c196c95df8ecb43
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Tue Oct 4 15:10:38 2011 -0500
+
+    Update ext_emconf
+
+commit 04c47ef46ce98ac6700dfe8388a9250b26b419f7
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Tue Oct 4 15:01:35 2011 -0500
+
+    Raise minimum TYPO3 version to 4.2.0
+
+commit 9bcb0a0bbb309c881301ceeecd1e86926cb0e500
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Tue Oct 4 14:48:49 2011 -0500
+
+    Use itemsProcFunc for all translation dropdowns
+
+commit f1ec493bf524b3bad5b888969f5d320b7f8f9660
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Tue Oct 4 13:09:28 2011 -0500
+
+    Remove more old localization labels
+
+commit 5f9d0aceaa336931b35fbb280d77b5ff60a4383a
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Tue Oct 4 13:07:22 2011 -0500
+
+    Removed old context sensitive help file
+
+commit 35953d17fbd4be5c24e75282b73c25a82c58af04
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Tue Oct 4 13:06:44 2011 -0500
+
+    Remove stray reference to old backend module
+
+commit 1a5a063fb414166c8cda619895d0f29608e436d7
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Tue Oct 4 13:06:04 2011 -0500
+
+    Remove Verse of the Day functionality that is no longer offered by eBible.com
+
+commit 98f67e5147b50ac186195f6869ea70219530df77
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Tue Oct 4 11:48:57 2011 -0500
+
+    Remove useExternalCSS option since CSS cannot be excluded from VerseLink
+
+commit efe8a60c29540422690df0116a316623a0695ba6
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Tue Oct 4 11:26:22 2011 -0500
+
+    Update JavaScript include from eBible.com to use new VerseLink functionality
+
+commit 599d439123abbf5bb0c6c7ebd52a3362d5fbec52
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Tue Oct 4 11:23:09 2011 -0500
+
+    Update TypoScript include to be a reference rather than a copy
+
+commit e0ed5cd01f261f17187d684beee0f06ea7968c7e
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Tue Oct 4 11:22:38 2011 -0500
+
+    Remove TypoScript settings that are no longer available in eBible.com VerseLink
+
+commit c9dddf6fbfd57a4274edfc34b8094c73454c41c7
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Tue Oct 4 11:20:12 2011 -0500
+
+    Remove unneeded local JavaScript and CSS
+
+commit 6ee0a32b1136ce1c51f8651d1c988b6d2ac73119
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Tue Oct 4 11:19:54 2011 -0500
+
+    Remove class for managing API keys and domains
+
+commit abaf3d7d3c253829c09807945d2c58ba19882c06
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Tue Oct 4 11:16:58 2011 -0500
+
+    Update available translations from eBible.com
+
+commit 5489a66d06b5462abd17183f84499f6f967a17a6
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Tue Oct 4 09:16:26 2011 -0500
+
+    Raise version number to 2.0.0-dev
+
+commit c13922bf62c62f537c37728539e4ca330bd1175e
+Author: Jeff Segars <jsegars@alumni.rice.edu>
+Date:   Tue Oct 4 09:16:03 2011 -0500
+
+    Remove backend module since API Key is no longer required
+
+commit e6e90985c152504bc4d030a8cc11d6a204e2b21b
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Mar 1 16:26:17 2010 +0000
+
+    update emconf for 1.0.6 release.
+
+commit a66da201457b004c3ca6b8b3feb0e251ef5ac193
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Mar 1 16:04:02 2010 +0000
+
+    update changelogs.
+
+commit 5db36608e4f048c140292d77caba9bf6056a4260
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Mar 1 15:55:10 2010 +0000
+
+    No such thing as wec_bible. It's eeeeeeBible. :)
+
+commit abd4574ed529a3d748d91d6bf7310d97a2f30c06
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Fri Feb 26 16:31:50 2010 +0000
+
+    Added media=screen
+
+commit 101cb6794bc2480f4dc5d2f25255d4deb5eb87af
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Fri Feb 26 16:30:51 2010 +0000
+
+    Include eBible CSS locally due to eBible server issues.
+
+commit bcfe8e485738851e88b2a685abfb8b823f7fc953
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Dec 15 20:44:36 2009 +0000
+
+    update version info after submission to TER.
+
+commit a9433898e8856f8b9babe646a54037b828e482b1
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Dec 15 20:27:52 2009 +0000
+
+    add note that no API key is needed at the moment.
+
+commit 9b65e5f9b763739815b2fe2620a6c1b60016c6b7
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Wed Jul 1 15:50:19 2009 +0000
+
+    Updated emconf after release to TYPO3.org.
+
+commit 52b2940ef0f5058c92b509ddae0c03d0e65e29e7
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Mon Jun 29 21:49:35 2009 +0000
+
+    Updated changelog in manual.
+
+commit 3c0a55080a8fcde496fdcb546e41dfed90430857
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Thu Jun 25 21:03:12 2009 +0000
+
+    Added extendingTCA entry for support of sr_feuser_register 2.5.22 and up.
+
+commit 16b3a3b2a481a659fc25c14be2c67ad3d986d1d4
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Sep 18 20:56:26 2008 +0000
+
+    make ebible scan the whole site by default, not just the 'content' section
+
+commit 2af9dcc4a01950f372276f4bad125cc683eb515d
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jul 17 17:11:17 2008 +0000
+
+    small formatting change
+
+commit adc2c4e3f471ed12c64176be1d44ff26745cbe35
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Jun 12 17:49:39 2008 +0000
+
+    test
+
+commit 0af45f963eba15867b5c8c736b6b3fc55f8210f0
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Mon Jun 9 22:29:38 2008 +0000
+
+    undo test commit
+
+commit fb7013d30587d0886bae288dcd09db9fb2d0fb97
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Mon Jun 9 22:09:31 2008 +0000
+
+    test commit
+
+commit ae84183227b5269ae2b172d0f4f4e21377390b1f
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Jun 9 22:04:13 2008 +0000
+
+    reset changelog
+
+commit 0e4d15883fcd8836a0c09210bf5aa7cb571df73e
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed May 28 03:28:38 2008 +0000
+
+    update ext_emconf.php for 1.0.3 release
+
+commit 1d0093eee1cde3f8dc358eea799fdb2ce0328350
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed May 28 02:20:16 2008 +0000
+
+    add changelog file and update it and docs with 1.0.3 changes
+
+commit 29f6bb0f3ff4d050c4f62ee9618053e6c9135005
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed May 28 01:37:49 2008 +0000
+
+    update mod inclusion to symlink-friendly version.
+
+commit 486044cc1b2d16edc7c02c1ba5e8a69d1ff9b28d
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu May 1 21:30:54 2008 +0000
+
+    Change copyright info to CTMI
+
+commit a2bad22ae644be887bd76b6869cd8b587ecd80af
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Apr 24 20:14:56 2008 +0000
+
+    add closing ?> to some files
+
+commit 5deba568e39a5ba0d833cb26850f874c0d197224
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Mar 6 04:04:25 2008 +0000
+
+    remove whitespace that could cause some errors.
+
+commit aa7ee22b3b17567ad81eb8e5a9517ac027dee645
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Feb 28 03:48:44 2008 +0000
+
+    update ext_emconf.php for 1.0.2 release
+
+commit e5e2b13e221607e772bfe6f2beba03b4b89df942
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Feb 28 03:08:15 2008 +0000
+
+    make eBible popups appear above smoothgallery and potentially other page elements.
+
+commit c853eae36f266dc6a6aa98e6af4167af57d4c921
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Thu Feb 28 02:12:24 2008 +0000
+
+    Removed stray CVS reference from a reference locallang file.
+
+commit 25bcbc23c97407dcfd9bd6d26737b199659a9de5
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Thu Feb 28 01:40:46 2008 +0000
+
+    Raised from beta to stable.
+
+commit 25f9fee81be2d2e422578ef5a7d3930ceecde150
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Thu Feb 28 01:39:19 2008 +0000
+
+    Added tsref footnotes to reference tables and updated changelog.
+
+commit 824c83b9fa4949ae7f8ca03aea076d2693d37ee1
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Thu Feb 28 01:38:43 2008 +0000
+
+    Added CSH for translation field in frontend users and pi1 flexform.
+
+commit c33d88d66375820913c4da8ed0c1363f325d8a16
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Thu Feb 28 01:37:05 2008 +0000
+
+    Removed unused flexform for pi2.
+
+commit 91bce22d4364e7f377d86f73ebdd8e899126e2ec
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Feb 27 00:44:43 2008 +0000
+
+    update manual for 1.0.2 release
+
+commit e7244510257f1779de186e41bdce69716fa9a4e3
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Feb 27 00:22:15 2008 +0000
+
+    some more potential compatibility fixes.
+
+commit 12747643d83ba23feea08682c3a6aeae820ceab0
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Tue Feb 26 23:56:46 2008 +0000
+
+    fix compatibility issue with rgsmoothgallery
+
+commit 9a26241d39adc13e254bf844ac82b24009b9789d
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Feb 14 02:32:06 2008 +0000
+
+    Add some error handling around the DOM traversal, patch by Barry Gresens.
+
+commit 3d6153d5db8178557ee99d0d1d7e7e6b7f2f2051
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Nov 29 21:15:35 2007 +0000
+
+    update ext_emconf.php for 1.0.1 release
+
+commit f639e66d43b1e751eea0342fea8aa41c92ec7961
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Nov 29 21:10:03 2007 +0000
+
+    update docs for 1.0.1 release
+
+commit 50970b0664ffb28b34e7cbca76db0c0e44c5fc23
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Nov 28 21:46:38 2007 +0000
+
+    move CSS to include via PHP
+
+commit 0d16d0b53d7e0f097fefa10fa5f1825cf406310d
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Nov 26 20:30:44 2007 +0000
+
+    fix typo in manual
+    add CSS to hide footnotes for now
+
+commit daca03d41ec810788641f409e2b7d5c60403fe21
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Nov 5 19:10:47 2007 +0000
+
+    add an array check in the domain manager
+
+commit 87ba53366536b0996db16996cd4b58b4d76bc383
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Oct 12 01:25:33 2007 +0000
+
+    update docs with note about custom templates of sr_feuser_register and the translation dropdown box for FE User accounts.
+
+commit 52bda150a785e9c754975a8362d7ec096426e7cb
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Oct 8 21:36:56 2007 +0000
+
+    updated emconf for 1.0.0 release
+
+commit a3e12be57f0479e11e94cd8fb035797c701335cf
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Oct 8 21:08:55 2007 +0000
+
+    don't need changelog
+
+commit e3bee6d44e17c686c53b6d66df23e3a7adb7e8bb
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Sat Oct 6 04:17:48 2007 +0000
+
+    update docs
+
+commit 16769366c4a90c53753afcd817df7a8c32c2debf
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Oct 5 22:59:40 2007 +0000
+
+    more regexp updates
+
+commit c35e4e454e86617616d91649e2017d581afbaee5
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Oct 5 22:51:23 2007 +0000
+
+    more regexp updates
+
+commit 8ce2d83e5021597ab1825767a568217f078eae5b
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Oct 5 22:49:19 2007 +0000
+
+    more regexp updates
+
+commit 1fb7c0e251b601cab8779b8b41f6762f942c3001
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Oct 5 22:25:38 2007 +0000
+
+    more regexp updates
+
+commit c4d2de1ad399683ceac6f86472af9a81cb34d796
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Fri Oct 5 21:26:55 2007 +0000
+
+    update regexp
+
+commit ebe16d7e6c7dbd043cdd766e6626ca3fa49d127e
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Oct 4 22:40:46 2007 +0000
+
+    update docs
+
+commit eef48c12b5a939118319d78f91f5217c1f5df6d7
+Author: Jeff Segars <jeff@webempoweredchurch.org>
+Date:   Thu Oct 4 01:16:24 2007 +0000
+
+    Lots of minor cosmetic cleanups.  Fixed comments, localization, etc.
+
+commit 70fccbb803bfaa11bb510b76c8dc21750bb9692e
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Mon Oct 1 20:33:46 2007 +0000
+
+    update regexp to include more abbreviations
+
+commit 0e6f5812fb601d1915434b354245f916bbf61092
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Sep 20 01:32:38 2007 +0000
+
+    update known problems and fix typo
+
+commit e7cffccfe8a66e2a532726585d2a8bccf4f8e791
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Sep 20 01:06:39 2007 +0000
+
+    make it an USER_INT, necessary for translation switching
+
+commit f6109750f665030223605ac8b5dc87bfd1032ad9
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Thu Sep 20 00:29:19 2007 +0000
+
+    apply bugfix for #2, Firefox opacity bug
+
+commit 5622543b89dfeb858bd5d29df961ab266b25e659
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Sep 19 22:15:31 2007 +0000
+
+    remove todo
+
+commit 5ab46d4edfb63e40441d904e073fa1fee7a4b66f
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Sep 19 22:15:02 2007 +0000
+
+    fix method signature
+    remove unused code
+
+commit e71db340bb31a29383e04bd716926664c388546f
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Sep 19 22:08:16 2007 +0000
+
+    Include eBible script locally for better performance
+    change loading of the script
+
+commit 031d9f0bf723314151b24f57d7f6023c3e473ed7
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Sep 12 18:46:16 2007 +0000
+
+    test commit
+
+commit de3a454eaf2f773d57b6c690302353ab8b768e6d
+Author: Christoph Koehler <christoph@webempoweredchurch.org>
+Date:   Wed Sep 12 18:16:00 2007 +0000
+
+    import extension

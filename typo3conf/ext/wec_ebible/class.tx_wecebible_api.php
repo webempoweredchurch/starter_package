@@ -73,8 +73,18 @@ class tx_wecebible_api {
 
 		$argString = implode("&", $argArray);
 
-		/* Include javascript header. Since this is a USER_INT, we're using additionalHeaderData and not the page renderer. */
-		$GLOBALS['TSFE']->additionalHeaderData[] = '<script type="text/javascript" src="' . self::VERSELINK_URL . '?' . $argString . '"></script>';
+		/**
+		 * @fixme This is a workaround for multiple issues. Hopefully one of these wll be solved in the future.
+		 * 1. VerseLink and MooTools both define window.addEvent and conflict. In light of this, we're better off including
+		 *    VerseLink first and letting it be overwritten by MooTools. This means Verselink will not work on a page with
+		 *    MooTools but MooTools will continue to work.
+		 * 2. The TYPO3 page renderer doesn't support USER_INT plugins, so we can't rely on addJsFooter().
+		 * 3. TSFE->additionalFooterData doesn't support USER_INT either, so we're stuck adding it in the header.
+		 *
+		 * As a result of these issues our best bet is to unshift the VerseLink JS onto the front of TSFE->additionalHeaderData
+		 * so that it included as early in the header as possible and is overwritten by conflicting libraries.
+		 */
+		array_unshift($GLOBALS['TSFE']->additionalHeaderData, '<script type="text/javascript" src="' . self::VERSELINK_URL . '?' . $argString . '"></script>');
 	}
 
 	/**
