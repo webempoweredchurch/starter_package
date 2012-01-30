@@ -30,60 +30,6 @@
  * @coauthor   Kasper Skaarhoj <kasperYYYY@typo3.com>
  * @coauthor   Dmitry Dulepov <dmitry@typo3.org>
  */
-/**
- * [CLASS/FUNCTION INDEX of SCRIPT]
- *
- *
- *
- *  122: class tx_templavoila_module1 extends t3lib_SCbase
- *
- *              SECTION: Initialization functions
- *  162:     function init()
- *  213:     function menuConfig()
- *
- *              SECTION: Main functions
- *  271:     function main()
- *  451:     function printContent()
- *
- *              SECTION: Rendering functions
- *  471:     function render_editPageScreen()
- *
- *              SECTION: Framework rendering functions
- *  538:     function render_framework_allSheets($contentTreeArr, $languageKey='DEF', $parentPointer=array(), $parentDsMeta=array())
- *  576:     function render_framework_singleSheet($contentTreeArr, $languageKey, $sheet, $parentPointer=array(), $parentDsMeta=array())
- *  699:     function render_framework_subElements($elementContentTreeArr, $languageKey, $sheet)
- *
- *              SECTION: Rendering functions for certain subparts
- *  818:     function render_previewData($previewData, $elData, $ds_meta, $languageKey, $sheet)
- *  885:     function render_previewContent($row)
- *  971:     function render_localizationInfoTable($contentTreeArr, $parentPointer, $parentDsMeta=array())
- *
- *              SECTION: Outline rendering:
- * 1111:     function render_outline($contentTreeArr)
- * 1217:     function render_outline_element($contentTreeArr, &$entries, $indentLevel=0, $parentPointer=array(), $controls='')
- * 1319:     function render_outline_subElements($contentTreeArr, $sheet, &$entries, $indentLevel)
- * 1404:     function render_outline_localizations($contentTreeArr, &$entries, $indentLevel)
- *
- *              SECTION: Link functions (protected)
- * 1466:     function link_edit($label, $table, $uid, $forced=FALSE)
- * 1487:     function link_new($label, $parentPointer)
- * 1505:     function link_unlink($label, $unlinkPointer, $realDelete=FALSE)
- * 1525:     function link_makeLocal($label, $makeLocalPointer)
- * 1537:     function link_getParameters()
- *
- *              SECTION: Processing and structure functions (protected)
- * 1565:     function handleIncomingCommands()
- *
- *              SECTION: Miscelleaneous helper functions (protected)
- * 1689:     function getAvailableLanguages($id=0, $onlyIsoCoded=true, $setDefault=true, $setMulti=false)
- * 1763:     function hooks_prepareObjectsArray ($hookName)
- * 1780:     function alternativeLanguagesDefined()
- * 1790:     function displayElement($subElementArr)
- *
- * TOTAL FUNCTIONS: 25
- * (This index is automatically created/updated by the extension "extdeveval")
- *
- */
 
 	// Initialize module
 unset($MCONF);
@@ -606,23 +552,26 @@ class tx_templavoila_module1 extends t3lib_SCbase {
 			$this->doc->bodyTagId = 'typo3-mod-php';
 
 			$cmd = t3lib_div::_GP ('cmd');
-			switch ($cmd) {
 
-					// Create a new page
-				case 'crPage' :
-						// Output the page creation form
-					$this->content .= $this->wizardsObj->renderWizard_createNewPage (t3lib_div::_GP ('positionPid'));
-					break;
 
-					// If no access or if ID == zero
-				default:
-					$flashMessage = t3lib_div::makeInstance(
-						't3lib_FlashMessage',
-						$LANG->getLL('default_introduction'),
-						$LANG->getLL('title'),
-						t3lib_FlashMessage::INFO
-					);
-					$this->content .= $flashMessage->render();
+			if ($cmd == 'crPage') {	// create a new page
+				$this->content .= $this->wizardsObj->renderWizard_createNewPage (t3lib_div::_GP ('positionPid'));
+			} else if (!isset($pageInfoArr['uid'])) {
+				$flashMessage = t3lib_div::makeInstance(
+					't3lib_FlashMessage',
+					$GLOBALS['LANG']->getLL('page_not_found'),
+					$GLOBALS['LANG']->getLL('title'),
+					t3lib_FlashMessage::INFO
+				);
+				$this->content .= $flashMessage->render();
+			} else {
+				$flashMessage = t3lib_div::makeInstance(
+					't3lib_FlashMessage',
+					$GLOBALS['LANG']->getLL('default_introduction'),
+					$GLOBALS['LANG']->getLL('title'),
+					t3lib_FlashMessage::INFO
+				);
+				$this->content .= $flashMessage->render();
 			}
 		}
 
@@ -630,7 +579,7 @@ class tx_templavoila_module1 extends t3lib_SCbase {
 		$content  = $this->doc->startPage($GLOBALS['LANG']->getLL('title'));
 		$content .= $this->doc->moduleBody(
 			array(),
-			$this->getDocHeaderButtons(),
+			$this->getDocHeaderButtons(!isset($pageInfoArr['uid'])),
 			$this->getBodyMarkers()
 		);
 		$content .= $this->doc->endPage();
@@ -695,10 +644,10 @@ class tx_templavoila_module1 extends t3lib_SCbase {
 	/**
 	 * Create the panel of buttons for submitting the form or otherwise perform operations.
 	 *
-	 * @param	string	Identifier for function of module
+	 * @param	boolean	Determine whether to show any icons or not
 	 * @return	array	all available buttons as an assoc. array
 	 */
-	protected function getDocHeaderButtons()	{
+	protected function getDocHeaderButtons($noButtons=FALSE)	{
 		global $TCA, $LANG, $BACK_PATH, $BE_USER;
 
 		$buttons = array(
@@ -713,6 +662,10 @@ class tx_templavoila_module1 extends t3lib_SCbase {
 			'shortcut' => '',
 			'cache' => ''
 		);
+
+		if ($noButtons) {
+			return $buttons;
+		}
 
 			// View page
 		$viewAddGetVars = $this->currentLanguageUid ? '&L=' . $this->currentLanguageUid : '';
@@ -766,10 +719,16 @@ class tx_templavoila_module1 extends t3lib_SCbase {
 			$buttons['csh'] = t3lib_BEfunc::cshItem('_MOD_web_txtemplavoilaM1', 'pagemodule', $BACK_PATH);
 
 			if ($this->id) {
-				$cacheUrl = $GLOBALS['BACK_PATH'] . 'tce_db.php?vC=' . $GLOBALS['BE_USER']->veriCode() .
-					t3lib_BEfunc::getUrlToken('tceAction') .
-					'&redirect=' . rawurlencode(t3lib_div::getIndpEnv('REQUEST_URI')) .
-					'&cacheCmd=' . $this->id;
+				if (version_compare(TYPO3_version, '4.5.0', '<')) {
+					$cacheUrl = $GLOBALS['BACK_PATH'] . 'tce_db.php?vC=' . $GLOBALS['BE_USER']->veriCode() .
+						'&redirect=' . rawurlencode(t3lib_div::getIndpEnv('REQUEST_URI')) .
+						'&cacheCmd=' . $this->id;
+				} else {
+					$cacheUrl = $GLOBALS['BACK_PATH'] . 'tce_db.php?vC=' . $GLOBALS['BE_USER']->veriCode() .
+						t3lib_BEfunc::getUrlToken('tceAction') .
+						'&redirect=' . rawurlencode(t3lib_div::getIndpEnv('REQUEST_URI')) .
+						'&cacheCmd=' . $this->id;
+				}
 
 				$buttons['cache'] = '<a href="' . $cacheUrl . '" title="' . $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_core.php:labels.clear_cache', TRUE) . '">' .
 					t3lib_iconWorks::getSpriteIcon('actions-system-cache-clear') .
@@ -1160,15 +1119,22 @@ class tx_templavoila_module1 extends t3lib_SCbase {
 		$langChildren = intval($elementContentTreeArr['ds_meta']['langChildren']);
 		$langDisable = intval($elementContentTreeArr['ds_meta']['langDisable']);
 
-			//if page DS and the checkbox is not set use always langDisable in inheritance mode
-		if ($elementContentTreeArr['el']['table']=='pages' && $GLOBALS['BE_USER']->isAdmin()) {
-			if ($langDisable!=1 && $this->MOD_SETTINGS['disablePageStructureInheritance']!='1' && $langChildren==1) {
-				$langDisable=1;
-			}
+		$lKey = $this->determineFlexLanguageKey($langDisable, $langChildren, $languageKey);
+		$vKey = $this->determineFlexValueKey($langDisable, $langChildren, $languageKey);
+		if ($elementContentTreeArr['el']['table']=='pages' && $langDisable != 1 && $langChildren == 1) {
+			   if ($this->disablePageStructureInheritance($elementContentTreeArr, $sheet, $lKey, $vKey)) {
+				   $lKey = $this->determineFlexLanguageKey(1, $langChildren, $languageKey);
+				   $vKey = $this->determineFlexValueKey(1, $langChildren, $languageKey);
+			   } else if (!$GLOBALS['BE_USER']->isAdmin()) {
+				   $flashMessage = t3lib_div::makeInstance(
+					   't3lib_FlashMessage',
+					   $GLOBALS['LANG']->getLL('page_structure_inherited_detail'),
+					   $GLOBALS['LANG']->getLL('page_structure_inherited'),
+					   t3lib_FlashMessage::INFO
+				   );
+				   t3lib_FlashMessageQueue::addMessage($flashMessage);
+			   }
 		}
-
-		$lKey = $langDisable ? 'lDEF' : ($langChildren ? 'lDEF' : 'l'.$languageKey);
-		$vKey = $langDisable ? 'vDEF' : ($langChildren ? 'v'.$languageKey : 'vDEF');
 
 		if (!is_array($elementContentTreeArr['sub'][$sheet]) || !is_array($elementContentTreeArr['sub'][$sheet][$lKey])) return '';
 
@@ -1387,8 +1353,58 @@ class tx_templavoila_module1 extends t3lib_SCbase {
 		return $output;
 	}
 
+	/**
+	 * @param $langDisable
+	 * @param $langChildren
+	 * @param $languageKey
+	 * @return string
+	 */
+	protected function determineFlexLanguageKey($langDisable, $langChildren, $languageKey) {
+		return $langDisable ? 'lDEF' : ($langChildren ? 'lDEF' : 'l'. $languageKey);
+	}
 
+	/**
+	 * @param $langDisable
+	 * @param $langChildren
+	 * @param $languageCode
+	 * @return string
+	 */
+	protected function determineFlexValueKey($langDisable, $langChildren, $languageKey) {
+		return $langDisable ? 'vDEF' : ($langChildren ? 'v'.$languageKey : 'vDEF');
+	}
 
+	/**
+	 * @param $elementContentTreeArr
+	 * @param $sheet
+	 * @param $lKey
+	 * @param $vKey
+	 * @return bool
+	 */
+	protected function disablePageStructureInheritance($elementContentTreeArr, $sheet, $lKey, $vKey) {
+		$disable = FALSE;
+		if ($GLOBALS['BE_USER']->isAdmin()) {
+				//if page DS and the checkbox is not set use always langDisable in inheritance mode
+			$disable = $this->MOD_SETTINGS['disablePageStructureInheritance']!='1';
+		} else {
+			$hasLocalizedValues = FALSE;
+			$adminOnly = $this->modTSconfig['properties']['adminOnlyPageStructureInheritance'];
+			if ($adminOnly == 'strict') {
+				$disable = TRUE;
+			} else if ($adminOnly == 'fallback' && isset($elementContentTreeArr['sub'][$sheet][$lKey])) {
+				foreach($elementContentTreeArr['previewData']['sheets'][$sheet] as $_ => $fieldData) {
+					$hasLocalizedValues |= isset($fieldData['data'][$lKey][$vKey])
+									&& ($fieldData['data'][$lKey][$vKey] != NULL)
+									&& ($fieldData['isMapped'] == true)
+									&& (!isset($fieldData['TCEforms']['displayCond']) || $fieldData['TCEforms']['displayCond'] != 'HIDE_L10N_SIBLINGS');
+				}
+			} else if ($adminOnly == 'false') {
+				$disable = $this->MOD_SETTINGS['disablePageStructureInheritance']!='1';
+			}
+				// we disable it if the path wasn't already created (by an admin)
+			$disable |= !$hasLocalizedValues;
+		}
+		return $disable;
+	}
 
 
 	/*******************************************
@@ -2870,6 +2886,7 @@ if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/templav
 }
 
 	// Make instance:
+/* @var $SOBE tx_templavoila_module1 */
 $SOBE = t3lib_div::makeInstance('tx_templavoila_module1');
 $SOBE->init();
 $SOBE->main();

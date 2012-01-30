@@ -29,22 +29,6 @@
  *
  * @author     Robert Lemke <robert@typo3.org>
  */
-/**
- * [CLASS/FUNCTION INDEX of SCRIPT]
- *
- *
- *
- *   53: class tx_templavoila_referenceElementsWizard extends t3lib_extobjbase
- *   60:     function modMenu()
- *   79:     function main()
- *  178:     function createReferencesForTree($tree)
- *  192:     function createReferencesForPage($pageUid)
- *  222:     function getUnreferencedElementsRecords($pid)
- *
- * TOTAL FUNCTIONS: 5
- * (This index is automatically created/updated by the extension "extdeveval")
- *
- */
 
 require_once(PATH_t3lib.'class.t3lib_pagetree.php');
 require_once(PATH_t3lib.'class.t3lib_extobjbase.php');
@@ -66,6 +50,7 @@ class tx_templavoila_referenceElementsWizard extends t3lib_extobjbase {
 				1 => $LANG->sL('LLL:EXT:lang/locallang_core.php:labels.depth_1'),
 				2 => $LANG->sL('LLL:EXT:lang/locallang_core.php:labels.depth_2'),
 				3 => $LANG->sL('LLL:EXT:lang/locallang_core.php:labels.depth_3'),
+				999 => $LANG->sL('LLL:EXT:lang/locallang_core.php:labels.depth_infi'),
 			)
 		);
 	}
