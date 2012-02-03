@@ -28,16 +28,36 @@
  * This copyright notice MUST APPEAR in all copies of the file!
  ***************************************************************/
 
-if(!class_exists('Date', FALSE)) {
-	if (!defined('PATH_SEPARATOR')) {
-		define('PATH_SEPARATOR', OS_WINDOWS ? ';' : ':');
+/**
+ * This hook extends the befunc class.
+ * It changes the date values in the list view for tx_cal_event and tx_cal_exception_event
+ *
+ * @author	Mario Matzulla <mario(at)matzullas.de>
+ */
+
+class tx_cal_befunc {
+	
+	function preprocessvalue(&$conf) {
+		if($conf['tx_cal_event']){
+			unset($conf['eval']);
+		}
 	}
 	
-	$path = t3lib_extMgm::extPath('cal').'res/PEAR/';
-
-	//set_include_path(get_include_path(). PATH_SEPARATOR . $path);
-	require_once ($path.'Date.php');
+	function postprocessvalue(&$conf) {
+		if($conf['colConf']['tx_cal_event']){
+			$value = new tx_cal_date($conf['value'].'000000');
+			if($GLOBALS['TYPO3_CONF_VARS']['SYS']['USdateFormat'] == '1'){
+				$conf['value'] = $value->format('%d.%m.%Y');
+			} else {
+				$conf['value'] = $value->format('%d-%m-%Y');
+			}
+		}
+		return $conf['value'];
+	}
 }
-require_once(t3lib_extMgm::extPath('cal').'model/class.tx_cal_date.php');
 
+
+if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/cal/hooks/class.tx_cal_befunc.php']) {
+	include_once ($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/cal/hooks/class.tx_cal_befunc.php']);
+}
 ?>
