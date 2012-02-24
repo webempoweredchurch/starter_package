@@ -342,6 +342,19 @@
 	</dd>
 	<!-- ###SUB_INCLUDED_FIELD_module_sys_dmail_html### -->
 
+	<!-- ###SUB_INCLUDED_FIELD_terms_acknowledged### -->
+	<dt>
+		<label for="tx-srfeuserregister-pi1-terms_acknowledged">###LABEL_TERMS_ACKNOWLEDGED### ###REQUIRED_TERMS_ACKNOWLEDGED###</label>
+	</dt>
+	<dd>
+		<p class="tx-srfeuserregister-pi1-terms"><a href="###TERMS_URL###" title="###LABEL_TOOLTIP_CLICK_HERE_TO_SEE_TERMS###">###LABEL_CLICK_HERE_TO_SEE_TERMS###</a></p>
+		<!-- ###SUB_REQUIRED_FIELD_terms_acknowledged### -->
+		<p class="tx-srfeuserregister-pi1-error">###MISSING_TERMS_ACKNOWLEDGED###</p>
+		<!-- ###SUB_REQUIRED_FIELD_terms_acknowledged### -->
+		###TCA_INPUT_terms_acknowledged###
+	</dd>
+	<!-- ###SUB_INCLUDED_FIELD_terms_acknowledged### -->
+
 	<!-- ###SUB_INCLUDED_FIELD_language### -->
 	<dt>
 		<label for="tx-srfeuserregister-pi1-language" onclick="document.getElementById(this.htmlFor).focus(); return false;">###LABEL_LANGUAGE### ###REQUIRED_LANGUAGE###</label>
@@ -534,6 +547,11 @@
 <dt>###LABEL_MODULE_SYS_DMAIL_HTML###</dt>
 <dd>###TCA_INPUT_module_sys_dmail_html###&nbsp;</dd>
 <!-- ###SUB_INCLUDED_FIELD_module_sys_dmail_html### -->
+
+<!-- ###SUB_INCLUDED_FIELD_terms_acknowledged### -->
+<dt>###LABEL_TERMS_ACKNOWLEDGED###</dt>
+<dd>###TCA_INPUT_terms_acknowledged###&nbsp;</dd>
+<!-- ###SUB_INCLUDED_FIELD_terms_acknowledged### -->
 
 <!-- ###SUB_INCLUDED_FIELD_language### -->
 <dt>###LABEL_LANGUAGE###</dt>
@@ -964,6 +982,20 @@ The user is informed that a message has been sent to his email address and that 
 	</dd>
 	<!-- ###SUB_INCLUDED_FIELD_module_sys_dmail_html### -->
 
+
+	<!-- ###SUB_INCLUDED_FIELD_terms_acknowledged### -->
+	<dt>
+		<label for="tx-srfeuserregister-pi1-terms_acknowledged">###LABEL_TERMS_ACKNOWLEDGED### ###REQUIRED_MODULE_SYS_DMAIL_HTML###</label>
+	</dt>
+	<dd>
+		<!-- ###SUB_REQUIRED_FIELD_terms_acknowledged### -->
+		<p class="tx-srfeuserregister-pi1-error">###MISSING_TERMS_ACKNOWLEDGED###</p>
+		<!-- ###SUB_REQUIRED_FIELD_terms_acknowledged### -->
+		###TCA_INPUT_terms_acknowledged###
+	</dd>
+	<!-- ###SUB_INCLUDED_FIELD_terms_acknowledged### -->
+
+
 	<!-- ###SUB_INCLUDED_FIELD_language### -->
 	<dt>
 		<label for="tx-srfeuserregister-pi1-language" onclick="document.getElementById(this.htmlFor).focus(); return false;">###LABEL_LANGUAGE### ###REQUIRED_LANGUAGE###</label>
@@ -1129,6 +1161,11 @@ The user is informed that a message has been sent to his email address and that 
 <dd>###TCA_INPUT_module_sys_dmail_html###&nbsp;</dd>
 <!-- ###SUB_INCLUDED_FIELD_module_sys_dmail_html### -->
 
+<!-- ###SUB_INCLUDED_FIELD_terms_acknowledged### -->
+<dt>###LABEL_TERMS_ACKNOWLEDGED###</dt>
+<dd>###TCA_INPUT_terms_acknowledged###&nbsp;</dd>
+<!-- ###SUB_INCLUDED_FIELD_terms_acknowledged### -->
+
 <!-- ###SUB_INCLUDED_FIELD_language### -->
 <dt>###LABEL_LANGUAGE###</dt>
 <dd>###FIELD_language###&nbsp;</dd>
@@ -1193,9 +1230,9 @@ The user is informed that a message has been sent to the email address and that 
 		<!-- ###SUB_REQUIRED_FIELD_password### -->
 		<p class="tx-srfeuserregister-pi1-error">###MISSING_PASSWORD###</p>
 		<!-- ###SUB_REQUIRED_FIELD_password### -->
-		<input id="tx-srfeuserregister-pi1-password" type="password" size="10" maxlength="40" title="###TOOLTIP_PASSWORD###" name="###NAME_PASSWORD###" value="###FIELD_password###" class="tx-srfeuserregister-pi1-password" ###PASSWORD_ONCHANGE### />
+		<input id="tx-srfeuserregister-pi1-password" type="password" size="10" maxlength="40" title="###TOOLTIP_PASSWORD###" name="###NAME_PASSWORD###" value="" class="tx-srfeuserregister-pi1-password" ###PASSWORD_ONCHANGE### />
 		<label for="tx-srfeuserregister-pi1-password_again">###LABEL_PASSWORD_AGAIN###</label>
-		<input id="tx-srfeuserregister-pi1-password_again" type="password" size="10" maxlength="40" title="###LABEL_TOOLTIP_PASSWORD_AGAIN###" name="###NAME_PASSWORD_AGAIN###" value="###FIELD_password_again###" class="tx-srfeuserregister-pi1-password" ###PASSWORD_ONCHANGE### />
+		<input id="tx-srfeuserregister-pi1-password_again" type="password" size="10" maxlength="40" title="###LABEL_TOOLTIP_PASSWORD_AGAIN###" name="###NAME_PASSWORD_AGAIN###" value="" class="tx-srfeuserregister-pi1-password" ###PASSWORD_ONCHANGE### />
 	</dd>
 	<!-- ###SUB_INCLUDED_FIELD_password### -->
 
@@ -1490,6 +1527,18 @@ The user is informed that a message has been sent to the email address and that 
 	</dd>
 	<!-- ###SUB_INCLUDED_FIELD_module_sys_dmail_html### -->
 
+	<!-- ###SUB_INCLUDED_FIELD_terms_acknowledged### -->
+	<dt>
+		<label for="tx-srfeuserregister-pi1-terms_acknowledged">###LABEL_TERMS_ACKNOWLEDGED### ###REQUIRED_TERMS_ACKNOWLEDGED###</label>
+	</dt>
+	<dd>
+		<!-- ###SUB_REQUIRED_FIELD_terms_acknowledged### -->
+		<p class="tx-srfeuserregister-pi1-error">###MISSING_TERMS_ACKNOWLEDGED###</p>
+		<!-- ###SUB_REQUIRED_FIELD_terms_acknowledged### -->
+		###TCA_INPUT_terms_acknowledged###
+	</dd>
+	<!-- ###SUB_INCLUDED_FIELD_terms_acknowledged### -->
+
 	<!-- ###SUB_INCLUDED_FIELD_language### -->
 	<dt>
 		<label for="tx-srfeuserregister-pi1-language" onclick="document.getElementById(this.htmlFor).focus(); return false;">###LABEL_LANGUAGE### ###REQUIRED_LANGUAGE###</label>
@@ -1685,6 +1734,11 @@ The user is informed that a message has been sent to the email address and that 
 <dt>###LABEL_MODULE_SYS_DMAIL_HTML###</dt>
 <dd>###TCA_INPUT_module_sys_dmail_html###&nbsp;</dd>
 <!-- ###SUB_INCLUDED_FIELD_module_sys_dmail_html### -->
+
+<!-- ###SUB_INCLUDED_FIELD_terms_acknowledged### -->
+<dt>###LABEL_TERMS_ACKNOWLEDGED###</dt>
+<dd>###TCA_INPUT_terms_acknowledged###&nbsp;</dd>
+<!-- ###SUB_INCLUDED_FIELD_terms_acknowledged### -->
 
 <!-- ###SUB_INCLUDED_FIELD_language### -->
 <dt>###LABEL_LANGUAGE###</dt>
@@ -2417,6 +2471,11 @@ The user is informed that a message has been sent to the email address and that 
 <dd>###LABEL_MODULE_SYS_DMAIL_HTML_CHECKED###</dd>
 <!-- ###SUB_INCLUDED_FIELD_module_sys_dmail_html### -->
 
+<!-- ###SUB_INCLUDED_FIELD_terms_acknowledged### -->
+<dt>###LABEL_TERMS_ACKNOWLEDGED###</dt>
+<dd>###LABEL_TERMS_ACKNOWLEDGED_CHECKED###</dd>
+<!-- ###SUB_INCLUDED_FIELD_terms_acknowledged### -->
+
 <!-- ###SUB_INCLUDED_FIELD_language### -->
 <dt>###LABEL_LANGUAGE###</dt>
 <dd>###FIELD_language###</dd>
@@ -2478,6 +2537,7 @@ The user is informed that a message has been sent to the email address and that 
 <!-- ###SUB_INCLUDED_FIELD_usergroup### -->###LABEL_USERGROUP### ###TCA_INPUT_usergroup###<!-- ###SUB_INCLUDED_FIELD_usergroup### -->
 <!-- ###SUB_INCLUDED_FIELD_module_sys_dmail_category### -->###LABEL_MODULE_SYS_DMAIL_CATEGORY### ###TCA_INPUT_module_sys_dmail_category###<!-- ###SUB_INCLUDED_FIELD_module_sys_dmail_category### -->
 <!-- ###SUB_INCLUDED_FIELD_module_sys_dmail_html### -->###LABEL_MODULE_SYS_DMAIL_HTML### ###LABEL_MODULE_SYS_DMAIL_HTML_CHECKED###<!-- ###SUB_INCLUDED_FIELD_module_sys_dmail_html### -->
+<!-- ###SUB_INCLUDED_FIELD_terms_acknowledged### -->###LABEL_TERMS_ACKNOWLEDGED### ###LABEL_TERMS_ACKNOWLEDGED_CHECKED###<!-- ###SUB_INCLUDED_FIELD_terms_acknowledged### -->
 <!-- ###SUB_INCLUDED_FIELD_language### -->###LABEL_LANGUAGE### ###FIELD_language###<!-- ###SUB_INCLUDED_FIELD_language### -->
 <!-- ###SUB_INCLUDED_FIELD_www### -->###LABEL_WWW### ###FIELD_www###<!-- ###SUB_INCLUDED_FIELD_www### -->
 <!-- ###SUB_INCLUDED_FIELD_image### -->###LABEL_IMAGE### ###UPLOAD_PREVIEW_image###<!-- ###SUB_INCLUDED_FIELD_image### -->

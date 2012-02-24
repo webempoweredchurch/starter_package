@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2008-2008 Franz Holzinger (franz@ttproducts.de)
+*  (c) 2008-2011 Franz Holzinger (franz@ttproducts.de)
 *  All rights reserved
 *
 *  This script is part of the Typo3 project. The Typo3 project is
@@ -29,7 +29,7 @@
  *
  * setup configuration functions
  *
- * $Id: class.tx_srfeuserregister_model_conf.php 39113 2010-10-14 07:16:21Z franzholz $
+ * $Id: class.tx_srfeuserregister_conf.php 54218 2011-11-15 21:13:15Z franzholz $
  *
  * @author	Franz Holzinger <franz@ttproducts.de>
  *
@@ -40,20 +40,20 @@
  */
 
 
-class tx_srfeuserregister_lib_conf {
-	var $conf = array();
-	var $config = array();
+class tx_srfeuserregister_conf {
+	public $conf = array();
+	public $config = array();
 
-	function init(&$conf)	{
+	public function init (&$conf) {
 		$this->conf = &$conf;
 		$this->config = array();
 	}
 
-	function &getConf()	{
+	public function &getConf () {
 		return $this->conf;
 	}
 
-	function &setConf(&$dataArray, $k='')	{
+	public function &setConf (&$dataArray, $k='') {
 		if ($k)	{
 			$this->conf[$k] = $dataArray;
 		} else {
@@ -61,7 +61,9 @@ class tx_srfeuserregister_lib_conf {
 		}
 	}
 }
-if (defined('TYPO3_MODE') && $GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/sr_feuser_register/model/class.tx_srfeuserregister_model_conf.php']) {
-  include_once($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/sr_feuser_register/model/class.tx_srfeuserregister_model_conf.php']);
+
+
+if (defined('TYPO3_MODE') && $GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/sr_feuser_register/lib/class.tx_srfeuserregister_conf.php']) {
+  include_once($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/sr_feuser_register/lib/class.tx_srfeuserregister_conf.php']);
 }
 ?>

@@ -29,7 +29,7 @@
  *
  * base class for all database table classes
  *
- * $Id: class.tx_srfeuserregister_model_setfixed.php 39113 2010-10-14 07:16:21Z franzholz $
+ * $Id: class.tx_srfeuserregister_model_setfixed.php 54218 2011-11-15 21:13:15Z franzholz $
  *
  * @author  Franz Holzinger <franz@ttproducts.de>
  * @maintainer	Franz Holzinger <franz@ttproducts.de>
@@ -38,7 +38,7 @@
  *
  */
 
-require_once(PATH_BE_srfeuserregister.'model/class.tx_srfeuserregister_model_table_base.php');
+require_once(PATH_BE_srfeuserregister . 'model/class.tx_srfeuserregister_model_table_base.php');
 
 
 class tx_srfeuserregister_model_setfixed extends tx_srfeuserregister_model_table_base {

@@ -29,7 +29,7 @@
  *
  * authentication functions
  *
- * $Id: class.tx_srfeuserregister_auth.php 39113 2010-10-14 07:16:21Z franzholz $
+ * $Id: class.tx_srfeuserregister_auth.php 54218 2011-11-15 21:13:15Z franzholz $
  *
  * @author	Kasper Skaarhoj <kasper2007@typo3.com>
  * @author	Stanislas Rolland <stanislas.rolland(arobas)sjbr.ca>
@@ -43,12 +43,12 @@
 
 
 class tx_srfeuserregister_auth {
-	var $pibase;
-	var $conf = array();
-	var $config = array();
-	var $authCode;
+	public $pibase;
+	public $conf = array();
+	public $config = array();
+	public $authCode;
 
-	function init (&$pibase, &$conf, &$config)	{
+	public function init (&$pibase, &$conf, &$config)	{
 		$this->pibase = &$pibase;
 		$this->conf = &$conf;
 		$this->config = &$config;
@@ -67,11 +67,11 @@ class tx_srfeuserregister_auth {
 		}
 	}
 
-	function setAuthCode ($code)	{
+	public function setAuthCode ($code)	{
 		$this->authCode = $code;
 	}
 
-	function getAuthCode ()	{
+	public function getAuthCode ()	{
 		return $this->authCode;
 	}
 
@@ -82,20 +82,20 @@ class tx_srfeuserregister_auth {
 	* @param string  $extra: some extra mixture
 	* @return string  the code
 	*/
-	function authCode ($r, $fields = '', $extra = '') {
+	public function authCode ($r, $fields = '', $extra = '') {
 
 		$rc = '';
 		$l = $this->config['codeLength'];
 		$value = '';
 
 		if ($fields) {
-
 			$recCopy_temp=array();
 			$fieldArr = t3lib_div::trimExplode(',', $fields, 1);
+
 			foreach($fieldArr as $k => $v) {
 
-				if (isset($r[$v]))	{
-					if (is_array($r[$v]))	{
+				if (isset($r[$v])) {
+					if (is_array($r[$v])) {
 						$recCopy_temp[$k] = implode(',',$r[$v]);
 					} else {
 						$recCopy_temp[$k] = $r[$v];
@@ -103,8 +103,8 @@ class tx_srfeuserregister_auth {
 				}
 			}
 
-			if (isset($recCopy_temp) && is_array($recCopy_temp))	{
-				$preKey = implode('|',$recCopy_temp);
+			if (isset($recCopy_temp) && is_array($recCopy_temp)) {
+				$preKey = implode('|', $recCopy_temp);
 			}
 		}
 		$value .= $preKey . ($extra != '' ? '|' . $extra : '') . '|'  . $this->config['addKey'];
@@ -117,20 +117,21 @@ class tx_srfeuserregister_auth {
 		return $rc;
 	}	// authCode
 
+
 	/**
 	* Authenticates a record
 	*
 	* @param array  $r: the record
 	* @return boolean  true if the record is authenticated
 	*/
-	function aCAuth ($r, $fields) {
-		$rc = false;
+	public function aCAuth ($r, $fields) {
+		$rc = FALSE;
 
 		if ($this->authCode) {
 			$authCode = $this->authCode($r, $fields);
 
-			if (!strcmp($this->authCode, $authCode))	{
-				$rc = true;
+			if (!strcmp($this->authCode, $authCode)) {
+				$rc = TRUE;
 			}
 		}
 		return $rc;
@@ -144,15 +145,15 @@ class tx_srfeuserregister_auth {
 	* @param string  $fields: the list of fields to include in the hash computation
 	* @return string  the hash value
 	*/
-	function setfixedHash ($recCopy, $fields = '') {
+	public function setfixedHash ($recCopy, $fields = '') {
 
-		$recCopy_temp=array();
+		$recCopy_temp = array();
 		if ($fields) {
 			$fieldArr = t3lib_div::trimExplode(',', $fields, 1);
 			foreach($fieldArr as $k => $v) {
-				if (isset($recCopy[$v]))	{
-					if (is_array($recCopy[$v]))	{
-						$recCopy_temp[$k] = implode(',',$recCopy[$v]);
+				if (isset($recCopy[$v])) {
+					if (is_array($recCopy[$v])) {
+						$recCopy_temp[$k] = implode(',', $recCopy[$v]);
 					} else {
 						$recCopy_temp[$k] = $recCopy[$v];
 					}
@@ -162,8 +163,8 @@ class tx_srfeuserregister_auth {
 			$recCopy_temp = $recCopy;
 		}
 
-		if (isset($recCopy_temp) && is_array($recCopy_temp))	{
-			$preKey = implode('|',$recCopy_temp);
+		if (isset($recCopy_temp) && is_array($recCopy_temp)) {
+			$preKey = implode('|', $recCopy_temp);
 		}
 		$authCode = $preKey . '|' . $this->config['addKey'];
 
@@ -182,7 +183,7 @@ class tx_srfeuserregister_auth {
 	* @param void
 	* @return string  the token value
 	*/
-	function generateToken ()	{
+	public function generateToken () {
 		$time = time();
 		$rc = md5($time . getmypid() . $GLOBALS['TYPO3_CONF_VARS']['SYS']['encryptionKey']);
 

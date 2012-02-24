@@ -1,7 +1,7 @@
 ##
 ## @package TYPO3
 ## @subpackage sr_feuser_register
-## @version $Id: setup.txt 39113 2010-10-14 07:16:21Z franzholz $
+## @version $Id: setup.txt 54096 2011-11-14 11:58:58Z franzholz $
 ##
 
 plugin.tx_srfeuserregister_pi1 = USER_INT
@@ -41,6 +41,7 @@ plugin.tx_srfeuserregister_pi1 {
 	onChangeCountryAttribute = {$plugin.tx_srfeuserregister_pi1.onChangeCountryAttribute}
 
 	allowMultipleUserGroupSelection = {$plugin.tx_srfeuserregister_pi1.allowMultipleUserGroupSelection}
+
 	useMd5Password = {$plugin.tx_srfeuserregister_pi1.useMd5Password}
 	salutation = {$plugin.tx_srfeuserregister_pi1.salutation}
 
@@ -49,6 +50,8 @@ plugin.tx_srfeuserregister_pi1 {
 	addAttachment.cmd = setfixed
 	addAttachment.sFK = APPROVE
 	addAttachment.file = {$plugin.tx_srfeuserregister_pi1.file.attachmentFile}
+
+	terms.file = {$plugin.tx_srfeuserregister_pi1.file.termsFile}
 
 	displayRequired = TEXT
 	displayRequired {
@@ -65,6 +68,9 @@ plugin.tx_srfeuserregister_pi1 {
 		generateUsername = {$plugin.tx_srfeuserregister_pi1.generateUsername}
 		generatePassword = {$plugin.tx_srfeuserregister_pi1.generatePassword}
 		allowUserGroupSelection = {$plugin.tx_srfeuserregister_pi1.allowUserGroupSelection}
+		allowedUserGroups = {$plugin.tx_srfeuserregister_pi1.allowedUserGroups}
+		allowedSubgroups = {$plugin.tx_srfeuserregister_pi1.allowedSubgroups}
+		deniedUserGroups = {$plugin.tx_srfeuserregister_pi1.deniedUserGroups}
 		marker {
 		}
 
@@ -83,7 +89,7 @@ plugin.tx_srfeuserregister_pi1 {
 
 		evalValues {
 			password = twice, atLeast[{$plugin.tx_srfeuserregister_pi1.passwordAtLeast}], atMost[{$plugin.tx_srfeuserregister_pi1.passwordAtMost}]
-			username = uniqueLocal, atLeast[{$plugin.tx_srfeuserregister_pi1.usernameAtLeast}], atMost[{$plugin.tx_srfeuserregister_pi1.usernameAtMost}]
+			username = uniqueLocal, alphanum, atLeast[{$plugin.tx_srfeuserregister_pi1.usernameAtLeast}], atMost[{$plugin.tx_srfeuserregister_pi1.usernameAtMost}]
 			email = email,atMost[255],uniqueLocal
 			gender =
 			name = atMost[{$plugin.tx_srfeuserregister_pi1.nameAtMost}]
@@ -154,7 +160,8 @@ plugin.tx_srfeuserregister_pi1 {
 	edit {
 		preview = {$plugin.tx_srfeuserregister_pi1.enablePreviewEdit}
 		allowUserGroupSelection = {$plugin.tx_srfeuserregister_pi1.allowUserGroupUpdate}
-
+		keepUnselectableUserGroups = {$plugin.tx_srfeuserregister_pi1.keepUnselectableUserGroups}
+		required := removeFromList(password)
 		defaultValues {
 			disable = 0
 			usergroup >
@@ -173,6 +180,7 @@ plugin.tx_srfeuserregister_pi1 {
 		evalValues {
 			username = unsetEmpty
 			usergroup = unsetEmpty
+			password := addToList(unsetEmpty)
 		}
 	}
 
@@ -181,7 +189,7 @@ plugin.tx_srfeuserregister_pi1 {
 	forceFileDelete = {$plugin.tx_srfeuserregister_pi1.forceFileDelete}
 
 	parseValues {
-		username = nospace,trim
+		username = nospace,trim,alphanum_x
 		email = lower,nospace,trim
 		password = trim
 		name = trim

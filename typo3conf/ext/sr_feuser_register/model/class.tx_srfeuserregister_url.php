@@ -29,7 +29,7 @@
  *
  * url functions
  *
- * $Id: class.tx_srfeuserregister_url.php 39113 2010-10-14 07:16:21Z franzholz $
+ * $Id: class.tx_srfeuserregister_url.php 54218 2011-11-15 21:13:15Z franzholz $
  *
  * @author	Kasper Skaarhoj <kasper2007@typo3.com>
  * @author	Stanislas Rolland <stanislas.rolland(arobas)fructifor.ca>
@@ -47,7 +47,7 @@ class tx_srfeuserregister_url {
 	public $cObj;
 
 
-	public function init (&$controlData, &$cObj)	{
+	public function init (&$controlData, &$cObj) {
 		$this->controlData = &$controlData;
 		$this->cObj = &$cObj;
 	}
@@ -63,7 +63,7 @@ class tx_srfeuserregister_url {
 	* @param boolean  $usePiVars: if set, input vars and incoming piVars arrays are merge
 	* @return string  generated link or url
 	*/
-	function get ($tag='', $id, $vars = array(), $unsetVars = array(), $usePiVars = TRUE) {
+	public function get ($tag = '', $id, $vars = array(), $unsetVars = array(), $usePiVars = TRUE) {
 
 		$vars = (array) $vars;
 		$unsetVars = (array) $unsetVars;
@@ -71,7 +71,7 @@ class tx_srfeuserregister_url {
 			$vars = array_merge($this->controlData->getPiVars(), $vars); //vars override pivars
 
 			foreach($unsetVars as $key) {
-				if (isset($vars[$key]))	{
+				if (isset($vars[$key])) {
 					// unsetvars override anything
 					unset($vars[$key]);
 				}

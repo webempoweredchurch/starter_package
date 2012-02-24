@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2007-2008 Stanislas Rolland (stanislas.rolland@sjbr.ca)
+*  (c) 2007-2011 Stanislas Rolland (stanislas.rolland@sjbr.ca)
 *  All rights reserved
 *
 *  This script is part of the Typo3 project. The Typo3 project is
@@ -29,7 +29,7 @@
  *
  * language functions
  *
- * $Id: class.tx_srfeuserregister_lang.php 39113 2010-10-14 07:16:21Z franzholz $
+ * $Id: class.tx_srfeuserregister_lang.php 54691 2011-11-22 15:33:03Z franzholz $
  *
  * @author	Stanislas Rolland <stanislas.rolland(arobas)sjbr.ca>
  * @author	Franz Holzinger <franz@ttproducts.de>
@@ -41,25 +41,46 @@
  */
 
 
-class tx_srfeuserregister_lang {
-	var $pibase;
-	var $conf = array();
-	var $allowedSuffixes = array('formal', 'informal'); // list of allowed suffixes
-	var $LLkey;
+require_once(PATH_BE_div2007 . 'class.tx_div2007_alpha_language_base.php');
 
 
-	function init (&$pibase, &$conf, $LLkey)	{
-		$this->pibase = &$pibase;
-		$this->conf = &$conf;
-		$this->LLkey = $LLkey;
+class tx_srfeuserregister_lang extends tx_div2007_alpha_language_base {
+	public $pibase;
+	public $allowedSuffixes = array('formal', 'informal'); // list of allowed suffixes
+
+
+// 	public function init (&$pibase, &$conf, $LLkey)	{
+	public function init (&$pObj, &$cObj, &$conf, $scriptRelPath, $extKey) {
+
+		$this->pibase = $pObj;
+
+		parent::init(
+			$cObj,
+			$extKey,
+			$conf,
+			$scriptRelPath
+		);
+
+		// keep previsous language settings if available
+
+		if (isset($pObj->LOCAL_LANG) && is_array($pObj->LOCAL_LANG)) {
+			$this->LOCAL_LANG = &$pObj->LOCAL_LANG;
+		}
+		if (isset($pObj->LOCAL_LANG_charset) && is_array($pObj->LOCAL_LANG_charset)) {
+			$this->LOCAL_LANG_charset = &$pObj->LOCAL_LANG_charset;
+		}
+		if (isset($pObj->LOCAL_LANG_loaded) && is_array($pObj->LOCAL_LANG_loaded)) {
+			$this->LOCAL_LANG_loaded = &$pObj->LOCAL_LANG_loaded;
+		}
 	}
 
 
-	function getLLFromString ($string, $bForce=TRUE) {
+	public function getLLFromString ($string, $bForce=TRUE) {
 		global $LOCAL_LANG, $TSFE;
 
 		$rc = '';
-		$arr = explode(':',$string);
+		$arr = explode(':', $string);
+
 		if($arr[0] == 'LLL' && $arr[1] == 'EXT') {
 			$temp = $this->getLL($arr[3]);
 			if ($temp || !$bForce) {
@@ -80,19 +101,19 @@ class tx_srfeuserregister_lang {
 	* @param	string	name of the field
 	* @ return	array	array of selectable items
 	*/
-	function getItemsLL ($textSchema, $bAll=TRUE, $valuesArray=array()) {
+	public function getItemsLL ($textSchema, $bAll = TRUE, $valuesArray = array()) {
 		$rc = array();
-		if ($bAll)	{
-			for ($i = 0; $i < 999; ++$i)	{
-				$text = $this->getLL($textSchema.$i);
-				if ($text != '')	{
+		if ($bAll) {
+			for ($i = 0; $i < 999; ++$i) {
+				$text = $this->getLL($textSchema . $i);
+				if ($text != '') {
 					$rc[] = array($text, $i);
 				}
 			}
 		} else {
-			foreach ($valuesArray as $k => $i)	{
-				$text = $this->getLL($textSchema.$i);
-				if ($text != '')	{
+			foreach ($valuesArray as $k => $i) {
+				$text = $this->getLL($textSchema . $i);
+				if ($text != '') {
 					$rc[] = array($text, $i);
 				}
 			}
@@ -117,23 +138,43 @@ class tx_srfeuserregister_lang {
 		* @param    boolean        If true, the output label is passed through htmlspecialchars()
 		* @return    string        The value from LOCAL_LANG.
 		*/
-	function getLL ($key, $alt = '', $hsc = FALSE) {
+	public function getLL ($key, $alt = '', $hsc = FALSE) {
 
 			// If the suffix is allowed and we have a localized string for the desired salutation, we'll take that.
 		$rc = '';
-		if (isset($this->conf['salutation']) && in_array($this->conf['salutation'], $this->allowedSuffixes, 1)) {
-			$expandedKey = $key.'_'.$this->conf['salutation'];
-			$usedLang = '';
-			$rc = tx_div2007_alpha::getLL_fh001($this->pibase, $usedLang, $expandedKey, $alt, $hsc);
+		$usedLang = '';
+
+		if (
+			isset($this->conf['salutation']) &&
+			in_array($this->conf['salutation'], $this->allowedSuffixes, 1)
+		) {
+			$expandedKey = $key . '_' . $this->conf['salutation'];
+			$rc =
+				tx_div2007_alpha5::getLL_fh002(
+					$this,
+					$expandedKey,
+					$usedLang,
+					$alt,
+					$hsc
+				);
 		}
-		if ($rc == '' || $rc == $alt || $usedLang != $this->pibase->LLkey)	{
-			$rc = tx_div2007_alpha::getLL_fh001($this->pibase, $usedLang, $key, $alt, $hsc);
+
+		if ($rc == '' || $rc == $alt || $usedLang != $this->LLkey) {
+			$rc =
+				tx_div2007_alpha5::getLL_fh002(
+					$this,
+					$key,
+					$usedLang,
+					$alt,
+					$hsc
+				);
 		}
+
 		return $rc;
 	}	// getLL
 
 
-	function loadLL () {
+	public function loadLL () {
 		$rc = TRUE;
 
 			// flatten the structure of labels overrides
@@ -144,12 +185,12 @@ class tx_srfeuserregister_lang {
 				$done = TRUE;
 				foreach($this->conf['_LOCAL_LANG.'] as $k => $lA) {
 					if (is_array($lA)) {
-						foreach($lA as $llK => $llV)    {
-							if (is_array($llV))    {
+						foreach($lA as $llK => $llV) {
+							if (is_array($llV)) {
 								foreach ($llV as $llK2 => $llV2) {
-									if (is_array($llK2))	{
+									if (is_array($llK2)) {
 										foreach ($llV2 as $llK3 => $llV3) {
-											if (is_array($llV3))	{
+											if (is_array($llV3)) {
 												foreach ($llV3 as $llK4 => $llV4) {
 													$this->conf['_LOCAL_LANG.'][$k][$llK . $llK2 . $llK3 . $llK4] = $llV4;
 												}
@@ -170,20 +211,21 @@ class tx_srfeuserregister_lang {
 				}
 			}
 		}
-		$locallang = $this->pibase->LOCAL_LANG;
-		$this->pibase->pi_loadLL();
+		$locallang = $this->LOCAL_LANG;
+		tx_div2007_alpha5::loadLL_fh002($this);
 
-		if ($locallang != '')	{
-			foreach ($this->pibase->LOCAL_LANG as $key => $langArray)	{
-				if (isset($locallang[$key]) && is_array($locallang[$key]))	{
-					$this->pibase->LOCAL_LANG[$key] = array_merge($locallang[$key], $langArray);
+		if ($locallang != '') {
+			foreach ($this->LOCAL_LANG as $key => $langArray) {
+				if (isset($locallang[$key]) && is_array($locallang[$key])) {
+					$this->LOCAL_LANG[$key] = array_merge($locallang[$key], $langArray);
 				}
 			}
 		}
 
 		// do a check if the language file works
 		$tmpText = $this->getLL('unsupported');
-		if ($tmpText == '')	{
+
+		if ($tmpText == '') {
 			$rc = FALSE;
 		}
 
@@ -192,7 +234,7 @@ class tx_srfeuserregister_lang {
 } // class tx_srfeuserregister_lang
 
 
-if (defined('TYPO3_MODE') && $GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/sr_feuser_register/lib/class.tx_srfeuserregister_lang.php'])  {
+if (defined('TYPO3_MODE') && $GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/sr_feuser_register/lib/class.tx_srfeuserregister_lang.php']) {
   include_once($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/sr_feuser_register/lib/class.tx_srfeuserregister_lang.php']);
 }
 ?>

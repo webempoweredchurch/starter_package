@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2007-2010 Stanislas Rolland (stanislas.rolland@sjbr.ca)
+*  (c) 2007-2012 Stanislas Rolland (stanislas.rolland@sjbr.ca)
 *  All rights reserved
 *
 *  This script is part of the Typo3 project. The Typo3 project is
@@ -29,7 +29,7 @@
  *
  * email functions
  *
- * $Id: class.tx_srfeuserregister_email.php 39113 2010-10-14 07:16:21Z franzholz $
+ * $Id: class.tx_srfeuserregister_email.php 56277 2012-01-13 18:38:23Z franzholz $
  *
  * @author	Kasper Skaarhoj <kasperYYYY@typo3.com>
  * @author	Stanislas Rolland <stanislas.rolland(arobas)sjbr.ca>
@@ -41,28 +41,29 @@
  *
  */
 
-require_once(PATH_t3lib.'class.t3lib_htmlmail.php');
+require_once(PATH_t3lib . 'class.t3lib_htmlmail.php');
+require_once(PATH_BE_div2007 . 'class.tx_div2007_alpha5.php');
 
 
 class tx_srfeuserregister_email {
-	var $langObj;
-	var $conf = array();
-	var $config = array();
-	var $display;
-	var $data;
-	var $marker;
-	var $tca;
-	var $control;
-	var $controlData;
-	var $infomailPrefix = 'INFOMAIL_';
-	var $emailMarkPrefix = 'EMAIL_TEMPLATE_';
-	var $emailMarkAdminSuffix = '_ADMIN';
-	var $emailMarkHTMLSuffix = '_HTML';
-	var $HTMLMailEnabled = TRUE;
-	var $cObj;
+	public $langObj;
+	public $conf = array();
+	public $config = array();
+	public $display;
+	public $data;
+	public $marker;
+	public $tca;
+	public $control;
+	public $controlData;
+	public $infomailPrefix = 'INFOMAIL_';
+	public $emailMarkPrefix = 'EMAIL_TEMPLATE_';
+	public $emailMarkAdminSuffix = '_ADMIN';
+	public $emailMarkHTMLSuffix = '_HTML';
+	public $HTMLMailEnabled = TRUE;
+	public $cObj;
 
 
-	function init (
+	public function init (
 		&$langObj,
 		&$cObj,
 		&$conf,
@@ -99,7 +100,7 @@ class tx_srfeuserregister_email {
 	 * @return	string		HTML content message
 	 * @see init(),compile(), send()
 	 */
-	function sendInfo (
+	public function sendInfo (
 		$theTable,
 		$origArr,
 		$securedArray,
@@ -108,14 +109,20 @@ class tx_srfeuserregister_email {
 		$cmdKey,
 		$templateCode
 	)	{
-		if ($this->conf['infomail'] && $this->conf['email.']['field'])	{
+		if ($this->conf['infomail'] && $this->conf['email.']['field']) {
 			$fetch = $this->controlData->getFeUserData('fetch');
 
-			if (isset($fetch) && !empty($fetch))	{
+			if (isset($fetch) && !empty($fetch)) {
 				$pidLock = 'AND pid IN (' . ($this->cObj->data['pages'] ? $this->cObj->data['pages'] . ',' : '') . $this->controlData->getPid() . ')';
 				$enable = $GLOBALS['TSFE']->sys_page->enableFields($theTable);
+				$bFetchIsInt = (
+					class_exists('t3lib_utility_Math') ?
+						t3lib_utility_Math::canBeInterpretedAsInteger($fetch) :
+						t3lib_div::testInt($fetch)
+				);
+
 					// Getting records
-				if ($theTable == 'fe_users' && t3lib_div::testInt($fetch) )	{
+				if ($theTable == 'fe_users' && $bFetchIsInt) {
 					$DBrows = $GLOBALS['TSFE']->sys_page->getRecordsByField(
 						$theTable,
 						'uid',
@@ -172,30 +179,31 @@ class tx_srfeuserregister_email {
 						array()
 					);
 				}
+
 				if ($errorContent)	{
 					$content = $errorContent;
 				} else {
-					$subpartkey = '###TEMPLATE_'.$this->infomailPrefix.'SENT###';
+					$subpartkey = '###TEMPLATE_' . $this->infomailPrefix . 'SENT###';
 					$content =
 						$this->display->getPlainTemplate(
 							$templateCode,
 							$subpartkey,
 							$markerArray,
 							$origArr,
-							(is_array($DBrows)?$DBrows[0]:(is_array($fetchArray)?$fetchArray[0]:'')),
+							(is_array($DBrows) ? $DBrows[0] : (is_array($fetchArray) ? $fetchArray[0] : '')),
 							$securedArray,
 							FALSE
 						);
 
 					if (!$content)	{ // compatibility until 1.1.2010
-						$subpartkey = '###'.$this->emailMarkPrefix.$this->infomailPrefix.'SENT###';
+						$subpartkey = '###' . $this->emailMarkPrefix . $this->infomailPrefix . 'SENT###';
 						$content =
 							$this->display->getPlainTemplate(
 								$templateCode,
 								$subpartkey,
 								$markerArray,
 								$origArr,
-								(is_array($DBrows)?$DBrows[0]:(is_array($fetchArray)?$fetchArray[0]:'')),
+								(is_array($DBrows) ? $DBrows[0] : (is_array($fetchArray) ? $fetchArray[0] : '')),
 								$securedArray
 							);
 					}
@@ -230,7 +238,7 @@ class tx_srfeuserregister_email {
 	* @param array  $setFixedConfig: a setfixed TS config array
 	* @return string : text in case of error
 	*/
-	function compile (
+	public function compile (
 		$key,
 		$theTable,
 		$DBrows,
@@ -248,7 +256,7 @@ class tx_srfeuserregister_email {
 
 		$missingSubpartArray = array();
 		$subpartsFound = 0;
-		if (!isset($DBrows[0]) || !is_array($DBrows[0]))	{
+		if (!isset($DBrows[0]) || !is_array($DBrows[0])) {
 			$DBrows = $origRows;
 		}
 
@@ -273,8 +281,13 @@ class tx_srfeuserregister_email {
 		$content['userhtml']['all'] = '';
 		$content['admin']['all'] = '';
 		$content['adminhtml']['all'] = '';
-		$setfixedArray = array('SETFIXED_CREATE', 'SETFIXED_CREATE_REVIEW', 'SETFIXED_INVITE',
-			'SETFIXED_REVIEW');
+		$setfixedArray =
+			array(
+				'SETFIXED_CREATE',
+				'SETFIXED_CREATE_REVIEW',
+				'SETFIXED_INVITE',
+				'SETFIXED_REVIEW'
+			);
 		$infomailArray = array('INFOMAIL', 'INFOMAIL_NORECORD');
 
 		if (
@@ -283,23 +296,23 @@ class tx_srfeuserregister_email {
 			$this->conf['infomail'] && in_array($key, $infomailArray)
 		) {
 			$subpartMarker = '###' . $this->emailMarkPrefix . $key . '###';
-			$content['user']['all'] = trim($this->cObj->getSubpart($templateCode, $subpartMarker));
+			$content['user']['all'] = trim($this->cObj->getSubpart($templateCode,  $subpartMarker));
 
 			if ($content['user']['all'] == '')	{
 				$missingSubpartArray[] = $subpartMarker;
 			} else {
-				$content['user']['all'] = $this->display->removeRequired($content['user']['all'],$errorFieldArray);
+				$content['user']['all'] = $this->display->removeRequired($content['user']['all'], $errorFieldArray);
 				$subpartsFound++;
 			}
 
-			if ($this->HTMLMailEnabled && $bHTMLallowed)	{
+			if ($this->HTMLMailEnabled && $bHTMLallowed) {
 				$subpartMarker = '###' . $this->emailMarkPrefix . $key . $this->emailMarkHTMLSuffix . '###';
 				$content['userhtml']['all'] = trim($this->cObj->getSubpart($templateCode,  $subpartMarker));
 
-				if ($content['userhtml']['all'] == '')	{
+				if ($content['userhtml']['all'] == '') {
 					$missingSubpartArray[] = $subpartMarker;
 				} else {
-					$content['userhtml']['all'] = $this->display->removeRequired($content['userhtml']['all'],$errorFieldArray);
+					$content['userhtml']['all'] = $this->display->removeRequired($content['userhtml']['all'], $errorFieldArray);
 					$subpartsFound++;
 				}
 			}
@@ -308,12 +321,12 @@ class tx_srfeuserregister_email {
 		if (!isset($this->conf['notify.'][$key]) || $this->conf['notify.'][$key]) {
 
 			$subpartMarker = '###' . $this->emailMarkPrefix . $key . $this->emailMarkAdminSuffix . '###';
-			$content['admin']['all'] = trim($this->cObj->getSubpart($templateCode, $subpartMarker));
+			$content['admin']['all'] = trim($this->cObj->getSubpart($templateCode,  $subpartMarker));
 
-			if ($content['admin']['all'] == '')	{
+			if ($content['admin']['all'] == '') {
 				$missingSubpartArray[] = $subpartMarker;
 			} else {
-				$content['admin']['all'] = $this->display->removeRequired($content['admin']['all'],$errorFieldArray);
+				$content['admin']['all'] = $this->display->removeRequired($content['admin']['all'], $errorFieldArray);
 				$subpartsFound++;
 			}
 
@@ -324,7 +337,7 @@ class tx_srfeuserregister_email {
 				if ($content['adminhtml']['all'] == '')	{
 					$missingSubpartArray[] = $subpartMarker;
 				} else {
-					$content['adminhtml']['all'] = $this->display->removeRequired($content['adminhtml']['all'],$errorFieldArray);
+					$content['adminhtml']['all'] = $this->display->removeRequired($content['adminhtml']['all'], $errorFieldArray);
 					$subpartsFound++;
 				}
 			}
@@ -334,24 +347,24 @@ class tx_srfeuserregister_email {
 		$contentIndexArray['text'] = array();
 		$contentIndexArray['html'] = array();
 
-		if ($content['user']['all'])	{
-			$content['user']['rec'] = $this->cObj->getSubpart($content['user']['all'], '###SUB_RECORD###');
+		if ($content['user']['all']) {
+			$content['user']['rec'] = $this->cObj->getSubpart($content['user']['all'],  '###SUB_RECORD###');
 			$contentIndexArray['text'][] = 'user';
 		}
-		if ($content['userhtml']['all'])	{
-			$content['userhtml']['rec'] = $this->cObj->getSubpart($content['userhtml']['all'], '###SUB_RECORD###');
+		if ($content['userhtml']['all']) {
+			$content['userhtml']['rec'] = $this->cObj->getSubpart($content['userhtml']['all'],  '###SUB_RECORD###');
 			$contentIndexArray['html'][] = 'userhtml';
 		}
-		if ($content['admin']['all'])	{
-			$content['admin']['rec'] = $this->cObj->getSubpart($content['admin']['all'], '###SUB_RECORD###');
+		if ($content['admin']['all']) {
+			$content['admin']['rec'] = $this->cObj->getSubpart($content['admin']['all'],  '###SUB_RECORD###');
 			$contentIndexArray['text'][] = 'admin';
 		}
-		if ($content['adminhtml']['all'])	{
-			$content['adminhtml']['rec'] = $this->cObj->getSubpart($content['adminhtml']['all'], '###SUB_RECORD###');
+		if ($content['adminhtml']['all']) {
+			$content['adminhtml']['rec'] = $this->cObj->getSubpart($content['adminhtml']['all'],  '###SUB_RECORD###');
 			$contentIndexArray['html'][] = 'adminhtml';
 		}
 		$bChangesOnly = ($this->conf['email.']['EDIT_SAVED'] == '2' && $cmd == 'edit');
-		if ($bChangesOnly)	{
+		if ($bChangesOnly) {
 			$keepFields = array('uid', 'pid', 'tstamp', 'name', 'username');
 		} else {
 			$keepFields = array();
@@ -381,11 +394,11 @@ class tx_srfeuserregister_email {
 		$content['admin']['all'] = $this->cObj->substituteMarkerArray($content['admin']['all'], $markerArray);
 		$content['adminhtml']['all'] = $this->cObj->substituteMarkerArray($content['adminhtml']['all'], $markerArray);
 
-		foreach ($DBrows as $k => $row)	{
+		foreach ($DBrows as $k => $row) {
 			$origRow = $origRows[$k];
 
-			if (isset($origRow) && is_array($origRow))	{
-				if (isset($row) && is_array($row))	{
+			if (isset($origRow) && is_array($origRow)) {
+				if (isset($row) && is_array($row)) {
 					$currentRow = array_merge($origRow, $row);
 				} else {
 					$currentRow = $origRow;
@@ -393,13 +406,13 @@ class tx_srfeuserregister_email {
 			} else {
 				$currentRow = $row;
 			}
-			if ($bChangesOnly)	{
+			if ($bChangesOnly) {
 				$mrow = array();
-				foreach ($row as $field => $v)	{
-					if (in_array($field, $keepFields))	{
+				foreach ($row as $field => $v) {
+					if (in_array($field, $keepFields)) {
 						$mrow[$field] = $row[$field];
 					} else {
-						if ($row[$field] != $origRow[$field])	{
+						if ($row[$field] != $origRow[$field]) {
 							$mrow[$field] = $row[$field];
 						} else {
 							$mrow[$field] = ''; // needed to empty the ###FIELD_...### markers
@@ -411,23 +424,29 @@ class tx_srfeuserregister_email {
 			}
 
 			$markerArray['###SYS_AUTHCODE###'] = $authObj->authCode($row);
+				// If using md5 password, generate a challenge
+			if ($this->controlData->getUseMd5Password()) {
+				$passwordmd5Obj = &t3lib_div::getUserObj('&tx_srfeuserregister_passwordmd5');
+				$passwordmd5Obj->generateChallenge($currentRow);
+			}
 			$this->setfixedObj->computeUrl(
 				$cmdKey,
 				$markerArray,
 				$setFixedConfig,
 				$currentRow,
-				$this->controlData->getTable()
+				$theTable
 			);
 			$this->marker->addStaticInfoMarkers($markerArray, $row, $viewOnly);
 
-			foreach ($this->tca->TCA['columns'] as $theField => $fieldConfig)	{
+			foreach ($this->tca->TCA['columns'] as $theField => $fieldConfig) {
 
 				if (
 					$fieldConfig['config']['internal_type'] == 'file' &&
 					$fieldConfig['config']['allowed'] != '' &&
 					$fieldConfig['config']['uploadfolder'] != ''
-				)	{
+				) {
 					$this->marker->addFileUploadMarkers(
+						$theTable,
 						$theField,
 						$fieldConfig,
 						$markerArray,
@@ -436,7 +455,7 @@ class tx_srfeuserregister_email {
 						$row,
 						$viewOnly,
 						'email',
-						($emailType=='html')
+						($emailType == 'html')
 					);
 				}
 			}
@@ -463,7 +482,7 @@ class tx_srfeuserregister_email {
 					'',
 					FALSE,
 					'FIELD_',
-					($emailType=='html')
+					($emailType == 'html')
 				);
 				$this->tca->addTcaMarkers(
 					$fieldMarkerArray,
@@ -475,7 +494,7 @@ class tx_srfeuserregister_email {
 					$viewOnly,
 					'email',
 					$bChangesOnly,
-					($emailType=='html')
+					($emailType == 'html')
 				);
 				$markerArray = array_merge($markerArray, $fieldMarkerArray);
 
@@ -539,7 +558,12 @@ class tx_srfeuserregister_email {
 				);
 		}
 
-		if (t3lib_div::testInt($recipient)) {
+		$bRecipientIsInt = (
+			class_exists('t3lib_utility_Math') ?
+				t3lib_utility_Math::canBeInterpretedAsInteger($recipient) :
+				t3lib_div::testInt($recipient)
+		);
+		if ($bRecipientIsInt) {
 			$fe_userRec = $GLOBALS['TSFE']->sys_page->getRawRecord('fe_users', $recipient);
 			$recipient = $fe_userRec['email'];
 		}
@@ -549,7 +573,8 @@ class tx_srfeuserregister_email {
 			$file = ($this->conf['addAttachment.']['file'] ? $TSFE->tmpl->getFileName($this->conf['addAttachment.']['file']) : '');
 		}
 
-		if ($subpartsFound >= 1)	{
+		if ($subpartsFound >= 1) {
+
 			$this->send(
 				$recipient,
 				$this->conf['email.']['admin'],
@@ -579,7 +604,7 @@ class tx_srfeuserregister_email {
 	* @param string  $fileAttachment: file name
 	* @return void
 	*/
-	function send (
+	public function send (
 		$recipient,
 		$admin,
 		$content = '',
@@ -636,7 +661,7 @@ class tx_srfeuserregister_email {
 	* @param array  $markerArray: the input marker array
 	* @return void
 	*/
-	function addCSSStyleMarkers (&$markerArray) {
+	public function addCSSStyleMarkers (&$markerArray) {
 
 		if ($this->conf['templateStyle'] == 'css-styled') {
 			$markerArray['###CSS_STYLES###'] = '	/*<![CDATA[*/
@@ -664,7 +689,7 @@ class tx_srfeuserregister_email {
 	* @param string  $fileAttachment: file name
 	* @return void
 	*/
-	function sendHTML (
+	public function sendHTML (
 		$HTMLContent,
 		$PLAINContent,
 		$recipient,
@@ -676,14 +701,17 @@ class tx_srfeuserregister_email {
 	) {
 		// HTML
 
-		if (trim($recipient) && (trim($HTMLContent) || trim($PLAINContent))) {
-
+		if (
+			trim($recipient) &&
+			(trim($HTMLContent) || trim($PLAINContent))
+		) {
+			$fromName = tx_div2007_alpha5::slashName($fromName);
 			$defaultSubject = 'Front end user registration message';
-			if ($HTMLContent)	{
+			if ($HTMLContent) {
 				$parts = preg_split('/<title>|<\\/title>/i', $HTMLContent, 3);
 				$subject = trim($parts[1]) ? strip_tags(trim($parts[1])) : $defaultSubject;
 			} else {
-				$parts = explode(chr(10),$PLAINContent,2);    // First line is subject
+				$parts = explode(chr(10), $PLAINContent, 2);    // First line is subject
 				$subject = trim($parts[0]) ? trim($parts[0]) : $defaultSubject;
 				$PLAINContent = trim($parts[1]);
 			}
@@ -696,7 +724,7 @@ class tx_srfeuserregister_email {
 			$Typo3_htmlmail->returnPath = $fromEmail;
 			$Typo3_htmlmail->from_name = $fromName;
 			$Typo3_htmlmail->from_name = implode(' ' , t3lib_div::trimExplode(',', $Typo3_htmlmail->from_name));
-			$Typo3_htmlmail->replyto_email = $replyTo ? $replyTo :$fromEmail;
+			$Typo3_htmlmail->replyto_email = $replyTo ? $replyTo : $fromEmail;
 			$Typo3_htmlmail->replyto_name = $replyTo ? '' : $fromName;
 			$Typo3_htmlmail->replyto_name = implode(' ' , t3lib_div::trimExplode(',', $Typo3_htmlmail->replyto_name));
 			$Typo3_htmlmail->organisation = '';

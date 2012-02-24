@@ -1,23 +1,30 @@
 <?php
 if (!defined ('TYPO3_MODE')) 	die ('Access denied.');
 
-t3lib_extMgm::addStaticFile(SR_FEUSER_REGISTER_EXTkey, 'static/css_styled/', 'FE User Registration CSS-styled');
-t3lib_extMgm::addStaticFile(SR_FEUSER_REGISTER_EXTkey, 'static/old_style/', '(deprecated) FE User Registration Old Style');
 
-t3lib_div::loadTCA('tt_content');
+if (TYPO3_MODE=="BE" && !$loadTcaAdditions) {
 
-if (
-	!isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][SR_FEUSER_REGISTER_EXTkey]['useFlexforms']) ||
-	$GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][SR_FEUSER_REGISTER_EXTkey]['useFlexforms'] == 1
-) {
-	$TCA['tt_content']['types']['list']['subtypes_excludelist'][SR_FEUSER_REGISTER_EXTkey.'_pi1']='layout,select_key';
-	$TCA['tt_content']['types']['list']['subtypes_addlist'][SR_FEUSER_REGISTER_EXTkey.'_pi1']='pi_flexform';
-	t3lib_extMgm::addPiFlexFormValue(SR_FEUSER_REGISTER_EXTkey.'_pi1', 'FILE:EXT:'.SR_FEUSER_REGISTER_EXTkey.'/pi1/flexform_ds_pi1.xml');
-} else {
-	$TCA['tt_content']['types']['list']['subtypes_excludelist'][SR_FEUSER_REGISTER_EXTkey.'_pi1'] = 'layout';
+	t3lib_extMgm::addStaticFile(SR_FEUSER_REGISTER_EXTkey, 'static/css_styled/', 'FE User Registration CSS-styled');
+	t3lib_extMgm::addStaticFile(SR_FEUSER_REGISTER_EXTkey, 'static/old_style/', '(deprecated) FE User Registration Old Style');
+
+
+	t3lib_div::loadTCA('tt_content');
+
+	if (
+		!isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][SR_FEUSER_REGISTER_EXTkey]['useFlexforms']) ||
+		$GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][SR_FEUSER_REGISTER_EXTkey]['useFlexforms'] == 1
+	) {
+		$TCA['tt_content']['types']['list']['subtypes_excludelist'][SR_FEUSER_REGISTER_EXTkey.'_pi1']='layout,select_key';
+		$TCA['tt_content']['types']['list']['subtypes_addlist'][SR_FEUSER_REGISTER_EXTkey.'_pi1']='pi_flexform';
+		t3lib_extMgm::addPiFlexFormValue(SR_FEUSER_REGISTER_EXTkey.'_pi1', 'FILE:EXT:'.SR_FEUSER_REGISTER_EXTkey.'/pi1/flexform_ds_pi1.xml');
+	} else {
+		$TCA['tt_content']['types']['list']['subtypes_excludelist'][SR_FEUSER_REGISTER_EXTkey.'_pi1'] = 'layout';
+	}
+
+	t3lib_extMgm::addPlugin(Array('LLL:EXT:'.SR_FEUSER_REGISTER_EXTkey.'/locallang_db.xml:tt_content.list_type', SR_FEUSER_REGISTER_EXTkey.'_pi1'),'list_type');
 }
 
-t3lib_extMgm::addPlugin(Array('LLL:EXT:'.SR_FEUSER_REGISTER_EXTkey.'/locallang_db.xml:tt_content.list_type', SR_FEUSER_REGISTER_EXTkey.'_pi1'),'list_type');
+
 
 /**
  * Setting up country, country subdivision, preferred language, first_name and last_name in fe_users table
@@ -111,6 +118,7 @@ $addColumnArray = Array(
 		'config' => Array (
 			'type' => 'radio',
 			'items' => Array (
+				Array('LLL:EXT:sr_feuser_register/locallang_db.xml:fe_users.gender.I.99', '99'),
 				Array('LLL:EXT:sr_feuser_register/locallang_db.xml:fe_users.gender.I.0', '0'),
 				Array('LLL:EXT:sr_feuser_register/locallang_db.xml:fe_users.gender.I.1', '1')
 			),
@@ -149,9 +157,19 @@ $addColumnArray = Array(
 			'default' => '0'
 		)
 	),
+	'terms_acknowledged' => Array (
+		'exclude' => 0,
+		'label' => 'LLL:EXT:sr_feuser_register/locallang_db.xml:fe_users.terms_acknowledged',
+		'config' => Array (
+			'type' => 'check',
+			'default' => '0',
+			'readOnly' => '1',
+		)
+	),
 );
 
-$typoVersion = t3lib_div::int_from_ver(TYPO3_version);
+
+$typoVersion = class_exists('t3lib_utility_VersionNumber') ? t3lib_utility_VersionNumber::convertVersionNumberToInteger(TYPO3_version) : t3lib_div::int_from_ver(TYPO3_version);
 
 if ($typoVersion < 4004000)	{
 	$addColumnArray['first_name'] = Array (
@@ -194,13 +212,13 @@ if (strpos($TCA['fe_users']['feInterface']['fe_admin_fieldList'],'first_name') =
 }
 
 $TCA['fe_users']['feInterface']['fe_admin_fieldList'] = str_replace(',title', ',gender,' . $additionalFields . 'cnum,status,title', $TCA['fe_users']['feInterface']['fe_admin_fieldList']);
-$TCA['fe_users']['feInterface']['fe_admin_fieldList'] .= ',image,disable,date_of_birth,by_invitation';
+$TCA['fe_users']['feInterface']['fe_admin_fieldList'] .= ',image,disable,date_of_birth,by_invitation,terms_acknowledged';
 
 $TCA['fe_users']['types']['0']['showitem'] = str_replace(', country', ', zone, static_info_country, country,language', $TCA['fe_users']['types']['0']['showitem']);
 
 $TCA['fe_users']['types']['0']['showitem'] = str_replace(', address', ', status, date_of_birth, address', $TCA['fe_users']['types']['0']['showitem']);
 
-$TCA['fe_users']['types']['0']['showitem'] = str_replace(', www', ', www, comments, by_invitation', $TCA['fe_users']['types']['0']['showitem']);
+$TCA['fe_users']['types']['0']['showitem'] = str_replace(', www', ', www, comments, by_invitation, terms_acknowledged', $TCA['fe_users']['types']['0']['showitem']);
 
 $lastPalette = 0;
 for ($i=0; $i<10; $i++)	{
@@ -254,5 +272,6 @@ $TCA['fe_groups_language_overlay'] = Array (
 );
 t3lib_extMgm::allowTableOnStandardPages('fe_groups_language_overlay');
 t3lib_extMgm::addToInsertRecords('fe_groups_language_overlay');
+
 
 ?>

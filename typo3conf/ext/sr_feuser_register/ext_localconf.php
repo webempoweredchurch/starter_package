@@ -1,7 +1,8 @@
 <?php
 if (!defined ('TYPO3_MODE')) die ('Access denied.');
 
-$typoVersion = t3lib_div::int_from_ver($GLOBALS['TYPO_VERSION']);
+$typoVersion = class_exists('t3lib_utility_VersionNumber') ? t3lib_utility_VersionNumber::convertVersionNumberToInteger(TYPO3_version) : t3lib_div::int_from_ver(TYPO3_version);
+
 
 if (!defined ('SR_FEUSER_REGISTER_EXTkey')) {
 	define('SR_FEUSER_REGISTER_EXTkey',$_EXTKEY);
@@ -47,18 +48,17 @@ if (t3lib_extMgm::isLoaded(DIV2007_EXTkey)) {
 	$GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][SR_FEUSER_REGISTER_EXTkey]['useFlexforms'] = 0;
 }
 
-if (TYPO3_MODE=='BE')	{
+if (TYPO3_MODE=='BE') {
 
 	if ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][SR_FEUSER_REGISTER_EXTkey]['useFlexforms'] && defined('PATH_BE_div2007'))	{
 		// replace the output of the former CODE field with the flexform
 		$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/class.tx_cms_layout.php']['list_type_Info'][SR_FEUSER_REGISTER_EXTkey.'_pi1'][] = 'EXT:'.SR_FEUSER_REGISTER_EXTkey.'/hooks/class.tx_srfeuserregister_hooks_cms.php:&tx_srfeuserregister_hooks_cms->pmDrawItem';
 	}
-
-	if (
-	(isset($_EXTCONF) && is_array($_EXTCONF) && $_EXTCONF['usePatch1822'] || $typoVersion >= 4004000) &&
-	!defined($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['cms']['db_layout']['addTables']['fe_users']['MENU'])) {
+		// For backward compatibility, test on extension patch1822 (obsolete as of TYPO3 4.4)
+		// Next step is to make the extension incompatible with sr_feuser_register
+	if (($typoVersion >= 4004000 || t3lib_extMgm::isLoaded('patch1822')) && !defined($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['cms']['db_layout']['addTables']['fe_users']['MENU'])) {
 		$tableArray = array('fe_users', 'fe_groups', 'fe_groups_language_overlay');
-		foreach ($tableArray as $theTable)	{
+		foreach ($tableArray as $theTable) {
 			$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['cms']['db_layout']['LLFile'][$theTable] = 'EXT:'.SR_FEUSER_REGISTER_EXTkey.'/locallang.xml';
 		}
 
@@ -80,7 +80,7 @@ if (TYPO3_MODE=='BE')	{
 			),
 			'other' => array(
 				'MENU' => 'm_other',
-				'fList' =>  'username,www,company,status,image,lastlogin,by_invitation,is_online,module_sys_dmail_html',
+				'fList' =>  'username,www,company,status,image,lastlogin,by_invitation,terms_acknowledged,is_online,module_sys_dmail_html',
 				'icon' => TRUE
 			)
 		);
@@ -117,7 +117,5 @@ if (t3lib_extMgm::isLoaded('static_info_tables')) {
 if (t3lib_extMgm::isLoaded('tt_products') && TYPO3_MODE=='FE') {
 	$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['tt_products']['extendingTCA'][] = SR_FEUSER_REGISTER_EXTkey;
 }
-
-
 
 ?>

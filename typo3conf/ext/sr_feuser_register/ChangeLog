@@ -1,8 +1,101 @@
+2012-01-13 Stanislas Rolland  <typo3@sjbr.ca>
+	* fix security issue: Information (and password) Disclosure in extension sr_feuser_register
+	* fix security issue: sr_feuser_register: "edit account" page contains cleartext password in HTML source
+
+2012-01-13 Franz Holzinger  <franz@ttproducts.de>
+	* fix bug #14416: Missing break in switch after preg
+
+2012-01-13 Franz Holzinger  <franz@ttproducts.de>
+	* fix bug #18343: replace deprecated t3lib_div::intInRange by t3lib_utility_Math::forceIntegerInRange
+	* replace deprecated t3lib_div::testInt by t3lib_utility_Math::canBeInterpretedAsInteger
+
+2011-11-24 Franz Holzinger  <franz@ttproducts.de>
+	* fix bug: do not use the deprecated function t3lib_div::int_from_ver for TYPO3 4.6 and later
+
+2011-11-16 Franz Holzinger  <franz@ttproducts.de>
+	* fix bug: use the new method getLL_fh002 which supports TYPO3 4.6
+
+2011-11-15 Franz Holzinger  <franz@ttproducts.de>
+	* fix bug in implode for the field list of DBgetUpdate
+
+2011-11-15 Franz Holzinger  <franz@ttproducts.de>
+	* restructuring and CGL
+
+2011-11-15 Franz Holzinger  <franz@ttproducts.de>
+	* fix bug with TYPO3 4.6: use the getLL method tx_div2007_alpha5::getLL_fh002
+
+2011-11-14 Franz Holzinger  <franz@ttproducts.de>
+	* new feature: decide which user groups are selectable: allowedUserGroups, allowedSubgroups, deniedUserGroups and which must kept keepUnselectableUserGroups
+	* fix bug: no requirement for tems_acknowledged by default
+
+2011-10-04 Franz Holzinger  <franz@ttproducts.de>
+	* new feature: add the field terms_acknowledged and a PDF file with the terms
+	* fix bug: show an error text if there is not text for missing_<fieldname> found.
+
+2011-09-08 Franz Holzinger  <franz@ttproducts.de>
+	* issue #29523 (forge): improve the hook for the validation to use the error message generator
+
+2011-09-05 Franz Holzinger  <franz@ttproducts.de>
+	* fix bug with duplicate html tag ids in select box
+	* fix bug with the check for required input fields: the data:<field> feature must not use an array
+
+2011-05-30 Franz Holzinger  <franz@ttproducts.de>
+	* better error messages if the file upload fails
+
+2011-05-16 Franz Holzinger  <franz@ttproducts.de>
+	* avoid unnecessary commands when ext_tables.php is included in the FE hook tt_products extendingTCA
+
+2011-05-14 Franz Holzinger  <franz@ttproducts.de>
+	* fix bug: enableAutoLoginOnConfirmation is also supported with md5 password
+
+2011-03-03 Franz Holzinger  <franz@ttproducts.de>
+	* fix bug: override values for group must not use array_diff if there has not been a usergroup array before
+
+2011-03-02 Franz Holzinger  <franz@ttproducts.de>
+	* fix bug: PHP Warning: trim() expects parameter 1 to be string, array given in model/class.tx_srfeuserregister_data.php line 391
+	* TYPO3 coding guidelines: add "public" to the function and variable names
+
+2011-02-28 Franz Holzinger  <franz@ttproducts.de>
+	* fix bug #17622: the email name must be encoded using addcslashes and have double quotes around it
+
+2011-02-12 Franz Holzinger  <franz@ttproducts.de>
+	* replace for PHP 5.3 deprecated ereg_replace by preg_replace
+	* parameter $is_dst of mktime is deprecated in PHP 5.3
+
+2011-01-19 Franz Holzinger  <franz@ttproducts.de>
+	* fix bug with sr_email_subscribe: regHash has been deleted too early before saving
+	* fix bug: preview data has not been read in with regHash
+
+2011-01-04 Franz Holzinger  <franz@ttproducts.de>
+	* fix bug with sr_email_subscribe: No saving of the edited data has been possible
+
+2010-12-01 Franz Holzinger  <franz@ttproducts.de>
+	* undo the change to disable a user confirmation when the admin receives the email to review SETFIXED_REVIEW
+
+2010-11-29 Stanislas Rolland  <typo3@sjbr.ca>
+	* Restored missing entry in Changelog
+	* Fixed bug #11149(Forge): Extension Manager issues warning regarding class tx_srfeuserregister_lib_conf
+	* Fixed issue #11150(Forge): Remove references to obsolete extension patch1822
+	* Fixed issue #11151(Forge): Remove global declarations from class tx_srfeuserregister_data
+	* Fixed bug #15182(bugtracker): Problem with administrative review
+
+2010-11-19 Franz Holzinger  <franz@ttproducts.de>
+	* new feature: use v_dear_male or v_dear_female instead of v_dear if a gender has been entered
+	* complete the contributor list in contributors.txt
+	* fix bug 16132: image is missing at CREATE and INVITE
+	* allow to set attributes to the buttons
+
+2010-10-21 Franz Holzinger  <franz@ttproducts.de>
+	* fix bug 15281: the authorization in the confirmation link did not work with multiple FE groups because the comma had been HTML encoded
+	* fix bug 15225: Form token is empty
+
 2010-10-17 Stanislas Rolland  <typo3@sjbr.ca>
 	* Updated manual
 	* Fix XCLASS keys of files model/class.tx_srfeuserregister_model_table_base.php and model/class.tx_srfeuserregister_model_conf.php
+	* Version 2.6.1
 
 2010-10-14 Franz Holzinger  <franz@ttproducts.de>
+	* fix bug 15271: When logged in, edit form is shown instead of "click_here_to_edit"-link
 	* fix bug 15660: locallang.xml has become invalid
 	* fix bug 14976: PHP Warning: explode() expects parameter 2 to be string
 	* fix bug 15176: no first_name and last_name for TYPO3 4.4+

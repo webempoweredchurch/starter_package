@@ -29,24 +29,25 @@
  * Front End creating/editing/deleting records authenticated by fe_user login.
  * A variant restricted to front end user self-registration and profile maintenance, with a number of enhancements (see the manual).
  *
- * $Id: class.tx_srfeuserregister_pi1.php 39113 2010-10-14 07:16:21Z franzholz $
+ * $Id: class.tx_srfeuserregister_pi1.php 54218 2011-11-15 21:13:15Z franzholz $
  *
  * @author	Kasper Skårhøj <kasperYYYY@typo3.com>
  * @author	Stanislas Rolland <stanislas.rolland(arobas)sjbr.ca>
- * @author	Franz Holzinger <contact@fholzinger.com>
- * @maintainer	Franz Holzinger <contact@fholzinger.com>
+ * @author	Franz Holzinger <franz@ttproducts.de>
+ * @maintainer	Franz Holzinger <franz@ttproducts.de>
  *
  *
  */
 
 
-require_once(PATH_BE_srfeuserregister.'pi1/class.tx_srfeuserregister_pi1_base.php');
+require_once(PATH_BE_srfeuserregister . 'pi1/class.tx_srfeuserregister_pi1_base.php');
 
 
 class tx_srfeuserregister_pi1 {
-	var $cObj;
+	public $cObj;
 
-	function main($content, $conf) {
+	public function main($content, $conf) {
+
 		$pibaseObj = &t3lib_div::getUserObj('&tx_srfeuserregister_pi1_base');
 		$pibaseObj->cObj = &$this->cObj;
 		$content = &$pibaseObj->main($content, $conf);

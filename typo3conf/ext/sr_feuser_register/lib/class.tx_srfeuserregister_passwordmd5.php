@@ -29,7 +29,7 @@
  *
  * md5 password functions
  *
- * $Id: class.tx_srfeuserregister_passwordmd5.php 39113 2010-10-14 07:16:21Z franzholz $
+ * $Id: class.tx_srfeuserregister_passwordmd5.php 54218 2011-11-15 21:13:15Z franzholz $
  *
  * @author	Stanislas Rolland <stanislas.rolland(arobas)sjbr.ca>
  * @author	Franz Holzinger <franz@ttproducts.de>
@@ -42,46 +42,44 @@
 
 
 class tx_srfeuserregister_passwordmd5 {
-	var $data;
-	var $marker;
-	var $controlData;
-	var $chal_val;
+	public $data;
+	public $marker;
+	public $controlData;
+	public $chal_val;
 
-	function init (&$marker, &$data, &$controlData)	{
+	public function init (&$marker, &$data, &$controlData) {
 		$this->marker = &$marker;
 		$this->data = &$data;
 		$this->controlData = &$controlData;
 	}
 
-	function getChallenge ()	{
+	public function getChallenge () {
 		return $this->chal_val;
 	}
 
-	function generateChallenge (&$row)	{
-		global $TYPO3_DB;
-
+	public function generateChallenge (&$row) {
 		$time = time();
-		$this->chal_val = md5($time.getmypid());
+		$this->chal_val = md5($time . getmypid());
 		$row['password'] = '';
 		$row['chalvalue'] = $this->chal_val;
-		$tableArray = $TYPO3_DB->admin_get_tables();
+		$tableArray = $GLOBALS['TYPO3_DB']->admin_get_tables();
 
-		if (t3lib_extMgm::isLoaded('kb_md5fepw') && isset($tableArray['tx_kbmd5fepw_challenge']))	{
+		if (t3lib_extMgm::isLoaded('kb_md5fepw') && isset($tableArray['tx_kbmd5fepw_challenge'])) {
 			$challengeTable = 'tx_kbmd5fepw_challenge';
 		}
 
-		if (t3lib_extMgm::isLoaded('felogin') && isset($tableArray['tx_felogin_challenge']) && $GLOBALS['TYPO3_CONF_VARS']['FE']['passwordType'] == 'md5' && $GLOBALS['TYPO3_CONF_VARS']['FE']['loginSecurityLevel'] == 'superchallenged')	{
+		if (t3lib_extMgm::isLoaded('felogin') && isset($tableArray['tx_felogin_challenge']) && $GLOBALS['TYPO3_CONF_VARS']['FE']['passwordType'] == 'md5' && $GLOBALS['TYPO3_CONF_VARS']['FE']['loginSecurityLevel'] == 'superchallenged') {
 			$challengeTable = 'tx_felogin_challenge';
 		}
 
-		if ($challengeTable != '')	{
-			$res = $TYPO3_DB->exec_SELECTquery('count(*) as count', $challengeTable, 'challenge='.$TYPO3_DB->fullQuoteStr($this->chal_val, $challengeTable));
-			if (!method_exists($TYPO3_DB,debug_check_recordset) || $TYPO3_DB->debug_check_recordset($res))	{
-				$row = $TYPO3_DB->sql_fetch_assoc($res);
-				$cnt = $row['count'];
-				$TYPO3_DB->sql_free_result($res);
-				if (!$cnt)	{
-					$res = $TYPO3_DB->exec_INSERTquery($challengeTable, array('challenge' => $this->chal_val, 'tstamp' => $time));
+		if ($challengeTable != '') {
+			$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('count(*) as count', $challengeTable, 'challenge=' . $GLOBALS['TYPO3_DB']->fullQuoteStr($this->chal_val, $challengeTable));
+			if (!method_exists($GLOBALS['TYPO3_DB'], debug_check_recordset) || $GLOBALS['TYPO3_DB']->debug_check_recordset($res)) {
+				$challengeTableRow = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res);
+				$cnt = $challengeTableRow['count'];
+				$GLOBALS['TYPO3_DB']->sql_free_result($res);
+				if (!$cnt) {
+					$res = $GLOBALS['TYPO3_DB']->exec_INSERTquery($challengeTable, array('challenge' => $this->chal_val, 'tstamp' => $time));
 				}
 			}
 		}

@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2008-2008 Franz Holzinger (franz@ttproducts.de)
+*  (c) 2008-2011 Franz Holzinger (franz@ttproducts.de)
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -29,7 +29,7 @@
  *
  * base class for all database table fields classes
  *
- * $Id: class.tx_srfeuserregister_model_field_base.php 39113 2010-10-14 07:16:21Z franzholz $
+ * $Id: class.tx_srfeuserregister_model_field_base.php 54218 2011-11-15 21:13:15Z franzholz $
  *
  * @author	Franz Holzinger <franz@ttproducts.de>
  * @maintainer	Franz Holzinger <franz@ttproducts.de>
@@ -40,24 +40,34 @@
 
 
 class tx_srfeuserregister_model_field_base  {
-	var $bHasBeenInitialised = FALSE;
+	public $bHasBeenInitialised = FALSE;
 
-	function init()	{
+	public function init () {
 		$this->bHasBeenInitialised = TRUE;
 	}
 
-	function needsInit()	{
+	public function needsInit () {
 		return !$this->bHasBeenInitialised;
 	}
 
-	function modifyConf (&$conf, $cmdKey)	{
+	public function modifyConf (&$conf, $cmdKey) {
 	}
 
-	function get($row, $fieldname)	{
+	public function get ($row, $fieldname) {
 		return $row[$fieldname];
 	}
 
-	function parseOutgoingData($fieldname, $dataArray, &$origArray, &$parsedArr) {
+	public function parseOutgoingData (
+		$theTable,
+		$fieldname,
+		$foreignTable,
+		$cmdKey,
+		$pid,
+		$conf,
+		$dataArray,
+		$origArray,
+		&$parsedArr
+	) {
 		$parsedArr[$fieldname] = $dataArray[$fieldname];	// just copied the original value
 	}
 }

@@ -29,7 +29,7 @@
  * Part of the sr_feuser_register (Front End User Registration) extension.
  * A variant restricted to front end user self-registration and profile maintenance, with a number of enhancements (see the manual).
  *
- * $Id: class.tx_srfeuserregister_pi1_base.php 39113 2010-10-14 07:16:21Z franzholz $
+ * $Id: class.tx_srfeuserregister_pi1_base.php 54218 2011-11-15 21:13:15Z franzholz $
  *
  * @author	Kasper Skårhøj <kasperYYYY@typo3.com>
  * @author	Stanislas Rolland <stanislas.rolland(arobas)sjbr.ca>
@@ -39,16 +39,16 @@
  *
  */
 
-require_once(PATH_tslib.'class.tslib_pibase.php');
-require_once(PATH_BE_srfeuserregister.'control/class.tx_srfeuserregister_control_main.php');
+require_once(PATH_tslib . 'class.tslib_pibase.php');
+require_once(PATH_BE_srfeuserregister . 'control/class.tx_srfeuserregister_control_main.php');
 
 
 class tx_srfeuserregister_pi1_base extends tslib_pibase {
 
 		// Plugin initialization variables
-	var $prefixId = 'tx_srfeuserregister_pi1';		// Should be same as classname of the plugin, used for CSS classes, variables
-	var $scriptRelPath = 'pi1/class.tx_srfeuserregister_pi1_base.php'; // Path to this script relative to the extension dir.
-	var $extKey = SR_FEUSER_REGISTER_EXTkey;		// Extension key.
+	public $prefixId = 'tx_srfeuserregister_pi1';		// Should be same as classname of the plugin, used for CSS classes, variables
+	public $scriptRelPath = 'pi1/class.tx_srfeuserregister_pi1_base.php'; // Path to this script relative to the extension dir.
+	public $extKey = SR_FEUSER_REGISTER_EXTkey;		// Extension key.
 
 	public function main ($content, $conf) {
 		global $TSFE;
@@ -57,6 +57,7 @@ class tx_srfeuserregister_pi1_base extends tslib_pibase {
 		$this->conf = &$conf;
 		$mainObj = &t3lib_div::getUserObj('&tx_srfeuserregister_control_main');
 		$mainObj->cObj = &$this->cObj;
+
 		$content = &$mainObj->main($content, $conf, $this, 'fe_users');
 		return $content;
 	}

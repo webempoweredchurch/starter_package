@@ -27,7 +27,7 @@
  *
  * Example of hook handler for extension Front End User Registration (sr_feuser_register)
  *
- * $Id: class.tx_srfeuserregister_hooksHandler.php 39113 2010-10-14 07:16:21Z franzholz $
+ * $Id: class.tx_srfeuserregister_hooksHandler.php 54218 2011-11-15 21:13:15Z franzholz $
  *
  * @author Stanislas Rolland <stanislas.rolland(arobas)sjbr.ca>
  *
@@ -35,12 +35,12 @@
 
 
 class tx_srfeuserregister_hooksHandler {
-	function registrationProcess_beforeConfirmCreate(&$recordArray, &$controlDataObj) {
+	public function registrationProcess_beforeConfirmCreate (&$recordArray, &$controlDataObj) {
 			// in the case of this hook, the record array is passed by reference
 			// in this example hook, we generate a username based on the first and last names of the user
 		$cmdKey = $controlDataObj->getCmdKey();
 		$theTable = $controlDataObj->getTable();
-		if ($controlDataObj->getFeUserData('preview') && $controlDataObj->conf[$cmdKey.'.']['generateUsername']) {
+		if ($controlDataObj->getFeUserData('preview') && $controlDataObj->conf[$cmdKey . '.']['generateUsername']) {
 			$firstName = trim($recordArray['first_name']);
 			$lastName = trim($recordArray['last_name']);
 			$name = trim($recordArray['name']);
@@ -49,38 +49,43 @@ class tx_srfeuserregister_hooksHandler {
 				$firstName = ($firstName ? $firstName : $nameArray[0]);
 				$lastName = ($lastName ? $lastName : $nameArray[1]);
 			}
-			$recordArray['username'] = substr(strtolower($firstName),0,5) . substr(strtolower($lastName),0,5);
+			$recordArray['username'] = substr(strtolower($firstName), 0, 5) . substr(strtolower($lastName), 0, 5);
 			$DBrows = $GLOBALS['TSFE']->sys_page->getRecordsByField($theTable, 'username', $recordArray['username'], 'LIMIT 1');
 			$counter = 0;
 			while($DBrows) {
 				$counter = $counter + 1;
-				$DBrows = $GLOBALS['TSFE']->sys_page->getRecordsByField($theTable, 'username', $recordArray['username'].$counter, 'LIMIT 1');
+				$DBrows =
+					$GLOBALS['TSFE']->sys_page->getRecordsByField(
+						$theTable,
+						'username',
+						$recordArray['username'] . $counter, 'LIMIT 1'
+					);
 			}
-			if ($counter)	{
-				$recordArray['username'] = $recordArray['username'].$counter;
+			if ($counter) {
+				$recordArray['username'] = $recordArray['username'] . $counter;
 			}
 		}
 	}
 
-	function registrationProcess_afterSaveEdit($recordArray, &$invokingObj) {
+	public function registrationProcess_afterSaveEdit ($recordArray, &$invokingObj) {
 	}
 
-	function registrationProcess_beforeSaveDelete($recordArray, &$invokingObj) {
+	public function registrationProcess_beforeSaveDelete ($recordArray, &$invokingObj) {
 	}
 
-	function registrationProcess_afterSaveCreate($recordArray, &$invokingObj) {
+	public function registrationProcess_afterSaveCreate ($recordArray, &$invokingObj) {
 	}
 
-	function confirmRegistrationClass_preProcess(&$recordArray, &$invokingObj) {
+	public function confirmRegistrationClass_preProcess (&$recordArray, &$invokingObj) {
 		// in the case of this hook, the record array is passed by reference
 		// you may not see this echo if the page is redirected to auto-login
 	}
 
-	function confirmRegistrationClass_postProcess($recordArray, &$invokingObj) {
+	public function confirmRegistrationClass_postProcess ($recordArray, &$invokingObj) {
 		// you may not see this echo if the page is redirected to auto-login
 	}
 
-	function addGlobalMarkers(&$markerArray, &$invokingObj)	{
+	public function addGlobalMarkers (&$markerArray, &$invokingObj) {
 	}
 }
 

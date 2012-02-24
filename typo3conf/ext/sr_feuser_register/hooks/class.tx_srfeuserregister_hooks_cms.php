@@ -29,7 +29,7 @@
  *
  * hook functions for the TYPO3 cms
  *
- * $Id: class.tx_srfeuserregister_hooks_cms.php 39113 2010-10-14 07:16:21Z franzholz $
+ * $Id: class.tx_srfeuserregister_hooks_cms.php 54218 2011-11-15 21:13:15Z franzholz $
  *
  * @author	Franz Holzinger <contact@fholzinger.com>
  * @maintainer	Franz Holzinger <contact@fholzinger.com>
@@ -42,7 +42,7 @@
 require_once(PATH_BE_div2007.'hooks/class.tx_div2007_hooks_cms.php');
 
 class tx_srfeuserregister_hooks_cms extends tx_div2007_hooks_cms {
-	public $extKey=SR_FEUSER_REGISTER_EXTkey;
+	public $extKey = SR_FEUSER_REGISTER_EXTkey;
 
 }
 
