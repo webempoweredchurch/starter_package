@@ -1,4 +1,7 @@
-2012-01-13 Stanislas Rolland  <typo3@sjbr.ca>
+2012-02-25 Stanislas Rolland  <typo3@sjbr.ca>
+	* fix regression on security issue: Information (and password) Disclosure in extension sr_feuser_register (Thanks to Franz Holzinger)
+
+2012-02-22 Stanislas Rolland  <typo3@sjbr.ca>
 	* fix security issue: Information (and password) Disclosure in extension sr_feuser_register
 	* fix security issue: sr_feuser_register: "edit account" page contains cleartext password in HTML source
 

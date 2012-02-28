@@ -320,11 +320,17 @@ class tx_srfeuserregister_controldata {
 	}
 
 
-	public function readUnsecuredArray () {
+	public function readUnsecuredArray ($bPassword = TRUE) {
 		$rcArray = array();
 		$seData = $this->readSessionData();
 
 		foreach ($this->securedFieldArray as $field) {
+			if (
+				!$bPassword &&
+				($field == 'password' || $field == 'password_again')
+			) {
+				continue;
+			}
 			$v = $seData[$field];
 			if (isset($v)) {
 				$rcArray[$field] = $v;
@@ -512,10 +518,6 @@ class tx_srfeuserregister_controldata {
 	* @return void
 	*/
 	public function securePassword (&$row) {
-		
-		if (!$row['password_again']) {
-			$row['password'] = '';
-		}
 
 		$bWriteDummy = FALSE;
 		$bMd5 = $this->getUseMd5Password();

@@ -347,8 +347,10 @@ class tx_srfeuserregister_control {
 			$this->data->resetDataArray();
 			$finalDataArray = $dataArray;
 		} else if ($this->data->bNewAvailable()) {
-
-			$securedArray = $this->controlData->readUnsecuredArray();
+			
+				// The password must always be fetched because it is not visible on the preview
+			$bPassword = ($theTable == 'fe_users');
+			$securedArray = $this->controlData->readUnsecuredArray($bPassword);
 
 			if (isset($securedArray) && is_array($securedArray)) {
 				$finalDataArray =
@@ -577,7 +579,6 @@ class tx_srfeuserregister_control {
 					$clearPassword = $finalDataArray['password'];
 						// If using md5 password, generate a challenge and get the stored password
 					if ($this->controlData->getUseMd5Password()) {
-						$clearPassword = $finalDataArray['password'];
 						$passwordmd5Obj = &t3lib_div::getUserObj('&tx_srfeuserregister_passwordmd5');
 						$passwordmd5Obj->generateChallenge($finalDataArray);
 						$finalDataArray['password'] = md5($clearPassword);
@@ -767,6 +768,7 @@ class tx_srfeuserregister_control {
 	 * @return boolean TRUE, if login was successful, FALSE otherwise
 	 */
 	function login ($row) {
+		$result = TRUE;
 			// Log the user in
 		$loginData = array(
 			'uname' => $row['username'],
@@ -807,12 +809,12 @@ class tx_srfeuserregister_control {
 				}
 			}
 			header('Location: '.t3lib_div::locationHeaderUrl($redirectUrl));
-			return TRUE;
 		} else {
 				// Login failed...
 			$this->controlData->clearSessionData(FALSE);
-			return FALSE;
+			$result = FALSE;
 		}
+		return $result;
 	}
 
 	/**
