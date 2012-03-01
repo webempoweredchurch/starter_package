@@ -1,3 +1,4 @@
 temp_CACHED_*
 realurl_autoconf.php
-
+ENABLE_INSTALL_TOOL
+dump_database.sh
